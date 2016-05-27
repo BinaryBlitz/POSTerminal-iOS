@@ -12,6 +12,7 @@
 		376D842C1CF878D3008A868A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 376D842A1CF878D3008A868A /* Main.storyboard */; };
 		376D842E1CF878D3008A868A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 376D842D1CF878D3008A868A /* Assets.xcassets */; };
 		376D84311CF878D3008A868A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 376D842F1CF878D3008A868A /* LaunchScreen.storyboard */; };
+		433F28A31EB04C40990067C6 /* Pods_POSTerminal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9978E4E2340700188A2E3627 /* Pods_POSTerminal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		376D842D1CF878D3008A868A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		376D84301CF878D3008A868A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		376D84321CF878D3008A868A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		850711AE06D844522B79832B /* Pods-POSTerminal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POSTerminal.release.xcconfig"; path = "Pods/Target Support Files/Pods-POSTerminal/Pods-POSTerminal.release.xcconfig"; sourceTree = "<group>"; };
+		9978E4E2340700188A2E3627 /* Pods_POSTerminal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POSTerminal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C83A96343448D80033F5C69F /* Pods-POSTerminal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POSTerminal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POSTerminal/Pods-POSTerminal.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				433F28A31EB04C40990067C6 /* Pods_POSTerminal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				376D84251CF878D3008A868A /* POSTerminal */,
 				376D84241CF878D3008A868A /* Products */,
+				4214530925DD207C5A5646B6 /* Pods */,
+				ED25E857FB2E7390F58CFB00 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +61,63 @@
 		376D84251CF878D3008A868A /* POSTerminal */ = {
 			isa = PBXGroup;
 			children = (
-				376D84261CF878D3008A868A /* AppDelegate.swift */,
-				376D84281CF878D3008A868A /* ViewController.swift */,
-				376D842A1CF878D3008A868A /* Main.storyboard */,
+				376D843A1CF91122008A868A /* Controllers */,
+				376D843B1CF9112D008A868A /* Models */,
+				376D84381CF91068008A868A /* Storyboards */,
+				376D84391CF910F7008A868A /* App Configuration */,
 				376D842D1CF878D3008A868A /* Assets.xcassets */,
-				376D842F1CF878D3008A868A /* LaunchScreen.storyboard */,
-				376D84321CF878D3008A868A /* Info.plist */,
 			);
 			path = POSTerminal;
+			sourceTree = "<group>";
+		};
+		376D84381CF91068008A868A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				376D842A1CF878D3008A868A /* Main.storyboard */,
+				376D842F1CF878D3008A868A /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		376D84391CF910F7008A868A /* App Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				376D84261CF878D3008A868A /* AppDelegate.swift */,
+				376D84321CF878D3008A868A /* Info.plist */,
+			);
+			name = "App Configuration";
+			sourceTree = "<group>";
+		};
+		376D843A1CF91122008A868A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				376D84281CF878D3008A868A /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		376D843B1CF9112D008A868A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4214530925DD207C5A5646B6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C83A96343448D80033F5C69F /* Pods-POSTerminal.debug.xcconfig */,
+				850711AE06D844522B79832B /* Pods-POSTerminal.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		ED25E857FB2E7390F58CFB00 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9978E4E2340700188A2E3627 /* Pods_POSTerminal.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +127,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 376D84351CF878D3008A868A /* Build configuration list for PBXNativeTarget "POSTerminal" */;
 			buildPhases = (
+				C5B2AE1BF539DC5711A479D2 /* 📦 Check Pods Manifest.lock */,
 				376D841F1CF878D3008A868A /* Sources */,
 				376D84201CF878D3008A868A /* Frameworks */,
 				376D84211CF878D3008A868A /* Resources */,
+				13C3E7F9D6AEE529C7C45ACC /* 📦 Embed Pods Frameworks */,
+				BE402449E626CAE379A7B83F /* 📦 Copy Pods Resources */,
+				376D843C1CF91229008A868A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -129,6 +189,67 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		13C3E7F9D6AEE529C7C45ACC /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-POSTerminal/Pods-POSTerminal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		376D843C1CF91229008A868A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 886de8c1d524dbaa9dfdbd457b8c8469ecafdfd4 fe43661af277625de578631f794d9557e38adacd6b02682d23b328918ca7fbf6";
+		};
+		BE402449E626CAE379A7B83F /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-POSTerminal/Pods-POSTerminal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5B2AE1BF539DC5711A479D2 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		376D841F1CF878D3008A868A /* Sources */ = {
@@ -249,6 +370,7 @@
 		};
 		376D84361CF878D3008A868A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C83A96343448D80033F5C69F /* Pods-POSTerminal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = POSTerminal/Info.plist;
@@ -261,6 +383,7 @@
 		};
 		376D84371CF878D3008A868A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 850711AE06D844522B79832B /* Pods-POSTerminal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = POSTerminal/Info.plist;
@@ -290,6 +413,7 @@
 				376D84371CF878D3008A868A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
