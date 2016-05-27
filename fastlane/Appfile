@@ -1,0 +1,14 @@
+app_identifier "ru.binaryblitz.POSTerminal" # The bundle identifier of your app
+apple_id "twistedplane@gmail.com" # Your Apple email address
+
+# You can uncomment any of the lines below and add your own
+# team selection in case you're in multiple teams
+team_name "Binary Blitz OOO" 
+team_id "4WGG8V34K4"
+
+# To select a team for iTunes Connect use
+# itc_team_name "Company Name"
+# itc_team_id "18742801
+
+# you can even provide different app identifiers, Apple IDs and team names per lane:
+# https://github.com/fastlane/fastlane/blob/master/docs/Appfile.md

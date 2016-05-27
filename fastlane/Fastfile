@@ -1,0 +1,54 @@
+fastlane_version "1.91.0"
+default_platform :ios
+
+platform :ios do
+  before_all do
+    ensure_git_status_clean
+    cocoapods
+    increment_build_number
+    # xctool
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    # snapshot
+  end
+
+  desc "Crashlytics beta"
+  lane :beta do
+    sigh(development: true, output_path: "/tmp")
+    gym(
+      scheme: "POSTerminal",
+      use_legacy_build_api: true
+    )
+    crashlytics(
+      api_token: ENV["CRASHLYTICS_API_TOKEN"],
+      build_secret: ENV["CRASHLYTICS_BUILD_SECRET"],
+      notes: "",
+      groups: ['pos-dudes']
+    )
+end
+
+  desc "Submit a new Beta Build to Apple TestFlight"
+  desc "This will also make sure the profile is up to date"
+  lane :testflight do
+    sigh
+    gym(scheme: "POSTerminal") # Build your app - more options available
+    pilot
+  end
+
+  desc "Deploy a new version to the App Store"
+  lane :deploy do
+    # snapshot
+    sigh
+    gym(scheme: "POSTerminal") # Build your app - more options available
+    # deliver(force: true)
+    # frameit
+  end
+
+  after_all do |lane|
+    build_number = Actions.lane_context[Actions::SharedValues::BUILD_NUMBER]
+    sh "git add -A"
+    sh "git commit -m \"Bulid \##{build_number}\""
+  end
+end
