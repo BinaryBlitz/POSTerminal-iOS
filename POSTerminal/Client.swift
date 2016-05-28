@@ -10,7 +10,7 @@ import Realm
 import RealmSwift
 import SwiftyJSON
 
-class Client: Object, ServerObject {
+class Client: Object {
   dynamic var id: String = ""
   dynamic var name: String = ""
   dynamic var balance: Int = 0
@@ -20,8 +20,8 @@ class Client: Object, ServerObject {
   }
 }
 
-extension Client {
-  func createWith(json: JSON) -> JSON? {
+extension Client: ServerObject {
+  static func createWith(json: JSON) -> JSON? {
     return nil
   }
 }
