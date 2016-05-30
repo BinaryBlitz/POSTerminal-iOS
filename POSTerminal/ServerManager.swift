@@ -12,7 +12,7 @@ class ServerManager {
   
   static let sharedManager = ServerManager()
   
-  let manager = Manager.sharedInstance
+  let manager: Manager
   let baseURL: String!
   
   var login: String?
@@ -20,5 +20,8 @@ class ServerManager {
   
   init() {
     self.baseURL = NSBundle.mainBundle().objectForInfoDictionaryKey("BaseURL") as! String
+    let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+    configuration.protocolClasses!.insert(RedSocketURLProtocol.self, atIndex: 0)
+    self.manager = Alamofire.Manager(configuration: configuration)
   }
 }

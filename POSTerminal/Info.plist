@@ -51,5 +51,14 @@
 	</array>
 	<key>BaseURL</key>
 	<string>http://arma.ngslab.ru:28081</string>
+	<key>UISupportedExternalAccessoryProtocols</key>
+	<array>
+		<string>com.redpark.nettool</string>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

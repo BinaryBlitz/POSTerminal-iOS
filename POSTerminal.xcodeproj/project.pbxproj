@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		376D84271CF878D3008A868A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D84261CF878D3008A868A /* AppDelegate.swift */; };
-		376D84291CF878D3008A868A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D84281CF878D3008A868A /* ViewController.swift */; };
 		376D842C1CF878D3008A868A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 376D842A1CF878D3008A868A /* Main.storyboard */; };
 		376D842E1CF878D3008A868A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 376D842D1CF878D3008A868A /* Assets.xcassets */; };
 		376D84311CF878D3008A868A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 376D842F1CF878D3008A868A /* LaunchScreen.storyboard */; };
@@ -18,13 +17,18 @@
 		376D84471CF91D75008A868A /* Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D84461CF91D75008A868A /* Check.swift */; };
 		376D84491CF91DD0008A868A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D84481CF91DD0008A868A /* Product.swift */; };
 		376D844B1CF9207B008A868A /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D844A1CF9207B008A868A /* Order.swift */; };
+		37C58DC61CFC6D6F00049095 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DC51CFC6D6F00049095 /* ExternalAccessory.framework */; };
+		37C58DC81CFC6DEA00049095 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DC71CFC6DEA00049095 /* libz.tbd */; };
+		37C58DCC1CFC6E0000049095 /* libRedSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DCA1CFC6E0000049095 /* libRedSocket.a */; };
+		37C58DD21CFC6F1B00049095 /* CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DCF1CFC6F1B00049095 /* CanonicalRequest.m */; };
+		37C58DD31CFC6F1B00049095 /* RedSocketURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DD11CFC6F1B00049095 /* RedSocketURLProtocol.m */; };
+		37C58DDA1CFC80CF00049095 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DD91CFC80CF00049095 /* ViewController.swift */; };
 		433F28A31EB04C40990067C6 /* Pods_POSTerminal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9978E4E2340700188A2E3627 /* Pods_POSTerminal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		376D84231CF878D3008A868A /* POSTerminal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POSTerminal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		376D84261CF878D3008A868A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		376D84281CF878D3008A868A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		376D842B1CF878D3008A868A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		376D842D1CF878D3008A868A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		376D84301CF878D3008A868A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,6 +39,17 @@
 		376D84461CF91D75008A868A /* Check.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Check.swift; sourceTree = "<group>"; };
 		376D84481CF91DD0008A868A /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		376D844A1CF9207B008A868A /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		37C58DC51CFC6D6F00049095 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		37C58DC71CFC6DEA00049095 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		37C58DC91CFC6E0000049095 /* libRedDebugServer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRedDebugServer.a; path = lib/libRedDebugServer.a; sourceTree = "<group>"; };
+		37C58DCA1CFC6E0000049095 /* libRedSocket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRedSocket.a; path = lib/libRedSocket.a; sourceTree = "<group>"; };
+		37C58DCD1CFC6F1A00049095 /* POSTerminal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "POSTerminal-Bridging-Header.h"; sourceTree = "<group>"; };
+		37C58DCE1CFC6F1B00049095 /* CanonicalRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanonicalRequest.h; sourceTree = "<group>"; };
+		37C58DCF1CFC6F1B00049095 /* CanonicalRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanonicalRequest.m; sourceTree = "<group>"; };
+		37C58DD01CFC6F1B00049095 /* RedSocketURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedSocketURLProtocol.h; sourceTree = "<group>"; };
+		37C58DD11CFC6F1B00049095 /* RedSocketURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedSocketURLProtocol.m; sourceTree = "<group>"; };
+		37C58DD51CFC6F4B00049095 /* RedSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedSocket.h; sourceTree = "<group>"; };
+		37C58DD91CFC80CF00049095 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		850711AE06D844522B79832B /* Pods-POSTerminal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POSTerminal.release.xcconfig"; path = "Pods/Target Support Files/Pods-POSTerminal/Pods-POSTerminal.release.xcconfig"; sourceTree = "<group>"; };
 		9978E4E2340700188A2E3627 /* Pods_POSTerminal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POSTerminal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83A96343448D80033F5C69F /* Pods-POSTerminal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POSTerminal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POSTerminal/Pods-POSTerminal.debug.xcconfig"; sourceTree = "<group>"; };
@@ -46,6 +61,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				433F28A31EB04C40990067C6 /* Pods_POSTerminal.framework in Frameworks */,
+				37C58DC81CFC6DEA00049095 /* libz.tbd in Frameworks */,
+				37C58DC61CFC6D6F00049095 /* ExternalAccessory.framework in Frameworks */,
+				37C58DCC1CFC6E0000049095 /* libRedSocket.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +91,7 @@
 		376D84251CF878D3008A868A /* POSTerminal */ = {
 			isa = PBXGroup;
 			children = (
+				37C58DD41CFC6F2300049095 /* RedSocket */,
 				376D843A1CF91122008A868A /* Controllers */,
 				376D84431CF91CC3008A868A /* Protocols */,
 				376D84451CF91CE6008A868A /* Managers */,
@@ -80,6 +99,7 @@
 				376D84381CF91068008A868A /* Storyboards */,
 				376D84391CF910F7008A868A /* App Configuration */,
 				376D842D1CF878D3008A868A /* Assets.xcassets */,
+				37C58DCD1CFC6F1A00049095 /* POSTerminal-Bridging-Header.h */,
 			);
 			path = POSTerminal;
 			sourceTree = "<group>";
@@ -105,7 +125,7 @@
 		376D843A1CF91122008A868A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				376D84281CF878D3008A868A /* ViewController.swift */,
+				37C58DD91CFC80CF00049095 /* ViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -137,6 +157,18 @@
 			name = Managers;
 			sourceTree = "<group>";
 		};
+		37C58DD41CFC6F2300049095 /* RedSocket */ = {
+			isa = PBXGroup;
+			children = (
+				37C58DD51CFC6F4B00049095 /* RedSocket.h */,
+				37C58DCE1CFC6F1B00049095 /* CanonicalRequest.h */,
+				37C58DCF1CFC6F1B00049095 /* CanonicalRequest.m */,
+				37C58DD01CFC6F1B00049095 /* RedSocketURLProtocol.h */,
+				37C58DD11CFC6F1B00049095 /* RedSocketURLProtocol.m */,
+			);
+			name = RedSocket;
+			sourceTree = "<group>";
+		};
 		4214530925DD207C5A5646B6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +181,10 @@
 		ED25E857FB2E7390F58CFB00 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37C58DC91CFC6E0000049095 /* libRedDebugServer.a */,
+				37C58DCA1CFC6E0000049095 /* libRedSocket.a */,
+				37C58DC71CFC6DEA00049095 /* libz.tbd */,
+				37C58DC51CFC6D6F00049095 /* ExternalAccessory.framework */,
 				9978E4E2340700188A2E3627 /* Pods_POSTerminal.framework */,
 			);
 			name = Frameworks;
@@ -190,6 +226,7 @@
 				TargetAttributes = {
 					376D84221CF878D3008A868A = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 4WGG8V34K4;
 					};
 				};
 			};
@@ -290,14 +327,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				376D84291CF878D3008A868A /* ViewController.swift in Sources */,
 				376D843E1CF9194C008A868A /* ServerManager.swift in Sources */,
+				37C58DD31CFC6F1B00049095 /* RedSocketURLProtocol.m in Sources */,
 				376D844B1CF9207B008A868A /* Order.swift in Sources */,
 				376D84471CF91D75008A868A /* Check.swift in Sources */,
+				37C58DDA1CFC80CF00049095 /* ViewController.swift in Sources */,
 				376D84421CF91CA2008A868A /* ServerObject.swift in Sources */,
 				376D84401CF91B08008A868A /* Client.swift in Sources */,
 				376D84271CF878D3008A868A /* AppDelegate.swift in Sources */,
 				376D84491CF91DD0008A868A /* Product.swift in Sources */,
+				37C58DD21CFC6F1B00049095 /* CanonicalRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,12 +452,24 @@
 			baseConfigurationReference = C83A96343448D80033F5C69F /* Pods-POSTerminal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 2;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = POSTerminal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.binaryblitz.POSTerminal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "POSTerminal/POSTerminal-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -427,12 +478,22 @@
 			baseConfigurationReference = 850711AE06D844522B79832B /* Pods-POSTerminal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 2;
 				INFOPLIST_FILE = POSTerminal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.binaryblitz.POSTerminal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "POSTerminal/POSTerminal-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
