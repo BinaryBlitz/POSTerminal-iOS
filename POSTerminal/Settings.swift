@@ -10,8 +10,12 @@ import Foundation
 
 class Settings: NSObject, NSCoding {
   
+  static let sharedInstance = Settings()
+  
   var wpBase: Host?
   var equipServ: Host?
+  
+  override init() { super.init() }
   
   required init?(coder aDecoder: NSCoder) {
     wpBase = aDecoder.decodeObjectForKey("wpBase") as? Host
