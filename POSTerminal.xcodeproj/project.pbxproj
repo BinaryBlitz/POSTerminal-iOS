@@ -28,6 +28,9 @@
 		37C58DE01CFCFC9400049095 /* ServerManager+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DDF1CFCFC9400049095 /* ServerManager+Menu.swift */; };
 		37C58DE21CFE315400049095 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DE11CFE315400049095 /* Settings.swift */; };
 		37C58DE41CFE3C0600049095 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DE31CFE3C0600049095 /* Host.swift */; };
+		37C58DE71CFE486800049095 /* ServerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DE61CFE486800049095 /* ServerRouter.swift */; };
+		37C58DE91CFE512300049095 /* WPBaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DE81CFE512300049095 /* WPBaseRouter.swift */; };
+		37C58DEB1CFE512900049095 /* EquipServRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DEA1CFE512900049095 /* EquipServRouter.swift */; };
 		433F28A31EB04C40990067C6 /* Pods_POSTerminal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9978E4E2340700188A2E3627 /* Pods_POSTerminal.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +63,9 @@
 		37C58DDF1CFCFC9400049095 /* ServerManager+Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ServerManager+Menu.swift"; sourceTree = "<group>"; };
 		37C58DE11CFE315400049095 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		37C58DE31CFE3C0600049095 /* Host.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
+		37C58DE61CFE486800049095 /* ServerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerRouter.swift; sourceTree = "<group>"; };
+		37C58DE81CFE512300049095 /* WPBaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WPBaseRouter.swift; sourceTree = "<group>"; };
+		37C58DEA1CFE512900049095 /* EquipServRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipServRouter.swift; sourceTree = "<group>"; };
 		850711AE06D844522B79832B /* Pods-POSTerminal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POSTerminal.release.xcconfig"; path = "Pods/Target Support Files/Pods-POSTerminal/Pods-POSTerminal.release.xcconfig"; sourceTree = "<group>"; };
 		9978E4E2340700188A2E3627 /* Pods_POSTerminal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POSTerminal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83A96343448D80033F5C69F /* Pods-POSTerminal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POSTerminal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POSTerminal/Pods-POSTerminal.debug.xcconfig"; sourceTree = "<group>"; };
@@ -168,6 +174,7 @@
 				37C58DDF1CFCFC9400049095 /* ServerManager+Menu.swift */,
 				37C58DDD1CFCFB9400049095 /* ServerError.swift */,
 				37C58DDB1CFCFB8C00049095 /* ServerResponse.swift */,
+				37C58DEC1CFE512E00049095 /* Routers */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -182,6 +189,16 @@
 				37C58DD11CFC6F1B00049095 /* RedSocketURLProtocol.m */,
 			);
 			name = RedSocket;
+			sourceTree = "<group>";
+		};
+		37C58DEC1CFE512E00049095 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				37C58DE61CFE486800049095 /* ServerRouter.swift */,
+				37C58DEA1CFE512900049095 /* EquipServRouter.swift */,
+				37C58DE81CFE512300049095 /* WPBaseRouter.swift */,
+			);
+			name = Routers;
 			sourceTree = "<group>";
 		};
 		4214530925DD207C5A5646B6 /* Pods */ = {
@@ -345,8 +362,10 @@
 				376D843E1CF9194C008A868A /* ServerManager.swift in Sources */,
 				37C58DD31CFC6F1B00049095 /* RedSocketURLProtocol.m in Sources */,
 				376D844B1CF9207B008A868A /* Order.swift in Sources */,
+				37C58DEB1CFE512900049095 /* EquipServRouter.swift in Sources */,
 				37C58DE01CFCFC9400049095 /* ServerManager+Menu.swift in Sources */,
 				37C58DE21CFE315400049095 /* Settings.swift in Sources */,
+				37C58DE71CFE486800049095 /* ServerRouter.swift in Sources */,
 				376D84471CF91D75008A868A /* Check.swift in Sources */,
 				37C58DE41CFE3C0600049095 /* Host.swift in Sources */,
 				37C58DDA1CFC80CF00049095 /* ViewController.swift in Sources */,
@@ -356,6 +375,7 @@
 				376D84271CF878D3008A868A /* AppDelegate.swift in Sources */,
 				376D84491CF91DD0008A868A /* Product.swift in Sources */,
 				37C58DDC1CFCFB8C00049095 /* ServerResponse.swift in Sources */,
+				37C58DE91CFE512300049095 /* WPBaseRouter.swift in Sources */,
 				37C58DD21CFC6F1B00049095 /* CanonicalRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
