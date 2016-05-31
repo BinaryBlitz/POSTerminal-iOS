@@ -24,4 +24,28 @@ class ServerManager {
     configuration.protocolClasses!.insert(RedSocketURLProtocol.self, atIndex: 0)
     self.manager = Alamofire.Manager(configuration: configuration)
   }
+  
+  //MARK: - Basic methods
+  
+  private func request(method: Alamofire.Method, path: String,
+    parameters: [String : AnyObject]?,
+    encoding: ParameterEncoding) throws -> Request {
+      guard let login = login, password = password else {
+        throw ServerError.Unauthorized
+      }
+    
+      return manager.request(method, path, parameters: parameters, encoding: encoding)
+                    .authenticate(user: login, password: password)
+  }
+  
+  
+  /// GET request with api token
+  func get(path: String, params: [String: AnyObject]? = nil) throws -> Request {
+    return try request(.GET, path: path, parameters: params, encoding: .URL)
+  }
+  
+  /// POST request with api token
+  func post(path: String, params: [String: AnyObject]? = nil) throws -> Request {
+    return try request(.POST, path: path, parameters: params, encoding: .JSON)
+  }
 }

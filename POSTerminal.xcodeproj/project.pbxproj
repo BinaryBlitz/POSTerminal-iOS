@@ -23,6 +23,9 @@
 		37C58DD21CFC6F1B00049095 /* CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DCF1CFC6F1B00049095 /* CanonicalRequest.m */; };
 		37C58DD31CFC6F1B00049095 /* RedSocketURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DD11CFC6F1B00049095 /* RedSocketURLProtocol.m */; };
 		37C58DDA1CFC80CF00049095 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DD91CFC80CF00049095 /* ViewController.swift */; };
+		37C58DDC1CFCFB8C00049095 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DDB1CFCFB8C00049095 /* ServerResponse.swift */; };
+		37C58DDE1CFCFB9400049095 /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DDD1CFCFB9400049095 /* ServerError.swift */; };
+		37C58DE01CFCFC9400049095 /* ServerManager+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DDF1CFCFC9400049095 /* ServerManager+Menu.swift */; };
 		433F28A31EB04C40990067C6 /* Pods_POSTerminal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9978E4E2340700188A2E3627 /* Pods_POSTerminal.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +53,9 @@
 		37C58DD11CFC6F1B00049095 /* RedSocketURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedSocketURLProtocol.m; sourceTree = "<group>"; };
 		37C58DD51CFC6F4B00049095 /* RedSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedSocket.h; sourceTree = "<group>"; };
 		37C58DD91CFC80CF00049095 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		37C58DDB1CFCFB8C00049095 /* ServerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
+		37C58DDD1CFCFB9400049095 /* ServerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
+		37C58DDF1CFCFC9400049095 /* ServerManager+Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ServerManager+Menu.swift"; sourceTree = "<group>"; };
 		850711AE06D844522B79832B /* Pods-POSTerminal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POSTerminal.release.xcconfig"; path = "Pods/Target Support Files/Pods-POSTerminal/Pods-POSTerminal.release.xcconfig"; sourceTree = "<group>"; };
 		9978E4E2340700188A2E3627 /* Pods_POSTerminal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POSTerminal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83A96343448D80033F5C69F /* Pods-POSTerminal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POSTerminal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POSTerminal/Pods-POSTerminal.debug.xcconfig"; sourceTree = "<group>"; };
@@ -153,6 +159,9 @@
 			isa = PBXGroup;
 			children = (
 				376D843D1CF9194C008A868A /* ServerManager.swift */,
+				37C58DDF1CFCFC9400049095 /* ServerManager+Menu.swift */,
+				37C58DDD1CFCFB9400049095 /* ServerError.swift */,
+				37C58DDB1CFCFB8C00049095 /* ServerResponse.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -330,12 +339,15 @@
 				376D843E1CF9194C008A868A /* ServerManager.swift in Sources */,
 				37C58DD31CFC6F1B00049095 /* RedSocketURLProtocol.m in Sources */,
 				376D844B1CF9207B008A868A /* Order.swift in Sources */,
+				37C58DE01CFCFC9400049095 /* ServerManager+Menu.swift in Sources */,
 				376D84471CF91D75008A868A /* Check.swift in Sources */,
 				37C58DDA1CFC80CF00049095 /* ViewController.swift in Sources */,
+				37C58DDE1CFCFB9400049095 /* ServerError.swift in Sources */,
 				376D84421CF91CA2008A868A /* ServerObject.swift in Sources */,
 				376D84401CF91B08008A868A /* Client.swift in Sources */,
 				376D84271CF878D3008A868A /* AppDelegate.swift in Sources */,
 				376D84491CF91DD0008A868A /* Product.swift in Sources */,
+				37C58DDC1CFCFB8C00049095 /* ServerResponse.swift in Sources */,
 				37C58DD21CFC6F1B00049095 /* CanonicalRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

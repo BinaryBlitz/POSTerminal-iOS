@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,11 +17,48 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmA-Hx-Hud">
+                                <rect key="frame" x="273" y="285" width="54" height="30"/>
+                                <state key="normal" title="do stuff"/>
+                                <connections>
+                                    <action selector="getStuff" destination="BYZ-38-t0r" eventType="touchUpInside" id="jjk-nG-zr0"/>
+                                </connections>
+                            </button>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9mV-jf-Aee">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="234"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TvD-8m-Paz">
+                                <rect key="frame" x="0.0" y="315" width="600" height="285"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rmA-Hx-Hud" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7ZR-XA-A0g"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TvD-8m-Paz" secondAttribute="bottom" id="9kF-0y-EFW"/>
+                            <constraint firstItem="rmA-Hx-Hud" firstAttribute="top" secondItem="9mV-jf-Aee" secondAttribute="bottom" constant="51" id="ACq-sF-k3V"/>
+                            <constraint firstItem="TvD-8m-Paz" firstAttribute="top" secondItem="rmA-Hx-Hud" secondAttribute="bottom" id="L6Y-FH-d4z"/>
+                            <constraint firstItem="9mV-jf-Aee" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="WjE-Y3-0aJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9mV-jf-Aee" secondAttribute="trailing" constant="-20" id="e43-2a-j3q"/>
+                            <constraint firstItem="9mV-jf-Aee" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="hLA-Cv-tJI"/>
+                            <constraint firstItem="TvD-8m-Paz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ia6-ya-jvi"/>
+                            <constraint firstItem="rmA-Hx-Hud" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lQL-Ma-BkQ"/>
+                            <constraint firstAttribute="trailing" secondItem="TvD-8m-Paz" secondAttribute="trailing" id="mKN-pq-IjT"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="output" destination="TvD-8m-Paz" id="qgm-A7-zqU"/>
+                        <outlet property="webView" destination="9mV-jf-Aee" id="XPb-ga-Bgc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="343" y="298"/>
         </scene>
     </scenes>
 </document>
