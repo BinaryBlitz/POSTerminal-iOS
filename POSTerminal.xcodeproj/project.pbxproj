@@ -109,7 +109,7 @@
 		376D84251CF878D3008A868A /* POSTerminal */ = {
 			isa = PBXGroup;
 			children = (
-				37C58DD41CFC6F2300049095 /* RedSocket */,
+				37C58DD41CFC6F2300049095 /* RedSocketSDK */,
 				376D843A1CF91122008A868A /* Controllers */,
 				376D84431CF91CC3008A868A /* Protocols */,
 				376D84451CF91CE6008A868A /* Managers */,
@@ -117,7 +117,6 @@
 				376D84381CF91068008A868A /* Storyboards */,
 				376D84391CF910F7008A868A /* App Configuration */,
 				376D842D1CF878D3008A868A /* Assets.xcassets */,
-				37C58DCD1CFC6F1A00049095 /* POSTerminal-Bridging-Header.h */,
 			);
 			path = POSTerminal;
 			sourceTree = "<group>";
@@ -136,6 +135,7 @@
 			children = (
 				376D84261CF878D3008A868A /* AppDelegate.swift */,
 				376D84321CF878D3008A868A /* Info.plist */,
+				37C58DCD1CFC6F1A00049095 /* POSTerminal-Bridging-Header.h */,
 			);
 			name = "App Configuration";
 			sourceTree = "<group>";
@@ -182,7 +182,7 @@
 			name = Managers;
 			sourceTree = "<group>";
 		};
-		37C58DD41CFC6F2300049095 /* RedSocket */ = {
+		37C58DD41CFC6F2300049095 /* RedSocketSDK */ = {
 			isa = PBXGroup;
 			children = (
 				37C58DD51CFC6F4B00049095 /* RedSocket.h */,
@@ -191,7 +191,7 @@
 				37C58DD01CFC6F1B00049095 /* RedSocketURLProtocol.h */,
 				37C58DD11CFC6F1B00049095 /* RedSocketURLProtocol.m */,
 			);
-			name = RedSocket;
+			name = RedSocketSDK;
 			sourceTree = "<group>";
 		};
 		37C58DEC1CFE512E00049095 /* Routers */ = {
