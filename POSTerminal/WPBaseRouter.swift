@@ -11,6 +11,7 @@ import Alamofire
 enum WPBaseRouter {
   case Menu
   case Create(check: Check)
+  case GetInfo(identity: ClientIdentity)
 }
 
 extension WPBaseRouter: ServerRouter {
@@ -23,6 +24,8 @@ extension WPBaseRouter: ServerRouter {
       return "\(baseURL)/hs/Dishes/InfoDishes"
     case .Create(_):
       return "\(baseURL)/checks"
+    case .GetInfo(_):
+      return "\(baseURL)/hs/Client/InfoClient"
     }
   }
   
@@ -40,11 +43,19 @@ extension WPBaseRouter: ServerRouter {
       return .GET
     case .Create(_):
       return .POST
+    case .GetInfo(_):
+      return .POST
     }
   }
   
-  //TODO: Add parameters
   var parameters: [String: AnyObject]? {
-    return nil
+    switch self {
+    case .Menu:
+      return nil
+    case let .Create(check):
+      return check.json?.dictionaryObject
+    case let .GetInfo(identity):
+      return ["type": identity.type.rawValue, "code": identity.code]
+    }
   }
 }

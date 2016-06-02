@@ -17,6 +17,7 @@
 		376D84471CF91D75008A868A /* Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D84461CF91D75008A868A /* Check.swift */; };
 		376D84491CF91DD0008A868A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D84481CF91DD0008A868A /* Product.swift */; };
 		376D844B1CF9207B008A868A /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D844A1CF9207B008A868A /* Order.swift */; };
+		37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */; };
 		37C58DC61CFC6D6F00049095 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DC51CFC6D6F00049095 /* ExternalAccessory.framework */; };
 		37C58DC81CFC6DEA00049095 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DC71CFC6DEA00049095 /* libz.tbd */; };
 		37C58DCC1CFC6E0000049095 /* libRedSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DCA1CFC6E0000049095 /* libRedSocket.a */; };
@@ -47,6 +48,7 @@
 		376D84461CF91D75008A868A /* Check.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Check.swift; sourceTree = "<group>"; };
 		376D84481CF91DD0008A868A /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		376D844A1CF9207B008A868A /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientIdentity.swift; sourceTree = "<group>"; };
 		37C58DC51CFC6D6F00049095 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		37C58DC71CFC6DEA00049095 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		37C58DC91CFC6E0000049095 /* libRedDebugServer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRedDebugServer.a; path = lib/libRedDebugServer.a; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				376D844A1CF9207B008A868A /* Order.swift */,
 				37C58DE11CFE315400049095 /* Settings.swift */,
 				37C58DE31CFE3C0600049095 /* Host.swift */,
+				37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				37C58DEB1CFE512900049095 /* EquipServRouter.swift in Sources */,
 				37C58DE01CFCFC9400049095 /* ServerManager+Menu.swift in Sources */,
 				37C58DE21CFE315400049095 /* Settings.swift in Sources */,
+				37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */,
 				37C58DE71CFE486800049095 /* ServerRouter.swift in Sources */,
 				376D84471CF91D75008A868A /* Check.swift in Sources */,
 				37C58DE41CFE3C0600049095 /* Host.swift in Sources */,
