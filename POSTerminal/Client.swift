@@ -21,7 +21,11 @@ class Client: Object {
 }
 
 extension Client: ServerObject {
-  static func createWith(json: JSON) -> JSON? {
+  static func createWith(json: JSON) -> Client? {
+    return nil
+  }
+  
+  var json: JSON? {
     return nil
   }
 }

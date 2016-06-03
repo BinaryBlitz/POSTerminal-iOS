@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3752A12E1D01AE6E00194663 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3752A12D1D01AE6E00194663 /* BaseViewController.swift */; };
 		376D84271CF878D3008A868A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D84261CF878D3008A868A /* AppDelegate.swift */; };
 		376D842C1CF878D3008A868A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 376D842A1CF878D3008A868A /* Main.storyboard */; };
 		376D842E1CF878D3008A868A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 376D842D1CF878D3008A868A /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3752A12D1D01AE6E00194663 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		376D84231CF878D3008A868A /* POSTerminal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POSTerminal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		376D84261CF878D3008A868A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		376D842B1CF878D3008A868A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				37C58DD91CFC80CF00049095 /* ViewController.swift */,
+				3752A12D1D01AE6E00194663 /* BaseViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				376D844B1CF9207B008A868A /* Order.swift in Sources */,
 				37C58DEB1CFE512900049095 /* EquipServRouter.swift in Sources */,
 				37C58DE01CFCFC9400049095 /* ServerManager+Menu.swift in Sources */,
+				3752A12E1D01AE6E00194663 /* BaseViewController.swift in Sources */,
 				37C58DE21CFE315400049095 /* Settings.swift in Sources */,
 				37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */,
 				37C58DE71CFE486800049095 /* ServerRouter.swift in Sources */,
@@ -513,7 +517,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "POSTerminal/POSTerminal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -537,7 +541,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "POSTerminal/POSTerminal-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

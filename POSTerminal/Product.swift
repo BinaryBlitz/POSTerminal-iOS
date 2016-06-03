@@ -38,5 +38,11 @@ class Product: Object {
 }
 
 extension Product: ServerObject {
+  static func createWith(json: JSON) -> Product? {
+    return nil
+  }
   
+  var json: JSON? {
+    return JSON([])
+  }
 }

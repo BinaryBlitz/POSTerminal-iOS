@@ -16,8 +16,11 @@ struct Check {
 }
 
 extension Check: ServerObject {
-  var json: JSON? {
-    //TODO: return real JSON
+  static func createWith(json: JSON) -> Check? {
     return nil
+  }
+  
+  var json: JSON? {
+    return JSON([])
   }
 }

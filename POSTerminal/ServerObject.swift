@@ -9,14 +9,7 @@
 import SwiftyJSON
 
 protocol ServerObject {
-  associatedtype Type
-  static func createWith(json: JSON) -> Type?
+  associatedtype ObjectType = Self
+  static func createWith(json: JSON) -> ObjectType?
   var json: JSON? { get }
-}
-
-extension ServerObject {
-  static func createWith(json: JSON) -> Type? {
-    return nil
-  }
-  var json: JSON? { return nil }
 }
