@@ -23,6 +23,7 @@
 		37C1EDA71D01D20E0018B531 /* MenuCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */; };
 		37C1EDA91D01D2280018B531 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA81D01D2280018B531 /* CheckViewController.swift */; };
 		37C1EDAB1D01ED0D0018B531 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDAA1D01ED0D0018B531 /* UIViewController+Alert.swift */; };
+		37C1EDAD1D01EEDD0018B531 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDAC1D01EEDD0018B531 /* SettingsTableViewController.swift */; };
 		37C58DC61CFC6D6F00049095 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DC51CFC6D6F00049095 /* ExternalAccessory.framework */; };
 		37C58DC81CFC6DEA00049095 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DC71CFC6DEA00049095 /* libz.tbd */; };
 		37C58DCC1CFC6E0000049095 /* libRedSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DCA1CFC6E0000049095 /* libRedSocket.a */; };
@@ -59,6 +60,7 @@
 		37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewController.swift; sourceTree = "<group>"; };
 		37C1EDA81D01D2280018B531 /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		37C1EDAA1D01ED0D0018B531 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		37C1EDAC1D01EEDD0018B531 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		37C58DC51CFC6D6F00049095 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		37C58DC71CFC6DEA00049095 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		37C58DC91CFC6E0000049095 /* libRedDebugServer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRedDebugServer.a; path = lib/libRedDebugServer.a; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				3752A12D1D01AE6E00194663 /* BaseViewController.swift */,
 				37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */,
 				37C1EDA81D01D2280018B531 /* CheckViewController.swift */,
+				37C1EDAC1D01EEDD0018B531 /* SettingsTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */,
 				37C58DE71CFE486800049095 /* ServerRouter.swift in Sources */,
 				376D84471CF91D75008A868A /* Check.swift in Sources */,
+				37C1EDAD1D01EEDD0018B531 /* SettingsTableViewController.swift in Sources */,
 				37C1EDA41D01CA670018B531 /* Colors.swift in Sources */,
 				37C1EDA71D01D20E0018B531 /* MenuCollectionViewController.swift in Sources */,
 				37C58DE41CFE3C0600049095 /* Host.swift in Sources */,
