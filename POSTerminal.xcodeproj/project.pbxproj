@@ -29,7 +29,6 @@
 		37C58DCC1CFC6E0000049095 /* libRedSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DCA1CFC6E0000049095 /* libRedSocket.a */; };
 		37C58DD21CFC6F1B00049095 /* CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DCF1CFC6F1B00049095 /* CanonicalRequest.m */; };
 		37C58DD31CFC6F1B00049095 /* RedSocketURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DD11CFC6F1B00049095 /* RedSocketURLProtocol.m */; };
-		37C58DDA1CFC80CF00049095 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DD91CFC80CF00049095 /* ViewController.swift */; };
 		37C58DDC1CFCFB8C00049095 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DDB1CFCFB8C00049095 /* ServerResponse.swift */; };
 		37C58DDE1CFCFB9400049095 /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DDD1CFCFB9400049095 /* ServerError.swift */; };
 		37C58DE01CFCFC9400049095 /* ServerManager+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C58DDF1CFCFC9400049095 /* ServerManager+Menu.swift */; };
@@ -71,7 +70,6 @@
 		37C58DD01CFC6F1B00049095 /* RedSocketURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedSocketURLProtocol.h; sourceTree = "<group>"; };
 		37C58DD11CFC6F1B00049095 /* RedSocketURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedSocketURLProtocol.m; sourceTree = "<group>"; };
 		37C58DD51CFC6F4B00049095 /* RedSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedSocket.h; sourceTree = "<group>"; };
-		37C58DD91CFC80CF00049095 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		37C58DDB1CFCFB8C00049095 /* ServerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		37C58DDD1CFCFB9400049095 /* ServerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		37C58DDF1CFCFC9400049095 /* ServerManager+Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ServerManager+Menu.swift"; sourceTree = "<group>"; };
@@ -156,7 +154,6 @@
 		376D843A1CF91122008A868A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				37C58DD91CFC80CF00049095 /* ViewController.swift */,
 				3752A12D1D01AE6E00194663 /* BaseViewController.swift */,
 				37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */,
 				37C1EDA81D01D2280018B531 /* CheckViewController.swift */,
@@ -403,7 +400,6 @@
 				37C1EDA41D01CA670018B531 /* Colors.swift in Sources */,
 				37C1EDA71D01D20E0018B531 /* MenuCollectionViewController.swift in Sources */,
 				37C58DE41CFE3C0600049095 /* Host.swift in Sources */,
-				37C58DDA1CFC80CF00049095 /* ViewController.swift in Sources */,
 				37C1EDAB1D01ED0D0018B531 /* UIViewController+Alert.swift in Sources */,
 				37C58DDE1CFCFB9400049095 /* ServerError.swift in Sources */,
 				376D84421CF91CA2008A868A /* ServerObject.swift in Sources */,
