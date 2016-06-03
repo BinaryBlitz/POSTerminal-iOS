@@ -19,6 +19,7 @@
 		376D84491CF91DD0008A868A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D84481CF91DD0008A868A /* Product.swift */; };
 		376D844B1CF9207B008A868A /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D844A1CF9207B008A868A /* Order.swift */; };
 		37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */; };
+		37C1EDA41D01CA670018B531 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA31D01CA670018B531 /* Colors.swift */; };
 		37C58DC61CFC6D6F00049095 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DC51CFC6D6F00049095 /* ExternalAccessory.framework */; };
 		37C58DC81CFC6DEA00049095 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DC71CFC6DEA00049095 /* libz.tbd */; };
 		37C58DCC1CFC6E0000049095 /* libRedSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DCA1CFC6E0000049095 /* libRedSocket.a */; };
@@ -51,6 +52,7 @@
 		376D84481CF91DD0008A868A /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		376D844A1CF9207B008A868A /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientIdentity.swift; sourceTree = "<group>"; };
+		37C1EDA31D01CA670018B531 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		37C58DC51CFC6D6F00049095 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		37C58DC71CFC6DEA00049095 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		37C58DC91CFC6E0000049095 /* libRedDebugServer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRedDebugServer.a; path = lib/libRedDebugServer.a; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				376D84431CF91CC3008A868A /* Protocols */,
 				376D84451CF91CE6008A868A /* Managers */,
 				376D843B1CF9112D008A868A /* Models */,
+				37C1EDA51D01CC340018B531 /* Extensions */,
 				376D84381CF91068008A868A /* Storyboards */,
 				376D84391CF910F7008A868A /* App Configuration */,
 				376D842D1CF878D3008A868A /* Assets.xcassets */,
@@ -183,6 +186,14 @@
 				37C58DEC1CFE512E00049095 /* Routers */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		37C1EDA51D01CC340018B531 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				37C1EDA31D01CA670018B531 /* Colors.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		37C58DD41CFC6F2300049095 /* RedSocketSDK */ = {
@@ -375,6 +386,7 @@
 				37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */,
 				37C58DE71CFE486800049095 /* ServerRouter.swift in Sources */,
 				376D84471CF91D75008A868A /* Check.swift in Sources */,
+				37C1EDA41D01CA670018B531 /* Colors.swift in Sources */,
 				37C58DE41CFE3C0600049095 /* Host.swift in Sources */,
 				37C58DDA1CFC80CF00049095 /* ViewController.swift in Sources */,
 				37C58DDE1CFCFB9400049095 /* ServerError.swift in Sources */,
