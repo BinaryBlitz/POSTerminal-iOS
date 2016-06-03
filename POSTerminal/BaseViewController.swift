@@ -10,9 +10,13 @@ import UIKit
 
 class BaseViewController: UIViewController {
   
+  @IBOutlet weak var toolBarView: UIView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     RedSocketManager.sharedInstance().setDelegate(self)
+    
+    toolBarView.backgroundColor = UIColor.elementsAndH1Color()
   }
   
   func presentAlertWithMessage(message: String) {
