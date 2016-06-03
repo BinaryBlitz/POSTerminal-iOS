@@ -22,6 +22,7 @@
 		37C1EDA41D01CA670018B531 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA31D01CA670018B531 /* Colors.swift */; };
 		37C1EDA71D01D20E0018B531 /* MenuCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */; };
 		37C1EDA91D01D2280018B531 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA81D01D2280018B531 /* CheckViewController.swift */; };
+		37C1EDAB1D01ED0D0018B531 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDAA1D01ED0D0018B531 /* UIViewController+Alert.swift */; };
 		37C58DC61CFC6D6F00049095 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DC51CFC6D6F00049095 /* ExternalAccessory.framework */; };
 		37C58DC81CFC6DEA00049095 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DC71CFC6DEA00049095 /* libz.tbd */; };
 		37C58DCC1CFC6E0000049095 /* libRedSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DCA1CFC6E0000049095 /* libRedSocket.a */; };
@@ -57,6 +58,7 @@
 		37C1EDA31D01CA670018B531 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewController.swift; sourceTree = "<group>"; };
 		37C1EDA81D01D2280018B531 /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
+		37C1EDAA1D01ED0D0018B531 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		37C58DC51CFC6D6F00049095 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		37C58DC71CFC6DEA00049095 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		37C58DC91CFC6E0000049095 /* libRedDebugServer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRedDebugServer.a; path = lib/libRedDebugServer.a; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				37C1EDA31D01CA670018B531 /* Colors.swift */,
+				37C1EDAA1D01ED0D0018B531 /* UIViewController+Alert.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				37C1EDA71D01D20E0018B531 /* MenuCollectionViewController.swift in Sources */,
 				37C58DE41CFE3C0600049095 /* Host.swift in Sources */,
 				37C58DDA1CFC80CF00049095 /* ViewController.swift in Sources */,
+				37C1EDAB1D01ED0D0018B531 /* UIViewController+Alert.swift in Sources */,
 				37C58DDE1CFCFB9400049095 /* ServerError.swift in Sources */,
 				376D84421CF91CA2008A868A /* ServerObject.swift in Sources */,
 				376D84401CF91B08008A868A /* Client.swift in Sources */,

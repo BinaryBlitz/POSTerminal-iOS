@@ -18,12 +18,6 @@ class BaseViewController: UIViewController {
     
     toolBarView.backgroundColor = UIColor.elementsAndH1Color()
   }
-  
-  func presentAlertWithMessage(message: String) {
-    let alert = UIAlertController(title: nil, message: message, preferredStyle: .Alert)
-    alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-    presentViewController(alert, animated: true, completion: nil)
-  }
 }
 
 extension BaseViewController: RedSocketManagerDelegate {
