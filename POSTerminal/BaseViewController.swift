@@ -22,10 +22,10 @@ class BaseViewController: UIViewController {
 
 extension BaseViewController: RedSocketManagerDelegate {
   func cableConnected(protocol: String!) {
-    presentAlertWithMessage("Cabel connected")
+    presentAlertWithMessage("Кабель подключен")
   }
   
   func cableDisconnected() {
-    presentAlertWithMessage("Cabel disconnected")
+    presentAlertWithMessage("Кабель отключен")
   }
 }
