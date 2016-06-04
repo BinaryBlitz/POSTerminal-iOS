@@ -20,7 +20,7 @@ class ServerManager {
     self.manager = Alamofire.Manager(configuration: configuration)
   }
   
-  private func request(router: ServerRouter) throws -> Request {
+  func createRequest(router: ServerRouter) throws -> Request {
       guard let login = router.login, password = router.password else {
         throw ServerError.Unauthorized
       }

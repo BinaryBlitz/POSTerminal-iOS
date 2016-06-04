@@ -24,6 +24,19 @@ class MenuCollectionViewController: UICollectionViewController {
     layout.minimumLineSpacing = 20
     layout.sectionInset = UIEdgeInsets(top: 25, left: 20, bottom: 25, right: 20)
     collectionView!.collectionViewLayout = layout
+    refresh()
+  }
+  
+  func refresh() {
+    ServerManager.sharedManager.getMenu { (response) in
+      switch response.result {
+      case .Success(let menu):
+        print(menu.count)
+      case .Failure(let error):
+        print("error: \(error)")
+      }
+      self.collectionView?.reloadData()
+    }
   }
 
   // MARK: UICollectionViewDataSource
@@ -33,12 +46,12 @@ class MenuCollectionViewController: UICollectionViewController {
   }
 
   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-      let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
-  
-      // Configure the cell
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+
+    // Configure the cell
     cell.backgroundColor = UIColor.h2Color()
   
-      return cell
+    return cell
   }
 
   // MARK: UICollectionViewDelegate
