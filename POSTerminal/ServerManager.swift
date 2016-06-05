@@ -20,6 +20,15 @@ class ServerManager {
     self.manager = Alamofire.Manager(configuration: configuration)
   }
   
+  var activityIndicatorVisible: Bool {
+    get {
+      return UIApplication.sharedApplication().networkActivityIndicatorVisible
+    }
+    set {
+      UIApplication.sharedApplication().networkActivityIndicatorVisible = newValue
+    }
+  }
+  
   func createRequest(router: ServerRouter) throws -> Request {
     guard let login = router.login, password = router.password else {
       throw ServerError.Unauthorized
