@@ -45,8 +45,8 @@ class ProductCollectionViewCell: UICollectionViewCell {
   func configureWith(product: Product) {
     guard let price = product.price.value else { return }
     
-    nameLabel.text = product.name
-    categoryNameLabel.text = product.category
+    nameLabel.text = product.name.uppercaseString
+    categoryNameLabel.text = product.category?.uppercaseString
     priceLabel.text = "\(price) р."
   }
 }
