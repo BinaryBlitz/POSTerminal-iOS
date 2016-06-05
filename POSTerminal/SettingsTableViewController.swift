@@ -65,6 +65,7 @@ class SettingsTableViewController: UITableViewController {
   }
   
   @IBAction func checkConnectionButtonAction() {
-    presentAlertWithMessage("check")
+    //TODO: Check connection
+    presentAlertWithMessage("check connection")
   }
 }
