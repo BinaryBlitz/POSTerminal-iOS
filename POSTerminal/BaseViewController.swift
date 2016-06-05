@@ -9,6 +9,8 @@
 import UIKit
 import RealmSwift
 
+let updateMenuNotification = "updateMenuNotification"
+
 class BaseViewController: UIViewController {
   
   @IBOutlet weak var toolBarView: UIView!
@@ -23,6 +25,12 @@ class BaseViewController: UIViewController {
     backButton.enabled = false
     toolBarView.backgroundColor = UIColor.elementsAndH1Color()
     refresh()
+    
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refresh), name: updateMenuNotification, object: nil)
+  }
+  
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self)
   }
   
   //MARK: - Refresh
