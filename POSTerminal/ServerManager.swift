@@ -21,11 +21,15 @@ class ServerManager {
   }
   
   func createRequest(router: ServerRouter) throws -> Request {
-      guard let login = router.login, password = router.password else {
-        throw ServerError.Unauthorized
-      }
+    guard let login = router.login, password = router.password else {
+      throw ServerError.Unauthorized
+    }
     
-      return manager.request(router.method, router.path, parameters: router.parameters)
-                    .authenticate(user: login, password: password)
+    let credentialData = "\(login):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
+    let base64Credentials = credentialData.base64EncodedStringWithOptions([])
+    
+    let headers = ["Authorization": "Basic \(base64Credentials)"]
+    
+    return manager.request(router.method, router.path, parameters: router.parameters, headers: headers)
   }
 }
