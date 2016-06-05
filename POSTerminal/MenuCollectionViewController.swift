@@ -9,14 +9,12 @@
 import UIKit
 import RealmSwift
 
+let reloadMenuNotification = "reloadMenuNotification"
+
 class MenuCollectionViewController: UICollectionViewController {
   
   var menuLevelId: String = ""
-  var menuPage: Results<Product>? {
-    didSet {
-      collectionView?.reloadData()
-    }
-  }
+  var menuPage: Results<Product>?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -25,6 +23,16 @@ class MenuCollectionViewController: UICollectionViewController {
     
     let realm = try! Realm()
     self.menuPage = realm.objects(Product).filter("parentId = '\(self.menuLevelId)'")
+    
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.reloadData), name: reloadMenuNotification, object: nil)
+  }
+  
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  @objc private func reloadData() {
+    collectionView?.reloadData()
   }
   
   private func configureCollectionView() {

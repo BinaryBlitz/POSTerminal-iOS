@@ -16,19 +16,19 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jT1-yO-7k9">
                         <rect key="frame" x="5" y="5" width="132" height="132"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Закрытые пиццы" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7et-G0-XAe">
-                                <rect key="frame" x="5" y="55" width="122" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zug-Gl-1vG">
+                                <rect key="frame" x="0.0" y="0.0" width="132" height="132"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7et-G0-XAe" secondAttribute="trailing" constant="5" id="2eW-iP-oEi"/>
-                            <constraint firstItem="7et-G0-XAe" firstAttribute="centerX" secondItem="jT1-yO-7k9" secondAttribute="centerX" id="HML-0R-g57"/>
-                            <constraint firstItem="7et-G0-XAe" firstAttribute="centerY" secondItem="jT1-yO-7k9" secondAttribute="centerY" id="fqI-XX-Tbf"/>
-                            <constraint firstItem="7et-G0-XAe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jT1-yO-7k9" secondAttribute="leading" constant="5" id="oBl-BU-VzZ"/>
+                            <constraint firstAttribute="bottom" secondItem="Zug-Gl-1vG" secondAttribute="bottom" id="COs-33-Hqs"/>
+                            <constraint firstAttribute="trailing" secondItem="Zug-Gl-1vG" secondAttribute="trailing" id="JlS-dY-Wo4"/>
+                            <constraint firstItem="Zug-Gl-1vG" firstAttribute="top" secondItem="jT1-yO-7k9" secondAttribute="top" id="vvd-Jd-Esg"/>
+                            <constraint firstItem="Zug-Gl-1vG" firstAttribute="leading" secondItem="jT1-yO-7k9" secondAttribute="leading" id="y7n-Mm-UpK"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -42,7 +42,7 @@
             </constraints>
             <connections>
                 <outlet property="backgroundContentView" destination="jT1-yO-7k9" id="Uzo-cS-SVC"/>
-                <outlet property="nameLabel" destination="7et-G0-XAe" id="Si1-3z-Wn7"/>
+                <outlet property="nameLabel" destination="Zug-Gl-1vG" id="FNW-hC-M5h"/>
             </connections>
         </collectionViewCell>
     </objects>

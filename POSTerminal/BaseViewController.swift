@@ -31,6 +31,8 @@ class BaseViewController: UIViewController {
           realm.delete(realm.objects(Product))
           realm.add(menu)
         }
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(reloadMenuNotification, object: nil)
       case .Failure(let error):
         print("error: \(error)")
       }

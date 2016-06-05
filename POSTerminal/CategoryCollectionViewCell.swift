@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Darwin
 
 class CategoryCollectionViewCell: UICollectionViewCell {
   
@@ -24,6 +25,9 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     backgroundColor = UIColor.whiteColor()
     layer.cornerRadius = 5
+    
+    nameLabel.lineBreakMode = .ByWordWrapping
+    nameLabel.numberOfLines = 3
   }
   
   override func layoutSubviews() {
