@@ -1,33 +1,29 @@
 //
-//  ProductCollectionViewCell.swift
+//  CategoryCollectionViewCell.swift
 //  POSTerminal
 //
-//  Created by Dan Shevlyuk on 04/06/2016.
+//  Created by Dan Shevlyuk on 05/06/2016.
 //  Copyright © 2016 BinaryBlitz. All rights reserved.
 //
 
 import UIKit
-import RealmSwift
 
-class ProductCollectionViewCell: UICollectionViewCell {
+class CategoryCollectionViewCell: UICollectionViewCell {
   
-  @IBOutlet weak var priceLabel: UILabel!
   @IBOutlet weak var nameLabel: UILabel!
-  @IBOutlet weak var categoryNameLabel: UILabel!
-  @IBOutlet weak var categorySetaratorView: UIView!
-  @IBOutlet weak var categoryBackgroundView: UIView!
+  @IBOutlet weak var backgroundContentView: UIView!
 
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    categorySetaratorView.backgroundColor = UIColor.lightOrangeColor()
-    priceLabel.textColor = UIColor.h4Color()
-    categoryNameLabel.textColor = UIColor.h4Color()
+    backgroundContentView.layer.borderColor = UIColor.lightOrangeColor().CGColor
+    backgroundContentView.layer.borderWidth = 1
+    backgroundContentView.layer.cornerRadius = 4
+    
     nameLabel.textColor = UIColor.lightOrangeColor()
     
     backgroundColor = UIColor.whiteColor()
     layer.cornerRadius = 5
-    categoryBackgroundView.layer.cornerRadius = 5
   }
   
   override func layoutSubviews() {
@@ -43,14 +39,8 @@ class ProductCollectionViewCell: UICollectionViewCell {
   }
 }
 
-extension ProductCollectionViewCell: ProductConfigurable {
+extension CategoryCollectionViewCell: ProductConfigurable {
   func configureWith(product: Product) {
-    
     nameLabel.text = product.name.uppercaseString
-    categoryNameLabel.text = product.category?.uppercaseString
-    
-    if let price = product.price.value {
-      priceLabel.text = "\(price) р."
-    }
   }
 }

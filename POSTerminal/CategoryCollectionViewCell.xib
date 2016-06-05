@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CategoryCollectionViewCell" customModule="POSTerminal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="142" height="142"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="142" height="142"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jT1-yO-7k9">
+                        <rect key="frame" x="5" y="5" width="132" height="132"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Закрытые пиццы" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7et-G0-XAe">
+                                <rect key="frame" x="5" y="55" width="122" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7et-G0-XAe" secondAttribute="trailing" constant="5" id="2eW-iP-oEi"/>
+                            <constraint firstItem="7et-G0-XAe" firstAttribute="centerX" secondItem="jT1-yO-7k9" secondAttribute="centerX" id="HML-0R-g57"/>
+                            <constraint firstItem="7et-G0-XAe" firstAttribute="centerY" secondItem="jT1-yO-7k9" secondAttribute="centerY" id="fqI-XX-Tbf"/>
+                            <constraint firstItem="7et-G0-XAe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jT1-yO-7k9" secondAttribute="leading" constant="5" id="oBl-BU-VzZ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="jT1-yO-7k9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="5f0-uc-OZ0"/>
+                <constraint firstAttribute="bottom" secondItem="jT1-yO-7k9" secondAttribute="bottom" constant="5" id="8zI-Ij-SOi"/>
+                <constraint firstAttribute="trailing" secondItem="jT1-yO-7k9" secondAttribute="trailing" constant="5" id="Z8A-pM-Wvr"/>
+                <constraint firstItem="jT1-yO-7k9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="lge-gW-oFM"/>
+            </constraints>
+            <connections>
+                <outlet property="backgroundContentView" destination="jT1-yO-7k9" id="Uzo-cS-SVC"/>
+                <outlet property="nameLabel" destination="7et-G0-XAe" id="Si1-3z-Wn7"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

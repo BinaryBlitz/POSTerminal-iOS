@@ -7,47 +7,78 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MenuCollectionViewController: UICollectionViewController {
+  
+  var menuLevelId: String = ""
+  var menuPage: Results<Product>? {
+    didSet {
+      collectionView?.reloadData()
+    }
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    collectionView!.backgroundColor = UIColor(red:0.91, green:0.95, blue:0.98, alpha:1.0)
-    let productCellNib = UINib(nibName: String(ProductCollectionViewCell), bundle: nil)
-    collectionView!.registerNib(productCellNib, forCellWithReuseIdentifier: "product")
+    configureCollectionView()
     
+    let realm = try! Realm()
+    self.menuPage = realm.objects(Product).filter("parentId = '\(self.menuLevelId)'")
+  }
+  
+  private func configureCollectionView() {
+    collectionView!.backgroundColor = UIColor(red: 0.91, green: 0.95, blue: 0.98, alpha: 1)
+    registerCells()
+    
+    //Configure layout
     let layout = UICollectionViewFlowLayout()
     layout.itemSize = CGSize(width: 142, height: 142)
     layout.minimumInteritemSpacing = 20
     layout.minimumLineSpacing = 20
     layout.sectionInset = UIEdgeInsets(top: 25, left: 20, bottom: 25, right: 20)
     collectionView!.collectionViewLayout = layout
-    refresh()
   }
   
-  func refresh() {
-    ServerManager.sharedManager.getMenu { (response) in
-      switch response.result {
-      case .Success(let menu):
-        print(menu.count)
-      case .Failure(let error):
-        print("error: \(error)")
-      }
-      self.collectionView?.reloadData()
-    }
+  private func registerCells() {
+    let productCellNib = UINib(nibName: String(ProductCollectionViewCell), bundle: nil)
+    collectionView!.registerNib(productCellNib, forCellWithReuseIdentifier: "product")
+    
+    let categoryCellNib = UINib(nibName: String(CategoryCollectionViewCell), bundle: nil)
+    collectionView!.registerNib(categoryCellNib, forCellWithReuseIdentifier: "category")
   }
 
   // MARK: UICollectionViewDataSource
 
   override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 10
+    return menuPage?.count ?? 0
   }
 
   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("product", forIndexPath: indexPath)
+    guard let product = menuPage?[indexPath.row] else { return UICollectionViewCell() }
+    
+    switch product.type {
+    case .Item:
+      let cell = collectionView.dequeueReusableCellWithReuseIdentifier("product", forIndexPath: indexPath) as! ProductCollectionViewCell
+      cell.configureWith(product)
+      return cell
+    case .Group:
+      let cell = collectionView.dequeueReusableCellWithReuseIdentifier("category", forIndexPath: indexPath) as! CategoryCollectionViewCell
+      cell.configureWith(product)
+      return cell
+    }
+  }
   
-    return cell
+  override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    guard let product = menuPage?[indexPath.row] else { return }
+    switch product.type {
+    case .Group:
+      let nextPage = MenuCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+      nextPage.menuLevelId = product.id
+      navigationController?.pushViewController(nextPage, animated: false)
+    case .Item:
+      presentAlertWithMessage("Add \(product.name)")
+    }
   }
 
   // MARK: UICollectionViewDelegate

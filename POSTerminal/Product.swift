@@ -16,10 +16,11 @@ enum ProductType: String {
 }
 
 class Product: Object {
+  
   dynamic var id: String = ""
   dynamic var name: String = ""
   let price = RealmOptional<Double>()
-  dynamic var parentId: String?
+  dynamic var parentId: String = ""
   dynamic var typeValue: String = ProductType.Group.rawValue
   dynamic var valueAddedTax: Int = 0
   
@@ -33,7 +34,7 @@ class Product: Object {
   }
   
   var category: String? {
-    guard let realm = try? Realm(), parentId = parentId else { return nil }
+    guard let realm = try? Realm() where parentId != "" else { return nil }
     let parent = realm.objectForPrimaryKey(Product.self, key: parentId)
     return parent?.name
   }
@@ -53,6 +54,7 @@ extension Product: ServerObject {
     let product = Product()
     product.id = id
     product.name = name
+    product.parentId = parentId
     
     if isGroup {
       product.type = .Group
@@ -60,10 +62,8 @@ extension Product: ServerObject {
       product.type = .Item
     }
     
-    if parentId == "" {
-      product.parentId = nil
-    } else {
-      product.parentId = parentId
+    if let price = json["price"].double where product.type == .Item {
+      product.price.value = price
     }
     
     if let valueAddedTax = json["valueAddedTax"].int {

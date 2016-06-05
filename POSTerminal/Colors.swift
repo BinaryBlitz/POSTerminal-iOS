@@ -12,6 +12,10 @@ extension UIColor {
     return UIColor(red:0.99, green:0.55, blue:0.22, alpha:1.0)
   }
   
+  static func lightOrangeColor() -> UIColor {
+    return UIColor(red:1, green:0.67, blue:0, alpha:1)
+  }
+  
   static func h2Color() -> UIColor {
     return UIColor(red:0.75, green:0.42, blue:0.17, alpha:1.0)
   }
