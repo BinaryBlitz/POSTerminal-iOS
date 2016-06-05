@@ -59,7 +59,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="4o6-kX-AWo" kind="presentation" modalPresentationStyle="pageSheet" id="dDt-rz-DiE"/>
+                                            <action selector="settingsButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="dj0-eU-gGG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -114,7 +114,9 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="backButton" destination="r8R-hn-Ca1" id="Py4-45-8P4"/>
+                        <outlet property="settingsButton" destination="7C6-ZP-mV8" id="vBF-kw-nRh"/>
                         <outlet property="toolBarView" destination="JNo-Pd-eEk" id="jSD-qa-fhE"/>
+                        <segue destination="4o6-kX-AWo" kind="presentation" identifier="settings" modalPresentationStyle="pageSheet" id="dQU-zG-BHJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -13,6 +13,7 @@ class BaseViewController: UIViewController {
   
   @IBOutlet weak var toolBarView: UIView!
   @IBOutlet weak var backButton: UIButton!
+  @IBOutlet weak var settingsButton: UIButton!
   var menuNavigationController: UINavigationController?
   
   override func viewDidLoad() {
@@ -23,6 +24,8 @@ class BaseViewController: UIViewController {
     toolBarView.backgroundColor = UIColor.elementsAndH1Color()
     refresh()
   }
+  
+  //MARK: - Refresh
   
   func refresh() {
     ServerManager.sharedManager.getMenu { (response) in
@@ -41,12 +44,44 @@ class BaseViewController: UIViewController {
     }
   }
   
+  //MARK: - Navigation
+  
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "menu" {
       menuNavigationController = segue.destinationViewController as? UINavigationController
       if let menuController = menuNavigationController?.viewControllers.first as? MenuCollectionViewController {
         menuController.delegate = self
       }
+    }
+  }
+  
+  private func openSettings() {
+    let password = NSBundle.mainBundle().objectForInfoDictionaryKey("SettingsPassword") as! String
+    let alert = UIAlertController(title: "Настройки", message: "Введите пароль для доступа к настройкам", preferredStyle: .Alert)
+    alert.addTextFieldWithConfigurationHandler { (textField) in
+      textField.placeholder = "Пароль"
+      textField.secureTextEntry = true
+    }
+    
+    alert.addAction(UIAlertAction(title: "Отмена", style: .Cancel, handler: nil))
+    
+    alert.addAction(UIAlertAction(title: "Продолжить", style: .Default, handler: { (_) in
+      let passwordField = alert.textFields![0]
+      if passwordField.text == password {
+        self.performSegueWithIdentifier("settings", sender: nil)
+      } else {
+        self.presentAlertWithMessage("Неверный пароль")
+      }
+    }))
+    
+    presentViewController(alert, animated: true, completion: nil)
+  }
+  
+  //MARK: - Tools
+  
+  private func checkBackButtonState() {
+    if let navigationController = menuNavigationController {
+      backButton.enabled = navigationController.viewControllers.count > 1
     }
   }
   
@@ -62,10 +97,19 @@ class BaseViewController: UIViewController {
     checkBackButtonState()
   }
   
-  private func checkBackButtonState() {
-    if let navigationController = menuNavigationController {
-      backButton.enabled = navigationController.viewControllers.count > 1
-    }
+  @IBAction func settingsButtonAction() {
+    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+    alert.addAction(UIAlertAction(title: "Управление кассой", style: .Default, handler: { (_) in
+      self.presentAlertWithMessage("касса")
+    }))
+    alert.addAction(UIAlertAction(title: "Настройки", style: .Default, handler: { (_) in
+      self.openSettings()
+    }))
+    
+    alert.popoverPresentationController?.sourceView = view
+    alert.popoverPresentationController?.sourceRect = settingsButton.frame
+    
+    presentViewController(alert, animated: true, completion: nil)
   }
 }
 
@@ -73,6 +117,9 @@ extension BaseViewController: MenuCollectionDelegate {
   func menuCollection(collection: MenuCollectionViewController, didSelectProdict product: Product) {
     checkBackButtonState()
   }
+}
+
+extension BaseViewController: UIPopoverPresentationControllerDelegate {
 }
 
 extension BaseViewController: RedSocketManagerDelegate {
