@@ -68,7 +68,7 @@ class BaseViewController: UIViewController {
     alert.addAction(UIAlertAction(title: "Продолжить", style: .Default, handler: { (_) in
       let passwordField = alert.textFields![0]
       if passwordField.text == password {
-        self.performSegueWithIdentifier("settings", sender: nil)
+        self.performSegueWithIdentifier("settings", sender: self)
       } else {
         self.presentAlertWithMessage("Неверный пароль")
       }
@@ -100,7 +100,7 @@ class BaseViewController: UIViewController {
   @IBAction func settingsButtonAction() {
     let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
     alert.addAction(UIAlertAction(title: "Управление кассой", style: .Default, handler: { (_) in
-      self.presentAlertWithMessage("касса")
+      self.performSegueWithIdentifier("eqManagment", sender: self)
     }))
     alert.addAction(UIAlertAction(title: "Настройки", style: .Default, handler: { (_) in
       self.openSettings()
