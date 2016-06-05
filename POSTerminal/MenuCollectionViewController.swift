@@ -11,10 +11,6 @@ import RealmSwift
 
 let reloadMenuNotification = "reloadMenuNotification"
 
-protocol MenuCollectionDelegate: class {
-  func menuCollection(collection: MenuCollectionViewController, didSelectProdict product: Product)
-}
-
 class MenuCollectionViewController: UICollectionViewController {
   
   var menuLevelId: String = ""
