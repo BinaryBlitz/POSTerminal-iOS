@@ -8,15 +8,14 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class MenuCollectionViewController: UICollectionViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     collectionView!.backgroundColor = UIColor(red:0.91, green:0.95, blue:0.98, alpha:1.0)
+    let productCellNib = UINib(nibName: String(ProductCollectionViewCell), bundle: nil)
+    collectionView!.registerNib(productCellNib, forCellWithReuseIdentifier: "product")
     
     let layout = UICollectionViewFlowLayout()
     layout.itemSize = CGSize(width: 142, height: 142)
@@ -46,10 +45,7 @@ class MenuCollectionViewController: UICollectionViewController {
   }
 
   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
-
-    // Configure the cell
-    cell.backgroundColor = UIColor.h2Color()
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("product", forIndexPath: indexPath)
   
     return cell
   }
