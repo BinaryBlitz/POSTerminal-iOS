@@ -21,9 +21,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNo-Pd-eEk">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="85"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJT-FS-LER">
-                                        <rect key="frame" x="20" y="40" width="46" height="30"/>
-                                        <state key="normal" title="home">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJT-FS-LER">
+                                        <rect key="frame" x="20" y="47" width="24" height="23"/>
+                                        <state key="normal" image="Home">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -31,15 +31,15 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Jk-pF-GRb">
-                                        <rect key="frame" x="79" y="40" width="1" height="30"/>
+                                        <rect key="frame" x="64" y="47" width="1" height="23"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="ky2-6u-owr"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8R-hn-Ca1">
-                                        <rect key="frame" x="100" y="40" width="34" height="30"/>
-                                        <state key="normal" title="back">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8R-hn-Ca1">
+                                        <rect key="frame" x="85" y="46" width="24" height="24"/>
+                                        <state key="normal" image="Back">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -47,14 +47,14 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dI-a1-rBv">
-                                        <rect key="frame" x="154" y="31" width="775" height="47"/>
+                                        <rect key="frame" x="129" y="34" width="831" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="47" id="Jf5-vk-ujp"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7C6-ZP-mV8">
-                                        <rect key="frame" x="949" y="40" width="55" height="30"/>
-                                        <state key="normal" title="settings">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7C6-ZP-mV8">
+                                        <rect key="frame" x="980" y="48" width="24" height="22"/>
+                                        <state key="normal" image="Settings">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -131,10 +131,10 @@
                             <tableViewSection headerTitle="База рабочего места" id="dIT-lc-jEz">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="Aka-6T-NtJ">
-                                        <rect key="frame" x="0.0" y="93.5" width="1024" height="50"/>
+                                        <rect key="frame" x="0.0" y="94" width="1024" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Aka-6T-NtJ" id="tma-6o-dVG">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="URL" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="99z-qB-Hsr">
@@ -152,10 +152,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="7SX-vN-MsT">
-                                        <rect key="frame" x="0.0" y="143.5" width="1024" height="50"/>
+                                        <rect key="frame" x="0.0" y="144" width="1024" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7SX-vN-MsT" id="edu-OF-z2X">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Имя пользователя" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5um-qb-eIi">
@@ -173,10 +173,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="ZkW-Ys-hE1">
-                                        <rect key="frame" x="0.0" y="193.5" width="1024" height="50"/>
+                                        <rect key="frame" x="0.0" y="194" width="1024" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZkW-Ys-hE1" id="PBi-aO-URW">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Rcj-Cl-jSW">
@@ -198,10 +198,10 @@
                             <tableViewSection headerTitle="База оборудования" id="4HI-0R-SD0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="1Ic-X4-f6L">
-                                        <rect key="frame" x="0.0" y="293.5" width="1024" height="50"/>
+                                        <rect key="frame" x="0.0" y="294" width="1024" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Ic-X4-f6L" id="3PG-bu-LUR">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="URL" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eKB-Gp-eMB">
@@ -219,10 +219,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="B99-4K-TQA">
-                                        <rect key="frame" x="0.0" y="343.5" width="1024" height="50"/>
+                                        <rect key="frame" x="0.0" y="344" width="1024" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B99-4K-TQA" id="S8u-Mh-vo0">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Имя пользователя" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="x2T-dI-Wcv">
@@ -240,10 +240,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="MuZ-Uw-QLL">
-                                        <rect key="frame" x="0.0" y="393.5" width="1024" height="50"/>
+                                        <rect key="frame" x="0.0" y="394" width="1024" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MuZ-Uw-QLL" id="sdW-sL-SvD">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gQb-5o-TC5">
@@ -376,4 +376,9 @@
             <point key="canvasLocation" x="261" y="1174.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Back" width="24" height="24"/>
+        <image name="Home" width="24" height="23"/>
+        <image name="Settings" width="24" height="14"/>
+    </resources>
 </document>
