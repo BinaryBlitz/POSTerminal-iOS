@@ -21,8 +21,19 @@ class Client: Object {
 }
 
 extension Client: ServerObject {
+  
   static func createWith(json: JSON) -> Client? {
-    return nil
+    guard let id = json["clientRef"].string, name = json["clientName"].string,
+        balance = json["balance"].int else {
+      return nil
+    }
+    
+    return {
+      $0.id = id
+      $0.name = name
+      $0.balance = balance
+      return $0
+    }(Client())
   }
   
   var json: JSON? {
