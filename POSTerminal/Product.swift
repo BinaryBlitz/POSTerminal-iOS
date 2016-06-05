@@ -32,6 +32,12 @@ class Product: Object {
     }
   }
   
+  var category: String? {
+    guard let realm = try? Realm(), parentId = parentId else { return nil }
+    let parent = realm.objectForPrimaryKey(Product.self, key: parentId)
+    return parent?.name
+  }
+  
   override static func primaryKey() -> String? {
     return "id"
   }
