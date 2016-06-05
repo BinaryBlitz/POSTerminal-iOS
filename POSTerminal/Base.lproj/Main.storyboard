@@ -42,6 +42,7 @@
                                         <state key="normal" image="Back">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="disabled" image="BackDisabled"/>
                                         <connections>
                                             <action selector="backButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="p7A-Yw-oSj"/>
                                         </connections>
@@ -112,6 +113,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="backButton" destination="r8R-hn-Ca1" id="Py4-45-8P4"/>
                         <outlet property="toolBarView" destination="JNo-Pd-eEk" id="jSD-qa-fhE"/>
                     </connections>
                 </viewController>
@@ -378,6 +380,7 @@
     </scenes>
     <resources>
         <image name="Back" width="24" height="24"/>
+        <image name="BackDisabled" width="24" height="24"/>
         <image name="Home" width="24" height="23"/>
         <image name="Settings" width="24" height="14"/>
     </resources>

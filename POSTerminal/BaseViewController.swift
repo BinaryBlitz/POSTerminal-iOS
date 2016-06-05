@@ -12,12 +12,14 @@ import RealmSwift
 class BaseViewController: UIViewController {
   
   @IBOutlet weak var toolBarView: UIView!
+  @IBOutlet weak var backButton: UIButton!
   var menuNavigationController: UINavigationController?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     RedSocketManager.sharedInstance().setDelegate(self)
     
+    backButton.enabled = false
     toolBarView.backgroundColor = UIColor.elementsAndH1Color()
     refresh()
   }
@@ -42,6 +44,9 @@ class BaseViewController: UIViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "menu" {
       menuNavigationController = segue.destinationViewController as? UINavigationController
+      if let menuController = menuNavigationController?.viewControllers.first as? MenuCollectionViewController {
+        menuController.delegate = self
+      }
     }
   }
   
@@ -49,10 +54,24 @@ class BaseViewController: UIViewController {
   
   @IBAction func backButtonAction() {
     menuNavigationController?.popViewControllerAnimated(false)
+    checkBackButtonState()
   }
   
   @IBAction func homeButtonAction() {
     menuNavigationController?.popToRootViewControllerAnimated(false)
+    checkBackButtonState()
+  }
+  
+  private func checkBackButtonState() {
+    if let navigationController = menuNavigationController {
+      backButton.enabled = navigationController.viewControllers.count > 1
+    }
+  }
+}
+
+extension BaseViewController: MenuCollectionDelegate {
+  func menuCollection(collection: MenuCollectionViewController, didSelectProdict product: Product) {
+    checkBackButtonState()
   }
 }
 

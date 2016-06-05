@@ -11,10 +11,16 @@ import RealmSwift
 
 let reloadMenuNotification = "reloadMenuNotification"
 
+protocol MenuCollectionDelegate: class {
+  func menuCollection(collection: MenuCollectionViewController, didSelectProdict product: Product)
+}
+
 class MenuCollectionViewController: UICollectionViewController {
   
   var menuLevelId: String = ""
   var menuPage: Results<Product>?
+  
+  weak var delegate: MenuCollectionDelegate?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -82,11 +88,14 @@ class MenuCollectionViewController: UICollectionViewController {
     switch product.type {
     case .Group:
       let nextPage = MenuCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+      nextPage.delegate = delegate
       nextPage.menuLevelId = product.id
       navigationController?.pushViewController(nextPage, animated: false)
     case .Item:
       presentAlertWithMessage("Add \(product.name)")
     }
+    
+    delegate?.menuCollection(self, didSelectProdict: product)
   }
 
   // MARK: UICollectionViewDelegate
