@@ -20,18 +20,6 @@ class CheckItemTableViewCell: UITableViewCell {
     super.awakeFromNib()
   }
   
-  override func layoutSubviews() {
-    super.layoutSubviews()
-    
-    let shadowPath = UIBezierPath(rect: quantityView.bounds)
-    quantityView.layer.masksToBounds = false
-    quantityView.layer.shadowColor = UIColor.grayColor().CGColor
-    quantityView.layer.shadowOffset = CGSize(width: 0, height: 10)
-    quantityView.layer.shadowOpacity = 0.65
-    quantityView.layer.shadowRadius = 55
-    quantityView.layer.shadowPath = shadowPath.CGPath
-  }
-  
   func configureWith(item: OrderItem) {
     quantityLabel.text = String(item.quantity)
     quantityView.layer.cornerRadius = 17.5
@@ -55,4 +43,22 @@ class CheckItemTableViewCell: UITableViewCell {
     }
     priceLabel.textColor = UIColor.h4Color()
   }
+  
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    
+    var contentFrame = contentView.frame
+    contentFrame.origin.x = 20
+    contentFrame.size.width = contentFrame.width - 40
+    contentView.frame = contentFrame
+    
+    let shadowPath = UIBezierPath(rect: quantityView.bounds)
+    quantityView.layer.masksToBounds = false
+    quantityView.layer.shadowColor = UIColor.grayColor().CGColor
+    quantityView.layer.shadowOffset = CGSize(width: 0, height: 10)
+    quantityView.layer.shadowOpacity = 0.65
+    quantityView.layer.shadowRadius = 55
+    quantityView.layer.shadowPath = shadowPath.CGPath
+  }
+  
 }
