@@ -185,10 +185,37 @@
                                     <action selector="clearButtonAction" destination="mdi-4R-4eV" eventType="touchUpInside" id="kXM-n5-CUF"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8eW-WD-omp">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8eW-WD-omp">
                                 <rect key="frame" x="0.0" y="166" width="356" height="387"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAn-M7-lk6">
+                                <rect key="frame" x="58" y="198" width="240" height="223"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyOrder" translatesAutoresizingMaskIntoConstraints="NO" id="bOg-9O-EWr">
+                                        <rect key="frame" x="68" y="0.0" width="115" height="110"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="115" id="BZp-sC-6JZ"/>
+                                            <constraint firstAttribute="height" constant="110" id="Mxh-C8-F3E"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЧЕК ПУСТ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NF9-Tq-3kU">
+                                        <rect key="frame" x="72" y="130" width="96" height="23"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="NF9-Tq-3kU" firstAttribute="top" secondItem="bOg-9O-EWr" secondAttribute="bottom" constant="20" id="5BV-l1-G9Y"/>
+                                    <constraint firstAttribute="width" constant="240" id="Ece-Vb-Dit"/>
+                                    <constraint firstItem="bOg-9O-EWr" firstAttribute="top" secondItem="WAn-M7-lk6" secondAttribute="top" id="Lx0-l6-zpW"/>
+                                    <constraint firstItem="NF9-Tq-3kU" firstAttribute="centerX" secondItem="WAn-M7-lk6" secondAttribute="centerX" id="MpQ-8b-6CP"/>
+                                    <constraint firstItem="bOg-9O-EWr" firstAttribute="centerX" secondItem="WAn-M7-lk6" secondAttribute="centerX" constant="5" id="ORU-N9-RZP"/>
+                                    <constraint firstAttribute="height" constant="223" id="UaE-oh-xjU"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fn3-Vp-Rx4" customClass="CardView" customModule="POSTerminal" customModuleProvider="target">
                                 <rect key="frame" x="20" y="578" width="316" height="75"/>
                                 <subviews>
@@ -228,11 +255,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Jpa-0A-rTr" firstAttribute="top" secondItem="h4L-8L-e6u" secondAttribute="bottom" constant="25" id="4WQ-wb-oXa"/>
+                            <constraint firstItem="WAn-M7-lk6" firstAttribute="top" secondItem="QqW-eQ-BVP" secondAttribute="bottom" constant="50" id="5Qz-Lh-t9H"/>
                             <constraint firstItem="Fn3-Vp-Rx4" firstAttribute="leading" secondItem="l6q-uu-DLK" secondAttribute="leading" constant="20" id="5WV-Qt-M6s"/>
                             <constraint firstItem="QqW-eQ-BVP" firstAttribute="top" secondItem="uzA-jK-qKa" secondAttribute="bottom" constant="18" id="AGk-f7-qo4"/>
                             <constraint firstItem="8eW-WD-omp" firstAttribute="top" secondItem="QqW-eQ-BVP" secondAttribute="bottom" constant="18" id="DLM-ua-gNo"/>
                             <constraint firstAttribute="trailing" secondItem="Fn3-Vp-Rx4" secondAttribute="trailing" constant="20" id="Hag-PF-WKj"/>
                             <constraint firstItem="Jpa-0A-rTr" firstAttribute="leading" secondItem="l6q-uu-DLK" secondAttribute="leading" constant="20" id="HeQ-Uj-0C6"/>
+                            <constraint firstItem="WAn-M7-lk6" firstAttribute="centerX" secondItem="l6q-uu-DLK" secondAttribute="centerX" id="LoB-7m-via"/>
                             <constraint firstItem="tTc-wx-zM7" firstAttribute="top" secondItem="Fn3-Vp-Rx4" secondAttribute="bottom" constant="30" id="RuL-pd-9kJ"/>
                             <constraint firstAttribute="trailing" secondItem="8eW-WD-omp" secondAttribute="trailing" id="WzZ-8W-z4V"/>
                             <constraint firstAttribute="trailing" secondItem="Jpa-0A-rTr" secondAttribute="trailing" constant="20" id="drd-kt-fGj"/>
@@ -248,6 +277,8 @@
                         <outlet property="clientInfoCard" destination="Jpa-0A-rTr" id="sFr-UR-6OL"/>
                         <outlet property="clientNameLabel" destination="ZQu-m6-VgJ" id="lW7-Cn-SIA"/>
                         <outlet property="clientPhotoImageView" destination="SrG-4N-Pey" id="TuM-xT-iDY"/>
+                        <outlet property="emptyStateLabel" destination="NF9-Tq-3kU" id="jFz-J5-QSi"/>
+                        <outlet property="emptyStateView" destination="WAn-M7-lk6" id="zAd-OB-kiT"/>
                         <outlet property="tableView" destination="8eW-WD-omp" id="u8O-iQ-op2"/>
                     </connections>
                 </viewController>
@@ -329,6 +360,7 @@
     <resources>
         <image name="Back" width="24" height="24"/>
         <image name="BackDisabled" width="24" height="24"/>
+        <image name="EmptyOrder" width="115" height="110"/>
         <image name="Home" width="24" height="23"/>
         <image name="Settings" width="24" height="14"/>
     </resources>

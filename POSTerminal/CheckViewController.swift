@@ -19,6 +19,9 @@ class CheckViewController: UIViewController {
   @IBOutlet weak var clientNameLabel: UILabel!
   @IBOutlet weak var clientBalanceLabel: UILabel!
   @IBOutlet weak var clientPhotoImageView: UIImageView!
+  
+  @IBOutlet weak var emptyStateView: UIView!
+  @IBOutlet weak var emptyStateLabel: UILabel!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -28,9 +31,12 @@ class CheckViewController: UIViewController {
     
     tableView.delegate = self
     tableView.dataSource = self
+    tableView.tableFooterView = UIView()
     
     let itemCellNib = UINib(nibName: String(CheckItemTableViewCell), bundle: nil)
     tableView.registerNib(itemCellNib, forCellReuseIdentifier: "itemCell")
+    
+    emptyStateLabel.textColor = UIColor.h5Color()
     
     clientPhotoImageView.image = UIImage(named: "avatarExample")
     clientPhotoImageView.clipsToBounds = true
@@ -85,15 +91,12 @@ extension CheckViewController: UITableViewDataSource {
       checkoutButtonView.hidden = true
       tableView.hidden = true
       clearOrderButton.hidden = true
-      tableView.backgroundView = {
-        $0.backgroundColor = UIColor.whiteColor()
-        return $0
-      }(UIView())
+      emptyStateView.hidden = false
     } else {
       checkoutButtonView.hidden = false
       tableView.hidden = false
       clearOrderButton.hidden = false
-      tableView.backgroundView = nil
+      emptyStateView.hidden = true
     }
     
     return count
