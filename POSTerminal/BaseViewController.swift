@@ -18,6 +18,10 @@ class BaseViewController: UIViewController {
   @IBOutlet weak var settingsButton: UIButton!
   var menuNavigationController: UINavigationController?
   
+  @IBOutlet weak var menuPathStackView:  UIStackView!
+  
+  private var menuPath = [String]()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     RedSocketManager.sharedInstance().setDelegate(self)
@@ -93,16 +97,92 @@ class BaseViewController: UIViewController {
     }
   }
   
+  //MARK: - Path stack view
+  
+  func createLabelWith(category: String, andColor color: UIColor) -> UILabel {
+    let label = UILabel()
+    label.text = category
+    label.textColor = color
+    label.font = UIFont.boldSystemFontOfSize(16)
+    
+    return label
+  }
+  
+  func createSeparatorImageView() -> UIImageView {
+    let image = UIImage(named: "PathSeparator")
+    return UIImageView(image: image)
+  }
+  
+  func clearMenuPath() {
+    menuPath = []
+    menuPathStackView.arrangedSubviews.forEach { (view) in
+      menuPathStackView.removeArrangedSubview(view)
+      view.removeFromSuperview()
+    }
+    appendCategoryToPathStack("Меню")
+  }
+  
+  func removeTwoLastItemsFromStack() {
+    let arrangedSubviews = menuPathStackView.arrangedSubviews
+    guard arrangedSubviews.count > 2 else { return }
+    
+    let lastIndex = arrangedSubviews.count - 1
+    let secondLastIndex = arrangedSubviews.count - 2 // ¯\_(ツ)_/¯
+    let lastView = arrangedSubviews[lastIndex]
+    let secondLastView = arrangedSubviews[secondLastIndex]
+    menuPathStackView.removeArrangedSubview(lastView)
+    menuPathStackView.removeArrangedSubview(secondLastView)
+    lastView.removeFromSuperview()
+    secondLastView.removeFromSuperview()
+    
+    if let lastLabel = menuPathStackView.arrangedSubviews.last as? UILabel {
+      lastLabel.textColor = UIColor.whiteColor()
+    }
+  }
+  
+  func appendCategoryToPathStack(level: String) {
+    menuPath.append(level)
+    
+    if menuPathStackView.arrangedSubviews.count == 0 {
+      menuPathStackView.addArrangedSubview(createLabelWith(level, andColor: UIColor.whiteColor()))
+      return
+    }
+    
+    menuPathStackView.arrangedSubviews.forEach { (view) in
+      if let label = view as? UILabel {
+        label.textColor = UIColor.h2Color()
+      }
+    }
+    
+    menuPathStackView.addArrangedSubview(createSeparatorImageView())
+    menuPathStackView.addArrangedSubview(createLabelWith(level, andColor: UIColor.whiteColor()))
+  }
+  
+  func popLastCategoryFromPathStack() {
+    switch menuPath.count {
+    case 0:
+      break
+    case 1:
+      menuPath.popLast()
+      removeTwoLastItemsFromStack()
+    default:
+      menuPath.popLast()
+      removeTwoLastItemsFromStack()
+    }
+  }
+  
   //MARK: - Actions 
   
   @IBAction func backButtonAction() {
     menuNavigationController?.popViewControllerAnimated(false)
     checkBackButtonState()
+    popLastCategoryFromPathStack()
   }
   
   @IBAction func homeButtonAction() {
     menuNavigationController?.popToRootViewControllerAnimated(false)
     checkBackButtonState()
+    clearMenuPath()
   }
   
   @IBAction func settingsButtonAction() {
@@ -124,6 +204,15 @@ class BaseViewController: UIViewController {
 extension BaseViewController: MenuCollectionDelegate {
   func menuCollection(collection: MenuCollectionViewController, didSelectProdict product: Product) {
     checkBackButtonState()
+    
+    if product.type == .Group {
+      let category = product.name
+      if let lastCategory = menuPath.last where lastCategory != category {
+        appendCategoryToPathStack(category)
+      } else if menuPath.count == 0 {
+        appendCategoryToPathStack(category)
+      }
+    }
   }
 }
 

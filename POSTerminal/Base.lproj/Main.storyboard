@@ -46,8 +46,16 @@
                                             <action selector="backButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="p7A-Yw-oSj"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dI-a1-rBv">
-                                        <rect key="frame" x="129" y="34" width="831" height="47"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9dI-a1-rBv">
+                                        <rect key="frame" x="129" y="34" width="48" height="47"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Меню" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQ4-zL-vSf">
+                                                <rect key="frame" x="0.0" y="14" width="48" height="20"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="47" id="Jf5-vk-ujp"/>
                                         </constraints>
@@ -74,7 +82,7 @@
                                     <constraint firstItem="7Jk-pF-GRb" firstAttribute="height" secondItem="XJT-FS-LER" secondAttribute="height" id="Umf-nL-Ooq"/>
                                     <constraint firstAttribute="height" constant="85" id="VEA-zx-d2j"/>
                                     <constraint firstItem="r8R-hn-Ca1" firstAttribute="centerY" secondItem="7Jk-pF-GRb" secondAttribute="centerY" id="Xb2-Xo-2zg"/>
-                                    <constraint firstItem="7C6-ZP-mV8" firstAttribute="leading" secondItem="9dI-a1-rBv" secondAttribute="trailing" constant="20" id="oIR-6Z-t7F"/>
+                                    <constraint firstItem="7C6-ZP-mV8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9dI-a1-rBv" secondAttribute="trailing" constant="20" id="oIR-6Z-t7F"/>
                                     <constraint firstItem="9dI-a1-rBv" firstAttribute="leading" secondItem="r8R-hn-Ca1" secondAttribute="trailing" constant="20" id="qPm-qI-SsH"/>
                                     <constraint firstAttribute="bottom" secondItem="XJT-FS-LER" secondAttribute="bottom" constant="15" id="zhR-8Z-snc"/>
                                 </constraints>
@@ -113,6 +121,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="backButton" destination="r8R-hn-Ca1" id="Py4-45-8P4"/>
+                        <outlet property="menuPathStackView" destination="9dI-a1-rBv" id="BJe-IE-XEb"/>
                         <outlet property="settingsButton" destination="7C6-ZP-mV8" id="vBF-kw-nRh"/>
                         <outlet property="toolBarView" destination="JNo-Pd-eEk" id="jSD-qa-fhE"/>
                         <segue destination="zLm-GP-92M" kind="presentation" identifier="settings" modalPresentationStyle="pageSheet" id="dQU-zG-BHJ"/>
@@ -280,6 +289,7 @@
                         <outlet property="emptyStateLabel" destination="NF9-Tq-3kU" id="jFz-J5-QSi"/>
                         <outlet property="emptyStateView" destination="WAn-M7-lk6" id="zAd-OB-kiT"/>
                         <outlet property="tableView" destination="8eW-WD-omp" id="u8O-iQ-op2"/>
+                        <outlet property="totalPriceLabel" destination="1NW-bM-RmE" id="QuB-Ck-iwo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ofC-gb-fbi" userLabel="First Responder" sceneMemberID="firstResponder"/>

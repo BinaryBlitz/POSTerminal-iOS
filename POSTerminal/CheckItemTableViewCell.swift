@@ -48,7 +48,11 @@ class CheckItemTableViewCell: UITableViewCell {
     categoryLabel.textColor = UIColor.h5Color()
     categoryLabel.text = item.product.category
     
-    priceLabel.text = "\(item.product.price.value ?? 0) р."
+    if let price = item.product.price.value {
+      priceLabel.text = "\(Int(price)) р."
+    } else {
+      priceLabel.text = "0 р."
+    }
     priceLabel.textColor = UIColor.h4Color()
   }
 }
