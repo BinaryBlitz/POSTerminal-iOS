@@ -88,7 +88,7 @@ class MenuCollectionViewController: UICollectionViewController {
       nextPage.menuLevelId = product.id
       navigationController?.pushViewController(nextPage, animated: false)
     case .Item:
-      presentAlertWithMessage("Add \(product.name)")
+      OrderManager.currentOrder.append(product)
     }
     
     delegate?.menuCollection(self, didSelectProdict: product)

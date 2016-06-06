@@ -26,8 +26,11 @@ class CheckViewController: UIViewController {
     view.backgroundColor = UIColor.whiteColor()
     tableView.backgroundColor =  UIColor.whiteColor()
     
-//    tableView.delegate = self
+    tableView.delegate = self
     tableView.dataSource = self
+    
+    let itemCellNib = UINib(nibName: String(CheckItemTableViewCell), bundle: nil)
+    tableView.registerNib(itemCellNib, forCellReuseIdentifier: "itemCell")
     
     clientPhotoImageView.image = UIImage(named: "avatarExample")
     clientPhotoImageView.clipsToBounds = true
@@ -49,11 +52,23 @@ class CheckViewController: UIViewController {
     
     clientInfoCard.backgroundColor = UIColor.whiteColor()
     checkoutButtonView.backgroundColor = UIColor.elementsAndH1Color()
+    
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadData), name: newItemNotification, object: nil)
   }
+  
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  func reloadData() {
+    tableView.reloadData()
+  }
+  
   //MARK: - Actions 
   
   @IBAction func clearButtonAction() {
-    presentAlertWithMessage("clear")
+    OrderManager.currentOrder.clearOrder()
+    tableView.reloadData()
   }
   
   @IBAction func checkoutButtonAction() {
@@ -64,13 +79,38 @@ class CheckViewController: UIViewController {
 extension CheckViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    let count = OrderManager.currentOrder.items.count
+    
+    if count == 0 {
+      checkoutButtonView.hidden = true
+      tableView.hidden = true
+      clearOrderButton.hidden = true
+      tableView.backgroundView = {
+        $0.backgroundColor = UIColor.whiteColor()
+        return $0
+      }(UIView())
+    } else {
+      checkoutButtonView.hidden = false
+      tableView.hidden = false
+      clearOrderButton.hidden = false
+      tableView.backgroundView = nil
+    }
+    
+    return count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    return {
-        $0.textLabel?.text = "кек"
-        return $0
-      }(UITableViewCell())
+    let orderItem = OrderManager.currentOrder.items[indexPath.row]
+    let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) as! CheckItemTableViewCell
+    cell.configureWith(orderItem)
+    
+    return cell
+  }
+}
+
+extension CheckViewController: UITableViewDelegate {
+  
+  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    return 75
   }
 }
