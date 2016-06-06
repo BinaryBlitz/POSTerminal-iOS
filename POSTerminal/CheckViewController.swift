@@ -22,6 +22,8 @@ class CheckViewController: UIViewController {
   
   @IBOutlet weak var emptyStateView: UIView!
   @IBOutlet weak var emptyStateLabel: UILabel!
+  
+  @IBOutlet weak var totalPriceLabel: UILabel!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -37,6 +39,8 @@ class CheckViewController: UIViewController {
     tableView.registerNib(itemCellNib, forCellReuseIdentifier: "itemCell")
     
     emptyStateLabel.textColor = UIColor.h5Color()
+    
+    totalPriceLabel.font = totalPriceLabel.font.monospacedDigitFont
     
     clientPhotoImageView.image = UIImage(named: "avatarExample")
     clientPhotoImageView.clipsToBounds = true
@@ -68,6 +72,7 @@ class CheckViewController: UIViewController {
   
   func reloadData() {
     tableView.reloadData()
+    totalPriceLabel.text = "\(OrderManager.currentOrder.totalPrice) р."
   }
   
   //MARK: - Actions 

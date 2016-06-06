@@ -22,6 +22,7 @@
 		375C85081D05052700F9F469 /* CheckItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 375C85061D05052700F9F469 /* CheckItemTableViewCell.xib */; };
 		375C850C1D0507CB00F9F469 /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C850B1D0507CB00F9F469 /* OrderManager.swift */; };
 		375C850E1D050D8F00F9F469 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C850D1D050D8F00F9F469 /* OrderItem.swift */; };
+		375C85101D0582A400F9F469 /* UIFont+Monospaced.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C850F1D0582A400F9F469 /* UIFont+Monospaced.swift */; };
 		376B5ABE1D02FA270058E6A8 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B5ABC1D02FA270058E6A8 /* ProductCollectionViewCell.swift */; };
 		376B5ABF1D02FA270058E6A8 /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 376B5ABD1D02FA270058E6A8 /* ProductCollectionViewCell.xib */; };
 		376D84271CF878D3008A868A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D84261CF878D3008A868A /* AppDelegate.swift */; };
@@ -72,6 +73,7 @@
 		375C85061D05052700F9F469 /* CheckItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckItemTableViewCell.xib; sourceTree = "<group>"; };
 		375C850B1D0507CB00F9F469 /* OrderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderManager.swift; sourceTree = "<group>"; };
 		375C850D1D050D8F00F9F469 /* OrderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
+		375C850F1D0582A400F9F469 /* UIFont+Monospaced.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Monospaced.swift"; sourceTree = "<group>"; };
 		376B5ABC1D02FA270058E6A8 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		376B5ABD1D02FA270058E6A8 /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
 		376D84231CF878D3008A868A /* POSTerminal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POSTerminal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -289,6 +291,7 @@
 			children = (
 				37C1EDA31D01CA670018B531 /* Colors.swift */,
 				37C1EDAA1D01ED0D0018B531 /* UIViewController+Alert.swift */,
+				375C850F1D0582A400F9F469 /* UIFont+Monospaced.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				376D84271CF878D3008A868A /* AppDelegate.swift in Sources */,
 				375C84FD1D04E22900F9F469 /* ServerManager+Checks.swift in Sources */,
 				376D84491CF91DD0008A868A /* Product.swift in Sources */,
+				375C85101D0582A400F9F469 /* UIFont+Monospaced.swift in Sources */,
 				375C850E1D050D8F00F9F469 /* OrderItem.swift in Sources */,
 				37C58DDC1CFCFB8C00049095 /* ServerResponse.swift in Sources */,
 				376B5ABE1D02FA270058E6A8 /* ProductCollectionViewCell.swift in Sources */,
