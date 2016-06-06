@@ -83,7 +83,7 @@ class CheckViewController: UIViewController {
   }
   
   @IBAction func checkoutButtonAction() {
-    presentAlertWithMessage("checkout")
+    presentAlertWithMessage("Оплата")
   }
 }
 
