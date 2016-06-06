@@ -15,6 +15,8 @@ class Client: Object {
   dynamic var name: String = ""
   dynamic var balance: Int = 0
   
+  static var currentClient: Client?
+  
   override static func primaryKey() -> String? {
     return "id"
   }
