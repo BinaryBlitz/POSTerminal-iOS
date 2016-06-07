@@ -346,12 +346,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 376D84351CF878D3008A868A /* Build configuration list for PBXNativeTarget "POSTerminal" */;
 			buildPhases = (
-				C5B2AE1BF539DC5711A479D2 /* 📦 Check Pods Manifest.lock */,
+				C5B2AE1BF539DC5711A479D2 /* [CP] Check Pods Manifest.lock */,
 				376D841F1CF878D3008A868A /* Sources */,
 				376D84201CF878D3008A868A /* Frameworks */,
 				376D84211CF878D3008A868A /* Resources */,
-				13C3E7F9D6AEE529C7C45ACC /* 📦 Embed Pods Frameworks */,
-				BE402449E626CAE379A7B83F /* 📦 Copy Pods Resources */,
+				13C3E7F9D6AEE529C7C45ACC /* [CP] Embed Pods Frameworks */,
+				BE402449E626CAE379A7B83F /* [CP] Copy Pods Resources */,
 				376D843C1CF91229008A868A /* ShellScript */,
 			);
 			buildRules = (
@@ -420,14 +420,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		13C3E7F9D6AEE529C7C45ACC /* 📦 Embed Pods Frameworks */ = {
+		13C3E7F9D6AEE529C7C45ACC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,14 +448,14 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 886de8c1d524dbaa9dfdbd457b8c8469ecafdfd4 fe43661af277625de578631f794d9557e38adacd6b02682d23b328918ca7fbf6";
 		};
-		BE402449E626CAE379A7B83F /* 📦 Copy Pods Resources */ = {
+		BE402449E626CAE379A7B83F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,14 +463,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-POSTerminal/Pods-POSTerminal-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C5B2AE1BF539DC5711A479D2 /* 📦 Check Pods Manifest.lock */ = {
+		C5B2AE1BF539DC5711A479D2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -648,7 +648,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = POSTerminal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
@@ -674,7 +674,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				INFOPLIST_FILE = POSTerminal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
