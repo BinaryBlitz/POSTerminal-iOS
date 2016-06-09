@@ -24,6 +24,8 @@ class CheckViewController: UIViewController {
   @IBOutlet weak var emptyStateLabel: UILabel!
   
   @IBOutlet weak var totalPriceLabel: UILabel!
+  
+  var items = [OrderItem]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -64,6 +66,7 @@ class CheckViewController: UIViewController {
     checkoutButtonView.backgroundColor = UIColor.elementsAndH1Color()
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadData), name: newItemNotification, object: nil)
+    reloadData()
   }
   
   deinit {
@@ -71,6 +74,7 @@ class CheckViewController: UIViewController {
   }
   
   func reloadData() {
+    items = OrderManager.currentOrder.items
     tableView.reloadData()
     totalPriceLabel.text = "\(OrderManager.currentOrder.totalPrice.format()) р."
   }
@@ -91,7 +95,7 @@ class CheckViewController: UIViewController {
 extension CheckViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    let count = OrderManager.currentOrder.items.count
+    let count = items.count
     
     if count == 0 {
       checkoutButtonView.hidden = true
@@ -109,7 +113,7 @@ extension CheckViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let orderItem = OrderManager.currentOrder.items[indexPath.row]
+    let orderItem = items[indexPath.row]
     let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) as! CheckItemTableViewCell
     cell.configureWith(orderItem)
     
