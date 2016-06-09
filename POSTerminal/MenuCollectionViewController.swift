@@ -17,6 +17,7 @@ class MenuCollectionViewController: UICollectionViewController {
   var menuPage: Results<Product>?
   
   weak var delegate: MenuCollectionDelegate?
+  weak var navigationProvider: MenuNavigationProvider!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,10 +28,17 @@ class MenuCollectionViewController: UICollectionViewController {
     self.menuPage = realm.objects(Product).filter("parentId = '\(self.menuLevelId)'")
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.reloadData), name: reloadMenuNotification, object: nil)
+    
+    let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeBack(_:)))
+    view.addGestureRecognizer(swipeGesture)
   }
   
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  func swipeBack(gestureRecognizer: UISwipeGestureRecognizer) {
+    navigationProvider.popViewController()
   }
   
   @objc private func reloadData() {
@@ -85,6 +93,7 @@ class MenuCollectionViewController: UICollectionViewController {
     case .Group:
       let nextPage = MenuCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
       nextPage.delegate = delegate
+      nextPage.navigationProvider = navigationProvider
       nextPage.menuLevelId = product.id
       navigationController?.pushViewController(nextPage, animated: false)
     case .Item:

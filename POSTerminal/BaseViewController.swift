@@ -11,6 +11,11 @@ import RealmSwift
 
 let updateMenuNotification = "updateMenuNotification"
 
+protocol MenuNavigationProvider: class {
+  func popViewController()
+  func popToRootViewController()
+}
+
 class BaseViewController: UIViewController {
   
   @IBOutlet weak var toolBarView: UIView!
@@ -63,6 +68,7 @@ class BaseViewController: UIViewController {
       menuNavigationController = segue.destinationViewController as? UINavigationController
       if let menuController = menuNavigationController?.viewControllers.first as? MenuCollectionViewController {
         menuController.delegate = self
+        menuController.navigationProvider = self
       }
     }
   }
@@ -226,5 +232,15 @@ extension BaseViewController: RedSocketManagerDelegate {
   
   func cableDisconnected() {
     presentAlertWithMessage("Кабель отключен")
+  }
+}
+
+extension BaseViewController: MenuNavigationProvider {
+  func popViewController() {
+    backButtonAction()
+  }
+  
+  func popToRootViewController() {
+    homeButtonAction()
   }
 }
