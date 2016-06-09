@@ -40,7 +40,7 @@ class CheckViewController: UIViewController {
     
     emptyStateLabel.textColor = UIColor.h5Color()
     
-    totalPriceLabel.font = totalPriceLabel.font.monospacedDigitFont
+    totalPriceLabel.font = UIFont.monospacedDigitSystemFontOfSize(22, weight: UIFontWeightBold)
     
     clientPhotoImageView.image = UIImage(named: "avatarExample")
     clientPhotoImageView.clipsToBounds = true
