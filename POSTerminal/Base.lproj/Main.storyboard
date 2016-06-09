@@ -194,9 +194,9 @@
                                     <action selector="clearButtonAction" destination="mdi-4R-4eV" eventType="touchUpInside" id="kXM-n5-CUF"/>
                                 </connections>
                             </button>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8eW-WD-omp">
-                                <rect key="frame" x="0.0" y="166" width="356" height="387"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8eW-WD-omp">
+                                <rect key="frame" x="0.0" y="166" width="356" height="402"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAn-M7-lk6">
                                 <rect key="frame" x="58" y="198" width="240" height="223"/>
@@ -226,7 +226,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fn3-Vp-Rx4" customClass="CardView" customModule="POSTerminal" customModuleProvider="target">
-                                <rect key="frame" x="20" y="578" width="316" height="75"/>
+                                <rect key="frame" x="15" y="593" width="326" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="К ОПЛАТЕ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Xq-kq-C8O">
                                         <rect key="frame" x="20" y="24" width="112" height="27"/>
@@ -235,13 +235,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1500 р." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1NW-bM-RmE">
-                                        <rect key="frame" x="217" y="24" width="79" height="27"/>
+                                        <rect key="frame" x="227" y="24" width="79" height="27"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzv-mK-w2o">
-                                        <rect key="frame" x="0.0" y="0.0" width="316" height="75"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="326" height="75"/>
                                         <connections>
                                             <action selector="checkoutButtonAction" destination="mdi-4R-4eV" eventType="touchUpInside" id="VCC-mh-cn6"/>
                                         </connections>
@@ -265,13 +265,13 @@
                         <constraints>
                             <constraint firstItem="Jpa-0A-rTr" firstAttribute="top" secondItem="h4L-8L-e6u" secondAttribute="bottom" constant="25" id="4WQ-wb-oXa"/>
                             <constraint firstItem="WAn-M7-lk6" firstAttribute="top" secondItem="QqW-eQ-BVP" secondAttribute="bottom" constant="50" id="5Qz-Lh-t9H"/>
-                            <constraint firstItem="Fn3-Vp-Rx4" firstAttribute="leading" secondItem="l6q-uu-DLK" secondAttribute="leading" constant="20" id="5WV-Qt-M6s"/>
+                            <constraint firstItem="Fn3-Vp-Rx4" firstAttribute="leading" secondItem="l6q-uu-DLK" secondAttribute="leading" constant="15" id="5WV-Qt-M6s"/>
                             <constraint firstItem="QqW-eQ-BVP" firstAttribute="top" secondItem="uzA-jK-qKa" secondAttribute="bottom" constant="18" id="AGk-f7-qo4"/>
                             <constraint firstItem="8eW-WD-omp" firstAttribute="top" secondItem="QqW-eQ-BVP" secondAttribute="bottom" constant="18" id="DLM-ua-gNo"/>
-                            <constraint firstAttribute="trailing" secondItem="Fn3-Vp-Rx4" secondAttribute="trailing" constant="20" id="Hag-PF-WKj"/>
+                            <constraint firstAttribute="trailing" secondItem="Fn3-Vp-Rx4" secondAttribute="trailing" constant="15" id="Hag-PF-WKj"/>
                             <constraint firstItem="Jpa-0A-rTr" firstAttribute="leading" secondItem="l6q-uu-DLK" secondAttribute="leading" constant="20" id="HeQ-Uj-0C6"/>
                             <constraint firstItem="WAn-M7-lk6" firstAttribute="centerX" secondItem="l6q-uu-DLK" secondAttribute="centerX" id="LoB-7m-via"/>
-                            <constraint firstItem="tTc-wx-zM7" firstAttribute="top" secondItem="Fn3-Vp-Rx4" secondAttribute="bottom" constant="30" id="RuL-pd-9kJ"/>
+                            <constraint firstItem="tTc-wx-zM7" firstAttribute="top" secondItem="Fn3-Vp-Rx4" secondAttribute="bottom" constant="15" id="RuL-pd-9kJ"/>
                             <constraint firstAttribute="trailing" secondItem="8eW-WD-omp" secondAttribute="trailing" id="WzZ-8W-z4V"/>
                             <constraint firstAttribute="trailing" secondItem="Jpa-0A-rTr" secondAttribute="trailing" constant="20" id="drd-kt-fGj"/>
                             <constraint firstItem="QqW-eQ-BVP" firstAttribute="centerX" secondItem="uzA-jK-qKa" secondAttribute="centerX" id="eys-xH-Wcs"/>
