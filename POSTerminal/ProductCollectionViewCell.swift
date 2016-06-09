@@ -50,7 +50,7 @@ extension ProductCollectionViewCell: ProductConfigurable {
     categoryNameLabel.text = product.category?.uppercaseString
     
     if let price = product.price.value {
-      priceLabel.text = "\(Int(price)) р."
+      priceLabel.text = "\(price.format()) р."
     }
   }
 }

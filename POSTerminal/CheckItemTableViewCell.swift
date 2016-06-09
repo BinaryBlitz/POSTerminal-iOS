@@ -34,7 +34,7 @@ class CheckItemTableViewCell: UITableViewCell {
     nameLabel.text = item.product.name
     
     if let price = item.product.price.value {
-      priceLabel.text = "\(Int(price)) р."
+      priceLabel.text = "\(price.format()) р."
     } else {
       priceLabel.text = "0 р."
     }

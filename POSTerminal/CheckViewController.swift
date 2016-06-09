@@ -72,7 +72,7 @@ class CheckViewController: UIViewController {
   
   func reloadData() {
     tableView.reloadData()
-    totalPriceLabel.text = "\(Int(OrderManager.currentOrder.totalPrice)) р."
+    totalPriceLabel.text = "\(OrderManager.currentOrder.totalPrice.format()) р."
   }
   
   //MARK: - Actions 
