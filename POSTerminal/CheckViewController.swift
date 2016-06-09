@@ -79,6 +79,7 @@ class CheckViewController: UIViewController {
   
   @IBAction func clearButtonAction() {
     OrderManager.currentOrder.clearOrder()
+    Client.currentClient = nil
     tableView.reloadData()
   }
   
