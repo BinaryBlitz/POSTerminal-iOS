@@ -74,15 +74,38 @@ class CheckViewController: UIViewController {
   }
   
   func reloadData() {
-    items = OrderManager.currentOrder.items
-    tableView.reloadData()
+    let newItemsList = OrderManager.currentOrder.items
+    if newItemsList.count > items.count && items.count > 0 {
+      let numberOfNewItems = newItemsList.count - items.count
+      let indexPathsToUpdate = Array(count: numberOfNewItems, repeatedValue: NSIndexPath())
+        .enumerate().map { (index, indexPath) -> NSIndexPath in
+          return NSIndexPath(forRow: newItemsList.count - index - 1, inSection: 0)
+      }
+      self.items = newItemsList
+      tableView.beginUpdates()
+      tableView.insertRowsAtIndexPaths(indexPathsToUpdate, withRowAnimation: UITableViewRowAnimation.Fade)
+      tableView.endUpdates()
+    } else {
+      items = OrderManager.currentOrder.items
+      tableView.reloadData()
+    }
+    scrollToBottom()
+    
     totalPriceLabel.text = "\(OrderManager.currentOrder.totalPrice.format()) р."
+  }
+  
+  func scrollToBottom() {
+    if tableView.numberOfRowsInSection(0) > 0 {
+      let lastCellRowNumber = tableView.numberOfRowsInSection(0) - 1
+      tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: lastCellRowNumber, inSection: 0), atScrollPosition: .Bottom, animated: true)
+    }
   }
   
   //MARK: - Actions 
   
   @IBAction func clearButtonAction() {
     OrderManager.currentOrder.clearOrder()
+    items = []
     Client.currentClient = nil
     tableView.reloadData()
   }
