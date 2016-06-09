@@ -11,7 +11,6 @@ import UIKit
 class CheckItemTableViewCell: UITableViewCell {
   
   @IBOutlet weak var nameLabel: UILabel!
-  @IBOutlet weak var categoryLabel: UILabel!
   @IBOutlet weak var priceLabel: UILabel!
   @IBOutlet weak var quantityLabel: UILabel!
   @IBOutlet weak var quantityView: UIView!
@@ -33,8 +32,6 @@ class CheckItemTableViewCell: UITableViewCell {
     
     nameLabel.textColor = UIColor.h4Color()
     nameLabel.text = item.product.name
-    categoryLabel.textColor = UIColor.h5Color()
-    categoryLabel.text = item.product.category
     
     if let price = item.product.price.value {
       priceLabel.text = "\(Int(price)) р."
@@ -46,11 +43,6 @@ class CheckItemTableViewCell: UITableViewCell {
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    
-    var contentFrame = contentView.frame
-    contentFrame.origin.x = 20
-    contentFrame.size.width = contentFrame.width - 40
-    contentView.frame = contentFrame
     
     let shadowPath = UIBezierPath(rect: quantityView.bounds)
     quantityView.layer.masksToBounds = false
