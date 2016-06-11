@@ -11,10 +11,6 @@ import RealmSwift
 
 let updateMenuNotification = "updateMenuNotification"
 
-protocol MenuNavigationProvider: class {
-  func popViewController()
-  func popToRootViewController()
-}
 
 class BaseViewController: UIViewController {
   
@@ -64,12 +60,20 @@ class BaseViewController: UIViewController {
   //MARK: - Navigation
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if segue.identifier == "menu" {
+    guard let identifier = segue.identifier else { return }
+    
+    switch identifier {
+    case "menu":
       menuNavigationController = segue.destinationViewController as? UINavigationController
       if let menuController = menuNavigationController?.viewControllers.first as? MenuCollectionViewController {
         menuController.delegate = self
         menuController.navigationProvider = self
       }
+    case "check":
+      let checkViewController = segue.destinationViewController as! CheckViewController
+      checkViewController.delegate = self
+    default:
+      break
     }
   }
   
@@ -205,9 +209,11 @@ class BaseViewController: UIViewController {
     
     presentViewController(alert, animated: true, completion: nil)
   }
+  
 }
 
 extension BaseViewController: MenuCollectionDelegate {
+  
   func menuCollection(collection: MenuCollectionViewController, didSelectProdict product: Product) {
     checkBackButtonState()
     
@@ -220,12 +226,13 @@ extension BaseViewController: MenuCollectionDelegate {
       }
     }
   }
+  
 }
 
-extension BaseViewController: UIPopoverPresentationControllerDelegate {
-}
+extension BaseViewController: UIPopoverPresentationControllerDelegate { }
 
 extension BaseViewController: RedSocketManagerDelegate {
+  
   func cableConnected(protocol: String!) {
     presentAlertWithMessage("Кабель подключен")
   }
@@ -233,9 +240,11 @@ extension BaseViewController: RedSocketManagerDelegate {
   func cableDisconnected() {
     presentAlertWithMessage("Кабель отключен")
   }
+  
 }
 
 extension BaseViewController: MenuNavigationProvider {
+  
   func popViewController() {
     backButtonAction()
   }
@@ -243,4 +252,15 @@ extension BaseViewController: MenuNavigationProvider {
   func popToRootViewController() {
     homeButtonAction()
   }
+  
+}
+
+extension BaseViewController: CheckViewControllerDelegate {
+  
+  func didTouchCheckoutButton() {
+    homeButtonAction()
+    let checkoutViewController = storyboard!.instantiateViewControllerWithIdentifier("Payment")
+    menuNavigationController?.pushViewController(checkoutViewController, animated: true)
+  }
+  
 }

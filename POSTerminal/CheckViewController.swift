@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CheckViewControllerDelegate: class {
+  func didTouchCheckoutButton()
+}
+
 class CheckViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
@@ -15,6 +19,7 @@ class CheckViewController: UIViewController {
   @IBOutlet weak var clearOrderButton: UIButton!
   @IBOutlet weak var clientInfoCard: CardView!
   @IBOutlet weak var checkoutButtonView: CardView!
+  @IBOutlet weak var checkoutButton: UIButton!
   
   @IBOutlet weak var clientNameLabel: UILabel!
   @IBOutlet weak var clientBalanceLabel: UILabel!
@@ -24,6 +29,8 @@ class CheckViewController: UIViewController {
   @IBOutlet weak var emptyStateLabel: UILabel!
   
   @IBOutlet weak var totalPriceLabel: UILabel!
+  
+  weak var delegate: CheckViewControllerDelegate?
   
   var items = [OrderItem]()
 
@@ -111,7 +118,7 @@ class CheckViewController: UIViewController {
   }
   
   @IBAction func checkoutButtonAction() {
-    presentAlertWithMessage("Оплата")
+    delegate?.didTouchCheckoutButton()
   }
 }
 
