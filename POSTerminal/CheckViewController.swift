@@ -68,8 +68,6 @@ class CheckViewController: UIViewController {
   }
   
   func reloadClientInfo() {
-    print("reload client")
-    
     if let client = Client.currentClient {
       clientNameLabel.text = client.name
       clientBalanceLabel.hidden = false
@@ -119,6 +117,7 @@ class CheckViewController: UIViewController {
     items = []
     Client.currentClient = nil
     tableView.reloadData()
+    reloadClientInfo()
   }
   
   @IBAction func checkoutButtonAction() {

@@ -39,9 +39,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           return GCDWebServerResponse(statusCode: 400)
         }
         
-        print(clientIdentity)
-        Client.currentClientIdetity = clientIdentity
-        NSNotificationCenter.defaultCenter().postNotificationName(clientUpdatedNotification, object: nil)
+        ServerManager.sharedManager.getInfoFor(clientIdentity) { (response) in
+          switch response.result {
+          case .Success(let client):
+            Client.currentClient = client
+            NSNotificationCenter.defaultCenter().postNotificationName(clientUpdatedNotification, object: nil)
+          case .Failure(let error):
+            print(error)
+          }
+        }
         
         return GCDWebServerResponse(statusCode: 200)
       }
