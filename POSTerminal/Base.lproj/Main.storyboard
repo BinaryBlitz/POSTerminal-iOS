@@ -21,7 +21,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNo-Pd-eEk">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="85"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJT-FS-LER">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJT-FS-LER">
                                         <rect key="frame" x="20" y="47" width="24" height="23"/>
                                         <state key="normal" image="Home">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -30,14 +30,14 @@
                                             <action selector="homeButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="DNs-da-glm"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Jk-pF-GRb">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Jk-pF-GRb">
                                         <rect key="frame" x="64" y="47" width="1" height="23"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="ky2-6u-owr"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8R-hn-Ca1">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8R-hn-Ca1">
                                         <rect key="frame" x="85" y="46" width="24" height="24"/>
                                         <state key="normal" image="Back">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -47,7 +47,7 @@
                                             <action selector="backButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="p7A-Yw-oSj"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9dI-a1-rBv">
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9dI-a1-rBv">
                                         <rect key="frame" x="129" y="34" width="48" height="47"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Меню" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQ4-zL-vSf">
@@ -444,6 +444,10 @@
         <scene sceneID="Ua5-4k-7Ie">
             <objects>
                 <viewController storyboardIdentifier="CardPayment" id="kLB-np-sqw" customClass="CardPaymentViewController" customModule="POSTerminal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="656-Mi-CTl"/>
+                        <viewControllerLayoutGuide type="bottom" id="tWU-jB-PRd"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kgp-Qa-Wjs">
                         <rect key="frame" x="0.0" y="0.0" width="560" height="248"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

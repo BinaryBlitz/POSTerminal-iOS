@@ -254,9 +254,7 @@
 				3752A12D1D01AE6E00194663 /* BaseViewController.swift */,
 				37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */,
 				37C1EDA81D01D2280018B531 /* CheckViewController.swift */,
-				3779D4861D0C523900A3A57B /* CheckoutViewController.swift */,
-				3779D4881D0C62CB00A3A57B /* CashPaymentViewController.swift */,
-				3779D48A1D0C62D700A3A57B /* CardPaymentViewController.swift */,
+				3779D4901D0CD21900A3A57B /* Checkout */,
 				375C84F91D04CFFF00F9F469 /* Settings */,
 			);
 			name = Controllers;
@@ -304,6 +302,16 @@
 				37C58DEC1CFE512E00049095 /* Routers */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		3779D4901D0CD21900A3A57B /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				3779D4861D0C523900A3A57B /* CheckoutViewController.swift */,
+				3779D4881D0C62CB00A3A57B /* CashPaymentViewController.swift */,
+				3779D48A1D0C62D700A3A57B /* CardPaymentViewController.swift */,
+			);
+			name = Checkout;
 			sourceTree = "<group>";
 		};
 		37C1EDA51D01CC340018B531 /* Extensions */ = {

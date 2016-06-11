@@ -60,4 +60,8 @@ class SettingsTableViewController: UITableViewController {
     //TODO: Check connection
     presentAlertWithMessage("check connection")
   }
+  
+  @IBAction func registerDevice() {
+    presentAlertWithMessage("Мобильный терминал успешно зарегистрирован!")
+  }
 }
