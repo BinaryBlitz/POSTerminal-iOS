@@ -1,11 +1,3 @@
-//
-//  EquipServRouter.swift
-//  POSTerminal
-//
-//  Created by Dan Shevlyuk on 01/06/2016.
-//  Copyright © 2016 BinaryBlitz. All rights reserved.
-//
-
 import Alamofire
 
 enum EquipServRouter {
