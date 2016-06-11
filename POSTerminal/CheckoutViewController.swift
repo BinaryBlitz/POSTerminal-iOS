@@ -24,7 +24,7 @@ class CheckoutViewController: UIViewController {
     
     paymentTypeSwitch.addTarget(self, action: #selector(changePaymentMethod(_:)), forControlEvents: .ValueChanged)
     
-    if let _ = Client.currentClient {
+    if let _ = ClientManager.currentClient {
       paymentTypeSwitch.selectedSegmentIndex = 0
     } else {
       paymentTypeSwitch.selectedSegmentIndex = 1

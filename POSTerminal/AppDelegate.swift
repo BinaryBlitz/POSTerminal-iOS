@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ServerManager.sharedManager.getInfoFor(clientIdentity) { (response) in
           switch response.result {
           case .Success(let client):
-            Client.currentClient = client
+            ClientManager.currentClient = client
             NSNotificationCenter.defaultCenter().postNotificationName(clientUpdatedNotification, object: nil)
           case .Failure(let error):
             print(error)

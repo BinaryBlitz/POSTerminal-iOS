@@ -64,14 +64,10 @@ class CheckViewController: UIViewController {
   }
   
   func reloadClientInfo() {
-    if let client = Client.currentClient {
+    if let client = ClientManager.currentClient {
       clientNameLabel.text = client.name
       clientBalanceLabel.hidden = false
       clientBalanceLabel.text = "Баланс: \(client.balance) р."
-    } else if let identity = Client.currentClientIdetity {
-      ServerManager.sharedManager.getInfoFor(identity) { (response) in
-        print(response)
-      }
     } else {
       clientNameLabel.text = "Новый клиент"
       clientBalanceLabel.hidden = true
@@ -111,7 +107,7 @@ class CheckViewController: UIViewController {
   @IBAction func clearButtonAction() {
     OrderManager.currentOrder.clearOrder()
     items = []
-    Client.currentClient = nil
+    ClientManager.currentClient = nil
     tableView.reloadData()
     reloadClientInfo()
   }

@@ -40,6 +40,7 @@
 		3779D4891D0C62CB00A3A57B /* CashPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D4881D0C62CB00A3A57B /* CashPaymentViewController.swift */; };
 		3779D48B1D0C62D700A3A57B /* CardPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D48A1D0C62D700A3A57B /* CardPaymentViewController.swift */; };
 		3779D48D1D0CC80600A3A57B /* CheckViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D48C1D0CC80600A3A57B /* CheckViewControllerDelegate.swift */; };
+		3779D48F1D0CC9C300A3A57B /* ClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D48E1D0CC9C300A3A57B /* ClientManager.swift */; };
 		37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */; };
 		37C1EDA41D01CA670018B531 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA31D01CA670018B531 /* Colors.swift */; };
 		37C1EDA71D01D20E0018B531 /* MenuCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */; };
@@ -99,6 +100,7 @@
 		3779D4881D0C62CB00A3A57B /* CashPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashPaymentViewController.swift; sourceTree = "<group>"; };
 		3779D48A1D0C62D700A3A57B /* CardPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPaymentViewController.swift; sourceTree = "<group>"; };
 		3779D48C1D0CC80600A3A57B /* CheckViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewControllerDelegate.swift; sourceTree = "<group>"; };
+		3779D48E1D0CC9C300A3A57B /* ClientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientManager.swift; sourceTree = "<group>"; };
 		37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientIdentity.swift; sourceTree = "<group>"; };
 		37C1EDA31D01CA670018B531 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewController.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				376D843F1CF91B08008A868A /* Client.swift */,
+				3779D48E1D0CC9C300A3A57B /* ClientManager.swift */,
 				376D84461CF91D75008A868A /* Check.swift */,
 				375C850B1D0507CB00F9F469 /* OrderManager.swift */,
 				375C850D1D050D8F00F9F469 /* OrderItem.swift */,
@@ -535,6 +538,7 @@
 				376D84401CF91B08008A868A /* Client.swift in Sources */,
 				376D84271CF878D3008A868A /* AppDelegate.swift in Sources */,
 				375C84FD1D04E22900F9F469 /* ServerManager+Checks.swift in Sources */,
+				3779D48F1D0CC9C300A3A57B /* ClientManager.swift in Sources */,
 				376D84491CF91DD0008A868A /* Product.swift in Sources */,
 				375C850E1D050D8F00F9F469 /* OrderItem.swift in Sources */,
 				37C58DDC1CFCFB8C00049095 /* ServerResponse.swift in Sources */,
