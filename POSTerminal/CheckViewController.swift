@@ -84,11 +84,11 @@ class CheckViewController: UIViewController {
       tableView.beginUpdates()
       tableView.insertRowsAtIndexPaths(indexPathsToUpdate, withRowAnimation: UITableViewRowAnimation.Fade)
       tableView.endUpdates()
+      scrollToBottom()
     } else {
       items = OrderManager.currentOrder.items
       tableView.reloadData()
     }
-    scrollToBottom()
     
     totalPriceLabel.text = "\(OrderManager.currentOrder.totalPrice.format()) р."
   }
