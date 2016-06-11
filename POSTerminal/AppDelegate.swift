@@ -3,6 +3,7 @@ import Fabric
 import Crashlytics
 import GCDWebServer
 import SwiftyJSON
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,8 +21,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     startLocalServer()
     
+    configureRealm()
+    
     return true
   }
+  
+  func configureRealm() {
+    let realmDefaultConfig = Realm.Configuration(
+      schemaVersion: 2,
+      migrationBlock: { migration, oldSchemaVersion in
+      }
+    )
+    Realm.Configuration.defaultConfiguration = realmDefaultConfig
+  }
+  
   
   func startLocalServer() {
     gcdWebServer = GCDWebServer()
