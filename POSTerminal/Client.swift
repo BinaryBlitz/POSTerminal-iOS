@@ -2,12 +2,16 @@ import Realm
 import RealmSwift
 import SwiftyJSON
 
+let clientUpdatedNotification = "clientUpdatedNotification"
+
 class Client: Object {
   dynamic var id: String = ""
   dynamic var name: String = ""
   dynamic var balance: Int = 0
   
   static var currentClient: Client?
+  static var currentClientIdetity: ClientIdentity?
+  
   
   override static func primaryKey() -> String? {
     return "id"

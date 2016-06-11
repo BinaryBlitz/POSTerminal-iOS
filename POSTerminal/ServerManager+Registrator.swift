@@ -40,7 +40,7 @@ extension ServerManager {
     return performRegistratorComandWith(EquipServRouter.OpenCashDrawer, completion: completion)
   }
   
-  func print(check: Check, completion: (RegistratorCompletion)? = nil) -> Request? {
+  func printCheck(check: Check, completion: (RegistratorCompletion)? = nil) -> Request? {
     return performRegistratorComandWith(EquipServRouter.PrintCheck(check: check), completion: completion)
   }
   

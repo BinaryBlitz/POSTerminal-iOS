@@ -8,7 +8,7 @@ class ServerManager {
   
   init() {
     let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-    configuration.protocolClasses!.insert(RedSocketURLProtocol.self, atIndex: 0)
+//    configuration.protocolClasses!.insert(RedSocketURLProtocol.self, atIndex: 0)
     self.manager = Alamofire.Manager(configuration: configuration)
   }
   
@@ -31,6 +31,6 @@ class ServerManager {
     
     let headers = ["Authorization": "Basic \(base64Credentials)"]
     
-    return manager.request(router.method, router.path, parameters: router.parameters, headers: headers)
+    return manager.request(router.method, router.path, parameters: router.parameters, encoding: router.encoding, headers: headers)
   }
 }

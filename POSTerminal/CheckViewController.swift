@@ -51,13 +51,7 @@ class CheckViewController: UIViewController {
     clientNameLabel.textColor = UIColor.h4Color()
     clientBalanceLabel.textColor = UIColor.h5Color()
     
-    if let client = Client.currentClient {
-      clientNameLabel.text = client.name
-      clientBalanceLabel.text = "Баланс: \(client.balance) р."
-    } else {
-      clientNameLabel.text = "Новый клиент"
-      clientBalanceLabel.hidden = true
-    }
+    reloadClientInfo()
     
     clearOrderButton.tintColor = UIColor.h3Color()
     
@@ -66,10 +60,26 @@ class CheckViewController: UIViewController {
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadData), name: newItemNotification, object: nil)
     reloadData()
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadClientInfo), name: clientUpdatedNotification, object: nil)
   }
   
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  func reloadClientInfo() {
+    if let client = Client.currentClient {
+      clientNameLabel.text = client.name
+      clientBalanceLabel.hidden = false
+      clientBalanceLabel.text = "Баланс: \(client.balance) р."
+    } else if let identity = Client.currentClientIdetity {
+      ServerManager.sharedManager.getInfoFor(identity) { (response) in
+        print(response)
+      }
+    } else {
+      clientNameLabel.text = "Новый клиент"
+      clientBalanceLabel.hidden = true
+    }
   }
   
   func reloadData() {
@@ -107,6 +117,7 @@ class CheckViewController: UIViewController {
     items = []
     Client.currentClient = nil
     tableView.reloadData()
+    reloadClientInfo()
   }
   
   @IBAction func checkoutButtonAction() {

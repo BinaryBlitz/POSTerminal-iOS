@@ -1,18 +1,60 @@
 import UIKit
 import Fabric
 import Crashlytics
+import GCDWebServer
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
+  
+  var gcdWebServer: GCDWebServer?
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     Fabric.with([Crashlytics.self])
     UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-    Settings.loadFormUserDefaults()
+//    Settings.loadFormUserDefaults()
+    Settings.sharedInstance.wpBase = Host(baseURL: "http://arma.ngslab.ru:28081/WPServ", login: "I.Novikov", password: "123456789")
+    Settings.sharedInstance.equipServ = Host(baseURL: "http://arma.ngslab.ru:28081/EquipServ", login: "I.Novikov", password: "123456789")
+    
+    startLocalServer()
     
     return true
+  }
+  
+  func startLocalServer() {
+    gcdWebServer = GCDWebServer()
+    
+    if let server = gcdWebServer {
+      server.addHandlerForMethod("GET", path: "/", requestClass: GCDWebServerRequest.self) { (request) -> GCDWebServerResponse in
+        return GCDWebServerResponse(redirect: NSURL(string: "http://yesno.wtf"), permanent: false)
+      }
+      
+      server.addHandlerForMethod("POST", path: "/codes", requestClass: GCDWebServerDataRequest.self) { (request) -> GCDWebServerResponse! in
+        let req = request as! GCDWebServerDataRequest
+        let json = JSON(req.jsonObject)
+        guard let type = json["type"].string, code = json["code"].string,
+              clientIdentity = ClientIdentity(code: code, type: type) else {
+          return GCDWebServerResponse(statusCode: 400)
+        }
+        
+        ServerManager.sharedManager.getInfoFor(clientIdentity) { (response) in
+          switch response.result {
+          case .Success(let client):
+            Client.currentClient = client
+            NSNotificationCenter.defaultCenter().postNotificationName(clientUpdatedNotification, object: nil)
+          case .Failure(let error):
+            print(error)
+          }
+        }
+        
+        return GCDWebServerResponse(statusCode: 200)
+      }
+      
+      server.startWithPort(8080, bonjourName: nil)
+      print("Visit \(server.serverURL) in your web browser")
+    }
   }
 
   func applicationWillResignActive(application: UIApplication) {
