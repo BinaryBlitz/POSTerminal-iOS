@@ -31,6 +31,13 @@ class CheckoutViewController: UIViewController {
     paymentTypeSwitch.setTitleTextAttributes(textAttributes, forState: .Normal)
     
     paymentTypeSwitch.addTarget(self, action: #selector(changePaymentMethod(_:)), forControlEvents: .ValueChanged)
+    
+    if let _ = Client.currentClient {
+      paymentTypeSwitch.selectedSegmentIndex = 0
+    } else {
+      paymentTypeSwitch.selectedSegmentIndex = 1
+      changePaymentMethod(paymentTypeSwitch)
+    }
   }
   
   //MARK: - Actions
