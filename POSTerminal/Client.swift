@@ -2,15 +2,11 @@ import Realm
 import RealmSwift
 import SwiftyJSON
 
-class Client: Object {
-  dynamic var id: String = ""
-  dynamic var code: String = ""
-  dynamic var name: String = ""
-  dynamic var balance: Int = 0
-  
-  override static func primaryKey() -> String? {
-    return "id"
-  }
+struct Client {
+  let id: String
+  let code: String
+  let name: String
+  var balance: Int = 0
 }
 
 extension Client: ServerObject {
@@ -21,13 +17,7 @@ extension Client: ServerObject {
       return nil
     }
     
-    return {
-      $0.id = id
-      $0.code = code
-      $0.name = name
-      $0.balance = balance
-      return $0
-    }(Client())
+    return Client(id: id, code: code, name: name, balance: balance)
   }
   
   var json: JSON? {
