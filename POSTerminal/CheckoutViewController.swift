@@ -18,6 +18,7 @@ class CheckoutViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    view.backgroundColor = UIColor.whiteColor()
     priceTitleLabel.textColor = UIColor.h5Color()
     priceTitleLabel.font = UIFont.boldSystemFontOfSize(18)
     priceLabel.textColor = UIColor.h4Color()

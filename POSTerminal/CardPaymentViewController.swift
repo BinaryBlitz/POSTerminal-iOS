@@ -9,14 +9,22 @@
 import UIKit
 
 class CardPaymentViewController: UIViewController {
+  
+  @IBOutlet weak var payButton: UIButton!
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    view.backgroundColor = UIColor.clearColor()
+    
+    payButton.layer.cornerRadius = 10
+    payButton.backgroundColor = UIColor.elementsAndH1Color()
+    payButton.tintColor = UIColor.whiteColor()
   }
   
   //MARK: - Actions
   
-  func payButtonAction() {
+  @IBAction func payButtonAction() {
     OrderManager.currentOrder.clearOrder()
     Client.currentClient = nil
     NSNotificationCenter.defaultCenter().postNotificationName(newItemNotification, object: nil)
