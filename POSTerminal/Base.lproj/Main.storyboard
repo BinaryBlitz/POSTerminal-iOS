@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Base View Controller-->
@@ -333,10 +334,10 @@
             </objects>
             <point key="canvasLocation" x="1141" y="1174.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Checkout View Controller-->
         <scene sceneID="9QD-XP-117">
             <objects>
-                <viewController storyboardIdentifier="Payment" id="jN0-Ba-rda" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Payment" id="jN0-Ba-rda" customClass="CheckoutViewController" customModule="POSTerminal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qjm-8N-djf"/>
                         <viewControllerLayoutGuide type="bottom" id="drR-eg-z1g"/>
@@ -345,19 +346,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kek lol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifk-Wq-88N">
-                                <rect key="frame" x="276" y="289.5" width="48.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qVm-kM-BY1">
+                                <rect key="frame" x="216" y="72" width="168" height="27"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="К ОПЛАТЕ:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tw1-3y-nrK">
+                                        <rect key="frame" x="0.0" y="7" width="88" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1500 р." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrU-dI-oqZ">
+                                        <rect key="frame" x="93" y="1" width="75" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="6rz-vt-L5U"/>
+                                </constraints>
+                            </stackView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghR-5j-mcW">
+                                <rect key="frame" x="20" y="252" width="560" height="248"/>
+                                <connections>
+                                    <segue destination="kLB-np-sqw" kind="embed" id="DET-UP-p8w"/>
+                                </connections>
+                            </containerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="v6y-WL-FEf">
+                                <rect key="frame" x="125" y="141" width="350" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="gNd-ia-Lc0"/>
+                                    <constraint firstAttribute="width" constant="350" id="sq0-kd-i7q"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Со счета"/>
+                                    <segment title="Наличные"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ifk-Wq-88N" firstAttribute="centerY" secondItem="3A8-ub-bZb" secondAttribute="centerY" id="0Lr-mH-tH7"/>
-                            <constraint firstItem="ifk-Wq-88N" firstAttribute="centerX" secondItem="3A8-ub-bZb" secondAttribute="centerX" id="jVN-cQ-kYO"/>
+                            <constraint firstItem="qVm-kM-BY1" firstAttribute="centerX" secondItem="3A8-ub-bZb" secondAttribute="centerX" id="0wc-fQ-fsh"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="ghR-5j-mcW" secondAttribute="leading" id="QEA-aU-Jdf"/>
+                            <constraint firstItem="v6y-WL-FEf" firstAttribute="top" secondItem="qVm-kM-BY1" secondAttribute="bottom" constant="42" id="SAq-Hb-pAx"/>
+                            <constraint firstItem="drR-eg-z1g" firstAttribute="top" secondItem="ghR-5j-mcW" secondAttribute="bottom" constant="100" id="XWG-2g-Zne"/>
+                            <constraint firstItem="ghR-5j-mcW" firstAttribute="top" secondItem="v6y-WL-FEf" secondAttribute="bottom" constant="64" id="aj8-3Z-oGL"/>
+                            <constraint firstItem="v6y-WL-FEf" firstAttribute="centerX" secondItem="qVm-kM-BY1" secondAttribute="centerX" id="ene-s4-B8m"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ghR-5j-mcW" secondAttribute="trailing" id="rRI-1j-h9U"/>
+                            <constraint firstItem="qVm-kM-BY1" firstAttribute="top" secondItem="Qjm-8N-djf" secondAttribute="bottom" constant="52" id="t13-xq-bJC"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="paymentTypeSwitch" destination="v6y-WL-FEf" id="8r6-kM-WIU"/>
+                        <outlet property="priceLabel" destination="TrU-dI-oqZ" id="ywL-4x-Yej"/>
+                        <outlet property="priceTitleLabel" destination="tw1-3y-nrK" id="jo3-qp-OsP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVh-EG-CsT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -396,6 +439,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="suj-cc-NaR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1174.5" y="-639"/>
+        </scene>
+        <!--Card Payment View Controller-->
+        <scene sceneID="Ua5-4k-7Ie">
+            <objects>
+                <viewController storyboardIdentifier="CardPayment" id="kLB-np-sqw" customClass="CardPaymentViewController" customModule="POSTerminal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kgp-Qa-Wjs">
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="248"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ki7-SG-xWj">
+                                <rect key="frame" x="178" y="86" width="205" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="205" id="7Dw-02-99F"/>
+                                    <constraint firstAttribute="height" constant="75" id="KLi-pn-gy1"/>
+                                </constraints>
+                                <state key="normal" title="Оплатить"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ki7-SG-xWj" firstAttribute="centerY" secondItem="kgp-Qa-Wjs" secondAttribute="centerY" id="57j-Wx-Jyr"/>
+                            <constraint firstItem="ki7-SG-xWj" firstAttribute="centerX" secondItem="kgp-Qa-Wjs" secondAttribute="centerX" id="CWN-PC-5oZ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LTb-Vz-0wu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-469" y="1753"/>
+        </scene>
+        <!--Cash Payment View Controller-->
+        <scene sceneID="Q5V-rv-pDG">
+            <objects>
+                <viewController storyboardIdentifier="CashPayment" id="3aR-Vr-Rzh" customClass="CashPaymentViewController" customModule="POSTerminal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NBt-WC-Gn7"/>
+                        <viewControllerLayoutGuide type="bottom" id="b3l-xD-EIz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4AN-mE-FtE">
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="240"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="560" height="240"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d8k-S6-OZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1062" y="1753"/>
         </scene>
     </scenes>
     <resources>

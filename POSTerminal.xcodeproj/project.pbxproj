@@ -36,6 +36,9 @@
 		376D844B1CF9207B008A868A /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D844A1CF9207B008A868A /* Order.swift */; };
 		3779D4821D096C7C00A3A57B /* Double+StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D4811D096C7C00A3A57B /* Double+StringFormatter.swift */; };
 		3779D4851D0C502800A3A57B /* MenuNavigationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D4841D0C502800A3A57B /* MenuNavigationProvider.swift */; };
+		3779D4871D0C523900A3A57B /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D4861D0C523900A3A57B /* CheckoutViewController.swift */; };
+		3779D4891D0C62CB00A3A57B /* CashPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D4881D0C62CB00A3A57B /* CashPaymentViewController.swift */; };
+		3779D48B1D0C62D700A3A57B /* CardPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D48A1D0C62D700A3A57B /* CardPaymentViewController.swift */; };
 		37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */; };
 		37C1EDA41D01CA670018B531 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA31D01CA670018B531 /* Colors.swift */; };
 		37C1EDA71D01D20E0018B531 /* MenuCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */; };
@@ -91,6 +94,9 @@
 		3779D4811D096C7C00A3A57B /* Double+StringFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+StringFormatter.swift"; sourceTree = "<group>"; };
 		3779D4831D096FEC00A3A57B /* POSTerminal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = POSTerminal.entitlements; sourceTree = "<group>"; };
 		3779D4841D0C502800A3A57B /* MenuNavigationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNavigationProvider.swift; sourceTree = "<group>"; };
+		3779D4861D0C523900A3A57B /* CheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		3779D4881D0C62CB00A3A57B /* CashPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashPaymentViewController.swift; sourceTree = "<group>"; };
+		3779D48A1D0C62D700A3A57B /* CardPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPaymentViewController.swift; sourceTree = "<group>"; };
 		37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientIdentity.swift; sourceTree = "<group>"; };
 		37C1EDA31D01CA670018B531 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +250,9 @@
 				3752A12D1D01AE6E00194663 /* BaseViewController.swift */,
 				37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */,
 				37C1EDA81D01D2280018B531 /* CheckViewController.swift */,
+				3779D4861D0C523900A3A57B /* CheckoutViewController.swift */,
+				3779D4881D0C62CB00A3A57B /* CashPaymentViewController.swift */,
+				3779D48A1D0C62D700A3A57B /* CardPaymentViewController.swift */,
 				375C84F91D04CFFF00F9F469 /* Settings */,
 			);
 			name = Controllers;
@@ -491,6 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37C1EDA91D01D2280018B531 /* CheckViewController.swift in Sources */,
+				3779D4871D0C523900A3A57B /* CheckoutViewController.swift in Sources */,
 				375C84FF1D04E39500F9F469 /* ServerManager+ClientInfo.swift in Sources */,
 				376D843E1CF9194C008A868A /* ServerManager.swift in Sources */,
 				37C58DD31CFC6F1B00049095 /* RedSocketURLProtocol.m in Sources */,
@@ -501,8 +511,10 @@
 				37C58DE01CFCFC9400049095 /* ServerManager+Menu.swift in Sources */,
 				375C84EA1D045A4300F9F469 /* CategoryCollectionViewCell.swift in Sources */,
 				3752A12E1D01AE6E00194663 /* BaseViewController.swift in Sources */,
+				3779D48B1D0C62D700A3A57B /* CardPaymentViewController.swift in Sources */,
 				37C58DE21CFE315400049095 /* Settings.swift in Sources */,
 				37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */,
+				3779D4891D0C62CB00A3A57B /* CashPaymentViewController.swift in Sources */,
 				37C58DE71CFE486800049095 /* ServerRouter.swift in Sources */,
 				376D84471CF91D75008A868A /* Check.swift in Sources */,
 				37C1EDAD1D01EEDD0018B531 /* SettingsTableViewController.swift in Sources */,
