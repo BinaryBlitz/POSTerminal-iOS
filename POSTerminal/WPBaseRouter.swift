@@ -40,6 +40,15 @@ extension WPBaseRouter: ServerRouter {
     }
   }
   
+  var encoding: Alamofire.ParameterEncoding {
+    switch self {
+    case .Create(_), .GetInfo(_):
+      return .JSON
+    default:
+      return .URL
+    }
+  }
+  
   var parameters: [String: AnyObject]? {
     switch self {
     case .Menu:

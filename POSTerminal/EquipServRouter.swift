@@ -29,6 +29,10 @@ extension EquipServRouter: ServerRouter {
     return .POST
   }
   
+  var encoding: Alamofire.ParameterEncoding {
+    return .JSON
+  }
+  
   var parameters: [String: AnyObject]? {
     let action: String
     var params: [String: AnyObject]?
