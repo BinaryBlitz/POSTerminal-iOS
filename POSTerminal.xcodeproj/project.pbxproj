@@ -39,6 +39,7 @@
 		3779D4871D0C523900A3A57B /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D4861D0C523900A3A57B /* CheckoutViewController.swift */; };
 		3779D4891D0C62CB00A3A57B /* CashPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D4881D0C62CB00A3A57B /* CashPaymentViewController.swift */; };
 		3779D48B1D0C62D700A3A57B /* CardPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D48A1D0C62D700A3A57B /* CardPaymentViewController.swift */; };
+		3779D48D1D0CC80600A3A57B /* CheckViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D48C1D0CC80600A3A57B /* CheckViewControllerDelegate.swift */; };
 		37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */; };
 		37C1EDA41D01CA670018B531 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA31D01CA670018B531 /* Colors.swift */; };
 		37C1EDA71D01D20E0018B531 /* MenuCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */; };
@@ -97,6 +98,7 @@
 		3779D4861D0C523900A3A57B /* CheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		3779D4881D0C62CB00A3A57B /* CashPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashPaymentViewController.swift; sourceTree = "<group>"; };
 		3779D48A1D0C62D700A3A57B /* CardPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPaymentViewController.swift; sourceTree = "<group>"; };
+		3779D48C1D0CC80600A3A57B /* CheckViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewControllerDelegate.swift; sourceTree = "<group>"; };
 		37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientIdentity.swift; sourceTree = "<group>"; };
 		37C1EDA31D01CA670018B531 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewController.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				375C84F11D04627300F9F469 /* ProductConfigurable.swift */,
 				375C84F31D04C5BB00F9F469 /* MenuCollectionDelegate.swift */,
 				3779D4841D0C502800A3A57B /* MenuNavigationProvider.swift */,
+				3779D48C1D0CC80600A3A57B /* CheckViewControllerDelegate.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				37C1EDAB1D01ED0D0018B531 /* UIViewController+Alert.swift in Sources */,
 				37C58DDE1CFCFB9400049095 /* ServerError.swift in Sources */,
 				376D84421CF91CA2008A868A /* ServerObject.swift in Sources */,
+				3779D48D1D0CC80600A3A57B /* CheckViewControllerDelegate.swift in Sources */,
 				375C84F81D04CFF800F9F469 /* EquipmentManagementTableViewController.swift in Sources */,
 				376D84401CF91B08008A868A /* Client.swift in Sources */,
 				376D84271CF878D3008A868A /* AppDelegate.swift in Sources */,

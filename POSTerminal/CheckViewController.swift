@@ -1,9 +1,5 @@
 import UIKit
 
-protocol CheckViewControllerDelegate: class {
-  func didTouchCheckoutButton()
-}
-
 class CheckViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
