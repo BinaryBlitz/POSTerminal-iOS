@@ -41,6 +41,7 @@
 		3779D48B1D0C62D700A3A57B /* CardPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D48A1D0C62D700A3A57B /* CardPaymentViewController.swift */; };
 		3779D48D1D0CC80600A3A57B /* CheckViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D48C1D0CC80600A3A57B /* CheckViewControllerDelegate.swift */; };
 		3779D48F1D0CC9C300A3A57B /* ClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D48E1D0CC9C300A3A57B /* ClientManager.swift */; };
+		3779D4921D0CD52F00A3A57B /* ServerManager+MobileDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D4911D0CD52F00A3A57B /* ServerManager+MobileDevice.swift */; };
 		37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */; };
 		37C1EDA41D01CA670018B531 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA31D01CA670018B531 /* Colors.swift */; };
 		37C1EDA71D01D20E0018B531 /* MenuCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */; };
@@ -101,6 +102,7 @@
 		3779D48A1D0C62D700A3A57B /* CardPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPaymentViewController.swift; sourceTree = "<group>"; };
 		3779D48C1D0CC80600A3A57B /* CheckViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewControllerDelegate.swift; sourceTree = "<group>"; };
 		3779D48E1D0CC9C300A3A57B /* ClientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientManager.swift; sourceTree = "<group>"; };
+		3779D4911D0CD52F00A3A57B /* ServerManager+MobileDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ServerManager+MobileDevice.swift"; sourceTree = "<group>"; };
 		37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientIdentity.swift; sourceTree = "<group>"; };
 		37C1EDA31D01CA670018B531 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewController.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				37C58DDF1CFCFC9400049095 /* ServerManager+Menu.swift */,
 				375C84FC1D04E22900F9F469 /* ServerManager+Checks.swift */,
 				375C84FE1D04E39500F9F469 /* ServerManager+ClientInfo.swift */,
+				3779D4911D0CD52F00A3A57B /* ServerManager+MobileDevice.swift */,
 				375C84FA1D04DF4600F9F469 /* ServerManager+Registrator.swift */,
 				37C58DDD1CFCFB9400049095 /* ServerError.swift */,
 				37C58DDB1CFCFB8C00049095 /* ServerResponse.swift */,
@@ -529,6 +532,7 @@
 				37C58DE21CFE315400049095 /* Settings.swift in Sources */,
 				37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */,
 				3779D4891D0C62CB00A3A57B /* CashPaymentViewController.swift in Sources */,
+				3779D4921D0CD52F00A3A57B /* ServerManager+MobileDevice.swift in Sources */,
 				37C58DE71CFE486800049095 /* ServerRouter.swift in Sources */,
 				376D84471CF91D75008A868A /* Check.swift in Sources */,
 				37C1EDAD1D01EEDD0018B531 /* SettingsTableViewController.swift in Sources */,

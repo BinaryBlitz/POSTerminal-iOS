@@ -62,6 +62,18 @@ class SettingsTableViewController: UITableViewController {
   }
   
   @IBAction func registerDevice() {
-    presentAlertWithMessage("Мобильный терминал успешно зарегистрирован!")
+    if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate,
+        server = appDelegate.gcdWebServer {
+      server.serverURL
+      ServerManager.sharedManager.registerDeviceWithCallbackURL(server.serverURL.absoluteString) { (response) in
+        switch response.result {
+        case .Success(_):
+          self.presentAlertWithMessage("Мобильный терминал успешно зарегистрирован!")
+        case .Failure(let error):
+          print(error)
+          self.presentAlertWithMessage("Не удалось зарегистрировать мобильный терминал")
+        }
+      }
+    }
   }
 }

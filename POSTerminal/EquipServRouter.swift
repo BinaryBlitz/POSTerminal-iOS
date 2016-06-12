@@ -8,13 +8,19 @@ enum EquipServRouter {
   case PrintXReport
   case OpenCashDrawer
   case PrintCheck(check: Check)
+  case RegisterDevice(url: String)
 }
 
 extension EquipServRouter: ServerRouter {
   
   var path: String {
     let baseURL = Settings.sharedInstance.equipServ?.baseURL ?? ""
-    return "\(baseURL)/hs/accessories/registers"
+    switch self {
+    case .RegisterDevice(_):
+      return "\(baseURL)/hs/accessories/mobile-device"
+    default:
+      return "\(baseURL)/hs/accessories/registers"
+    }
   }
   
   var login: String? {
@@ -55,6 +61,8 @@ extension EquipServRouter: ServerRouter {
     case .PrintCheck(let check):
       action = "PrintCheck"
 //      params =  [check.dict]
+    case .RegisterDevice(let url):
+      return ["notify": url]
     }
     
     if let params = params {
