@@ -19,4 +19,28 @@ class EquipmentManagementTableViewController: UITableViewController {
   @IBAction func updateMenu() {
     NSNotificationCenter.defaultCenter().postNotificationName(updateMenuNotification, object: nil)
   }
+  
+  @IBAction func openDay() {
+    ServerManager.sharedManager.openDay { (response) in
+      switch response.result {
+      case .Success(_):
+        self.presentAlertWithMessage("Кассовая смена открыта")
+      case .Failure(let error):
+        print(error)
+        self.presentAlertWithMessage("Ошибка")
+      }
+    }
+  }
+  
+  @IBAction func closeDay() {
+    
+  }
+  
+  @IBAction func printXReport() {
+    
+  }
+  
+  @IBAction func encash() {
+    
+  }
 }
