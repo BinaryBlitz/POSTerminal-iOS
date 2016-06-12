@@ -17,4 +17,10 @@ class OrderItem {
   func inrementQuantity() {
     quantity += 1
   }
+  
+  func decrementQuantity() {
+    if quantity > 1 {
+      quantity -= 1
+    }
+  }
 }

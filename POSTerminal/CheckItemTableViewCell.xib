@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="384" height="94"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="384" height="94"/>
+                <rect key="frame" x="0.0" y="0.0" width="384" height="93.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JgV-ZI-wL8">
@@ -44,13 +44,70 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1w-C3-7jx">
+                        <rect key="frame" x="190" y="0.0" width="194" height="93.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPP-Eu-SIy">
+                                <rect key="frame" x="0.0" y="0.0" width="97" height="93.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4z-dv-Bm5">
+                                        <rect key="frame" x="0.0" y="0.0" width="97" height="93"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                        <state key="normal" title="-">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="minusButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="30v-OU-COc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Q4z-dv-Bm5" secondAttribute="trailing" id="AA4-Ap-mJD"/>
+                                    <constraint firstItem="Q4z-dv-Bm5" firstAttribute="leading" secondItem="BPP-Eu-SIy" secondAttribute="leading" id="J4R-8V-VSq"/>
+                                    <constraint firstAttribute="bottom" secondItem="Q4z-dv-Bm5" secondAttribute="bottom" id="gnW-0v-eva"/>
+                                    <constraint firstAttribute="width" constant="97" id="iTc-HA-dxL"/>
+                                    <constraint firstItem="Q4z-dv-Bm5" firstAttribute="top" secondItem="BPP-Eu-SIy" secondAttribute="top" id="vxq-or-b1b"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LpY-96-pvM">
+                                <rect key="frame" x="97" y="0.0" width="97" height="93.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hb6-9H-MjK">
+                                        <rect key="frame" x="0.0" y="0.0" width="97" height="93"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                        <state key="normal" title="+">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="plusButtonAction" destination="KGk-i7-Jjw" eventType="touchUpInside" id="d5o-VO-MG1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="hb6-9H-MjK" secondAttribute="bottom" id="Ap9-Sh-Iwa"/>
+                                    <constraint firstItem="hb6-9H-MjK" firstAttribute="top" secondItem="LpY-96-pvM" secondAttribute="top" id="Ts1-8K-Mi3"/>
+                                    <constraint firstItem="hb6-9H-MjK" firstAttribute="leading" secondItem="LpY-96-pvM" secondAttribute="leading" id="diT-Im-ubZ"/>
+                                    <constraint firstAttribute="width" constant="97" id="lhM-OJ-nJ3"/>
+                                    <constraint firstAttribute="trailing" secondItem="hb6-9H-MjK" secondAttribute="trailing" id="yWu-n8-SSs"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="194" id="inG-tI-J3a"/>
+                        </constraints>
+                    </stackView>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="ael-cQ-CUJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="32q-Og-26j"/>
                     <constraint firstItem="ael-cQ-CUJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GrK-he-Qcc" secondAttribute="trailing" constant="15" id="72A-6I-8IP"/>
+                    <constraint firstAttribute="trailing" secondItem="Q1w-C3-7jx" secondAttribute="trailing" id="B1U-O7-0Rf"/>
+                    <constraint firstAttribute="bottom" secondItem="Q1w-C3-7jx" secondAttribute="bottom" id="Cxr-pp-zx8"/>
                     <constraint firstAttribute="trailing" secondItem="ael-cQ-CUJ" secondAttribute="trailing" constant="15" id="FAm-UV-KKm"/>
                     <constraint firstItem="GrK-he-Qcc" firstAttribute="leading" secondItem="eMp-kf-IaP" secondAttribute="trailing" constant="20" id="GmL-KH-qBr"/>
+                    <constraint firstItem="Q1w-C3-7jx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bJJ-mj-tHe"/>
                     <constraint firstItem="JgV-ZI-wL8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dkq-Vw-XUD"/>
                     <constraint firstItem="GrK-he-Qcc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="g9A-m3-5UB"/>
                     <constraint firstItem="JgV-ZI-wL8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="nKS-4N-mMC"/>
@@ -58,7 +115,10 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="actionsStackView" destination="Q1w-C3-7jx" id="rKX-cG-d8w"/>
+                <outlet property="minusActionView" destination="BPP-Eu-SIy" id="mvk-zI-xbj"/>
                 <outlet property="nameLabel" destination="GrK-he-Qcc" id="M9x-B7-CwG"/>
+                <outlet property="plusActionView" destination="LpY-96-pvM" id="R3O-Fo-dRr"/>
                 <outlet property="priceLabel" destination="ael-cQ-CUJ" id="SBa-tl-NFq"/>
                 <outlet property="quantityLabel" destination="eMp-kf-IaP" id="HfL-Eb-cIr"/>
                 <outlet property="quantityView" destination="JgV-ZI-wL8" id="nG0-tO-cia"/>

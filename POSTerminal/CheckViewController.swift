@@ -148,6 +148,7 @@ extension CheckViewController: UITableViewDataSource {
     let orderItem = items[indexPath.row]
     let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) as! CheckItemTableViewCell
     cell.configureWith(orderItem)
+    cell.delegate = self
     
     return cell
   }
@@ -166,5 +167,21 @@ extension CheckViewController: UITableViewDelegate {
     }
     
     return [deleteAction]
+  }
+}
+
+extension CheckViewController: CheckItemCellDelegate {
+  func didTouchPlusButtonIn(cell: CheckItemTableViewCell) {
+    let indexPath = tableView.indexPathForCell(cell)!
+    let item = items[indexPath.row]
+    item.inrementQuantity()
+    tableView.reloadData()
+  }
+  
+  func didTouchMinusButtonIn(cell: CheckItemTableViewCell) {
+    let indexPath = tableView.indexPathForCell(cell)!
+    let item = items[indexPath.row]
+    item.decrementQuantity()
+    tableView.reloadData()
   }
 }

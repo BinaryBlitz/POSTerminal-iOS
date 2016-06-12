@@ -1,14 +1,42 @@
 import UIKit
 
+protocol CheckItemCellDelegate: class {
+  func didTouchPlusButtonIn(cell: CheckItemTableViewCell)
+  func didTouchMinusButtonIn(cell: CheckItemTableViewCell)
+}
+
 class CheckItemTableViewCell: UITableViewCell {
   
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var priceLabel: UILabel!
   @IBOutlet weak var quantityLabel: UILabel!
   @IBOutlet weak var quantityView: UIView!
+  
+  @IBOutlet weak var actionsStackView: UIStackView!
+  @IBOutlet weak var minusActionView: UIView!
+  @IBOutlet weak var plusActionView: UIView!
+  
+  enum CheckItemState {
+    case Normal
+    case Editing
+  }
+  
+  var state: CheckItemState = .Normal {
+    didSet {
+      updateState(state)
+    }
+  }
+  
+  weak var delegate: CheckItemCellDelegate?
 
   override func awakeFromNib() {
     super.awakeFromNib()
+    
+    minusActionView.backgroundColor = UIColor.shadowColor()
+    plusActionView.backgroundColor = UIColor.lightGrayColor()
+    
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeState))
+    contentView.addGestureRecognizer(tapGesture)
   }
   
   func configureWith(item: OrderItem) {
@@ -45,4 +73,28 @@ class CheckItemTableViewCell: UITableViewCell {
     quantityView.layer.shadowPath = shadowPath.CGPath
   }
   
+  func changeState() {
+    if state == .Normal {
+      state = .Editing
+    } else {
+      state = .Normal
+    }
+  }
+  
+  private func updateState(state: CheckItemState) {
+    switch state {
+    case .Normal:
+      actionsStackView.hidden = true
+    case .Editing:
+      actionsStackView.hidden = false
+    }
+  }
+  
+  @IBAction func plusButtonAction() {
+    delegate?.didTouchPlusButtonIn(self)
+  }
+  
+  @IBAction func minusButtonAction() {
+    delegate?.didTouchMinusButtonIn(self)
+  }
 }
