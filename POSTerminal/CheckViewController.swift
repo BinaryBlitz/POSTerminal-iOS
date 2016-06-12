@@ -158,4 +158,13 @@ extension CheckViewController: UITableViewDelegate {
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     return 75
   }
+  
+  func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    let deleteAction = UITableViewRowAction(style: .Default, title: "Удалить") { (action, indexPath) in
+      self.items.removeAtIndex(indexPath.row)
+      self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
+    }
+    
+    return [deleteAction]
+  }
 }
