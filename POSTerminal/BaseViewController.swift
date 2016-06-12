@@ -13,11 +13,15 @@ class BaseViewController: UIViewController {
   
   @IBOutlet weak var menuPathStackView:  UIStackView!
   
+  @IBOutlet weak var paymentHeaderView: UIView!
+  
   private var menuPath = [String]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     RedSocketManager.sharedInstance().setDelegate(self)
+    
+    paymentHeaderView.backgroundColor = UIColor.elementsAndH1Color()
     
     backButton.enabled = false
     toolBarView.backgroundColor = UIColor.elementsAndH1Color()
@@ -175,6 +179,17 @@ class BaseViewController: UIViewController {
   
   //MARK: - Actions 
   
+  @IBAction func paymentBackButton() {
+    UIView.animateWithDuration(0.3, animations: { 
+        self.paymentHeaderView.alpha = 0
+      }) { (finished) in
+        self.paymentHeaderView.hidden = true
+    }
+    
+    backButtonAction()
+    NSNotificationCenter.defaultCenter().postNotificationName(CheckoutViewController.Notifications.PaymentFinished, object: nil)
+  }
+  
   @IBAction func backButtonAction() {
     menuNavigationController?.popViewControllerAnimated(false)
     checkBackButtonState()
@@ -250,6 +265,12 @@ extension BaseViewController: MenuNavigationProvider {
 extension BaseViewController: CheckViewControllerDelegate {
   
   func didTouchCheckoutButton() {
+    paymentHeaderView.alpha = 0
+    paymentHeaderView.hidden = false
+    UIView.animateWithDuration(0.3) { 
+      self.paymentHeaderView.alpha = 1
+    }
+    
     homeButtonAction()
     let checkoutViewController = storyboard!.instantiateViewControllerWithIdentifier("Payment")
     menuNavigationController?.pushViewController(checkoutViewController, animated: true)
