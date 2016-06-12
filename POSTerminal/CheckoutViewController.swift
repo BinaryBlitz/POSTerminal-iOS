@@ -2,6 +2,10 @@ import UIKit
 
 class CheckoutViewController: UIViewController {
   
+  enum Notifications {
+    static let PaymentFinished = "PaymentFinished"
+  }
+  
   @IBOutlet weak var priceTitleLabel: UILabel!
   @IBOutlet weak var priceLabel: UILabel!
   

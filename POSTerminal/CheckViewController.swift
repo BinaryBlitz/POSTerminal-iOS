@@ -57,10 +57,16 @@ class CheckViewController: UIViewController {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadData), name: newItemNotification, object: nil)
     reloadData()
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadClientInfo), name: clientUpdatedNotification, object: nil)
+    
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(enableUserInteraction), name: CheckoutViewController.Notifications.PaymentFinished, object: nil)
   }
   
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  func enableUserInteraction() {
+    view.userInteractionEnabled = true
   }
   
   func reloadClientInfo() {
@@ -113,6 +119,7 @@ class CheckViewController: UIViewController {
   }
   
   @IBAction func checkoutButtonAction() {
+    view.userInteractionEnabled = false
     delegate?.didTouchCheckoutButton()
   }
 }
