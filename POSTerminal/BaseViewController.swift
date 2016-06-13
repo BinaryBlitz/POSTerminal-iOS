@@ -3,6 +3,9 @@ import RealmSwift
 
 let updateMenuNotification = "updateMenuNotification"
 
+let endCheckoutNotification = "endCheckoutNotification"
+let startCheckoutNotification = "startCheckoutNotification"
+
 
 class BaseViewController: UIViewController {
   
@@ -28,10 +31,40 @@ class BaseViewController: UIViewController {
     refresh()
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refresh), name: updateMenuNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(startCheckout), name: startCheckoutNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(endCheckout), name: endCheckoutNotification, object: nil)
   }
   
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  //MARK: - Checkout
+  
+  func startCheckout() {
+    let paymentHeaderFrame = paymentHeaderView.frame
+    paymentHeaderView.alpha = 0
+    paymentHeaderView.frame = CGRect(
+        origin: CGPoint(x: -(paymentHeaderFrame.size.width), y: paymentHeaderFrame.origin.y),
+        size: paymentHeaderFrame.size
+    )
+    paymentHeaderView.hidden = false
+    UIView.animateWithDuration(0.3) {
+      self.paymentHeaderView.frame = paymentHeaderFrame
+      self.paymentHeaderView.alpha = 1
+    }
+    
+    homeButtonAction()
+    let checkoutViewController = storyboard!.instantiateViewControllerWithIdentifier("Payment")
+    menuNavigationController?.pushViewController(checkoutViewController, animated: true)
+  }
+  
+  func endCheckout() {
+    UIView.animateWithDuration(0.2, animations: {
+        self.paymentHeaderView.alpha = 0
+      }) { (finished) in
+        self.paymentHeaderView.hidden = true
+    }
   }
   
   //MARK: - Refresh
@@ -65,9 +98,6 @@ class BaseViewController: UIViewController {
         menuController.delegate = self
         menuController.navigationProvider = self
       }
-    case "check":
-      let checkViewController = segue.destinationViewController as! CheckViewController
-      checkViewController.delegate = self
     default:
       break
     }
@@ -187,7 +217,7 @@ class BaseViewController: UIViewController {
     }
     
     backButtonAction()
-    NSNotificationCenter.defaultCenter().postNotificationName(CheckoutViewController.Notifications.PaymentFinished, object: nil)
+    NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
   }
   
   @IBAction func backButtonAction() {
@@ -258,22 +288,6 @@ extension BaseViewController: MenuNavigationProvider {
   
   func popToRootViewController() {
     homeButtonAction()
-  }
-  
-}
-
-extension BaseViewController: CheckViewControllerDelegate {
-  
-  func didTouchCheckoutButton() {
-    paymentHeaderView.alpha = 0
-    paymentHeaderView.hidden = false
-    UIView.animateWithDuration(0.3) { 
-      self.paymentHeaderView.alpha = 1
-    }
-    
-    homeButtonAction()
-    let checkoutViewController = storyboard!.instantiateViewControllerWithIdentifier("Payment")
-    menuNavigationController?.pushViewController(checkoutViewController, animated: true)
   }
   
 }

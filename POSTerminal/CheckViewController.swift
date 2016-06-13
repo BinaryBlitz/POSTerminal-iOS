@@ -18,8 +18,6 @@ class CheckViewController: UIViewController {
   
   @IBOutlet weak var totalPriceLabel: UILabel!
   
-  weak var delegate: CheckViewControllerDelegate?
-  
   var items = [OrderItem]()
 
   override func viewDidLoad() {
@@ -57,8 +55,7 @@ class CheckViewController: UIViewController {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadData), name: newItemNotification, object: nil)
     reloadData()
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadClientInfo), name: clientUpdatedNotification, object: nil)
-    
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(enableUserInteraction), name: CheckoutViewController.Notifications.PaymentFinished, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(enableUserInteraction), name: endCheckoutNotification, object: nil)
   }
   
   deinit {
@@ -120,7 +117,7 @@ class CheckViewController: UIViewController {
   
   @IBAction func checkoutButtonAction() {
     view.userInteractionEnabled = false
-    delegate?.didTouchCheckoutButton()
+    NSNotificationCenter.defaultCenter().postNotificationName(startCheckoutNotification, object: nil)
   }
 }
 
