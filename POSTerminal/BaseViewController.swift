@@ -28,6 +28,7 @@ class BaseViewController: UIViewController {
     
     backButton.enabled = false
     toolBarView.backgroundColor = UIColor.elementsAndH1Color()
+    clearMenuPath()
     refresh()
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refresh), name: updateMenuNotification, object: nil)

@@ -42,12 +42,12 @@
                                             <constraint firstAttribute="height" constant="23" id="oPm-Bz-Ggk"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9dI-a1-rBv">
-                                        <rect key="frame" x="131" y="35" width="48" height="47"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9dI-a1-rBv">
+                                        <rect key="frame" x="131" y="35" width="45" height="47"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Меню" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQ4-zL-vSf">
-                                                <rect key="frame" x="0.0" y="14" width="48" height="20"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Меню" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQ4-zL-vSf">
+                                                <rect key="frame" x="0.0" y="15" width="45" height="18"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -495,7 +495,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ki7-SG-xWj">
-                                <rect key="frame" x="178" y="46.5" width="205" height="75"/>
+                                <rect key="frame" x="178" y="47" width="205" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="205" id="7Dw-02-99F"/>
                                     <constraint firstAttribute="height" constant="75" id="KLi-pn-gy1"/>
