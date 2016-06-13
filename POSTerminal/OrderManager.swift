@@ -20,7 +20,7 @@ class OrderManager {
   
   func append(product: Product) {
     defer {
-      NSNotificationCenter.defaultCenter().postNotificationName(newItemNotification, object: nil)
+      NSNotificationCenter.defaultCenter().postNotificationName(newItemNotification, object: nil, userInfo: ["product": product])
     }
     
     for item in items {

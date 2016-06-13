@@ -52,8 +52,9 @@ class CheckViewController: UIViewController {
     clientInfoCard.backgroundColor = UIColor.whiteColor()
     checkoutButtonView.backgroundColor = UIColor.elementsAndH1Color()
     
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadData), name: newItemNotification, object: nil)
-    reloadData()
+    totalPriceLabel.text = "\(OrderManager.currentOrder.totalPrice.format()) р."
+    
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadData(_:)), name: newItemNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadClientInfo), name: clientUpdatedNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(enableUserInteraction), name: endCheckoutNotification, object: nil)
   }
@@ -77,7 +78,7 @@ class CheckViewController: UIViewController {
     }
   }
   
-  func reloadData() {
+  func reloadData(notification: NSNotification) {
     let newItemsList = OrderManager.currentOrder.items
     if newItemsList.count > items.count && items.count > 0 {
       let numberOfNewItems = newItemsList.count - items.count
@@ -90,6 +91,18 @@ class CheckViewController: UIViewController {
       tableView.insertRowsAtIndexPaths(indexPathsToUpdate, withRowAnimation: UITableViewRowAnimation.Fade)
       tableView.endUpdates()
       scrollToBottom()
+    } else if let product = notification.userInfo?["product"] as? Product {
+      let productIndex = items.indexOf { item -> Bool in
+        return item.product.id == product.id
+      }
+      if let index = productIndex {
+        items = OrderManager.currentOrder.items
+        tableView.reloadData()
+        tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0), atScrollPosition: .Top, animated: true)
+      } else {
+        items = OrderManager.currentOrder.items
+        tableView.reloadData()
+      }
     } else {
       items = OrderManager.currentOrder.items
       tableView.reloadData()
