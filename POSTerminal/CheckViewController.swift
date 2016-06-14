@@ -57,15 +57,16 @@ class CheckViewController: UIViewController {
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadData(_:)), name: newItemNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadClientInfo), name: clientUpdatedNotification, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(enableUserInteraction), name: endCheckoutNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(endCheckout), name: endCheckoutNotification, object: nil)
   }
   
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self)
   }
   
-  func enableUserInteraction() {
+  func endCheckout() {
     view.userInteractionEnabled = true
+    reloadClientInfo()
   }
   
   func reloadClientInfo() {
@@ -77,6 +78,7 @@ class CheckViewController: UIViewController {
     } else {
       clientNameLabel.text = "Новый клиент"
       clientBalanceLabel.hidden = true
+      changeClientButton.hidden = true
     }
     
     reloadCheckoutButton()
@@ -144,6 +146,8 @@ class CheckViewController: UIViewController {
   }
   
   @IBAction func checkoutButtonAction() {
+    selectedCellIndexPath = nil
+    tableView.reloadData()
     view.userInteractionEnabled = false
     NSNotificationCenter.defaultCenter().postNotificationName(startCheckoutNotification, object: nil)
   }
