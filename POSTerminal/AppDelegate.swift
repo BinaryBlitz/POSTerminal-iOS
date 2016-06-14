@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
 //    Settings.loadFormUserDefaults()
     Settings.sharedInstance.wpBase = Host(baseURL: "http://arma.ngslab.ru:28081/WPServ", login: "I.Novikov", password: "123456789")
-    Settings.sharedInstance.equipServ = Host(baseURL: "http://arma.ngslab.ru:28081/EquipServ", login: "I.Novikov", password: "123456789")
+    Settings.sharedInstance.equipServ = Host(baseURL: "http://arma.ngslab.ru:28081/EquipServ", login: "", password: "")
     
     startLocalServer()
     

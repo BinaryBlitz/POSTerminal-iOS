@@ -4,6 +4,9 @@ enum WPBaseRouter {
   case Menu
   case Create(check: Check)
   case GetInfo(identity: ClientIdentity)
+  case OpenDay
+  case PrintZReport
+  case Encash(amount: Double, type: EncashType)
 }
 
 extension WPBaseRouter: ServerRouter {
@@ -14,10 +17,12 @@ extension WPBaseRouter: ServerRouter {
     switch self {
     case .Menu:
       return "\(baseURL)/hs/Dishes/InfoDishes"
-    case .Create(_):
+    case .Create:
       return "\(baseURL)/checks"
-    case .GetInfo(_):
+    case .GetInfo:
       return "\(baseURL)/hs/Client/InfoClient"
+    case .OpenDay, .Encash, .PrintZReport:
+      return "\(baseURL)/hs/CashDesk/Money"
     }
   }
   
@@ -33,19 +38,17 @@ extension WPBaseRouter: ServerRouter {
     switch self {
     case .Menu:
       return .GET
-    case .Create(_):
-      return .POST
-    case .GetInfo(_):
+    default:
       return .POST
     }
   }
   
   var encoding: Alamofire.ParameterEncoding {
     switch self {
-    case .Create(_), .GetInfo(_):
-      return .JSON
-    default:
+    case .Menu:
       return .URL
+    default:
+      return .JSON
     }
   }
   
@@ -57,6 +60,12 @@ extension WPBaseRouter: ServerRouter {
       return check.json?.dictionaryObject
     case let .GetInfo(identity):
       return ["type": identity.type.rawValue, "code": identity.code]
+    case .OpenDay:
+      return ["action": "OpenDay"]
+    case .PrintZReport:
+      return ["action": "PrintZReport"]
+    case let .Encash(amount, type):
+      return nil
     }
   }
 }

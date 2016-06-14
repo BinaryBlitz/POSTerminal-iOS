@@ -11,7 +11,7 @@ extension ServerManager {
     
     do {
       activityIndicatorVisible = true
-      let request = try createRequest(router).validate().responseJSON { response in
+      let request = try createRequest(router).responseJSON { response in
         self.activityIndicatorVisible = false
         switch response.result {
         case .Success(_):
@@ -36,6 +36,10 @@ extension ServerManager {
     return performRegistratorComandWith(EquipServRouter.OpenDay, completion: completion)
   }
   
+  func openDayInWP(completion: (RegistratorCompletion)? = nil) -> Request? {
+    return performRegistratorComandWith(WPBaseRouter.OpenDay, completion: completion)
+  }
+  
   func openCashDrawer(completion: (RegistratorCompletion)? = nil) -> Request? {
     return performRegistratorComandWith(EquipServRouter.OpenCashDrawer, completion: completion)
   }
@@ -50,6 +54,10 @@ extension ServerManager {
     return performRegistratorComandWith(EquipServRouter.PrintZReport, completion: completion)
   }
   
+  func printZReportInWP(completion: (RegistratorCompletion)? = nil) -> Request? {
+    return performRegistratorComandWith(WPBaseRouter.PrintZReport, completion: completion)
+  }
+  
   func printXReport(completion: (RegistratorCompletion)? = nil) -> Request? {
     return performRegistratorComandWith(EquipServRouter.PrintXReport, completion: completion)
   }
@@ -57,10 +65,18 @@ extension ServerManager {
   //MARK: - Encash
   
   func encashIn(amount: Double, completion: ((response: ServerResponse<Bool, ServerError>) -> Void)? = nil) -> Request? {
-    return performRegistratorComandWith(EquipServRouter.EncashIn(amount: amount), completion: completion)
+    return performRegistratorComandWith(EquipServRouter.Encash(amount: amount, type: .In), completion: completion)
   }
   
   func encashOut(amount: Double, completion: ((response: ServerResponse<Bool, ServerError>) -> Void)? = nil) -> Request? {
-    return performRegistratorComandWith(EquipServRouter.EncashOut(amount: amount), completion: completion)
+    return performRegistratorComandWith(EquipServRouter.Encash(amount: amount, type: .Out), completion: completion)
+  }
+  
+  func encashInInWP(amount: Double, completion: ((response: ServerResponse<Bool, ServerError>) -> Void)? = nil) -> Request? {
+    return performRegistratorComandWith(WPBaseRouter.Encash(amount: amount, type: .In), completion: completion)
+  }
+  
+  func encashOutInWP(amount: Double, completion: ((response: ServerResponse<Bool, ServerError>) -> Void)? = nil) -> Request? {
+    return performRegistratorComandWith(WPBaseRouter.Encash(amount: amount, type: .Out), completion: completion)
   }
 }

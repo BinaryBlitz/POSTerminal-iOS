@@ -2,8 +2,7 @@ import Alamofire
 
 enum EquipServRouter {
   case OpenDay
-  case EncashIn(amount: Double)
-  case EncashOut(amount: Double)
+  case Encash(amount: Double, type: EncashType)
   case PrintZReport
   case PrintXReport
   case OpenCashDrawer
@@ -46,12 +45,9 @@ extension EquipServRouter: ServerRouter {
     switch self {
     case .OpenDay:
       action = "OpenDay"
-    case .EncashIn(let amount):
+    case let .Encash(amount, type):
       action = "Encash"
-      params = ["type": 1, "amount": amount]
-    case .EncashOut(let amount):
-      action = "Encash"
-      params = ["type": 0, "amount": amount]
+      params = ["type": type.value, "amount": amount]
     case .PrintXReport:
       action = "PrintXReport"
     case .PrintZReport:
