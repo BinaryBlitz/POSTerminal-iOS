@@ -554,11 +554,9 @@
                                             <constraint firstAttribute="width" constant="215" id="Gh1-wQ-PWc"/>
                                             <constraint firstAttribute="height" constant="80" id="tUe-wj-xMF"/>
                                         </constraints>
-                                        <state key="normal" title="1500 р"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0T-h2-Zb2" customClass="CashButton" customModule="POSTerminal" customModuleProvider="target">
                                         <rect key="frame" x="235" y="0.0" width="215" height="80"/>
-                                        <state key="normal" title="1600 р"/>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -575,11 +573,9 @@
                                             <constraint firstAttribute="height" constant="80" id="JMr-EI-qbI"/>
                                             <constraint firstAttribute="width" constant="215" id="noA-28-Imw"/>
                                         </constraints>
-                                        <state key="normal" title="2000 р"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8q-2J-oUD" customClass="CashButton" customModule="POSTerminal" customModuleProvider="target">
                                         <rect key="frame" x="235" y="0.0" width="215" height="80"/>
-                                        <state key="normal" title="5000 р"/>
                                     </button>
                                 </subviews>
                                 <constraints>
