@@ -400,8 +400,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qVm-kM-BY1">
-                                <rect key="frame" x="216" y="72" width="168" height="27"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qVm-kM-BY1">
+                                <rect key="frame" x="127" y="72" width="168" height="27"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="К ОПЛАТЕ:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tw1-3y-nrK">
                                         <rect key="frame" x="0.0" y="7" width="88" height="21"/>
@@ -420,13 +420,7 @@
                                     <constraint firstAttribute="height" constant="27" id="6rz-vt-L5U"/>
                                 </constraints>
                             </stackView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghR-5j-mcW">
-                                <rect key="frame" x="20" y="252" width="560" height="248"/>
-                                <connections>
-                                    <segue destination="kLB-np-sqw" kind="embed" id="DET-UP-p8w"/>
-                                </connections>
-                            </containerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="v6y-WL-FEf">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="v6y-WL-FEf">
                                 <rect key="frame" x="125" y="141" width="350" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="gNd-ia-Lc0"/>
@@ -437,16 +431,22 @@
                                     <segment title="Наличные"/>
                                 </segments>
                             </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghR-5j-mcW">
+                                <rect key="frame" x="20" y="252" width="560" height="298"/>
+                                <connections>
+                                    <segue destination="kLB-np-sqw" kind="embed" id="DET-UP-p8w"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qVm-kM-BY1" firstAttribute="centerX" secondItem="3A8-ub-bZb" secondAttribute="centerX" id="0wc-fQ-fsh"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="ghR-5j-mcW" secondAttribute="leading" id="QEA-aU-Jdf"/>
+                            <constraint firstItem="v6y-WL-FEf" firstAttribute="centerX" secondItem="3A8-ub-bZb" secondAttribute="centerX" id="Aqt-ec-ay9"/>
+                            <constraint firstItem="ghR-5j-mcW" firstAttribute="leading" secondItem="3A8-ub-bZb" secondAttribute="leading" constant="20" id="QEA-aU-Jdf"/>
                             <constraint firstItem="v6y-WL-FEf" firstAttribute="top" secondItem="qVm-kM-BY1" secondAttribute="bottom" constant="42" id="SAq-Hb-pAx"/>
-                            <constraint firstItem="drR-eg-z1g" firstAttribute="top" secondItem="ghR-5j-mcW" secondAttribute="bottom" constant="100" id="XWG-2g-Zne"/>
+                            <constraint firstItem="drR-eg-z1g" firstAttribute="top" secondItem="ghR-5j-mcW" secondAttribute="bottom" constant="50" id="XWG-2g-Zne"/>
                             <constraint firstItem="ghR-5j-mcW" firstAttribute="top" secondItem="v6y-WL-FEf" secondAttribute="bottom" constant="64" id="aj8-3Z-oGL"/>
-                            <constraint firstItem="v6y-WL-FEf" firstAttribute="centerX" secondItem="qVm-kM-BY1" secondAttribute="centerX" id="ene-s4-B8m"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ghR-5j-mcW" secondAttribute="trailing" id="rRI-1j-h9U"/>
+                            <constraint firstAttribute="trailing" secondItem="ghR-5j-mcW" secondAttribute="trailing" constant="20" id="rRI-1j-h9U"/>
                             <constraint firstItem="qVm-kM-BY1" firstAttribute="top" secondItem="Qjm-8N-djf" secondAttribute="bottom" constant="52" id="t13-xq-bJC"/>
                         </constraints>
                     </view>
@@ -503,11 +503,11 @@
                         <viewControllerLayoutGuide type="bottom" id="tWU-jB-PRd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kgp-Qa-Wjs">
-                        <rect key="frame" x="0.0" y="0.0" width="560" height="248"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="298"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ki7-SG-xWj">
-                                <rect key="frame" x="178" y="47" width="205" height="75"/>
+                                <rect key="frame" x="177" y="52" width="205" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="205" id="7Dw-02-99F"/>
                                     <constraint firstAttribute="height" constant="75" id="KLi-pn-gy1"/>
@@ -521,7 +521,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ki7-SG-xWj" firstAttribute="centerY" secondItem="kgp-Qa-Wjs" secondAttribute="centerY" constant="-40" id="57j-Wx-Jyr"/>
+                            <constraint firstItem="ki7-SG-xWj" firstAttribute="centerY" secondItem="kgp-Qa-Wjs" secondAttribute="centerY" constant="-60" id="57j-Wx-Jyr"/>
                             <constraint firstItem="ki7-SG-xWj" firstAttribute="centerX" secondItem="kgp-Qa-Wjs" secondAttribute="centerX" id="CWN-PC-5oZ"/>
                         </constraints>
                     </view>
@@ -542,13 +542,62 @@
                         <viewControllerLayoutGuide type="bottom" id="b3l-xD-EIz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4AN-mE-FtE">
-                        <rect key="frame" x="0.0" y="0.0" width="560" height="240"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0o4-FV-Gv4">
+                                <rect key="frame" x="55" y="0.0" width="450" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V85-GY-qT4" customClass="CashButton" customModule="POSTerminal" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="215" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="215" id="Gh1-wQ-PWc"/>
+                                            <constraint firstAttribute="height" constant="80" id="tUe-wj-xMF"/>
+                                        </constraints>
+                                        <state key="normal" title="1500 р"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0T-h2-Zb2" customClass="CashButton" customModule="POSTerminal" customModuleProvider="target">
+                                        <rect key="frame" x="235" y="0.0" width="215" height="80"/>
+                                        <state key="normal" title="1600 р"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="O0T-h2-Zb2" firstAttribute="width" secondItem="V85-GY-qT4" secondAttribute="width" id="amE-Ey-ZLX"/>
+                                    <constraint firstItem="O0T-h2-Zb2" firstAttribute="height" secondItem="V85-GY-qT4" secondAttribute="height" id="kag-3F-UpR"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3Qe-iE-e01">
+                                <rect key="frame" x="55" y="100" width="450" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLE-Na-sC0" customClass="CashButton" customModule="POSTerminal" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="215" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="JMr-EI-qbI"/>
+                                            <constraint firstAttribute="width" constant="215" id="noA-28-Imw"/>
+                                        </constraints>
+                                        <state key="normal" title="2000 р"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8q-2J-oUD" customClass="CashButton" customModule="POSTerminal" customModuleProvider="target">
+                                        <rect key="frame" x="235" y="0.0" width="215" height="80"/>
+                                        <state key="normal" title="5000 р"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="x8q-2J-oUD" firstAttribute="width" secondItem="OLE-Na-sC0" secondAttribute="width" id="7GM-Dr-QZY"/>
+                                    <constraint firstItem="x8q-2J-oUD" firstAttribute="height" secondItem="OLE-Na-sC0" secondAttribute="height" id="i3a-KZ-GB7"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="3Qe-iE-e01" firstAttribute="top" secondItem="0o4-FV-Gv4" secondAttribute="bottom" constant="20" id="9AA-eP-kLB"/>
+                            <constraint firstItem="0o4-FV-Gv4" firstAttribute="centerX" secondItem="4AN-mE-FtE" secondAttribute="centerX" id="H3u-R9-wIL"/>
+                            <constraint firstItem="3Qe-iE-e01" firstAttribute="centerX" secondItem="0o4-FV-Gv4" secondAttribute="centerX" id="NXI-L5-nSK"/>
+                            <constraint firstItem="0o4-FV-Gv4" firstAttribute="top" secondItem="NBt-WC-Gn7" secondAttribute="bottom" id="a9l-cw-6L1"/>
+                        </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="560" height="240"/>
+                    <size key="freeformSize" width="560" height="320"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d8k-S6-OZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
