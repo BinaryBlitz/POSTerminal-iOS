@@ -1,11 +1,5 @@
 import UIKit
 
-protocol CheckItemCellDelegate: class {
-  func didTouchPlusButtonIn(cell: CheckItemTableViewCell)
-  func didTouchMinusButtonIn(cell: CheckItemTableViewCell)
-  func didUpdateStateFor(cell: CheckItemTableViewCell)
-}
-
 class CheckItemTableViewCell: UITableViewCell {
   
   @IBOutlet weak var nameLabel: UILabel!
