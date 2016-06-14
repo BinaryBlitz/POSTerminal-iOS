@@ -15,4 +15,7 @@ target 'POSTerminal' do
   # DB
   pod 'RealmSwift'
 
+  # Tools
+  pod 'PureLayout'
+
 end

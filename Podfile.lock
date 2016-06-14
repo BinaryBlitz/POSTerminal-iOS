@@ -6,6 +6,7 @@ PODS:
   - GCDWebServer (3.3.2):
     - GCDWebServer/Core (= 3.3.2)
   - GCDWebServer/Core (3.3.2)
+  - PureLayout (3.0.2)
   - Realm (1.0.0):
     - Realm/Headers (= 1.0.0)
   - Realm/Headers (1.0.0)
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - GCDWebServer
+  - PureLayout
   - RealmSwift
   - SwiftyJSON
 
@@ -26,10 +28,11 @@ SPEC CHECKSUMS:
   Crashlytics: 3cdd4c9655be68032a0cf0379e0fb5ef6af22cad
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   GCDWebServer: 2a375ec42839a41d7187d04e5b688d32fa5c4cd5
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   Realm: e15cd8e7c11d3e576f628ba0b7cb855269b4991c
   RealmSwift: 3229306d020d96f83b335f87a0dcbf2cef0e6a2b
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 480f51def26f7acb67940d9d72241957279a1046
+PODFILE CHECKSUM: 945debe5d0175c2527a506b59f8f077b29bacbf5
 
 COCOAPODS: 1.0.1

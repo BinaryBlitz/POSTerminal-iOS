@@ -1,5 +1,6 @@
 import UIKit
 import RealmSwift
+import PureLayout
 
 let updateMenuNotification = "updateMenuNotification"
 
@@ -136,13 +137,22 @@ class BaseViewController: UIViewController {
   
   //MARK: - Path stack view
   
-  func createLabelWith(category: String, andColor color: UIColor) -> UILabel {
-    let label = UILabel()
-    label.text = category
-    label.textColor = color
-    label.font = UIFont.boldSystemFontOfSize(16)
+  func createButtonWith(category: String, andColor color: UIColor) -> UIButton {
+    let button = UIButton()
+    button.setTitle(category, forState: .Normal)
+    button.setTitleColor(color, forState: .Normal)
+    button.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
+    button.autoSetDimension(ALDimension.Height, toSize: 60)
+    button.addTarget(self, action: #selector(categoryButtonAction(_:)), forControlEvents: .TouchUpInside)
     
-    return label
+    return button
+  }
+  
+  func categoryButtonAction(button: UIButton) {
+    while let last = menuPath.last where last != button.titleLabel?.text {
+      backButtonAction()
+    }
+    button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
   }
   
   func createSeparatorImageView() -> UIImageView {
@@ -181,18 +191,18 @@ class BaseViewController: UIViewController {
     menuPath.append(level)
     
     if menuPathStackView.arrangedSubviews.count == 0 {
-      menuPathStackView.addArrangedSubview(createLabelWith(level, andColor: UIColor.whiteColor()))
+      menuPathStackView.addArrangedSubview(createButtonWith(level, andColor: UIColor.whiteColor()))
       return
     }
     
     menuPathStackView.arrangedSubviews.forEach { (view) in
-      if let label = view as? UILabel {
-        label.textColor = UIColor.h2Color()
+      if let button = view as? UIButton {
+        button.setTitleColor(UIColor.h2Color(), forState: .Normal)
       }
     }
     
     menuPathStackView.addArrangedSubview(createSeparatorImageView())
-    menuPathStackView.addArrangedSubview(createLabelWith(level, andColor: UIColor.whiteColor()))
+    menuPathStackView.addArrangedSubview(createButtonWith(level, andColor: UIColor.whiteColor()))
   }
   
   func popLastCategoryFromPathStack() {
