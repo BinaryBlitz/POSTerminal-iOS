@@ -3,6 +3,7 @@ import UIKit
 protocol CheckItemCellDelegate: class {
   func didTouchPlusButtonIn(cell: CheckItemTableViewCell)
   func didTouchMinusButtonIn(cell: CheckItemTableViewCell)
+  func didUpdateStateFor(cell: CheckItemTableViewCell)
 }
 
 class CheckItemTableViewCell: UITableViewCell {
@@ -76,6 +77,7 @@ class CheckItemTableViewCell: UITableViewCell {
     } else {
       state = .Normal
     }
+    delegate?.didUpdateStateFor(self)
   }
   
   private func updateState(state: CheckItemState) {
@@ -86,6 +88,8 @@ class CheckItemTableViewCell: UITableViewCell {
       actionsStackView.hidden = false
     }
   }
+  
+  //MARK: - Action
   
   @IBAction func plusButtonAction() {
     delegate?.didTouchPlusButtonIn(self)

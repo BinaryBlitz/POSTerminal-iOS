@@ -18,6 +18,8 @@ class CheckViewController: UIViewController {
   
   @IBOutlet weak var totalPriceLabel: UILabel!
   
+  var selectedCellIndexPath: NSIndexPath?
+  
   var items = [OrderItem]()
 
   override func viewDidLoad() {
@@ -155,8 +157,15 @@ extension CheckViewController: UITableViewDataSource {
     cell.configureWith(orderItem)
     cell.delegate = self
     
+    if let selectedIndexPath = selectedCellIndexPath where selectedIndexPath == indexPath {
+      cell.state = .Editing
+    } else {
+      cell.state = .Normal
+    }
+    
     return cell
   }
+  
 }
 
 extension CheckViewController: UITableViewDelegate {
@@ -173,9 +182,19 @@ extension CheckViewController: UITableViewDelegate {
     
     return [deleteAction]
   }
+  
+  func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
+    if let selectedIndexPath = selectedCellIndexPath where selectedIndexPath == indexPath {
+      if let cell = tableView.cellForRowAtIndexPath(indexPath) as? CheckItemTableViewCell {
+        cell.state = .Normal
+        selectedCellIndexPath = nil
+      }
+    }
+  }
 }
 
 extension CheckViewController: CheckItemCellDelegate {
+  
   func didTouchPlusButtonIn(cell: CheckItemTableViewCell) {
     let indexPath = tableView.indexPathForCell(cell)!
     let item = items[indexPath.row]
@@ -189,4 +208,16 @@ extension CheckViewController: CheckItemCellDelegate {
     item.decrementQuantity()
     tableView.reloadData()
   }
+  
+  func didUpdateStateFor(cell: CheckItemTableViewCell) {
+    switch cell.state {
+    case .Normal:
+      selectedCellIndexPath = nil
+    case .Editing:
+      let indexPath = tableView.indexPathForCell(cell)!
+      selectedCellIndexPath = indexPath
+    }
+    tableView.reloadData()
+  }
+  
 }
