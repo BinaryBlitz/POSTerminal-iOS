@@ -22,10 +22,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="85"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJT-FS-LER">
-                                        <rect key="frame" x="0.0" y="34" width="65" height="47"/>
+                                        <rect key="frame" x="0.0" y="26" width="70" height="55"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="47" id="Mrp-x7-djd"/>
-                                            <constraint firstAttribute="width" constant="65" id="s2v-kB-EKr"/>
+                                            <constraint firstAttribute="height" constant="55" id="Mrp-x7-djd"/>
+                                            <constraint firstAttribute="width" constant="70" id="s2v-kB-EKr"/>
                                         </constraints>
                                         <state key="normal" image="Home">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -35,7 +35,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Jk-pF-GRb">
-                                        <rect key="frame" x="65" y="47" width="1" height="23"/>
+                                        <rect key="frame" x="70" y="43" width="1" height="23"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="ky2-6u-owr"/>
@@ -43,7 +43,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="9dI-a1-rBv">
-                                        <rect key="frame" x="131" y="29" width="45" height="60"/>
+                                        <rect key="frame" x="141" y="25" width="45" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Меню" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQ4-zL-vSf">
                                                 <rect key="frame" x="0.0" y="21" width="45" height="18"/>
@@ -57,7 +57,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7C6-ZP-mV8">
-                                        <rect key="frame" x="949" y="38" width="75" height="47"/>
+                                        <rect key="frame" x="944" y="30" width="80" height="55"/>
                                         <state key="normal" image="Settings">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -66,7 +66,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8R-hn-Ca1">
-                                        <rect key="frame" x="66" y="35" width="65" height="47"/>
+                                        <rect key="frame" x="71" y="27" width="70" height="55"/>
                                         <state key="normal" image="Back">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -97,12 +97,12 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iDW-SZ-xL0">
-                                <rect key="frame" x="0.0" y="37" width="944" height="47"/>
+                                <rect key="frame" x="0.0" y="30" width="944" height="55"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIn-QG-dIf">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="47"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="55"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="tpG-Yh-klw"/>
+                                            <constraint firstAttribute="width" constant="70" id="tpG-Yh-klw"/>
                                         </constraints>
                                         <state key="normal" image="Back"/>
                                         <connections>
@@ -110,7 +110,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Оплата заказа" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jB-PI-SbS">
-                                        <rect key="frame" x="68" y="13" width="116" height="21"/>
+                                        <rect key="frame" x="78" y="17" width="116" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -121,7 +121,7 @@
                                     <constraint firstItem="3jB-PI-SbS" firstAttribute="leading" secondItem="GIn-QG-dIf" secondAttribute="trailing" constant="8" id="0TS-hm-GQu"/>
                                     <constraint firstItem="GIn-QG-dIf" firstAttribute="top" secondItem="iDW-SZ-xL0" secondAttribute="top" id="FZK-re-hrp"/>
                                     <constraint firstAttribute="bottom" secondItem="GIn-QG-dIf" secondAttribute="bottom" id="Hgn-rU-wx9"/>
-                                    <constraint firstAttribute="height" constant="47" id="Ndz-Qj-WQx"/>
+                                    <constraint firstAttribute="height" constant="55" id="Ndz-Qj-WQx"/>
                                     <constraint firstItem="GIn-QG-dIf" firstAttribute="leading" secondItem="iDW-SZ-xL0" secondAttribute="leading" id="Til-aR-lZ0"/>
                                     <constraint firstItem="3jB-PI-SbS" firstAttribute="centerY" secondItem="GIn-QG-dIf" secondAttribute="centerY" id="mtB-gd-0gi"/>
                                 </constraints>
@@ -146,7 +146,7 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="iDW-SZ-xL0" secondAttribute="trailing" constant="60" id="BIx-mX-cFc"/>
                             <constraint firstItem="z8B-IQ-Rj1" firstAttribute="top" secondItem="JNo-Pd-eEk" secondAttribute="bottom" id="Lzf-eR-vJq"/>
-                            <constraint firstItem="iDW-SZ-xL0" firstAttribute="top" secondItem="JNo-Pd-eEk" secondAttribute="bottom" constant="-48" id="NhN-SU-hur"/>
+                            <constraint firstItem="iDW-SZ-xL0" firstAttribute="top" secondItem="JNo-Pd-eEk" secondAttribute="bottom" constant="-55" id="NhN-SU-hur"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="z8B-IQ-Rj1" secondAttribute="bottom" id="O9D-Jm-MIA"/>
                             <constraint firstItem="JNo-Pd-eEk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OAc-L6-zuM"/>
                             <constraint firstItem="iIw-pM-fOa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Sr6-Rj-RI5"/>
