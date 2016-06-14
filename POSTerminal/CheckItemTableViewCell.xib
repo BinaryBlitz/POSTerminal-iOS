@@ -45,15 +45,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1w-C3-7jx">
-                        <rect key="frame" x="190" y="0.0" width="194" height="93.5"/>
+                        <rect key="frame" x="234" y="0.0" width="150" height="94"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPP-Eu-SIy">
-                                <rect key="frame" x="0.0" y="0.0" width="97" height="93.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="75" height="94"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4z-dv-Bm5">
-                                        <rect key="frame" x="0.0" y="0.0" width="97" height="93"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                        <state key="normal" title="-">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4z-dv-Bm5">
+                                        <rect key="frame" x="11" y="9" width="75" height="75"/>
+                                        <state key="normal" image="Minus">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -66,17 +65,16 @@
                                     <constraint firstAttribute="trailing" secondItem="Q4z-dv-Bm5" secondAttribute="trailing" id="AA4-Ap-mJD"/>
                                     <constraint firstItem="Q4z-dv-Bm5" firstAttribute="leading" secondItem="BPP-Eu-SIy" secondAttribute="leading" id="J4R-8V-VSq"/>
                                     <constraint firstAttribute="bottom" secondItem="Q4z-dv-Bm5" secondAttribute="bottom" id="gnW-0v-eva"/>
-                                    <constraint firstAttribute="width" constant="97" id="iTc-HA-dxL"/>
+                                    <constraint firstAttribute="width" constant="75" id="iTc-HA-dxL"/>
                                     <constraint firstItem="Q4z-dv-Bm5" firstAttribute="top" secondItem="BPP-Eu-SIy" secondAttribute="top" id="vxq-or-b1b"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LpY-96-pvM">
-                                <rect key="frame" x="97" y="0.0" width="97" height="93.5"/>
+                                <rect key="frame" x="75" y="0.0" width="75" height="94"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hb6-9H-MjK">
-                                        <rect key="frame" x="0.0" y="0.0" width="97" height="93"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                        <state key="normal" title="+">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hb6-9H-MjK">
+                                        <rect key="frame" x="11" y="9" width="75" height="75"/>
+                                        <state key="normal" image="Plus">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -89,13 +87,13 @@
                                     <constraint firstAttribute="bottom" secondItem="hb6-9H-MjK" secondAttribute="bottom" id="Ap9-Sh-Iwa"/>
                                     <constraint firstItem="hb6-9H-MjK" firstAttribute="top" secondItem="LpY-96-pvM" secondAttribute="top" id="Ts1-8K-Mi3"/>
                                     <constraint firstItem="hb6-9H-MjK" firstAttribute="leading" secondItem="LpY-96-pvM" secondAttribute="leading" id="diT-Im-ubZ"/>
-                                    <constraint firstAttribute="width" constant="97" id="lhM-OJ-nJ3"/>
+                                    <constraint firstAttribute="width" constant="75" id="lhM-OJ-nJ3"/>
                                     <constraint firstAttribute="trailing" secondItem="hb6-9H-MjK" secondAttribute="trailing" id="yWu-n8-SSs"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="width" constant="194" id="inG-tI-J3a"/>
+                            <constraint firstAttribute="width" constant="150" id="inG-tI-J3a"/>
                         </constraints>
                     </stackView>
                 </subviews>
@@ -126,4 +124,8 @@
             <point key="canvasLocation" x="466" y="366"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Minus" width="75" height="75"/>
+        <image name="Plus" width="75" height="75"/>
+    </resources>
 </document>

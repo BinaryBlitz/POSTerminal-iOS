@@ -32,9 +32,6 @@ class CheckItemTableViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    minusActionView.backgroundColor = UIColor.shadowColor()
-    plusActionView.backgroundColor = UIColor.lightGrayColor()
-    
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeState))
     contentView.addGestureRecognizer(tapGesture)
   }
