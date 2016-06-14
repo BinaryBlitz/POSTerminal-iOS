@@ -155,6 +155,8 @@ class CheckViewController: UIViewController {
   }
 }
 
+//MARK: - UITableViewDataSource
+
 extension CheckViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -192,6 +194,8 @@ extension CheckViewController: UITableViewDataSource {
   
 }
 
+//MARK: - UITableViewDelegate
+
 extension CheckViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -218,6 +222,8 @@ extension CheckViewController: UITableViewDelegate {
     }
   }
 }
+
+//MARK: - CheckItemCellDelegate
 
 extension CheckViewController: CheckItemCellDelegate {
   
