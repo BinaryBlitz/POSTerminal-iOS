@@ -85,6 +85,7 @@ class CheckViewController: UIViewController {
   }
   
   func reloadCheckoutButton() {
+    totalPriceLabel.text = "\(OrderManager.currentOrder.totalPrice.format()) р."
     if let client = ClientManager.currentClient where client.balance >= OrderManager.currentOrder.totalPrice {
       checkoutButton.enabled = true
       checkoutButtonView.backgroundColor = UIColor.elementsAndH1Color()
@@ -124,7 +125,6 @@ class CheckViewController: UIViewController {
       tableView.reloadData()
     }
     
-    totalPriceLabel.text = "\(OrderManager.currentOrder.totalPrice.format()) р."
     reloadCheckoutButton()
   }
   
@@ -236,6 +236,7 @@ extension CheckViewController: CheckItemCellDelegate {
     let item = items[indexPath.row]
     item.inrementQuantity()
     tableView.reloadData()
+    reloadCheckoutButton()
   }
   
   func didTouchMinusButtonIn(cell: CheckItemTableViewCell) {
@@ -243,6 +244,7 @@ extension CheckViewController: CheckItemCellDelegate {
     let item = items[indexPath.row]
     item.decrementQuantity()
     tableView.reloadData()
+    reloadCheckoutButton()
   }
   
   func didUpdateStateFor(cell: CheckItemTableViewCell) {
