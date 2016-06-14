@@ -9,6 +9,8 @@ class CheckViewController: UIViewController {
   @IBOutlet weak var checkoutButtonView: CardView!
   @IBOutlet weak var checkoutButton: UIButton!
   
+  @IBOutlet weak var changeClientButton: UIButton!
+  
   @IBOutlet weak var clientNameLabel: UILabel!
   @IBOutlet weak var clientBalanceLabel: UILabel!
   @IBOutlet weak var clientPhotoImageView: UIImageView!
@@ -24,6 +26,8 @@ class CheckViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    changeClientButton.hidden = true
     
     view.backgroundColor = UIColor.whiteColor()
     tableView.backgroundColor =  UIColor.whiteColor()
@@ -69,13 +73,26 @@ class CheckViewController: UIViewController {
       clientNameLabel.text = client.name
       clientBalanceLabel.hidden = false
       clientBalanceLabel.text = "Баланс: \(client.balance) р."
+      changeClientButton.hidden = false
     } else {
       clientNameLabel.text = "Новый клиент"
       clientBalanceLabel.hidden = true
     }
+    
+    reloadCheckoutButton()
   }
   
-  func reloadData(notification: NSNotification) {
+  func reloadCheckoutButton() {
+    if let client = ClientManager.currentClient where client.balance >= OrderManager.currentOrder.totalPrice {
+      checkoutButton.enabled = true
+      checkoutButtonView.backgroundColor = UIColor.elementsAndH1Color()
+    } else {
+      checkoutButton.enabled = false
+      checkoutButtonView.backgroundColor = UIColor.h5Color()
+    }
+  }
+  
+  func reloadData(notification: NSNotification? = nil) {
     let newItemsList = OrderManager.currentOrder.items
     if newItemsList.count > items.count && items.count > 0 {
       let numberOfNewItems = newItemsList.count - items.count
@@ -88,7 +105,7 @@ class CheckViewController: UIViewController {
       tableView.insertRowsAtIndexPaths(indexPathsToUpdate, withRowAnimation: UITableViewRowAnimation.Fade)
       tableView.endUpdates()
       scrollToBottom()
-    } else if let product = notification.userInfo?["product"] as? Product {
+    } else if let product = notification?.userInfo?["product"] as? Product {
       let productIndex = items.indexOf { item -> Bool in
         return item.product.id == product.id
       }
@@ -106,6 +123,7 @@ class CheckViewController: UIViewController {
     }
     
     totalPriceLabel.text = "\(OrderManager.currentOrder.totalPrice.format()) р."
+    reloadCheckoutButton()
   }
   
   func scrollToBottom() {
@@ -128,6 +146,12 @@ class CheckViewController: UIViewController {
   @IBAction func checkoutButtonAction() {
     view.userInteractionEnabled = false
     NSNotificationCenter.defaultCenter().postNotificationName(startCheckoutNotification, object: nil)
+  }
+  
+  @IBAction func changeClientButtonAction(button: UIButton) {
+    ClientManager.currentClient = nil
+    button.hidden = true
+    reloadClientInfo()
   }
 }
 
@@ -177,7 +201,9 @@ extension CheckViewController: UITableViewDelegate {
   func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
     let deleteAction = UITableViewRowAction(style: .Default, title: "Удалить") { (action, indexPath) in
       self.items.removeAtIndex(indexPath.row)
+      OrderManager.currentOrder.items = self.items
       self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
+      self.reloadData()
     }
     
     return [deleteAction]

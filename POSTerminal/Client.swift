@@ -6,14 +6,14 @@ struct Client {
   let id: String
   let code: String
   let name: String
-  var balance: Int = 0
+  var balance: Double = 0
 }
 
 extension Client: ServerObject {
   
   static func createWith(json: JSON) -> Client? {
     guard let id = json["clientRef"].string, name = json["clientName"].string,
-        balance = json["balance"].int, code = json["clientCode"].string else {
+        balance = json["balance"].double, code = json["clientCode"].string else {
       return nil
     }
     
