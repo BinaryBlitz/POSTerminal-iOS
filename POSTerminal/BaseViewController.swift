@@ -182,8 +182,8 @@ class BaseViewController: UIViewController {
     lastView.removeFromSuperview()
     secondLastView.removeFromSuperview()
     
-    if let lastLabel = menuPathStackView.arrangedSubviews.last as? UILabel {
-      lastLabel.textColor = UIColor.whiteColor()
+    if let lastButton = menuPathStackView.arrangedSubviews.last as? UIButton {
+      lastButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
     }
   }
   
