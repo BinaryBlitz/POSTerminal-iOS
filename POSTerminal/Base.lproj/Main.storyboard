@@ -598,6 +598,12 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="560" height="320"/>
+                    <connections>
+                        <outlet property="firstCashButton" destination="V85-GY-qT4" id="iux-pR-hzD"/>
+                        <outlet property="fourthCashButton" destination="x8q-2J-oUD" id="aav-Bz-hRb"/>
+                        <outlet property="secondCashButton" destination="O0T-h2-Zb2" id="bPD-c6-H9Z"/>
+                        <outlet property="thirdCashButton" destination="OLE-Na-sC0" id="rMH-KJ-KfV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d8k-S6-OZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
