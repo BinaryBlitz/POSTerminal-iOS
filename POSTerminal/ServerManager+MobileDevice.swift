@@ -11,9 +11,7 @@ extension ServerManager {
       let request = try createRequest(EquipServRouter.RegisterDevice(url: url)).validate().responseJSON { response in
         self.activityIndicatorVisible = false
         switch response.result {
-        case .Success(let resultValue):
-          let json = JSON(resultValue)
-          NSLog("\(json)")
+        case .Success(_):
           completion?(response: Response(value: true))
         case .Failure(let error):
           let serverError = ServerError(error: error)
