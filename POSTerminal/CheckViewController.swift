@@ -37,11 +37,6 @@ class CheckViewController: UIViewController {
     
     totalPriceLabel.font = UIFont.monospacedDigitSystemFontOfSize(22, weight: UIFontWeightBold)
     
-    clientPhotoImageView.image = UIImage(named: "avatarExample")
-    clientPhotoImageView.clipsToBounds = true
-    clientPhotoImageView.contentMode = .ScaleAspectFill
-    clientPhotoImageView.layer.cornerRadius = 17.5
-    
     clientNameLabel.textColor = UIColor.h4Color()
     clientBalanceLabel.textColor = UIColor.h5Color()
     
