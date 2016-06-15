@@ -583,12 +583,24 @@
                                     <constraint firstItem="x8q-2J-oUD" firstAttribute="height" secondItem="OLE-Na-sC0" secondAttribute="height" id="i3a-KZ-GB7"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYt-MH-cdv">
+                                <rect key="frame" x="177.5" y="220" width="205" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="205" id="SwK-CU-Vo3"/>
+                                    <constraint firstAttribute="height" constant="75" id="iyv-qd-4GP"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="otherButtonAction:" destination="3aR-Vr-Rzh" eventType="touchUpInside" id="b2Y-H1-ij5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="3Qe-iE-e01" firstAttribute="top" secondItem="0o4-FV-Gv4" secondAttribute="bottom" constant="20" id="9AA-eP-kLB"/>
                             <constraint firstItem="0o4-FV-Gv4" firstAttribute="centerX" secondItem="4AN-mE-FtE" secondAttribute="centerX" id="H3u-R9-wIL"/>
                             <constraint firstItem="3Qe-iE-e01" firstAttribute="centerX" secondItem="0o4-FV-Gv4" secondAttribute="centerX" id="NXI-L5-nSK"/>
+                            <constraint firstItem="nYt-MH-cdv" firstAttribute="top" secondItem="3Qe-iE-e01" secondAttribute="bottom" constant="40" id="SfS-je-Xxh"/>
                             <constraint firstItem="0o4-FV-Gv4" firstAttribute="top" secondItem="NBt-WC-Gn7" secondAttribute="bottom" id="a9l-cw-6L1"/>
+                            <constraint firstItem="nYt-MH-cdv" firstAttribute="centerX" secondItem="3Qe-iE-e01" secondAttribute="centerX" id="yWD-De-Erl"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -597,6 +609,7 @@
                     <connections>
                         <outlet property="firstCashButton" destination="V85-GY-qT4" id="iux-pR-hzD"/>
                         <outlet property="fourthCashButton" destination="x8q-2J-oUD" id="aav-Bz-hRb"/>
+                        <outlet property="otherButton" destination="nYt-MH-cdv" id="zbI-zb-pp8"/>
                         <outlet property="secondCashButton" destination="O0T-h2-Zb2" id="bPD-c6-H9Z"/>
                         <outlet property="thirdCashButton" destination="OLE-Na-sC0" id="rMH-KJ-KfV"/>
                     </connections>

@@ -6,6 +6,8 @@ class CashPaymentViewController: UIViewController {
   @IBOutlet weak var secondCashButton: UIButton!
   @IBOutlet weak var thirdCashButton: UIButton!
   @IBOutlet weak var fourthCashButton: UIButton!
+    
+  @IBOutlet weak var otherButton: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -14,6 +16,13 @@ class CashPaymentViewController: UIViewController {
     }
     
     view.backgroundColor = UIColor.clearColor()
+    
+    otherButton.backgroundColor = UIColor.elementsAndH1Color()
+    otherButton.layer.cornerRadius = 5
+    otherButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
+    otherButton.setTitle("Другая сумма".uppercaseString, forState: .Normal)
+    otherButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+    otherButton.addTarget(self, action: #selector(otherButtonAction(_:)), forControlEvents: .TouchUpInside)
     
     setUpButtons()
   }
@@ -24,7 +33,7 @@ class CashPaymentViewController: UIViewController {
     
     let buttons = [firstCashButton, secondCashButton, thirdCashButton, fourthCashButton]
     for (i, button) in buttons.enumerate() {
-      if labels.count > i {
+      if i < labels.count {
         button.setTitle(format(labels[i]), forState: .Normal)
         button.hidden = false
       }
@@ -49,5 +58,14 @@ class CashPaymentViewController: UIViewController {
     
     return Array(Set(result)).sort()
   }
-
+    
+  //MARK: - Actions
+  
+  func quickButtonAction(sender: UIButton) {
+    
+  }
+  
+  @IBAction func otherButtonAction(sender: UIButton) {
+    
+  }
 }
