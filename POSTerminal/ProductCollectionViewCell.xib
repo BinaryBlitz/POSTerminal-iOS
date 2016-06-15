@@ -19,8 +19,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFD-aZ-EgI">
                                 <rect key="frame" x="0.0" y="0.0" width="130" height="40"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Пицца " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dME-5h-g44">
-                                        <rect key="frame" x="41" y="12" width="50" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пицца " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="dME-5h-g44">
+                                        <rect key="frame" x="40" y="12" width="50" height="17"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -37,10 +37,12 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Kf4-YD-2RP" firstAttribute="centerX" secondItem="dME-5h-g44" secondAttribute="centerX" id="0qu-LT-GF0"/>
+                                    <constraint firstItem="dME-5h-g44" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZFD-aZ-EgI" secondAttribute="leading" constant="5" id="Dzd-z4-ZBj"/>
                                     <constraint firstItem="Kf4-YD-2RP" firstAttribute="top" secondItem="dME-5h-g44" secondAttribute="bottom" constant="10" id="Hde-q5-4gA"/>
                                     <constraint firstAttribute="height" constant="40" id="PBX-CL-0Gx"/>
                                     <constraint firstItem="dME-5h-g44" firstAttribute="centerX" secondItem="ZFD-aZ-EgI" secondAttribute="centerX" id="VVv-8s-bLk"/>
                                     <constraint firstItem="dME-5h-g44" firstAttribute="centerY" secondItem="ZFD-aZ-EgI" secondAttribute="centerY" id="f0g-6k-g19"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dME-5h-g44" secondAttribute="trailing" constant="5" id="vCG-8f-e6C"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="1gE-A2-HoZ">
