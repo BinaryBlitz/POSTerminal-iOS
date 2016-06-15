@@ -19,8 +19,6 @@ class CardPaymentViewController: UIViewController {
   @IBAction func payButtonAction() {
     OrderManager.currentOrder.clearOrder()
     ClientManager.currentClient = nil
-    NSNotificationCenter.defaultCenter().postNotificationName(newItemNotification, object: nil)
-    navigationController?.popViewControllerAnimated(true)
     NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
   }
   

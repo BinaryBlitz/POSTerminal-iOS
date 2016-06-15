@@ -65,6 +65,7 @@ class CheckViewController: UIViewController {
   }
   
   func endCheckout() {
+    reloadData()
     view.userInteractionEnabled = true
     reloadClientInfo()
   }

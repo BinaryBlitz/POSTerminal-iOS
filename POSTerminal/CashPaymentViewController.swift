@@ -61,11 +61,16 @@ class CashPaymentViewController: UIViewController {
     
   //MARK: - Actions
   
-  func quickButtonAction(sender: UIButton) {
-    
+  @IBAction func quickButtonAction(sender: UIButton) {
+    guard let keyboardViewController = storyboard?.instantiateViewControllerWithIdentifier("SumInputViewController") else { return }
+    keyboardViewController.modalPresentationStyle = .OverCurrentContext
+    keyboardViewController.modalTransitionStyle = .CrossDissolve
+    NSNotificationCenter.defaultCenter().postNotificationName(presentViewControllerNotification,
+                                                              object: nil,
+                                                              userInfo: ["viewController": keyboardViewController])
   }
   
-  @IBAction func otherButtonAction(sender: UIButton) {
-    
+  func otherButtonAction(sender: UIButton) {
+    print(sender.titleLabel?.text)
   }
 }

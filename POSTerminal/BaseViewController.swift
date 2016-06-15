@@ -7,6 +7,7 @@ let updateMenuNotification = "updateMenuNotification"
 let endCheckoutNotification = "endCheckoutNotification"
 let startCheckoutNotification = "startCheckoutNotification"
 
+let presentViewControllerNotification = "presentViewControllerNotification"
 
 class BaseViewController: UIViewController {
   
@@ -35,10 +36,20 @@ class BaseViewController: UIViewController {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refresh), name: updateMenuNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(startCheckout), name: startCheckoutNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(endCheckout), name: endCheckoutNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(presentNotification(_:)), name: presentViewControllerNotification, object: nil)
   }
   
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  func presentNotification(notification: NSNotification? = nil) {
+    guard let viewController = notification?.userInfo?["viewController"] as? UIViewController else { return }
+    presentViewController(viewController, animated: true, completion: nil)
+  }
+  
+  func present(viewController: UIViewController) {
+    
   }
   
   //MARK: - Checkout
@@ -62,6 +73,7 @@ class BaseViewController: UIViewController {
   }
   
   func endCheckout() {
+    menuNavigationController?.popViewControllerAnimated(true)
     UIView.animateWithDuration(0.2, animations: {
         self.paymentHeaderView.alpha = 0
       }) { (finished) in

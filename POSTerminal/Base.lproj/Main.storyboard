@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -533,6 +534,235 @@
             </objects>
             <point key="canvasLocation" x="-469" y="1753"/>
         </scene>
+        <!--Sum Input View Controller-->
+        <scene sceneID="DAr-5q-hrg">
+            <objects>
+                <viewController storyboardIdentifier="SumInputViewController" id="a8q-mI-fA6" customClass="SumInputViewController" customModule="POSTerminal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JtP-mN-dsp"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZWB-4I-pxp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Eso-Na-A8P">
+                        <rect key="frame" x="0.0" y="0.0" width="800" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5jo-AX-QpV">
+                                <rect key="frame" x="152" y="77" width="497" height="645"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNT-aB-tZM">
+                                        <rect key="frame" x="437" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="yNT-aB-tZM" secondAttribute="height" multiplier="1:1" id="7DF-bv-tvD"/>
+                                            <constraint firstAttribute="width" constant="60" id="Igw-Q6-pSS"/>
+                                        </constraints>
+                                        <state key="normal" image="Close"/>
+                                        <connections>
+                                            <action selector="closeButtonAction" destination="a8q-mI-fA6" eventType="touchUpInside" id="frz-SP-lHA"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ДРУГАЯ СУММА" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJR-l9-0Pf">
+                                        <rect key="frame" x="191" y="22" width="116" height="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NuT-ae-5CY" customClass="CardView" customModule="POSTerminal" customModuleProvider="target">
+                                        <rect key="frame" x="97" y="87" width="303" height="65"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123" textAlignment="right" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="1rj-ho-6Gk">
+                                                <rect key="frame" x="10" y="3" width="283" height="59"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="1rj-ho-6Gk" secondAttribute="bottom" constant="3" id="ICm-50-jeW"/>
+                                            <constraint firstItem="1rj-ho-6Gk" firstAttribute="top" secondItem="NuT-ae-5CY" secondAttribute="top" constant="3" id="MGR-JU-LpB"/>
+                                            <constraint firstAttribute="height" constant="65" id="NoJ-sZ-9X7"/>
+                                            <constraint firstItem="1rj-ho-6Gk" firstAttribute="leading" secondItem="NuT-ae-5CY" secondAttribute="leading" constant="10" id="Sez-1c-ee6"/>
+                                            <constraint firstAttribute="trailing" secondItem="1rj-ho-6Gk" secondAttribute="trailing" constant="10" id="XMD-6u-szb"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="kZ8-By-ic8">
+                                        <rect key="frame" x="97" y="184" width="303" height="406"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9Ho-1n-rC5">
+                                                <rect key="frame" x="0.0" y="0.0" width="303" height="91"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IR0-GJ-NkI" customClass="KeyboardButton" customModule="POSTerminal" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="91" height="91"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="91" id="60i-nN-ACS"/>
+                                                            <constraint firstAttribute="height" constant="91" id="TLe-0A-fIC"/>
+                                                        </constraints>
+                                                        <state key="normal" title="7"/>
+                                                        <connections>
+                                                            <action selector="numberButtonAction:" destination="a8q-mI-fA6" eventType="touchUpInside" id="JSP-MK-J1M"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="io3-37-5y6" customClass="KeyboardButton" customModule="POSTerminal" customModuleProvider="target">
+                                                        <rect key="frame" x="106" y="0.0" width="91" height="91"/>
+                                                        <state key="normal" title="8"/>
+                                                        <connections>
+                                                            <action selector="numberButtonAction:" destination="a8q-mI-fA6" eventType="touchUpInside" id="9Tr-9p-LtH"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHT-mS-e5b" customClass="KeyboardButton" customModule="POSTerminal" customModuleProvider="target">
+                                                        <rect key="frame" x="212" y="0.0" width="91" height="91"/>
+                                                        <state key="normal" title="9"/>
+                                                        <connections>
+                                                            <action selector="numberButtonAction:" destination="a8q-mI-fA6" eventType="touchUpInside" id="qAV-7e-OtY"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="io3-37-5y6" firstAttribute="height" secondItem="IR0-GJ-NkI" secondAttribute="height" id="8Ge-bs-45x"/>
+                                                    <constraint firstItem="io3-37-5y6" firstAttribute="width" secondItem="IR0-GJ-NkI" secondAttribute="width" id="QOz-7U-YRS"/>
+                                                    <constraint firstItem="hHT-mS-e5b" firstAttribute="height" secondItem="IR0-GJ-NkI" secondAttribute="height" id="jRS-ZB-gkw"/>
+                                                    <constraint firstItem="hHT-mS-e5b" firstAttribute="width" secondItem="IR0-GJ-NkI" secondAttribute="width" id="qAr-UH-zOo"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="TXq-fO-Dod">
+                                                <rect key="frame" x="0.0" y="105" width="303" height="91"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jme-Bl-IB4" customClass="KeyboardButton" customModule="POSTerminal" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="91" height="91"/>
+                                                        <state key="normal" title="4"/>
+                                                        <connections>
+                                                            <action selector="numberButtonAction:" destination="a8q-mI-fA6" eventType="touchUpInside" id="bgo-t8-Cf3"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Lb-CI-EU9" customClass="KeyboardButton" customModule="POSTerminal" customModuleProvider="target">
+                                                        <rect key="frame" x="106" y="0.0" width="91" height="91"/>
+                                                        <state key="normal" title="5"/>
+                                                        <connections>
+                                                            <action selector="numberButtonAction:" destination="a8q-mI-fA6" eventType="touchUpInside" id="tht-pJ-J6p"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPe-Cc-t5k" customClass="KeyboardButton" customModule="POSTerminal" customModuleProvider="target">
+                                                        <rect key="frame" x="212" y="0.0" width="91" height="91"/>
+                                                        <state key="normal" title="6"/>
+                                                        <connections>
+                                                            <action selector="numberButtonAction:" destination="a8q-mI-fA6" eventType="touchUpInside" id="shh-7c-cBh"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="GE7-Ld-Cbq">
+                                                <rect key="frame" x="0.0" y="210" width="303" height="91"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ugz-EW-qtR" customClass="KeyboardButton" customModule="POSTerminal" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="91" height="91"/>
+                                                        <state key="normal" title="1"/>
+                                                        <connections>
+                                                            <action selector="numberButtonAction:" destination="a8q-mI-fA6" eventType="touchUpInside" id="RBD-t5-pf8"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAI-7w-go3" customClass="KeyboardButton" customModule="POSTerminal" customModuleProvider="target">
+                                                        <rect key="frame" x="106" y="0.0" width="91" height="91"/>
+                                                        <state key="normal" title="2"/>
+                                                        <connections>
+                                                            <action selector="numberButtonAction:" destination="a8q-mI-fA6" eventType="touchUpInside" id="a4L-Ks-deP"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rl-72-bKA" customClass="KeyboardButton" customModule="POSTerminal" customModuleProvider="target">
+                                                        <rect key="frame" x="212" y="0.0" width="91" height="91"/>
+                                                        <state key="normal" title="3"/>
+                                                        <connections>
+                                                            <action selector="numberButtonAction:" destination="a8q-mI-fA6" eventType="touchUpInside" id="09o-UC-n0M"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zDR-h0-3tQ">
+                                                <rect key="frame" x="0.0" y="315" width="303" height="91"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpK-WW-D0a" customClass="KeyboardButton" customModule="POSTerminal" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="91" height="91"/>
+                                                        <state key="normal" title="очистить"/>
+                                                        <connections>
+                                                            <action selector="clearButtonAction" destination="a8q-mI-fA6" eventType="touchUpInside" id="jo8-On-tqi"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goV-zq-JV3" customClass="KeyboardButton" customModule="POSTerminal" customModuleProvider="target">
+                                                        <rect key="frame" x="106" y="0.0" width="91" height="91"/>
+                                                        <state key="normal" title="0"/>
+                                                        <connections>
+                                                            <action selector="numberButtonAction:" destination="a8q-mI-fA6" eventType="touchUpInside" id="0oS-yf-orf"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLF-ql-Knn" customClass="KeyboardButton" customModule="POSTerminal" customModuleProvider="target">
+                                                        <rect key="frame" x="212" y="0.0" width="91" height="91"/>
+                                                        <state key="normal" title="оплатить"/>
+                                                        <connections>
+                                                            <action selector="payButtonAction" destination="a8q-mI-fA6" eventType="touchUpInside" id="Z2c-EX-Ki2"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="2rl-72-bKA" firstAttribute="width" secondItem="IR0-GJ-NkI" secondAttribute="width" id="1Sd-cb-EPs"/>
+                                            <constraint firstItem="2rl-72-bKA" firstAttribute="height" secondItem="IR0-GJ-NkI" secondAttribute="height" id="2MK-yi-0fB"/>
+                                            <constraint firstItem="goV-zq-JV3" firstAttribute="width" secondItem="IR0-GJ-NkI" secondAttribute="width" id="3rP-cL-gjI"/>
+                                            <constraint firstItem="RAI-7w-go3" firstAttribute="width" secondItem="IR0-GJ-NkI" secondAttribute="width" id="9gL-on-CjP"/>
+                                            <constraint firstItem="Ugz-EW-qtR" firstAttribute="height" secondItem="IR0-GJ-NkI" secondAttribute="height" id="ESX-XC-HZu"/>
+                                            <constraint firstItem="WLF-ql-Knn" firstAttribute="width" secondItem="IR0-GJ-NkI" secondAttribute="width" id="Eo0-b1-JG6"/>
+                                            <constraint firstItem="dPe-Cc-t5k" firstAttribute="height" secondItem="IR0-GJ-NkI" secondAttribute="height" id="GSg-ry-vge"/>
+                                            <constraint firstItem="goV-zq-JV3" firstAttribute="height" secondItem="IR0-GJ-NkI" secondAttribute="height" id="P51-2H-ltW"/>
+                                            <constraint firstItem="4Lb-CI-EU9" firstAttribute="width" secondItem="IR0-GJ-NkI" secondAttribute="width" id="WND-GF-Cvf"/>
+                                            <constraint firstItem="Jme-Bl-IB4" firstAttribute="height" secondItem="IR0-GJ-NkI" secondAttribute="height" id="YgR-oc-bK8"/>
+                                            <constraint firstItem="Jme-Bl-IB4" firstAttribute="width" secondItem="IR0-GJ-NkI" secondAttribute="width" id="Z3b-85-goa"/>
+                                            <constraint firstItem="dPe-Cc-t5k" firstAttribute="width" secondItem="IR0-GJ-NkI" secondAttribute="width" id="e25-5j-m63"/>
+                                            <constraint firstItem="tpK-WW-D0a" firstAttribute="width" secondItem="IR0-GJ-NkI" secondAttribute="width" id="fQw-zc-qap"/>
+                                            <constraint firstItem="tpK-WW-D0a" firstAttribute="height" secondItem="IR0-GJ-NkI" secondAttribute="height" id="hoG-xX-8Tz"/>
+                                            <constraint firstItem="RAI-7w-go3" firstAttribute="height" secondItem="IR0-GJ-NkI" secondAttribute="height" id="iRQ-X9-yQq"/>
+                                            <constraint firstItem="Ugz-EW-qtR" firstAttribute="width" secondItem="IR0-GJ-NkI" secondAttribute="width" id="qbL-YT-aed"/>
+                                            <constraint firstItem="WLF-ql-Knn" firstAttribute="height" secondItem="IR0-GJ-NkI" secondAttribute="height" id="rDL-6j-xQK"/>
+                                            <constraint firstItem="4Lb-CI-EU9" firstAttribute="height" secondItem="IR0-GJ-NkI" secondAttribute="height" id="zjf-iS-iMd"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="kZ8-By-ic8" firstAttribute="top" secondItem="NuT-ae-5CY" secondAttribute="bottom" constant="32" id="1sM-xQ-FPn"/>
+                                    <constraint firstAttribute="trailing" secondItem="NuT-ae-5CY" secondAttribute="trailing" constant="97" id="3j1-pq-rcz"/>
+                                    <constraint firstItem="NuT-ae-5CY" firstAttribute="leading" secondItem="5jo-AX-QpV" secondAttribute="leading" constant="97" id="J9w-Nd-1oV"/>
+                                    <constraint firstItem="yNT-aB-tZM" firstAttribute="top" secondItem="5jo-AX-QpV" secondAttribute="top" id="LyX-aW-UxB"/>
+                                    <constraint firstItem="rJR-l9-0Pf" firstAttribute="centerX" secondItem="5jo-AX-QpV" secondAttribute="centerX" id="NBm-Je-4PU"/>
+                                    <constraint firstAttribute="width" constant="497" id="Qc6-Nf-AVw"/>
+                                    <constraint firstItem="rJR-l9-0Pf" firstAttribute="centerY" secondItem="yNT-aB-tZM" secondAttribute="centerY" id="UTn-8D-8WW"/>
+                                    <constraint firstItem="NuT-ae-5CY" firstAttribute="top" secondItem="rJR-l9-0Pf" secondAttribute="bottom" constant="48" id="ZI8-gg-SaF"/>
+                                    <constraint firstItem="kZ8-By-ic8" firstAttribute="centerX" secondItem="NuT-ae-5CY" secondAttribute="centerX" id="p5D-Uk-kHA"/>
+                                    <constraint firstAttribute="trailing" secondItem="yNT-aB-tZM" secondAttribute="trailing" id="rku-Tr-61X"/>
+                                    <constraint firstAttribute="height" constant="645" id="vyP-jt-dy9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5jo-AX-QpV" firstAttribute="centerY" secondItem="Eso-Na-A8P" secondAttribute="centerY" id="OUn-f2-OdE"/>
+                            <constraint firstItem="5jo-AX-QpV" firstAttribute="centerX" secondItem="Eso-Na-A8P" secondAttribute="centerX" id="m6B-fp-dGW"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="800" height="800"/>
+                    <connections>
+                        <outlet property="clearButton" destination="tpK-WW-D0a" id="9Pw-CD-X2G"/>
+                        <outlet property="contentView" destination="5jo-AX-QpV" id="ZV4-RP-Fek"/>
+                        <outlet property="payButton" destination="WLF-ql-Knn" id="B6F-mL-Urj"/>
+                        <outlet property="sumLabel" destination="1rj-ho-6Gk" id="3Nf-xI-b3z"/>
+                        <outlet property="sumLabelContainer" destination="NuT-ae-5CY" id="wVB-6Q-MPO"/>
+                        <outlet property="titleLabel" destination="rJR-l9-0Pf" id="HFx-SZ-ScT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fW0-D1-DMH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1062" y="2398"/>
+        </scene>
         <!--Cash Payment View Controller-->
         <scene sceneID="Q5V-rv-pDG">
             <objects>
@@ -584,13 +814,13 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYt-MH-cdv">
-                                <rect key="frame" x="177.5" y="220" width="205" height="75"/>
+                                <rect key="frame" x="178" y="220" width="205" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="205" id="SwK-CU-Vo3"/>
                                     <constraint firstAttribute="height" constant="75" id="iyv-qd-4GP"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="otherButtonAction:" destination="3aR-Vr-Rzh" eventType="touchUpInside" id="b2Y-H1-ij5"/>
+                                    <action selector="quickButtonAction:" destination="3aR-Vr-Rzh" eventType="touchUpInside" id="Fdn-gM-0Sa"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -623,6 +853,7 @@
         <image name="Back" width="24" height="24"/>
         <image name="BackDisabled" width="24" height="24"/>
         <image name="ChangeClient" width="26" height="26"/>
+        <image name="Close" width="17" height="17"/>
         <image name="EmptyOrder" width="115" height="110"/>
         <image name="Home" width="24" height="23"/>
         <image name="ProfileIcon" width="35" height="35"/>

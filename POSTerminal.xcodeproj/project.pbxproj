@@ -44,7 +44,9 @@
 		3779D48B1D0C62D700A3A57B /* CardPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D48A1D0C62D700A3A57B /* CardPaymentViewController.swift */; };
 		3779D48F1D0CC9C300A3A57B /* ClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D48E1D0CC9C300A3A57B /* ClientManager.swift */; };
 		3779D4921D0CD52F00A3A57B /* ServerManager+MobileDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779D4911D0CD52F00A3A57B /* ServerManager+MobileDevice.swift */; };
+		37862EB81D11A79F00BBFB42 /* SumInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37862EB71D11A79F00BBFB42 /* SumInputViewController.swift */; };
 		37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */; };
+		37965AD01D11E95500F03701 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37965ACF1D11E95500F03701 /* KeyboardButton.swift */; };
 		37C1EDA41D01CA670018B531 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA31D01CA670018B531 /* Colors.swift */; };
 		37C1EDA71D01D20E0018B531 /* MenuCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */; };
 		37C1EDA91D01D2280018B531 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA81D01D2280018B531 /* CheckViewController.swift */; };
@@ -107,7 +109,9 @@
 		3779D48A1D0C62D700A3A57B /* CardPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPaymentViewController.swift; sourceTree = "<group>"; };
 		3779D48E1D0CC9C300A3A57B /* ClientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientManager.swift; sourceTree = "<group>"; };
 		3779D4911D0CD52F00A3A57B /* ServerManager+MobileDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ServerManager+MobileDevice.swift"; sourceTree = "<group>"; };
+		37862EB71D11A79F00BBFB42 /* SumInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumInputViewController.swift; sourceTree = "<group>"; };
 		37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientIdentity.swift; sourceTree = "<group>"; };
+		37965ACF1D11E95500F03701 /* KeyboardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
 		37C1EDA31D01CA670018B531 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewController.swift; sourceTree = "<group>"; };
 		37C1EDA81D01D2280018B531 /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 				375C850A1D05053E00F9F469 /* CheckItemTableViewCell */,
 				375C85031D05014700F9F469 /* CardView.swift */,
 				374215391D0FCF2200018F1B /* CashButton.swift */,
+				37965ACF1D11E95500F03701 /* KeyboardButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -319,6 +324,7 @@
 				3779D4861D0C523900A3A57B /* CheckoutViewController.swift */,
 				3779D4881D0C62CB00A3A57B /* CashPaymentViewController.swift */,
 				3779D48A1D0C62D700A3A57B /* CardPaymentViewController.swift */,
+				37862EB71D11A79F00BBFB42 /* SumInputViewController.swift */,
 			);
 			name = Checkout;
 			sourceTree = "<group>";
@@ -534,6 +540,7 @@
 				37C58DEB1CFE512900049095 /* EquipServRouter.swift in Sources */,
 				37C58DE01CFCFC9400049095 /* ServerManager+Menu.swift in Sources */,
 				375C84EA1D045A4300F9F469 /* CategoryCollectionViewCell.swift in Sources */,
+				37965AD01D11E95500F03701 /* KeyboardButton.swift in Sources */,
 				3752A12E1D01AE6E00194663 /* BaseViewController.swift in Sources */,
 				3779D48B1D0C62D700A3A57B /* CardPaymentViewController.swift in Sources */,
 				37C58DE21CFE315400049095 /* Settings.swift in Sources */,
@@ -551,6 +558,7 @@
 				37C1EDA71D01D20E0018B531 /* MenuCollectionViewController.swift in Sources */,
 				37C58DE41CFE3C0600049095 /* Host.swift in Sources */,
 				37C1EDAB1D01ED0D0018B531 /* UIViewController+Alert.swift in Sources */,
+				37862EB81D11A79F00BBFB42 /* SumInputViewController.swift in Sources */,
 				37C58DDE1CFCFB9400049095 /* ServerError.swift in Sources */,
 				376D84421CF91CA2008A868A /* ServerObject.swift in Sources */,
 				375C84F81D04CFF800F9F469 /* EquipmentManagementTableViewController.swift in Sources */,
