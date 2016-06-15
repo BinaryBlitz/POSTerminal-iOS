@@ -33,6 +33,9 @@ class SumInputViewController: UIViewController {
     payButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
     payButton.backgroundColor = UIColor.elementsAndH1Color()
     payButton.layer.borderWidth = 0
+    
+    payButton.backgroundColor = UIColor.h5Color()
+    payButton.enabled = false
   }
   
   //MARK: - Actions
@@ -46,12 +49,22 @@ class SumInputViewController: UIViewController {
     if sumLabel.text == zeroString {
       sumLabel.text = title
     } else if let oldText = sumLabel.text {
-      sumLabel.text = "\(oldText)\(title)"
+      let newText = "\(oldText)\(title)"
+      sumLabel.text = newText
     }
+    updatePayButton()
   }
   
   @IBAction func clearButtonAction() {
     sumLabel.text = zeroString
+    updatePayButton()
+  }
+  
+  func updatePayButton() {
+    if let text = sumLabel.text, sum = Double(text) where sum >= OrderManager.currentOrder.totalPrice {
+      payButton.enabled = true
+      payButton.backgroundColor = UIColor.elementsAndH1Color()
+    }
   }
   
   @IBAction func payButtonAction() {
