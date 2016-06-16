@@ -79,4 +79,20 @@ extension ServerManager {
   func encashOutInWP(amount: Double, completion: ((response: ServerResponse<Bool, ServerError>) -> Void)? = nil) -> Request? {
     return performRegistratorComandWith(WPBaseRouter.Encash(amount: amount, type: .Out), completion: completion)
   }
+  
+  func checkConnectionInWP(completion: (RegistratorCompletion)? = nil) -> Request? {
+    guard let uuid = uuid else {
+      completion?(response: ServerResponse<Bool, ServerError>(error: .InvalidData))
+      return nil
+    }
+    return performRegistratorComandWith(WPBaseRouter.CheckConnection(uuid: uuid), completion: completion)
+  }
+  
+  func checkConnectionInEQ(completion: (RegistratorCompletion)? = nil) -> Request? {
+    guard let uuid = uuid else {
+      completion?(response: ServerResponse<Bool, ServerError>(error: .InvalidData))
+      return nil
+    }
+    return performRegistratorComandWith(EquipServRouter.CheckConnection(uuid: uuid), completion: completion)
+  }
 }

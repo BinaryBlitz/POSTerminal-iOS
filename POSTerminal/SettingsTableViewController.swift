@@ -57,8 +57,33 @@ class SettingsTableViewController: UITableViewController {
   }
   
   @IBAction func checkConnectionButtonAction() {
-    //TODO: Check connection
-    presentAlertWithMessage("check connection")
+    var sentRequests = 0
+    
+    ServerManager.sharedManager.checkConnectionInEQ { (response) in
+      switch response.result {
+      case .Success(_):
+        sentRequests += 1
+        if sentRequests == 2 {
+          self.presentAlertWithMessage("Обе базы успешно подключены!")
+        }
+      case .Failure(let error):
+        print(error)
+        self.presentAlertWithTitle("Ошибка", andMessage: "Не удалось подключиться к базе оборудования")
+      }
+    }
+    
+    ServerManager.sharedManager.checkConnectionInWP { (response) in
+      switch response.result {
+      case .Success(_):
+        sentRequests += 1
+        if sentRequests == 2 {
+          self.presentAlertWithMessage("Обе базы успешно подключены!")
+        }
+      case .Failure(let error):
+        print(error)
+        self.presentAlertWithTitle("Ошибка", andMessage: "Не удалось подключиться к базе рабочего места")
+      }
+    }
   }
   
   @IBAction func registerDevice() {

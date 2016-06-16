@@ -8,6 +8,7 @@ enum EquipServRouter {
   case OpenCashDrawer
   case PrintCheck(check: Check)
   case RegisterDevice(url: String)
+  case CheckConnection(uuid: String)
 }
 
 extension EquipServRouter: ServerRouter {
@@ -17,6 +18,8 @@ extension EquipServRouter: ServerRouter {
     switch self {
     case .RegisterDevice(_):
       return "\(baseURL)/hs/accessories/mobile-device"
+    case .CheckConnection(_):
+      return "\(baseURL)/hs/Base/Status"
     default:
       return "\(baseURL)/hs/accessories/registers"
     }
@@ -59,6 +62,8 @@ extension EquipServRouter: ServerRouter {
 //      params =  [check.dict]
     case .RegisterDevice(let url):
       return ["notify": url]
+    case .CheckConnection(let uuid):
+      return ["terminalID": uuid]
     }
     
     if let params = params {

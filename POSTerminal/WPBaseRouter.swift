@@ -7,6 +7,7 @@ enum WPBaseRouter {
   case OpenDay
   case PrintZReport
   case Encash(amount: Double, type: EncashType)
+  case CheckConnection(uuid: String)
 }
 
 extension WPBaseRouter: ServerRouter {
@@ -23,6 +24,8 @@ extension WPBaseRouter: ServerRouter {
       return "\(baseURL)/hs/Client/InfoClient"
     case .OpenDay, .Encash, .PrintZReport:
       return "\(baseURL)/hs/CashDesk/Money"
+    case .CheckConnection(_):
+      return "\(baseURL)/hs/Base/Status"
     }
   }
   
@@ -66,6 +69,8 @@ extension WPBaseRouter: ServerRouter {
       return ["action": "PrintZReport"]
     case let .Encash(amount, type):
       return nil
+    case .CheckConnection(let uuid):
+      return ["terminalID": uuid]
     }
   }
 }
