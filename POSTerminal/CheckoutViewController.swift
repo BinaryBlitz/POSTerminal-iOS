@@ -94,16 +94,30 @@ class CheckoutViewController: UIViewController {
 extension CheckoutViewController: PaymentControllerDelegate {
   
   func didUpdatePayments() {
-    priceLabel.text = "\(OrderManager.currentOrder.residual.format()) р."
     let residual = OrderManager.currentOrder.residual
     if residual == 0 {
-      //TODO: create check
-      OrderManager.currentOrder.clearOrder()
-      ClientManager.currentClient = nil
-      NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
+      finishOrder()
     } else if residual < 0 {
-      presentAlertWithTitle("Сдача", andMessage: "\(-residual) рублей")
+      let alert = UIAlertController(title: "Сдача: \((-residual).format()) рублей", message: nil, preferredStyle: .Alert)
+      alert.addAction(UIAlertAction(title: "Завершить заказ", style: .Default, handler: { (action) in
+        self.finishOrder()
+      }))
+      alert.addAction(UIAlertAction(title: "Отмена", style: .Cancel, handler: { (action) in
+        OrderManager.currentOrder.payments.removeLast()
+        self.didUpdatePayments()
+      }))
+      
+      presentViewController(alert, animated: true, completion: nil)
+    } else {
+      priceLabel.text = "\(OrderManager.currentOrder.residual.format()) р."
     }
+  }
+  
+  func finishOrder() {
+    //TODO: create check
+    OrderManager.currentOrder.clearOrder()
+    ClientManager.currentClient = nil
+    NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
   }
   
 }
