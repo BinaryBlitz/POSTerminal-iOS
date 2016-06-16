@@ -74,7 +74,7 @@ class CheckViewController: UIViewController {
     if let client = ClientManager.currentClient {
       clientNameLabel.text = client.name
       clientBalanceLabel.hidden = false
-      clientBalanceLabel.text = "Баланс: \(client.balance) р."
+      clientBalanceLabel.text = "Баланс: \(client.balance.format()) р."
       changeClientButton.hidden = false
     } else {
       clientNameLabel.text = "Новый клиент"
