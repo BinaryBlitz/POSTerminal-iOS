@@ -56,6 +56,8 @@ extension WPBaseRouter: ServerRouter {
   }
   
   var parameters: [String: AnyObject]? {
+    guard let uuid = uuid else { return nil }
+    
     switch self {
     case .Menu:
       return nil
@@ -64,9 +66,9 @@ extension WPBaseRouter: ServerRouter {
     case let .GetInfo(identity):
       return ["type": identity.type.rawValue, "code": identity.code]
     case .OpenDay:
-      return ["action": "OpenDay"]
+      return ["action": "OpenDay", "terminalID": uuid]
     case .PrintZReport:
-      return ["action": "PrintZReport"]
+      return ["action": "PrintZReport", "terminalID": uuid]
     case let .Encash(amount, type):
       return nil
     case .CheckConnection(let uuid):

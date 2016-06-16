@@ -66,10 +66,14 @@ extension EquipServRouter: ServerRouter {
       return ["terminalID": uuid]
     }
     
-    if let params = params {
-      return ["action": action, "params": params]
+    if let uuid = uuid {
+      if let params = params {
+        return ["action": action, "params": params, "treminalID": uuid]
+      } else {
+        return ["action": action, "treminalID": uuid]
+      }
     } else {
-      return ["action": action]
+      return nil
     }
   }
 }
