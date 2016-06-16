@@ -435,7 +435,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghR-5j-mcW">
                                 <rect key="frame" x="20" y="252" width="560" height="298"/>
                                 <connections>
-                                    <segue destination="kLB-np-sqw" kind="embed" id="DET-UP-p8w"/>
+                                    <segue destination="kLB-np-sqw" kind="embed" identifier="cardPayment" id="DET-UP-p8w"/>
                                 </connections>
                             </containerView>
                         </subviews>

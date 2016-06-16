@@ -6,6 +6,7 @@ class Settings: NSObject, NSCoding {
   
   var wpBase: Host?
   var equipServ: Host?
+  var currentCheckNumber: Int = 0
   
   var cashBalance: Double = 0
   
@@ -14,7 +15,8 @@ class Settings: NSObject, NSCoding {
   required init?(coder aDecoder: NSCoder) {
     wpBase = aDecoder.decodeObjectForKey("wpBase") as? Host
     equipServ = aDecoder.decodeObjectForKey("equipServ") as? Host
-    cashBalance = aDecoder.decodeDoubleForKey("cashBalance") 
+    cashBalance = aDecoder.decodeDoubleForKey("cashBalance")
+    currentCheckNumber = Int(aDecoder.decodeIntForKey("currentCheckNumber"))
     super.init()
   }
   
@@ -22,6 +24,7 @@ class Settings: NSObject, NSCoding {
     aCoder.encodeObject(wpBase, forKey: "wpBase")
     aCoder.encodeObject(equipServ, forKey: "equipServ")
     aCoder.encodeDouble(cashBalance, forKey: "cashBalance")
+    aCoder.encodeInt(Int32(currentCheckNumber), forKey: "currentCheckNumber")
   }
   
   static func loadFormUserDefaults() {

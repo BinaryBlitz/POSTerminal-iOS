@@ -20,7 +20,7 @@ extension Client: ServerObject {
     return Client(id: id, code: code, name: name, balance: balance)
   }
   
-  var json: JSON? {
+  var dict: [String: AnyObject]? {
     return nil
   }
 }

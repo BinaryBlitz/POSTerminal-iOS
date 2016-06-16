@@ -13,7 +13,7 @@ extension ServerManager {
         switch response.result {
         case .Success(let resultValue):
           let json = JSON(resultValue)
-          NSLog("\(json)")
+          print(json)
           completion?(response: Response(value: true))
         case .Failure(let error):
           let serverError = ServerError(error: error)

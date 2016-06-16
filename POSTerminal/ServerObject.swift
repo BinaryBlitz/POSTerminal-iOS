@@ -3,5 +3,5 @@ import SwiftyJSON
 protocol ServerObject {
   associatedtype ObjectType = Self
   static func createWith(json: JSON) -> ObjectType?
-  var json: JSON? { get }
+  var dict: [String: AnyObject]? { get }
 }

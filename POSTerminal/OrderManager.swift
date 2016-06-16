@@ -10,6 +10,10 @@ struct Payment {
     case Cash
     case Card
   }
+  
+  var dict: [String: AnyObject]? {
+    return ["type": method.rawValue, "amount": amount]
+  }
 }
 
 class OrderManager {

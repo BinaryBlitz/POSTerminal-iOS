@@ -65,7 +65,7 @@ extension Product: ServerObject {
     return product
   }
   
-  var json: JSON? {
+  var dict: [String: AnyObject]? {
     return nil
   }
 }

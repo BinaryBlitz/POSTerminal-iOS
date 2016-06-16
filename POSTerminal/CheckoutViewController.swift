@@ -89,6 +89,13 @@ class CheckoutViewController: UIViewController {
         }
     }
   }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "cardPayment" {
+      let destination = segue.destinationViewController as! CardPaymentViewController
+      destination.delegate = self
+    }
+  }
 }
 
 extension CheckoutViewController: PaymentControllerDelegate {
@@ -114,10 +121,23 @@ extension CheckoutViewController: PaymentControllerDelegate {
   }
   
   func finishOrder() {
-    //TODO: create check
-    OrderManager.currentOrder.clearOrder()
-    ClientManager.currentClient = nil
-    NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
+    let manager = OrderManager.currentOrder
+    let clientId = ClientManager.currentClient?.id ?? ""
+    let check = Check(clientId: clientId, items: manager.items, payemnts: manager.payments)
+    ServerManager.sharedManager.create(check) { (response) in
+      switch response.result {
+      case .Success(_):
+        print(check)
+        //TODO: save check
+        OrderManager.currentOrder.clearOrder()
+        ClientManager.currentClient = nil
+        NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
+      case .Failure(let error):
+        OrderManager.currentOrder.payments.removeLast()
+        self.didUpdatePayments()
+        print(error)
+      }
+    }
   }
   
 }

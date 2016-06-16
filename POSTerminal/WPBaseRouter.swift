@@ -19,7 +19,7 @@ extension WPBaseRouter: ServerRouter {
     case .Menu:
       return "\(baseURL)/hs/Dishes/InfoDishes"
     case .Create:
-      return "\(baseURL)/checks"
+      return "\(baseURL)/hs/AddDoc1C/ChekKKM"
     case .GetInfo:
       return "\(baseURL)/hs/Client/InfoClient"
     case .OpenDay, .Encash, .PrintZReport:
@@ -62,7 +62,7 @@ extension WPBaseRouter: ServerRouter {
     case .Menu:
       return nil
     case let .Create(check):
-      return check.json?.dictionaryObject
+      return check.dict
     case let .GetInfo(identity):
       return ["type": identity.type.rawValue, "code": identity.code]
     case .OpenDay:

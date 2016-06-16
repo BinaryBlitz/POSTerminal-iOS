@@ -23,4 +23,13 @@ class OrderItem {
       quantity -= 1
     }
   }
+  
+  var dict: [String: AnyObject]? {
+    return [
+      "productRef": product.id,
+      "qty": quantity,
+      "price": product.price.value ?? 0,
+      "amount": totalPrice
+    ]
+  }
 }

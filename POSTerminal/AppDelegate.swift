@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    Settings.loadFormUserDefaults()
     Settings.sharedInstance.wpBase = Host(baseURL: "http://arma.ngslab.ru:28081/WPServ", login: "I.Novikov", password: "123456789")
     Settings.sharedInstance.equipServ = Host(baseURL: "http://arma.ngslab.ru:28081/EquipServ", login: "", password: "")
-    ClientManager.currentClient = Client(id: "kek", code: "lol", name: "Dude", balance: 12000)
+//    ClientManager.currentClient = Client(id: "kek", code: "lol", name: "Dude", balance: 12000)
     
     let userDefaults = NSUserDefaults.standardUserDefaults()
     
