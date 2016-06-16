@@ -3,6 +3,8 @@ import UIKit
 class CardPaymentViewController: UIViewController {
   
   @IBOutlet weak var payButton: UIButton!
+  
+  weak var delegate: PaymentControllerDelegate?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -17,9 +19,9 @@ class CardPaymentViewController: UIViewController {
   //MARK: - Actions
   
   @IBAction func payButtonAction() {
-    OrderManager.currentOrder.clearOrder()
-    ClientManager.currentClient = nil
-    NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
+    let amountToPay = OrderManager.currentOrder.totalPrice
+    OrderManager.currentOrder.payments.append(Payment(amount: amountToPay, method: .Card))
+    delegate?.didUpdatePayments()
   }
   
 }

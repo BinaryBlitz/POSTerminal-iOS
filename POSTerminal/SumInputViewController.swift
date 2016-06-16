@@ -11,6 +11,8 @@ class SumInputViewController: UIViewController {
   @IBOutlet weak var clearButton: KeyboardButton!
   @IBOutlet weak var payButton: KeyboardButton!
   
+  weak var delegate: KeyboardDelegate?
+  
   private let zeroString = "0"
 
   override func viewDidLoad() {
@@ -61,17 +63,16 @@ class SumInputViewController: UIViewController {
   }
   
   func updatePayButton() {
-    if let text = sumLabel.text, sum = Double(text) where sum >= OrderManager.currentOrder.totalPrice {
+    if let text = sumLabel.text, sum = Double(text) where sum >= OrderManager.currentOrder.residual {
       payButton.enabled = true
       payButton.backgroundColor = UIColor.elementsAndH1Color()
     }
   }
   
   @IBAction func payButtonAction() {
-    OrderManager.currentOrder.clearOrder()
-    ClientManager.currentClient = nil
-    NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
+    guard let text = sumLabel.text, sum = Double(text) else { return }
     dismissViewControllerAnimated(true, completion: nil)
+    delegate?.didSelect(sum)
   }
   
 }

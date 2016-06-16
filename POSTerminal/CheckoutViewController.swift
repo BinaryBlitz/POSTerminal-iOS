@@ -19,7 +19,7 @@ class CheckoutViewController: UIViewController {
     priceTitleLabel.font = UIFont.boldSystemFontOfSize(18)
     priceLabel.textColor = UIColor.h4Color()
     priceLabel.font = UIFont.boldSystemFontOfSize(20)
-    priceLabel.text = "\(OrderManager.currentOrder.totalPrice.format()) р."
+    priceLabel.text = "\(OrderManager.currentOrder.residual.format()) р."
     
     paymentTypeSwitch.tintColor = UIColor.elementsAndH1Color()
     let font = UIFont.boldSystemFontOfSize(17)
@@ -46,7 +46,9 @@ class CheckoutViewController: UIViewController {
     
     switch segmentedControl.selectedSegmentIndex {
     case 0:
-      viewControllerToPresent = storyboard?.instantiateViewControllerWithIdentifier("CardPayment") as! CardPaymentViewController
+      let cardPaymentController = storyboard?.instantiateViewControllerWithIdentifier("CardPayment") as! CardPaymentViewController
+      cardPaymentController.delegate = self
+      viewControllerToPresent = cardPaymentController
       for child in childViewControllers {
         if let content = child as? CashPaymentViewController {
           currentController = content
@@ -54,7 +56,9 @@ class CheckoutViewController: UIViewController {
         }
       }
     case 1:
-      viewControllerToPresent = storyboard?.instantiateViewControllerWithIdentifier("CashPayment") as! CashPaymentViewController
+      let cashPayementController = storyboard?.instantiateViewControllerWithIdentifier("CashPayment") as! CashPaymentViewController
+      cashPayementController.delegate = self
+      viewControllerToPresent = cashPayementController
       for child in childViewControllers {
         if let content = child as? CardPaymentViewController {
           currentController = content
@@ -85,4 +89,19 @@ class CheckoutViewController: UIViewController {
         }
     }
   }
+}
+
+extension CheckoutViewController: PaymentControllerDelegate {
+  
+  func didUpdatePayments() {
+    priceLabel.text = "\(OrderManager.currentOrder.residual.format()) р."
+    
+    if OrderManager.currentOrder.residual == 0 {
+      //TODO: create check
+      OrderManager.currentOrder.clearOrder()
+      ClientManager.currentClient = nil
+      NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
+    }
+  }
+  
 }

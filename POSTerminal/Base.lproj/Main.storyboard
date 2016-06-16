@@ -819,9 +819,6 @@
                                     <constraint firstAttribute="width" constant="205" id="SwK-CU-Vo3"/>
                                     <constraint firstAttribute="height" constant="75" id="iyv-qd-4GP"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="quickButtonAction:" destination="3aR-Vr-Rzh" eventType="touchUpInside" id="Fdn-gM-0Sa"/>
-                                </connections>
                             </button>
                         </subviews>
                         <constraints>

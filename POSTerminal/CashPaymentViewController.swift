@@ -9,10 +9,13 @@ class CashPaymentViewController: UIViewController {
     
   @IBOutlet weak var otherButton: UIButton!
   
+  weak var delegate: PaymentControllerDelegate?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     [firstCashButton, secondCashButton, thirdCashButton, fourthCashButton].forEach { button in
       button.hidden = true
+      button.addTarget(self, action: #selector(quickButtonAction(_:)), forControlEvents: .TouchUpInside)
     }
     
     view.backgroundColor = UIColor.clearColor()
@@ -28,7 +31,7 @@ class CashPaymentViewController: UIViewController {
   }
   
   func setUpButtons() {
-    let orderTotal = OrderManager.currentOrder.totalPrice
+    let orderTotal = OrderManager.currentOrder.residual
     let labels = generateBillsPredictionFor(Int(orderTotal))
     
     let buttons = [firstCashButton, secondCashButton, thirdCashButton, fourthCashButton]
@@ -61,8 +64,17 @@ class CashPaymentViewController: UIViewController {
     
   //MARK: - Actions
   
-  @IBAction func quickButtonAction(sender: UIButton) {
-    guard let keyboardViewController = storyboard?.instantiateViewControllerWithIdentifier("SumInputViewController") else { return }
+  func quickButtonAction(sender: UIButton) {
+    guard let senderTitle = sender.titleLabel?.text else { return }
+    let sumString = senderTitle.characters.split(" ").map(String.init)[0]
+    guard let sum = Double(sumString) else { return }
+    pay(sum)
+  }
+  
+  func otherButtonAction(sender: UIButton) {
+    guard let keyboardViewController =
+        storyboard?.instantiateViewControllerWithIdentifier("SumInputViewController") as? SumInputViewController else { return }
+    keyboardViewController.delegate = self
     keyboardViewController.modalPresentationStyle = .OverCurrentContext
     keyboardViewController.modalTransitionStyle = .CrossDissolve
     NSNotificationCenter.defaultCenter().postNotificationName(presentViewControllerNotification,
@@ -70,7 +82,24 @@ class CashPaymentViewController: UIViewController {
                                                               userInfo: ["viewController": keyboardViewController])
   }
   
-  func otherButtonAction(sender: UIButton) {
-    print(sender.titleLabel?.text)
+  func pay(sum: Double) {
+    if sum >= OrderManager.currentOrder.residual {
+      OrderManager.currentOrder.payments.append(Payment(amount: OrderManager.currentOrder.residual, method: .Cash))
+    } else {
+      OrderManager.currentOrder.payments.append(Payment(amount: sum, method: .Cash))
+    }
+    
+    delegate?.didUpdatePayments()
+    
   }
+}
+
+//MARK: - KeyboardDelegate
+
+extension CashPaymentViewController: KeyboardDelegate {
+  
+  func didSelect(number: Double) {
+    pay(number)
+  }
+  
 }

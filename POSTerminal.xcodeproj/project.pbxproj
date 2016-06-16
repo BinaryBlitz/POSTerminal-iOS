@@ -47,6 +47,8 @@
 		37862EB81D11A79F00BBFB42 /* SumInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37862EB71D11A79F00BBFB42 /* SumInputViewController.swift */; };
 		37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */; };
 		37965AD01D11E95500F03701 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37965ACF1D11E95500F03701 /* KeyboardButton.swift */; };
+		3799B2841D1229E000B1D87C /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3799B2831D1229E000B1D87C /* KeyboardDelegate.swift */; };
+		3799B2861D122A3300B1D87C /* PaymentControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3799B2851D122A3300B1D87C /* PaymentControllerDelegate.swift */; };
 		37C1EDA41D01CA670018B531 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA31D01CA670018B531 /* Colors.swift */; };
 		37C1EDA71D01D20E0018B531 /* MenuCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */; };
 		37C1EDA91D01D2280018B531 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA81D01D2280018B531 /* CheckViewController.swift */; };
@@ -112,6 +114,8 @@
 		37862EB71D11A79F00BBFB42 /* SumInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumInputViewController.swift; sourceTree = "<group>"; };
 		37892E0B1D00DF9500008BA4 /* ClientIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientIdentity.swift; sourceTree = "<group>"; };
 		37965ACF1D11E95500F03701 /* KeyboardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
+		3799B2831D1229E000B1D87C /* KeyboardDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
+		3799B2851D122A3300B1D87C /* PaymentControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentControllerDelegate.swift; sourceTree = "<group>"; };
 		37C1EDA31D01CA670018B531 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		37C1EDA61D01D20E0018B531 /* MenuCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewController.swift; sourceTree = "<group>"; };
 		37C1EDA81D01D2280018B531 /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
@@ -298,6 +302,8 @@
 				375C84F31D04C5BB00F9F469 /* MenuCollectionDelegate.swift */,
 				3779D4841D0C502800A3A57B /* MenuNavigationProvider.swift */,
 				374215331D0F933100018F1B /* CheckItemCellDelegate.swift */,
+				3799B2831D1229E000B1D87C /* KeyboardDelegate.swift */,
+				3799B2851D122A3300B1D87C /* PaymentControllerDelegate.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -322,8 +328,8 @@
 			isa = PBXGroup;
 			children = (
 				3779D4861D0C523900A3A57B /* CheckoutViewController.swift */,
-				3779D4881D0C62CB00A3A57B /* CashPaymentViewController.swift */,
 				3779D48A1D0C62D700A3A57B /* CardPaymentViewController.swift */,
+				3779D4881D0C62CB00A3A57B /* CashPaymentViewController.swift */,
 				37862EB71D11A79F00BBFB42 /* SumInputViewController.swift */,
 			);
 			name = Checkout;
@@ -563,11 +569,13 @@
 				376D84421CF91CA2008A868A /* ServerObject.swift in Sources */,
 				375C84F81D04CFF800F9F469 /* EquipmentManagementTableViewController.swift in Sources */,
 				374215341D0F933100018F1B /* CheckItemCellDelegate.swift in Sources */,
+				3799B2861D122A3300B1D87C /* PaymentControllerDelegate.swift in Sources */,
 				376D84401CF91B08008A868A /* Client.swift in Sources */,
 				376D84271CF878D3008A868A /* AppDelegate.swift in Sources */,
 				375C84FD1D04E22900F9F469 /* ServerManager+Checks.swift in Sources */,
 				3779D48F1D0CC9C300A3A57B /* ClientManager.swift in Sources */,
 				376D84491CF91DD0008A868A /* Product.swift in Sources */,
+				3799B2841D1229E000B1D87C /* KeyboardDelegate.swift in Sources */,
 				375C850E1D050D8F00F9F469 /* OrderItem.swift in Sources */,
 				37C58DDC1CFCFB8C00049095 /* ServerResponse.swift in Sources */,
 				376B5ABE1D02FA270058E6A8 /* ProductCollectionViewCell.swift in Sources */,

@@ -2,11 +2,22 @@ import Foundation
 
 let newItemNotification = "newItemNotification"
 
+struct Payment {
+  let amount: Double
+  let method: Method
+
+  enum Method: Int {
+    case Cash
+    case Card
+  }
+}
+
 class OrderManager {
   
   static var currentOrder = OrderManager()
   
   var items = [OrderItem]()
+  var payments = [Payment]()
   
   var totalPrice: Double {
     return items.reduce(0) { (sum, item) -> Double in
@@ -14,8 +25,14 @@ class OrderManager {
     }
   }
   
+  var residual: Double {
+    return totalPrice - payments.reduce(0) { (sum, payment) -> Double in
+      return payment.amount + sum
+    }
+  }
+  
   func clearOrder() {
-    items = []
+    OrderManager.currentOrder = OrderManager()
   }
   
   func append(product: Product) {
@@ -32,4 +49,5 @@ class OrderManager {
     
     items.append(OrderItem(product: product))
   }
+  
 }
