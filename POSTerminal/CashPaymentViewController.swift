@@ -83,14 +83,8 @@ class CashPaymentViewController: UIViewController {
   }
   
   func pay(sum: Double) {
-    if sum >= OrderManager.currentOrder.residual {
-      OrderManager.currentOrder.payments.append(Payment(amount: OrderManager.currentOrder.residual, method: .Cash))
-    } else {
-      OrderManager.currentOrder.payments.append(Payment(amount: sum, method: .Cash))
-    }
-    
+    OrderManager.currentOrder.payments.append(Payment(amount: sum, method: .Cash))
     delegate?.didUpdatePayments()
-    
   }
 }
 

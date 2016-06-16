@@ -95,12 +95,14 @@ extension CheckoutViewController: PaymentControllerDelegate {
   
   func didUpdatePayments() {
     priceLabel.text = "\(OrderManager.currentOrder.residual.format()) р."
-    
-    if OrderManager.currentOrder.residual == 0 {
+    let residual = OrderManager.currentOrder.residual
+    if residual == 0 {
       //TODO: create check
       OrderManager.currentOrder.clearOrder()
       ClientManager.currentClient = nil
       NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
+    } else if residual < 0 {
+      presentAlertWithTitle("Сдача", andMessage: "\(-residual) рублей")
     }
   }
   
