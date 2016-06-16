@@ -5,6 +5,8 @@ import GCDWebServer
 import SwiftyJSON
 import RealmSwift
 
+var uuid: String?
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,6 +21,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Settings.sharedInstance.wpBase = Host(baseURL: "http://arma.ngslab.ru:28081/WPServ", login: "I.Novikov", password: "123456789")
     Settings.sharedInstance.equipServ = Host(baseURL: "http://arma.ngslab.ru:28081/EquipServ", login: "", password: "")
     ClientManager.currentClient = Client(id: "kek", code: "lol", name: "Dude", balance: 12000)
+    
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+    
+    if let id = userDefaults.objectForKey("ApplicationUniqueIdentifier") as? String {
+      uuid = id
+    } else {
+      let UUID = NSUUID().UUIDString
+      userDefaults.setObject(UUID, forKey: "ApplicationUniqueIdentifier")
+      userDefaults.synchronize()
+      uuid = UUID
+    }
+    
+    print(uuid!)
     
     startLocalServer()
     
