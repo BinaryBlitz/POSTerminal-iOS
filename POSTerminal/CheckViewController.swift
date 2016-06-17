@@ -139,11 +139,20 @@ class CheckViewController: UIViewController {
   //MARK: - Actions 
   
   @IBAction func clearButtonAction() {
-    OrderManager.currentOrder.clearOrder()
-    items = []
-    ClientManager.currentClient = nil
-    tableView.reloadData()
-    reloadClientInfo()
+    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+    alert.addAction(UIAlertAction(title: "Очистить", style: .Destructive, handler: { (action) in
+      OrderManager.currentOrder.clearOrder()
+      self.items = []
+      ClientManager.currentClient = nil
+      self.tableView.reloadData()
+      self.reloadClientInfo()
+    }))
+    alert.addAction(UIAlertAction(title: "Отмена", style: .Default, handler: nil))
+    
+    alert.popoverPresentationController?.sourceView = tableView
+    alert.popoverPresentationController?.sourceRect = clearOrderButton.frame
+   
+    presentViewController(alert, animated: true, completion: nil)
   }
   
   @IBAction func checkoutButtonAction() {
