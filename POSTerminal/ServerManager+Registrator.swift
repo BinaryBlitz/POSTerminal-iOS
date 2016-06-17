@@ -95,4 +95,9 @@ extension ServerManager {
     }
     return performRegistratorComandWith(EquipServRouter.CheckConnection(uuid: uuid), completion: completion)
   }
+  
+  func printClientBalance(client: Client, completion: (RegistratorCompletion)? = nil) -> Request? {
+    return performRegistratorComandWith(EquipServRouter.PrintClientBalance(client: client), completion: completion)
+  }
+  
 }

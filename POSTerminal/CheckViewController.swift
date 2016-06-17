@@ -55,6 +55,8 @@ class CheckViewController: UIViewController {
     
     totalPriceLabel.text = "\(OrderManager.currentOrder.totalPrice.format()) р."
     
+    clientInfoCard.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(printClientBalance)))
+    
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadData(_:)), name: newItemNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadClientInfo), name: clientUpdatedNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(endCheckout), name: endCheckoutNotification, object: nil)
@@ -62,6 +64,18 @@ class CheckViewController: UIViewController {
   
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  func printClientBalance() {
+    guard let client = ClientManager.currentClient else { return }
+    ServerManager.sharedManager.printClientBalance(client) { (response) in
+      switch response.result {
+      case .Success(_):
+        self.presentAlertWithMessage("Печать баланса")
+      case .Failure(let error):
+        print(error)
+      }
+    }
   }
   
   func endCheckout() {

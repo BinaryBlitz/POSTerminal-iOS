@@ -9,6 +9,7 @@ enum EquipServRouter {
   case PrintCheck(check: Check)
   case RegisterDevice(url: String)
   case CheckConnection(uuid: String)
+  case PrintClientBalance(client: Client)
 }
 
 extension EquipServRouter: ServerRouter {
@@ -75,6 +76,12 @@ extension EquipServRouter: ServerRouter {
         "payments": check.payments.flatMap { (payment) -> [String: AnyObject]? in
           return payment.dict
         }
+      ]
+    case .PrintClientBalance(let client):
+      action = "PrintRecept"
+      params =  [
+        "isFiscal": false,
+        "items": [["type": "text", "text": "Баланс: \(client.balance.format())"]]
       ]
     case .RegisterDevice(let url):
       return ["notify": url]
