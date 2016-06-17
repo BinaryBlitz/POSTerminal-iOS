@@ -31,7 +31,7 @@ class BaseViewController: UIViewController {
     backButton.enabled = false
     toolBarView.backgroundColor = UIColor.elementsAndH1Color()
     clearMenuPath()
-    refresh()
+//    refresh()
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refresh), name: updateMenuNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(startCheckout), name: startCheckoutNotification, object: nil)

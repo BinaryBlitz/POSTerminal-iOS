@@ -12,6 +12,9 @@ class SettingsTableViewController: UITableViewController {
   
   @IBOutlet weak var cashBalanceTextField: UITextField!
   
+  @IBOutlet weak var checksSumTextField: UITextField!
+  @IBOutlet weak var ordersSumTextField: UITextField!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -26,6 +29,9 @@ class SettingsTableViewController: UITableViewController {
     eqPasswordTextField.text = settings.equipServ?.password
     
     cashBalanceTextField.text = String(settings.cashBalance)
+    
+    checksSumTextField.text = settings.checksSum.format()
+    ordersSumTextField.text = settings.ordersSum.format()
   }
   
   //MARK: - Actions
@@ -45,6 +51,14 @@ class SettingsTableViewController: UITableViewController {
     
     if let balanceString = cashBalanceTextField.text, balance = Double(balanceString) {
       Settings.sharedInstance.cashBalance = balance
+    }
+    
+    if let checksSum = checksSumTextField.text, sum = Double(checksSum) {
+      Settings.sharedInstance.checksSum = sum
+    }
+    
+    if let ordersSum = ordersSumTextField.text, sum = Double(ordersSum) {
+      Settings.sharedInstance.ordersSum = sum
     }
     
     Settings.saveToUserDefaults()

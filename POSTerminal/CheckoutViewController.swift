@@ -108,6 +108,11 @@ extension CheckoutViewController: PaymentControllerDelegate {
     } else if residual < 0 {
       let alert = UIAlertController(title: "Сдача: \((-residual).format()) рублей", message: nil, preferredStyle: .Alert)
       alert.addAction(UIAlertAction(title: "Завершить заказ", style: .Default, handler: { (action) in
+        if let lastPayment = OrderManager.currentOrder.payments.last {
+          OrderManager.currentOrder.payments.removeLast()
+          OrderManager.currentOrder.payments.append(Payment(amount: lastPayment.amount + residual, method: .Cash))
+        }
+        
         self.finishOrder()
       }))
       alert.addAction(UIAlertAction(title: "Отмена", style: .Cancel, handler: { (action) in
@@ -130,6 +135,8 @@ extension CheckoutViewController: PaymentControllerDelegate {
     ServerManager.sharedManager.create(check) { (response) in
       switch response.result {
       case .Success(_):
+        Settings.sharedInstance.ordersSum += manager.totalPrice
+        Settings.saveToUserDefaults()
         do {
           let realm = try Realm()
           let journalItem = JournalItem(check: check)
@@ -151,6 +158,15 @@ extension CheckoutViewController: PaymentControllerDelegate {
     ServerManager.sharedManager.printCheck(check) { response in
       switch response.result {
       case .Success(_):
+        Settings.sharedInstance.checksSum += manager.totalPrice
+        Settings.sharedInstance.cashBalance += manager.payments.reduce(0, combine: { (sum, payment) -> Double in
+          if payment.method == .Cash {
+            return payment.amount
+          }
+          
+          return 0
+        })
+        Settings.saveToUserDefaults()
         OrderManager.currentOrder.clearOrder()
         ClientManager.currentClient = nil
         NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)

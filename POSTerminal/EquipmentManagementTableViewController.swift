@@ -3,11 +3,16 @@ import UIKit
 class EquipmentManagementTableViewController: UITableViewController {
   
   @IBOutlet weak var balanceLabel: UILabel!
+  
+  @IBOutlet weak var checksSumLabel: UILabel!
+  @IBOutlet weak var ordersSumLabel: UILabel!
 
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    balanceLabel.text = String(Settings.sharedInstance.cashBalance)
+    balanceLabel.text = Settings.sharedInstance.cashBalance.format()
+    checksSumLabel.text = Settings.sharedInstance.checksSum.format()
+    ordersSumLabel.text = Settings.sharedInstance.ordersSum.format()
   }
   
   //MARK: - Actions

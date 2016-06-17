@@ -224,6 +224,56 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Сумма по чекам" id="Ym3-3k-HVc">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="HVb-tz-u1f">
+                                        <rect key="frame" x="0.0" y="730" width="600" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HVb-tz-u1f" id="nmU-Dz-Cif">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="100" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="04A-nx-pTh">
+                                                    <rect key="frame" x="15" y="8" width="570" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="04A-nx-pTh" secondAttribute="bottom" id="5UC-0V-Xne"/>
+                                                <constraint firstAttribute="trailing" secondItem="04A-nx-pTh" secondAttribute="trailing" constant="15" id="G3s-79-DuX"/>
+                                                <constraint firstItem="04A-nx-pTh" firstAttribute="leading" secondItem="nmU-Dz-Cif" secondAttribute="leading" constant="15" id="NH2-cd-g8M"/>
+                                                <constraint firstItem="04A-nx-pTh" firstAttribute="top" secondItem="nmU-Dz-Cif" secondAttribute="topMargin" id="Zu0-GW-tAG"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Сумма по заказам" id="xaZ-zk-bWS">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="J95-yd-VCd">
+                                        <rect key="frame" x="0.0" y="830" width="600" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J95-yd-VCd" id="86u-3z-Z2R">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="100" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rqt-jy-xCM">
+                                                    <rect key="frame" x="15" y="8" width="570" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="rqt-jy-xCM" secondAttribute="trailing" constant="15" id="0C3-2H-YqZ"/>
+                                                <constraint firstItem="rqt-jy-xCM" firstAttribute="leading" secondItem="86u-3z-Z2R" secondAttribute="leading" constant="15" id="SDw-9s-hUw"/>
+                                                <constraint firstItem="rqt-jy-xCM" firstAttribute="top" secondItem="86u-3z-Z2R" secondAttribute="topMargin" id="Y8B-mg-AFz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="rqt-jy-xCM" secondAttribute="bottom" id="cAo-JA-SwR"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="26V-iu-psD" id="C4F-MB-x6V"/>
@@ -244,9 +294,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cashBalanceTextField" destination="Z08-DV-oiD" id="mn4-rs-H5K"/>
+                        <outlet property="checksSumTextField" destination="04A-nx-pTh" id="Dax-bl-wep"/>
                         <outlet property="eqPasswordTextField" destination="gQb-5o-TC5" id="JZN-el-TJY"/>
                         <outlet property="eqURLTextField" destination="eKB-Gp-eMB" id="rjl-or-bF9"/>
                         <outlet property="eqUsernameTextField" destination="x2T-dI-Wcv" id="mz8-d9-7CK"/>
+                        <outlet property="ordersSumTextField" destination="rqt-jy-xCM" id="Dup-5M-6bf"/>
                         <outlet property="wpPasswordTextField" destination="Rcj-Cl-jSW" id="Ndp-oI-WLj"/>
                         <outlet property="wpURLTextField" destination="99z-qB-Hsr" id="6N5-MJ-EdB"/>
                         <outlet property="wpUsernameTextField" destination="5um-qb-eIi" id="LyR-qp-slk"/>
@@ -289,10 +341,62 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="63F-Ya-ien">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="8If-eF-P0l" detailTextLabel="mgL-UO-Yuy" rowHeight="59" style="IBUITableViewCellStyleValue1" id="7tx-Ov-8xJ">
+                                        <rect key="frame" x="0.0" y="174" width="600" height="59"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7tx-Ov-8xJ" id="Dyq-w8-Uv5">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="58.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Напечатано чеков на" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8If-eF-P0l">
+                                                    <rect key="frame" x="15" y="20" width="160.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0 рублей" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mgL-UO-Yuy">
+                                                    <rect key="frame" x="516.5" y="20" width="68.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="XA1-wi-MZg" detailTextLabel="Cs8-UT-ymX" rowHeight="59" style="IBUITableViewCellStyleValue1" id="uXF-pm-fR5">
+                                        <rect key="frame" x="0.0" y="233" width="600" height="59"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uXF-pm-fR5" id="nRJ-Xx-jJx">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="58.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Создано заказов на" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XA1-wi-MZg">
+                                                    <rect key="frame" x="15" y="20" width="151" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0 рублей" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cs8-UT-ymX">
+                                                    <rect key="frame" x="516.5" y="20" width="68.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="Ohj-Ty-ILP">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="O0T-MQ-ceo" detailTextLabel="vI4-A5-xHw" rowHeight="59" style="IBUITableViewCellStyleValue1" id="8OL-EX-id3">
-                                        <rect key="frame" x="0.0" y="174" width="600" height="59"/>
+                                        <rect key="frame" x="0.0" y="328" width="600" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8OL-EX-id3" id="wBy-sF-2Kr">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="58.5"/>
@@ -316,7 +420,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="59" id="oeR-oS-cyP">
-                                        <rect key="frame" x="0.0" y="233" width="600" height="59"/>
+                                        <rect key="frame" x="0.0" y="387" width="600" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oeR-oS-cyP" id="jlK-dB-abA">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -344,7 +448,7 @@
                             <tableViewSection headerTitle="Смены" id="NWm-zL-hd7">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="59" id="ReS-FF-zfI">
-                                        <rect key="frame" x="0.0" y="342" width="600" height="59"/>
+                                        <rect key="frame" x="0.0" y="496" width="600" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ReS-FF-zfI" id="yNu-AF-QfB">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -368,7 +472,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="59" id="ImZ-J9-evK">
-                                        <rect key="frame" x="0.0" y="401" width="600" height="59"/>
+                                        <rect key="frame" x="0.0" y="555" width="600" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ImZ-J9-evK" id="O5U-08-83M">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -396,7 +500,7 @@
                             <tableViewSection headerTitle="Печать отчетов" id="Cgd-U1-zAb">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="59" id="gTD-sf-Lf4">
-                                        <rect key="frame" x="0.0" y="510" width="600" height="59"/>
+                                        <rect key="frame" x="0.0" y="664" width="600" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gTD-sf-Lf4" id="yhh-Xo-mAl">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -420,7 +524,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="59" id="kaa-Jt-2ko">
-                                        <rect key="frame" x="0.0" y="569" width="600" height="59"/>
+                                        <rect key="frame" x="0.0" y="723" width="600" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kaa-Jt-2ko" id="V2N-Xg-GfW">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -462,6 +566,8 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="balanceLabel" destination="vI4-A5-xHw" id="2Am-D3-rLr"/>
+                        <outlet property="checksSumLabel" destination="mgL-UO-Yuy" id="y1F-ui-4iE"/>
+                        <outlet property="ordersSumLabel" destination="Cs8-UT-ymX" id="hn1-W8-csh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDc-44-YBM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -481,7 +587,7 @@
                                 <rect key="frame" x="0.0" y="94" width="600" height="96"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rJh-LY-3lZ" id="hb7-Up-Hvy">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="95.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="96"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQY-Pz-0J4">

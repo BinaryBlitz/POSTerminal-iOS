@@ -10,12 +10,17 @@ class Settings: NSObject, NSCoding {
   
   var cashBalance: Double = 0
   
+  var checksSum: Double = 0
+  var ordersSum: Double = 0
+  
   override init() { super.init() }
   
   required init?(coder aDecoder: NSCoder) {
     wpBase = aDecoder.decodeObjectForKey("wpBase") as? Host
     equipServ = aDecoder.decodeObjectForKey("equipServ") as? Host
     cashBalance = aDecoder.decodeDoubleForKey("cashBalance")
+    checksSum = aDecoder.decodeDoubleForKey("checksSum")
+    ordersSum = aDecoder.decodeDoubleForKey("ordersSum")
     currentCheckNumber = Int(aDecoder.decodeIntForKey("currentCheckNumber"))
     super.init()
   }
@@ -24,6 +29,8 @@ class Settings: NSObject, NSCoding {
     aCoder.encodeObject(wpBase, forKey: "wpBase")
     aCoder.encodeObject(equipServ, forKey: "equipServ")
     aCoder.encodeDouble(cashBalance, forKey: "cashBalance")
+    aCoder.encodeDouble(checksSum, forKey: "checksSum")
+    aCoder.encodeDouble(ordersSum, forKey: "ordersSum")
     aCoder.encodeInt(Int32(currentCheckNumber), forKey: "currentCheckNumber")
   }
   
