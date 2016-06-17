@@ -55,6 +55,8 @@
 		37C1EDAB1D01ED0D0018B531 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDAA1D01ED0D0018B531 /* UIViewController+Alert.swift */; };
 		37C1EDAD1D01EEDD0018B531 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDAC1D01EEDD0018B531 /* SettingsTableViewController.swift */; };
 		37C54F8C1D137A6000822653 /* JournalItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C54F8B1D137A6000822653 /* JournalItem.swift */; };
+		37C54F8E1D1380A400822653 /* JournalItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C54F8D1D1380A400822653 /* JournalItemTableViewCell.swift */; };
+		37C54F901D13822000822653 /* JournalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C54F8F1D13822000822653 /* JournalTableViewController.swift */; };
 		37C58DC61CFC6D6F00049095 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DC51CFC6D6F00049095 /* ExternalAccessory.framework */; };
 		37C58DC81CFC6DEA00049095 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DC71CFC6DEA00049095 /* libz.tbd */; };
 		37C58DCC1CFC6E0000049095 /* libRedSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DCA1CFC6E0000049095 /* libRedSocket.a */; };
@@ -123,6 +125,8 @@
 		37C1EDAA1D01ED0D0018B531 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		37C1EDAC1D01EEDD0018B531 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		37C54F8B1D137A6000822653 /* JournalItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalItem.swift; sourceTree = "<group>"; };
+		37C54F8D1D1380A400822653 /* JournalItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalItemTableViewCell.swift; sourceTree = "<group>"; };
+		37C54F8F1D13822000822653 /* JournalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalTableViewController.swift; sourceTree = "<group>"; };
 		37C58DC51CFC6D6F00049095 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		37C58DC71CFC6DEA00049095 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		37C58DC91CFC6E0000049095 /* libRedDebugServer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRedDebugServer.a; path = lib/libRedDebugServer.a; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 			children = (
 				37C1EDAC1D01EEDD0018B531 /* SettingsTableViewController.swift */,
 				375C84F71D04CFF800F9F469 /* EquipmentManagementTableViewController.swift */,
+				37C54F8F1D13822000822653 /* JournalTableViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -206,6 +211,7 @@
 				375C85031D05014700F9F469 /* CardView.swift */,
 				374215391D0FCF2200018F1B /* CashButton.swift */,
 				37965ACF1D11E95500F03701 /* KeyboardButton.swift */,
+				37C54F8D1D1380A400822653 /* JournalItemTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -567,6 +573,7 @@
 				37C1EDA71D01D20E0018B531 /* MenuCollectionViewController.swift in Sources */,
 				37C58DE41CFE3C0600049095 /* Host.swift in Sources */,
 				37C1EDAB1D01ED0D0018B531 /* UIViewController+Alert.swift in Sources */,
+				37C54F901D13822000822653 /* JournalTableViewController.swift in Sources */,
 				37862EB81D11A79F00BBFB42 /* SumInputViewController.swift in Sources */,
 				37C58DDE1CFCFB9400049095 /* ServerError.swift in Sources */,
 				376D84421CF91CA2008A868A /* ServerObject.swift in Sources */,
@@ -583,6 +590,7 @@
 				375C850E1D050D8F00F9F469 /* OrderItem.swift in Sources */,
 				37C58DDC1CFCFB8C00049095 /* ServerResponse.swift in Sources */,
 				376B5ABE1D02FA270058E6A8 /* ProductCollectionViewCell.swift in Sources */,
+				37C54F8E1D1380A400822653 /* JournalItemTableViewCell.swift in Sources */,
 				3779D4851D0C502800A3A57B /* MenuNavigationProvider.swift in Sources */,
 				375C84FB1D04DF4600F9F469 /* ServerManager+Registrator.swift in Sources */,
 				37C58DE91CFE512300049095 /* WPBaseRouter.swift in Sources */,

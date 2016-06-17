@@ -9,6 +9,7 @@ extension ServerManager {
     do {
       activityIndicatorVisible = true
       let request = try createRequest(WPBaseRouter.Create(check: check)).validate().responseJSON { response in
+        print(response.response)
         self.activityIndicatorVisible = false
         switch response.result {
         case .Success(let resultValue):

@@ -18,7 +18,7 @@ class JournalItem: Object {
   }
   
   required init(realm: RLMRealm, schema: RLMObjectSchema) {
-    fatalError("init(realm:schema:) has not been implemented")
+    super.init(realm: realm, schema: schema)
   }
   
   required init() {
@@ -26,7 +26,7 @@ class JournalItem: Object {
   }
   
   required init(value: AnyObject, schema: RLMSchema) {
-    fatalError("init(value:schema:) has not been implemented")
+    super.init(value: value, schema: schema)
   }
   
   override static func primaryKey() -> String? {
