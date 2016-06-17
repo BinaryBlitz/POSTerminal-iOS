@@ -83,6 +83,7 @@ class CashPaymentViewController: UIViewController {
   }
   
   func pay(sum: Double) {
+    ServerManager.sharedManager.openCashDrawer()
     OrderManager.currentOrder.payments.append(Payment(amount: sum, method: .Cash))
     delegate?.didUpdatePayments()
   }
