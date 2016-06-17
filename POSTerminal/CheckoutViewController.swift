@@ -111,7 +111,9 @@ extension CheckoutViewController: PaymentControllerDelegate {
         self.finishOrder()
       }))
       alert.addAction(UIAlertAction(title: "Отмена", style: .Cancel, handler: { (action) in
-        OrderManager.currentOrder.payments.removeLast()
+        if !OrderManager.currentOrder.payments.isEmpty {
+          OrderManager.currentOrder.payments.removeLast()
+        }
         self.didUpdatePayments()
       }))
       
@@ -138,7 +140,9 @@ extension CheckoutViewController: PaymentControllerDelegate {
           print(error)
         }
       case .Failure(let error):
-        OrderManager.currentOrder.payments.removeLast()
+        if !OrderManager.currentOrder.payments.isEmpty {
+          OrderManager.currentOrder.payments.removeLast()
+        }
         self.didUpdatePayments()
         print(error)
       }
