@@ -1,4 +1,5 @@
 import UIKit
+import PureLayout
 
 class EquipmentManagementTableViewController: UITableViewController {
   
@@ -6,13 +7,30 @@ class EquipmentManagementTableViewController: UITableViewController {
   
   @IBOutlet weak var checksSumLabel: UILabel!
   @IBOutlet weak var ordersSumLabel: UILabel!
+  
+  var activityIndicator: UIActivityIndicatorView!
 
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+    
     balanceLabel.text = Settings.sharedInstance.cashBalance.format()
     checksSumLabel.text = Settings.sharedInstance.checksSum.format()
     ordersSumLabel.text = Settings.sharedInstance.ordersSum.format()
+    
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(hideActivityIndicator), name: reloadMenuNotification, object: nil)
+  }
+  
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  func hideActivityIndicator() {
+    activityIndicator.stopAnimating()
+    activityIndicator.removeFromSuperview()
+    activityIndicator.hidden = true
+    presentAlertWithMessage("Меню обновлено!")
   }
   
   //MARK: - Actions
@@ -23,6 +41,11 @@ class EquipmentManagementTableViewController: UITableViewController {
   
   @IBAction func updateMenu() {
     NSNotificationCenter.defaultCenter().postNotificationName(updateMenuNotification, object: nil)
+    tableView.addSubview(activityIndicator)
+    activityIndicator.autoCenterInSuperview()
+    activityIndicator.autoSetDimensionsToSize(CGSize(width: 70, height: 70))
+    activityIndicator.hidden = false
+    activityIndicator.startAnimating()
   }
   
   @IBAction func openDay() {
