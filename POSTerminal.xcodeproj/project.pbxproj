@@ -54,6 +54,7 @@
 		37C1EDA91D01D2280018B531 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDA81D01D2280018B531 /* CheckViewController.swift */; };
 		37C1EDAB1D01ED0D0018B531 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDAA1D01ED0D0018B531 /* UIViewController+Alert.swift */; };
 		37C1EDAD1D01EEDD0018B531 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1EDAC1D01EEDD0018B531 /* SettingsTableViewController.swift */; };
+		37C54F8C1D137A6000822653 /* JournalItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C54F8B1D137A6000822653 /* JournalItem.swift */; };
 		37C58DC61CFC6D6F00049095 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DC51CFC6D6F00049095 /* ExternalAccessory.framework */; };
 		37C58DC81CFC6DEA00049095 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DC71CFC6DEA00049095 /* libz.tbd */; };
 		37C58DCC1CFC6E0000049095 /* libRedSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C58DCA1CFC6E0000049095 /* libRedSocket.a */; };
@@ -121,6 +122,7 @@
 		37C1EDA81D01D2280018B531 /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		37C1EDAA1D01ED0D0018B531 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		37C1EDAC1D01EEDD0018B531 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		37C54F8B1D137A6000822653 /* JournalItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalItem.swift; sourceTree = "<group>"; };
 		37C58DC51CFC6D6F00049095 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		37C58DC71CFC6DEA00049095 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		37C58DC91CFC6E0000049095 /* libRedDebugServer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRedDebugServer.a; path = lib/libRedDebugServer.a; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				376D843F1CF91B08008A868A /* Client.swift */,
 				3779D48E1D0CC9C300A3A57B /* ClientManager.swift */,
 				376D84461CF91D75008A868A /* Check.swift */,
+				37C54F8B1D137A6000822653 /* JournalItem.swift */,
 				375C850B1D0507CB00F9F469 /* OrderManager.swift */,
 				375C850D1D050D8F00F9F469 /* OrderItem.swift */,
 				376D84481CF91DD0008A868A /* Product.swift */,
@@ -575,6 +578,7 @@
 				375C84FD1D04E22900F9F469 /* ServerManager+Checks.swift in Sources */,
 				3779D48F1D0CC9C300A3A57B /* ClientManager.swift in Sources */,
 				376D84491CF91DD0008A868A /* Product.swift in Sources */,
+				37C54F8C1D137A6000822653 /* JournalItem.swift in Sources */,
 				3799B2841D1229E000B1D87C /* KeyboardDelegate.swift in Sources */,
 				375C850E1D050D8F00F9F469 /* OrderItem.swift in Sources */,
 				37C58DDC1CFCFB8C00049095 /* ServerResponse.swift in Sources */,

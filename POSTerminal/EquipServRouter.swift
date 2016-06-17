@@ -59,7 +59,23 @@ extension EquipServRouter: ServerRouter {
       action = "OpenCashDrawer"
     case .PrintCheck(let check):
       action = "PrintCheck"
-//      params =  [check.dict]
+      params =  [
+        "type": 0,
+        "isFiscal": check.isFiscal,
+        "items": check.items.flatMap { (item) -> [String: AnyObject]? in
+          return [
+            "type": "fiscal",
+            "name": item.product.name,
+            "qty": item.quantity,
+            "price": item.product.price.value ?? 0,
+            "amount": item.totalPrice,
+            "valueAddedTax": item.product.valueAddedTax
+          ]
+        },
+        "payments": check.payments.flatMap { (payment) -> [String: AnyObject]? in
+          return payment.dict
+        }
+      ]
     case .RegisterDevice(let url):
       return ["notify": url]
     case .CheckConnection(let uuid):

@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 
 class CheckoutViewController: UIViewController {
   
@@ -122,19 +123,34 @@ extension CheckoutViewController: PaymentControllerDelegate {
   
   func finishOrder() {
     let manager = OrderManager.currentOrder
-    let clientId = ClientManager.currentClient?.id ?? ""
-    let check = Check(clientId: clientId, items: manager.items, payemnts: manager.payments)
+    guard let client = ClientManager.currentClient else  { return }
+    let check = Check(client: client, items: manager.items, payemnts: manager.payments)
     ServerManager.sharedManager.create(check) { (response) in
       switch response.result {
       case .Success(_):
-        print(check)
-        //TODO: save check
+        do {
+          let realm = try Realm()
+          let journalItem = JournalItem(check: check)
+          try realm.write {
+            realm.add(journalItem)
+          }
+        } catch let error {
+          print(error)
+        }
+      case .Failure(let error):
+        OrderManager.currentOrder.payments.removeLast()
+        self.didUpdatePayments()
+        print(error)
+      }
+    }
+    
+    ServerManager.sharedManager.printCheck(check) { response in
+      switch response.result {
+      case .Success(_):
         OrderManager.currentOrder.clearOrder()
         ClientManager.currentClient = nil
         NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
       case .Failure(let error):
-        OrderManager.currentOrder.payments.removeLast()
-        self.didUpdatePayments()
         print(error)
       }
     }

@@ -5,19 +5,21 @@ struct Check {
   let number: Int
   let isFiscal: Bool
   let clientId: String
+  let clientCode: String
   let terminalId: String
   let createdAt: NSDate
   var items: [OrderItem] = []
   var payments: [Payment] = []
   var text: [String] = []
   
-  init(clientId: String, items: [OrderItem], payemnts: [Payment]) {
+  init(client: Client, items: [OrderItem], payemnts: [Payment]) {
     let number = Settings.sharedInstance.currentCheckNumber + 1
     Settings.sharedInstance.currentCheckNumber += 1
     Settings.saveToUserDefaults()
     self.number = number
     self.isFiscal = true
-    self.clientId = clientId
+    self.clientId = client.id
+    self.clientCode = client.code
     self.items = items
     self.payments = payemnts
     terminalId = uuid!
