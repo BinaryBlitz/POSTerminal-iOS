@@ -163,7 +163,7 @@ class CheckViewController: UIViewController {
     }))
     alert.addAction(UIAlertAction(title: "Отмена", style: .Default, handler: nil))
     
-    alert.popoverPresentationController?.sourceView = tableView
+    alert.popoverPresentationController?.sourceView = clearOrderButton
     alert.popoverPresentationController?.sourceRect = clearOrderButton.frame
    
     presentViewController(alert, animated: true, completion: nil)
