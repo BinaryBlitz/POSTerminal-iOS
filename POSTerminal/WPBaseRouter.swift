@@ -64,7 +64,7 @@ extension WPBaseRouter: ServerRouter {
     case let .Create(check):
       return check.dict
     case let .GetInfo(identity):
-      return ["type": identity.type.rawValue, "code": identity.code]
+      return ["type": identity.type.rawValue, "code": identity.code, "terminalID": uuid]
     case .OpenDay:
       return ["action": "OpenDay", "terminalID": uuid]
     case .PrintZReport:
