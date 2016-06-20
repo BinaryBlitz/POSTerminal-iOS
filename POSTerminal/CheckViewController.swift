@@ -111,6 +111,7 @@ class CheckViewController: UIViewController {
   }
   
   func reloadData(notification: NSNotification? = nil) {
+    selectedCellIndexPath = nil
     let newItemsList = OrderManager.currentOrder.items
     if newItemsList.count > items.count && items.count > 0 {
       let numberOfNewItems = newItemsList.count - items.count
