@@ -91,9 +91,9 @@ extension EquipServRouter: ServerRouter {
     
     if let uuid = uuid {
       if let params = params {
-        return ["action": action, "params": params, "treminalID": uuid]
+        return ["action": action, "params": params, "terminalID": uuid]
       } else {
-        return ["action": action, "treminalID": uuid]
+        return ["action": action, "terminalID": uuid]
       }
     } else {
       return nil
