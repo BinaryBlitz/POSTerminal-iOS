@@ -19,6 +19,17 @@ class EquipmentManagementTableViewController: UITableViewController {
     checksSumLabel.text = Settings.sharedInstance.checksSum.format()
     ordersSumLabel.text = Settings.sharedInstance.ordersSum.format()
     
+    if let uuid = uuid {
+      let footerLabel = UILabel()
+      footerLabel.text = uuid
+      footerLabel.textAlignment = .Center
+      let footerView = UIView()
+      footerView.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 70)
+      footerView.addSubview(footerLabel)
+      footerLabel.autoPinEdgesToSuperviewEdges()
+      tableView.tableHeaderView = footerView
+    }
+    
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(hideActivityIndicator), name: reloadMenuNotification, object: nil)
   }
   
