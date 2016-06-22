@@ -60,7 +60,15 @@ extension EquipServRouter: ServerRouter {
       action = "OpenCashDrawer"
     case .PrintCheck(let check):
       action = "PrintCheck"
+      let orderTotal = check.payments.reduce(0, combine: { (sum, payment) -> Double in
+        return sum + payment.amount
+      })
+      
+      let balance = ClientManager.currentClient?.balance ?? 0.0
+      let newBalance = balance - orderTotal
+      
       params =  [
+        "footerText": "Остаток \(newBalance)",
         "type": 0,
         "isFiscal": check.isFiscal,
         "items": check.items.flatMap { (item) -> [String: AnyObject]? in
