@@ -132,6 +132,7 @@ extension CheckoutViewController: PaymentControllerDelegate {
     let manager = OrderManager.currentOrder
     guard let client = ClientManager.currentClient else  { return }
     let check = Check(client: client, items: manager.items, payemnts: manager.payments)
+    
     ServerManager.sharedManager.create(check) { (response) in
       switch response.result {
       case .Success(_):
@@ -143,6 +144,7 @@ extension CheckoutViewController: PaymentControllerDelegate {
           try realm.write {
             realm.add(journalItem)
           }
+          self.printCheck(check)
         } catch let error {
           print(error)
         }
@@ -155,6 +157,10 @@ extension CheckoutViewController: PaymentControllerDelegate {
       }
     }
     
+  }
+  
+  func printCheck(check: Check) {
+    let manager = OrderManager.currentOrder
     ServerManager.sharedManager.printCheck(check) { response in
       switch response.result {
       case .Success(_):
