@@ -45,7 +45,7 @@ class OrderManager {
     }
     
     for item in items {
-      if item.product.id == product.id {
+      if item.product.productId == product.productId {
         item.inrementQuantity()
         return
       }

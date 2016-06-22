@@ -10,6 +10,7 @@ enum ProductType: String {
 class Product: Object {
   
   dynamic var id: String = ""
+  dynamic var productId: String = ""
   dynamic var name: String = ""
   let price = RealmOptional<Double>()
   dynamic var parentId: String = ""
@@ -39,12 +40,15 @@ class Product: Object {
 extension Product: ServerObject {
   static func createWith(json: JSON) -> Product? {
     guard let id = json["ref"].string, name = json["name"].string,
-        parentId = json["parentRef"].string, isGroup = json["isGroup"].bool else {
+        parentId = json["parentRef"].string, isGroup = json["isGroup"].bool,
+        productId = json["specialty"].string
+    else {
       return nil
     }
     
     let product = Product()
     product.id = id
+    product.productId = productId
     product.name = name
     product.parentId = parentId
     

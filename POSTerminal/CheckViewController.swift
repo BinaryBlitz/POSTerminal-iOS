@@ -126,7 +126,7 @@ class CheckViewController: UIViewController {
       scrollToBottom()
     } else if let product = notification?.userInfo?["product"] as? Product {
       let productIndex = items.indexOf { item -> Bool in
-        return item.product.id == product.id
+        return item.product.productId == product.productId
       }
       if let index = productIndex {
         items = OrderManager.currentOrder.items

@@ -26,7 +26,7 @@ class OrderItem {
   
   var dict: [String: AnyObject]? {
     return [
-      "productRef": product.id,
+      "productRef": product.productId,
       "qty": quantity,
       "price": product.price.value ?? 0,
       "amount": totalPrice
