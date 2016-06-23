@@ -30,18 +30,11 @@ class EquipmentManagementTableViewController: UITableViewController {
       tableView.tableHeaderView = footerView
     }
     
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(hideActivityIndicator), name: reloadMenuNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(finishMenuUpdate), name: reloadMenuNotification, object: nil)
   }
   
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self)
-  }
-  
-  func hideActivityIndicator() {
-    activityIndicator.stopAnimating()
-    activityIndicator.removeFromSuperview()
-    activityIndicator.hidden = true
-    presentAlertWithMessage("Меню обновлено!")
   }
   
   //MARK: - Actions
@@ -50,8 +43,14 @@ class EquipmentManagementTableViewController: UITableViewController {
     dismissViewControllerAnimated(true, completion: nil)
   }
   
-  @IBAction func updateMenu() {
-    NSNotificationCenter.defaultCenter().postNotificationName(updateMenuNotification, object: nil)
+  func finishMenuUpdate() {
+    hideActivityIndicator()
+    presentAlertWithMessage("Меню обновлено!")
+  }
+  
+  //MARK: - Indicator methods
+  
+  func showActivityIndicator() {
     tableView.addSubview(activityIndicator)
     activityIndicator.autoCenterInSuperview()
     activityIndicator.autoSetDimensionsToSize(CGSize(width: 70, height: 70))
@@ -59,19 +58,35 @@ class EquipmentManagementTableViewController: UITableViewController {
     activityIndicator.startAnimating()
   }
   
+  func hideActivityIndicator() {
+    activityIndicator.stopAnimating()
+    activityIndicator.removeFromSuperview()
+    activityIndicator.hidden = true
+  }
+  
+  //MARK: - Actions
+  
+  @IBAction func updateMenu() {
+    NSNotificationCenter.defaultCenter().postNotificationName(updateMenuNotification, object: nil)
+    showActivityIndicator()
+  }
+  
   @IBAction func openDay() {
     var sendCommands = 0
     
+    showActivityIndicator()
     ServerManager.sharedManager.openDay { (response) in
       switch response.result {
       case .Success(_):
         sendCommands += 1
         if sendCommands == 2 {
           self.presentAlertWithMessage("Кассовая смена открыта")
+          self.hideActivityIndicator()
         }
       case .Failure(let error):
         print(error)
         self.presentAlertWithTitle("Ошибка", andMessage: "Не удалсь открыть смену в базе оборудования")
+        self.hideActivityIndicator()
       }
     }
 
@@ -81,26 +96,31 @@ class EquipmentManagementTableViewController: UITableViewController {
         sendCommands += 1
         if sendCommands == 2 {
           self.presentAlertWithMessage("Кассовая смена открыта")
+          self.hideActivityIndicator()
         }
       case .Failure(let error):
         print(error)
         self.presentAlertWithTitle("Ошибка", andMessage: "Не удалсь открыть смену в базе рабочего места")
+        self.hideActivityIndicator()
       }
     }
   }
   
   @IBAction func closeDay() {
     var sendCommands = 0
+    showActivityIndicator()
     ServerManager.sharedManager.printZReport { (response) in
       switch response.result {
       case .Success(_):
         sendCommands += 1
         if sendCommands == 2 {
           self.presentAlertWithMessage("Кассовая смена закрыта!")
+          self.hideActivityIndicator()
         }
       case .Failure(let error):
         print(error)
         self.presentAlertWithMessage("Не удалось закрыть смену в базе оборудования")
+        self.hideActivityIndicator()
       }
     }
     
@@ -110,22 +130,27 @@ class EquipmentManagementTableViewController: UITableViewController {
         sendCommands += 1
         if sendCommands == 2 {
           self.presentAlertWithMessage("Кассовая смена закрыта!")
+          self.hideActivityIndicator()
         }
       case .Failure(let error):
         print(error)
         self.presentAlertWithMessage("Не удалось закрыть смену в базе рабочего места")
+        self.hideActivityIndicator()
       }
     }
   }
   
   @IBAction func printXReport() {
+    showActivityIndicator()
     ServerManager.sharedManager.printXReport { (response) in
       switch response.result {
       case .Success(_):
         self.presentAlertWithMessage("Отчет отправлен на печать")
+        self.hideActivityIndicator()
       case .Failure(let error):
         print(error)
         self.presentAlertWithMessage("Не удалось напечатать отчет")
+        self.hideActivityIndicator()
       }
     }
   }
