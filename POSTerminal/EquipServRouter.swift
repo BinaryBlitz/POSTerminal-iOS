@@ -68,7 +68,7 @@ extension EquipServRouter: ServerRouter {
       let newBalance = balance - orderTotal
       
       params =  [
-        "footerText": "Остаток \(newBalance)",
+        "footerText": "Старый баланс: \(balance.format())\nОстаток: \(newBalance.format())",
         "type": 0,
         "isFiscal": check.isFiscal,
         "items": check.items.flatMap { (item) -> [String: AnyObject]? in
