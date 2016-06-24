@@ -156,6 +156,95 @@ class EquipmentManagementTableViewController: UITableViewController {
   }
   
   @IBAction func encash() {
+    let alert = UIAlertController(title: "Инкассация", message: nil, preferredStyle: .Alert)
+    alert.addTextFieldWithConfigurationHandler { (textField) in
+      textField.placeholder = "Сумма"
+      textField.keyboardType = .NumberPad
+    }
     
+    alert.addAction(UIAlertAction(title: "Изъятие", style: .Default, handler: { (action) in
+      guard let sumTextField = alert.textFields?.first, sumString = sumTextField.text, sum = Double(sumString) else {
+        self.presentAlertWithMessage("Сумма введена неверно")
+        return
+      }
+      
+      self.encash(sum, type: .In)
+    }))
+    
+    alert.addAction(UIAlertAction(title: "Внесение", style: .Default, handler: { (action) in
+      guard let sumTextField = alert.textFields?.first, sumString = sumTextField.text, sum = Double(sumString) else {
+        self.presentAlertWithMessage("Сумма введена неверно")
+        return
+      }
+      
+      self.encash(sum, type: .In)
+    }))
+    
+    alert.addAction(UIAlertAction(title: "Отмена", style: UIAlertActionStyle.Cancel, handler: nil))
+    
+    presentViewController(alert, animated: true, completion: nil)
+  }
+  
+  private func encash(sum: Double, type: EncashType) {
+    showActivityIndicator()
+    ServerManager.sharedManager.printXReport { (response) in
+      switch response.result {
+      case .Success(_):
+        self.hideActivityIndicator()
+        self.sendEncashRequest(sum, type: type)
+      case .Failure(let error):
+        print(error)
+        self.presentAlertWithMessage("Не удалось напечатать отчет")
+        self.hideActivityIndicator()
+      }
+    }
+  }
+  
+  private func sendEncashRequest(sum: Double, type: EncashType) {
+    var sentCommands = 0
+    ServerManager.sharedManager.encash(sum, type: type) { (response) in
+      switch response.result {
+      case .Success(_):
+        sentCommands += 1
+        if sentCommands == 2 {
+          self.hideActivityIndicator()
+          self.updateBalance(sum, forEncash: type)
+          self.balanceLabel.text = Settings.sharedInstance.cashBalance.format()
+          self.presentAlertWithMessage("Инкассация успешно проведена!")
+        }
+      case .Failure(let error):
+        print(error)
+        self.hideActivityIndicator()
+        self.presentAlertWithMessage("Ошибка при регистрации инкассации в базе оборудования")
+      }
+    }
+    
+    ServerManager.sharedManager.encashInWP(sum, type: type) { (response) in
+      switch response.result {
+      case .Success(_):
+        sentCommands += 1
+        if sentCommands == 2 {
+          self.hideActivityIndicator()
+          self.updateBalance(sum, forEncash: type)
+          self.balanceLabel.text = Settings.sharedInstance.cashBalance.format()
+          self.presentAlertWithMessage("Инкассация успешно проведена!")
+        }
+      case .Failure(let error):
+        print(error)
+        self.hideActivityIndicator()
+        self.presentAlertWithMessage("Ошибка при регистрации инкассации в базе рабочего места")
+      }
+    }
+  }
+  
+  func updateBalance(sum: Double, forEncash type: EncashType) {
+    switch type {
+    case .In:
+      Settings.sharedInstance.cashBalance += sum
+    case .Out:
+      Settings.sharedInstance.cashBalance -= sum
+    }
+    
+    Settings.saveToUserDefaults()
   }
 }

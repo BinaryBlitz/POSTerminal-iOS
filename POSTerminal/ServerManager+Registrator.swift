@@ -64,20 +64,12 @@ extension ServerManager {
   
   //MARK: - Encash
   
-  func encashIn(amount: Double, completion: ((response: ServerResponse<Bool, ServerError>) -> Void)? = nil) -> Request? {
-    return performRegistratorComandWith(EquipServRouter.Encash(amount: amount, type: .In), completion: completion)
+  func encash(amount: Double, type: EncashType, completion: ((response: ServerResponse<Bool, ServerError>) -> Void)? = nil) -> Request? {
+    return performRegistratorComandWith(EquipServRouter.Encash(amount: amount, type: type), completion: completion)
   }
   
-  func encashOut(amount: Double, completion: ((response: ServerResponse<Bool, ServerError>) -> Void)? = nil) -> Request? {
-    return performRegistratorComandWith(EquipServRouter.Encash(amount: amount, type: .Out), completion: completion)
-  }
-  
-  func encashInInWP(amount: Double, completion: ((response: ServerResponse<Bool, ServerError>) -> Void)? = nil) -> Request? {
-    return performRegistratorComandWith(WPBaseRouter.Encash(amount: amount, type: .In), completion: completion)
-  }
-  
-  func encashOutInWP(amount: Double, completion: ((response: ServerResponse<Bool, ServerError>) -> Void)? = nil) -> Request? {
-    return performRegistratorComandWith(WPBaseRouter.Encash(amount: amount, type: .Out), completion: completion)
+  func encashInWP(amount: Double, type: EncashType, completion: ((response: ServerResponse<Bool, ServerError>) -> Void)? = nil) -> Request? {
+    return performRegistratorComandWith(WPBaseRouter.Encash(amount: amount, type: type), completion: completion)
   }
   
   func checkConnectionInWP(completion: (RegistratorCompletion)? = nil) -> Request? {
