@@ -10,6 +10,7 @@ enum EquipServRouter {
   case RegisterDevice(url: String)
   case CheckConnection(uuid: String)
   case PrintClientBalance(client: Client)
+  case Update(client: Client, balance: Double)
 }
 
 extension EquipServRouter: ServerRouter {
@@ -21,6 +22,8 @@ extension EquipServRouter: ServerRouter {
       return "\(baseURL)/hs/accessories/mobile-device"
     case .CheckConnection(_):
       return "\(baseURL)/hs/Base/Status"
+    case .Update(_, _):
+      return "\(baseURL)/hs/RFID/WriteData"
     default:
       return "\(baseURL)/hs/accessories/registers"
     }
@@ -95,6 +98,13 @@ extension EquipServRouter: ServerRouter {
       return ["notify": url]
     case .CheckConnection(let uuid):
       return ["terminalID": uuid]
+    case let .Update(client, balance):
+      guard let identity = client.identity else {
+        return nil
+      }
+      var jsonObject = identity.readerData
+      jsonObject["balance"] = balance
+      return jsonObject
     }
     
     if let uuid = uuid {

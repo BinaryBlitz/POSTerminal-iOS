@@ -1,5 +1,6 @@
 import UIKit
 import RealmSwift
+import SwiftyJSON
 
 class CheckoutViewController: UIViewController {
   
@@ -104,7 +105,7 @@ extension CheckoutViewController: PaymentControllerDelegate {
   func didUpdatePayments() {
     let residual = OrderManager.currentOrder.residual
     if residual == 0 {
-      finishOrder()
+      updateClientBalanceAndFinishOrder()
     } else if residual < 0 {
       let alert = UIAlertController(title: "Сдача: \((-residual).format()) рублей", message: nil, preferredStyle: .Alert)
       alert.addAction(UIAlertAction(title: "Завершить заказ", style: .Default, handler: { (action) in
@@ -113,7 +114,7 @@ extension CheckoutViewController: PaymentControllerDelegate {
           OrderManager.currentOrder.payments.append(Payment(amount: lastPayment.amount + residual, method: .Cash))
         }
         
-        self.finishOrder()
+        self.updateClientBalanceAndFinishOrder()
       }))
       alert.addAction(UIAlertAction(title: "Отмена", style: .Cancel, handler: { (action) in
         if !OrderManager.currentOrder.payments.isEmpty {
@@ -128,7 +129,7 @@ extension CheckoutViewController: PaymentControllerDelegate {
     }
   }
   
-  func finishOrder() {
+  func createCheck() {
     let manager = OrderManager.currentOrder
     guard let client = ClientManager.currentClient else  { return }
     let check = Check(client: client, items: manager.items, payemnts: manager.payments)
@@ -154,7 +155,42 @@ extension CheckoutViewController: PaymentControllerDelegate {
         }
         self.didUpdatePayments()
         print(error)
+        self.presentAlertWithMessage("Не удалось создать чек!")
       }
+    }
+  }
+  
+  private func updateClientBalanceAndFinishOrder() {
+    let manager = OrderManager.currentOrder
+    guard let client = ClientManager.currentClient, identity = client.identity
+        where identity.type == .BalanceData else  {
+      createCheck()
+      return
+    }
+    
+    do {
+      let request = try ServerManager.sharedManager.createRequest(
+        EquipServRouter.Update(client: client, balance: client.balance - manager.totalPrice)
+      )
+      request.validate().responseJSON { (response) in
+        switch response.result {
+        case .Success(let resultValue):
+          let json = JSON(resultValue)
+          print(json["answer"].stringValue)
+          self.createCheck()
+        case .Failure(let error):
+          self.presentAlertWithMessage("Не удалось записать данные!")
+          if !OrderManager.currentOrder.payments.isEmpty {
+            OrderManager.currentOrder.payments.removeLast()
+          }
+          self.didUpdatePayments()
+          print(error)
+        }
+      }
+      
+    } catch let error {
+      print(error)
+      presentAlertWithMessage("Проверьте подключение к базе")
     }
     
   }
