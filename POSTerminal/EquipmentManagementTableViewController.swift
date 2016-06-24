@@ -19,16 +19,26 @@ class EquipmentManagementTableViewController: UITableViewController {
     checksSumLabel.text = Settings.sharedInstance.checksSum.format()
     ordersSumLabel.text = Settings.sharedInstance.ordersSum.format()
     
+    let stackView = UIStackView()
+    stackView.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100)
+    stackView.alignment = .Center
+    stackView.distribution = .FillProportionally
+    stackView.axis = .Vertical
     if let uuid = uuid {
-      let footerLabel = UILabel()
-      footerLabel.text = uuid
-      footerLabel.textAlignment = .Center
-      let footerView = UIView()
-      footerView.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 70)
-      footerView.addSubview(footerLabel)
-      footerLabel.autoPinEdgesToSuperviewEdges()
-      tableView.tableHeaderView = footerView
+      let uuidLabel = UILabel()
+      uuidLabel.text = uuid
+      uuidLabel.textAlignment = .Center
+      stackView.addArrangedSubview(uuidLabel)
     }
+    
+    if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate,
+        server = appDelegate.gcdWebServer where server.serverURL != nil {
+      let urlLabel = UILabel()
+      urlLabel.text = server.serverURL.absoluteString
+      stackView.addArrangedSubview(urlLabel)
+    }
+    
+    tableView.tableHeaderView = stackView
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(finishMenuUpdate), name: reloadMenuNotification, object: nil)
   }
