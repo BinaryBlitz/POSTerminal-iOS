@@ -11,14 +11,14 @@ extension ServerManager {
     
     do {
       activityIndicatorVisible = true
-      let request = try createRequest(router).responseJSON { response in
+      let request = try createRequest(router).validate().response { (request, response, data, error) in
+        print(response)
         self.activityIndicatorVisible = false
-        switch response.result {
-        case .Success(_):
-          completion?(response: Response(value: true))
-        case .Failure(let error):
+        if let error = error {
           let serverError = ServerError(error: error)
           completion?(response: Response(error: serverError))
+        } else {
+          completion?(response: Response(value: true))
         }
       }
       
