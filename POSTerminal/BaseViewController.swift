@@ -119,6 +119,9 @@ class BaseViewController: UIViewController {
   
   private func openSettings() {
     let password = NSBundle.mainBundle().objectForInfoDictionaryKey("SettingsPassword") as! String
+    if password == "" {
+      performSegueWithIdentifier("settings", sender: self)
+    }
     let alert = UIAlertController(title: "Настройки", message: "Введите пароль для доступа к настройкам", preferredStyle: .Alert)
     alert.addTextFieldWithConfigurationHandler { (textField) in
       textField.placeholder = "Пароль"

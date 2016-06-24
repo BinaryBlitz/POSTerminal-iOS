@@ -72,6 +72,6 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>SettingsPassword</key>
-	<string>foobar</string>
+	<string></string>
 </dict>
 </plist>
