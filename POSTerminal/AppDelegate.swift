@@ -63,10 +63,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       server.addHandlerForMethod("POST", path: "/codes", requestClass: GCDWebServerDataRequest.self) { (request) -> GCDWebServerResponse! in
         let req = request as! GCDWebServerDataRequest
         let json = JSON(req.jsonObject)
-        guard let type = json["type"].string, code = json["code"].string,
-              clientIdentity = ClientIdentity(code: code, type: type) else {
+        guard let type = json["type"].string, code = json["code"].string, jsonObject = json.dictionaryObject,
+            clientIdentity = ClientIdentity(code: code, type: type, readerData: jsonObject) else {
           return GCDWebServerResponse(statusCode: 400)
         }
+        print(jsonObject)
         
         ServerManager.sharedManager.getInfoFor(clientIdentity) { (response) in
           switch response.result {

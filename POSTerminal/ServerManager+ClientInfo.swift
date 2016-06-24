@@ -14,7 +14,9 @@ extension ServerManager {
         case .Success(let resultValue):
           let json = JSON(resultValue)
           if let client = Client.createWith(json) {
-            completion?(response: Response(value: client))
+            var identifiedClient = client
+            identifiedClient.identity = identity
+            completion?(response: Response(value: identifiedClient))
           } else {
             completion?(response: Response(error: .InvalidData))
           }

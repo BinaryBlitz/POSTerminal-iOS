@@ -64,7 +64,10 @@ extension WPBaseRouter: ServerRouter {
     case let .Create(check):
       return check.dict
     case let .GetInfo(identity):
-      return ["type": identity.type.rawValue, "code": identity.code, "terminalID": uuid]
+      var jsonObject = identity.readerData
+      jsonObject["terminalID"] = uuid
+      print(jsonObject)
+      return jsonObject
     case .OpenDay:
       return ["action": "OpenDay", "terminalID": uuid]
     case .PrintZReport:
