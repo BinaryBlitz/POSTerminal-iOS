@@ -497,36 +497,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="59" id="ImZ-J9-evK">
-                                        <rect key="frame" x="0.0" y="555" width="600" height="59"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ImZ-J9-evK" id="O5U-08-83M">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGF-4A-1AX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <state key="normal" title="Закрыть смену"/>
-                                                    <connections>
-                                                        <action selector="closeDay" destination="QWF-PY-u0Q" eventType="touchUpInside" id="4Og-cw-e7Y"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="MGF-4A-1AX" secondAttribute="trailing" id="Das-X2-4zi"/>
-                                                <constraint firstItem="MGF-4A-1AX" firstAttribute="leading" secondItem="O5U-08-83M" secondAttribute="leading" id="RsD-CL-AQw"/>
-                                                <constraint firstItem="MGF-4A-1AX" firstAttribute="top" secondItem="O5U-08-83M" secondAttribute="top" id="fld-eI-Zw5"/>
-                                                <constraint firstAttribute="bottom" secondItem="MGF-4A-1AX" secondAttribute="bottom" id="kCc-mr-C0w"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Печать отчетов" id="Cgd-U1-zAb">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="59" id="gTD-sf-Lf4">
-                                        <rect key="frame" x="0.0" y="664" width="600" height="59"/>
+                                        <rect key="frame" x="0.0" y="555" width="600" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gTD-sf-Lf4" id="yhh-Xo-mAl">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -549,8 +521,32 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="59" id="ImZ-J9-evK">
+                                        <rect key="frame" x="0.0" y="614" width="600" height="59"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ImZ-J9-evK" id="O5U-08-83M">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGF-4A-1AX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Закрыть смену"/>
+                                                    <connections>
+                                                        <action selector="closeDay" destination="QWF-PY-u0Q" eventType="touchUpInside" id="4Og-cw-e7Y"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="MGF-4A-1AX" secondAttribute="trailing" id="Das-X2-4zi"/>
+                                                <constraint firstItem="MGF-4A-1AX" firstAttribute="leading" secondItem="O5U-08-83M" secondAttribute="leading" id="RsD-CL-AQw"/>
+                                                <constraint firstItem="MGF-4A-1AX" firstAttribute="top" secondItem="O5U-08-83M" secondAttribute="top" id="fld-eI-Zw5"/>
+                                                <constraint firstAttribute="bottom" secondItem="MGF-4A-1AX" secondAttribute="bottom" id="kCc-mr-C0w"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="59" id="kaa-Jt-2ko">
-                                        <rect key="frame" x="0.0" y="723" width="600" height="59"/>
+                                        <rect key="frame" x="0.0" y="673" width="600" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kaa-Jt-2ko" id="V2N-Xg-GfW">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -613,7 +609,7 @@
                                 <rect key="frame" x="0.0" y="94" width="600" height="96"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rJh-LY-3lZ" id="hb7-Up-Hvy">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="95.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="96"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQY-Pz-0J4">
