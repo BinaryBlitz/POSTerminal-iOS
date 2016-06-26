@@ -12,7 +12,7 @@ class JournalTableViewController: UITableViewController {
     tableView.estimatedRowHeight = 70
     
     let realm = try! Realm()
-    items = realm.objects(JournalItem).sorted("createdAt")
+    items = realm.objects(JournalItem).sorted("createdAt", ascending: false)
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
