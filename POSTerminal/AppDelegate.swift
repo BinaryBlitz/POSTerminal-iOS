@@ -21,9 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Settings.loadFormUserDefaults()
     Settings.sharedInstance.wpBase = Host(baseURL: "http://arma.ngslab.ru:28081/WPServ", login: "I.Novikov", password: "123456789")
     Settings.sharedInstance.equipServ = Host(baseURL: "http://arma.ngslab.ru:28081/EquipServ", login: "", password: "")
-    ClientManager.currentClient = Client(id: "afcb9338-0892-11e6-93fd-525400643a93", code: "381", name: "Стол 3", balance: 32000)
+//    ClientManager.currentClient = Client(id: "afcb9338-0892-11e6-93fd-525400643a93", code: "381", name: "Стол 3", balance: 32000)
     
-    ColorsManager.sharedManager.baseColor = UIColor.colorWithHex("#2196F3")!
+    if let colorString = Settings.sharedInstance.baseColorHex, color = UIColor.colorWithHex(colorString) {
+      ColorsManager.sharedManager.baseColor = color
+    }
+    
     let userDefaults = NSUserDefaults.standardUserDefaults()
     
     if let id = userDefaults.objectForKey("ApplicationUniqueIdentifier") as? String {

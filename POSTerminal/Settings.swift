@@ -4,6 +4,8 @@ class Settings: NSObject, NSCoding {
   
   static private(set) var sharedInstance = Settings()
   
+  var baseColorHex: String?
+  
   var wpBase: Host?
   var equipServ: Host?
   var currentCheckNumber: Int = 0
@@ -16,6 +18,7 @@ class Settings: NSObject, NSCoding {
   override init() { super.init() }
   
   required init?(coder aDecoder: NSCoder) {
+    baseColorHex = aDecoder.decodeObjectForKey("baseColorHex") as? String
     wpBase = aDecoder.decodeObjectForKey("wpBase") as? Host
     equipServ = aDecoder.decodeObjectForKey("equipServ") as? Host
     cashBalance = aDecoder.decodeDoubleForKey("cashBalance")
@@ -26,6 +29,7 @@ class Settings: NSObject, NSCoding {
   }
   
   func encodeWithCoder(aCoder: NSCoder) {
+    aCoder.encodeObject(baseColorHex, forKey: "baseColorHex")
     aCoder.encodeObject(wpBase, forKey: "wpBase")
     aCoder.encodeObject(equipServ, forKey: "equipServ")
     aCoder.encodeDouble(cashBalance, forKey: "cashBalance")

@@ -1,6 +1,9 @@
 import UIKit
+import BCColor
 
 class SettingsTableViewController: UITableViewController {
+  
+  @IBOutlet weak var colorTextField: UITextField!
   
   @IBOutlet weak var wpURLTextField: UITextField!
   @IBOutlet weak var wpUsernameTextField: UITextField!
@@ -20,6 +23,8 @@ class SettingsTableViewController: UITableViewController {
     
     let settings = Settings.sharedInstance
     
+    colorTextField.text = settings.baseColorHex
+    
     wpURLTextField.text = settings.wpBase?.baseURL
     wpUsernameTextField.text = settings.wpBase?.login
     wpPasswordTextField.text = settings.wpBase?.password
@@ -38,6 +43,11 @@ class SettingsTableViewController: UITableViewController {
   
   @IBAction func saveButtonAction() {
     view.endEditing(true)
+    
+    if let hexString = colorTextField.text, color = UIColor.colorWithHex(hexString) {
+      Settings.sharedInstance.baseColorHex = hexString
+      ColorsManager.sharedManager.baseColor = color
+    }
     
     if let url = wpURLTextField.text, username = wpUsernameTextField.text,
         password = wpPasswordTextField.text {
