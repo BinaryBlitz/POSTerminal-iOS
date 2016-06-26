@@ -200,7 +200,6 @@ class EquipmentManagementTableViewController: UITableViewController {
     ServerManager.sharedManager.printXReport { (response) in
       switch response.result {
       case .Success(_):
-        self.hideActivityIndicator()
         self.sendEncashRequest(sum, type: type)
       case .Failure(let error):
         print(error)
