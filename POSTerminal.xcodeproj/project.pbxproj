@@ -727,7 +727,7 @@
 				CODE_SIGN_ENTITLEMENTS = POSTerminal/POSTerminal.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = POSTerminal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
@@ -754,7 +754,7 @@
 				CODE_SIGN_ENTITLEMENTS = POSTerminal/POSTerminal.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				INFOPLIST_FILE = POSTerminal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
