@@ -51,6 +51,7 @@ class BaseViewController: UIViewController {
   func updateColors() {
     checkBackButtonState()
     toolBarView.backgroundColor = UIColor.elementsAndH1Color()
+    paymentHeaderView.backgroundColor = UIColor.elementsAndH1Color()
     homeButtonAction()
   }
   

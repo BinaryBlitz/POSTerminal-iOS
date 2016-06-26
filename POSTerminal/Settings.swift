@@ -4,7 +4,7 @@ class Settings: NSObject, NSCoding {
   
   static private(set) var sharedInstance = Settings()
   
-  var baseColorHex: String?
+  var baseColorHex: String? = nil
   
   var wpBase: Host?
   var equipServ: Host?
