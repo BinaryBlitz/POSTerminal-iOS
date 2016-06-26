@@ -28,6 +28,19 @@ class CashPaymentViewController: UIViewController {
     otherButton.addTarget(self, action: #selector(otherButtonAction(_:)), forControlEvents: .TouchUpInside)
     
     setUpButtons()
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateColors), name: UpdateColorsNotification, object: nil)
+  }
+  
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  func updateColors() {
+    otherButton.backgroundColor = UIColor.elementsAndH1Color()
+    [firstCashButton, secondCashButton, thirdCashButton, fourthCashButton].forEach { (button) in
+      button.layer.borderColor = UIColor.elementsAndH1Color().CGColor
+      button.setTitleColor(UIColor.elementsAndH1Color(), forState: .Normal)
+    }
   }
   
   func setUpButtons() {

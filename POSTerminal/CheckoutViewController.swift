@@ -36,6 +36,16 @@ class CheckoutViewController: UIViewController {
       paymentTypeSwitch.selectedSegmentIndex = 1
       changePaymentMethod(paymentTypeSwitch)
     }
+    
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateColors), name: UpdateColorsNotification, object: nil)
+  }
+  
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  func updateColors() {
+    paymentTypeSwitch.tintColor = UIColor.elementsAndH1Color()
   }
   
   //MARK: - Actions

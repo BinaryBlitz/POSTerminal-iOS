@@ -60,10 +60,16 @@ class CheckViewController: UIViewController {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadData(_:)), name: newItemNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadClientInfo), name: clientUpdatedNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(endCheckout), name: endCheckoutNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateColors), name: UpdateColorsNotification, object: nil)
   }
   
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  func updateColors() {
+    reloadCheckoutButton()
+    tableView.reloadData()
   }
   
   func printClientBalance() {

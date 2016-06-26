@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		370906321D20625C006EB644 /* ColorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370906311D20625C006EB644 /* ColorsManager.swift */; };
 		374215341D0F933100018F1B /* CheckItemCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374215331D0F933100018F1B /* CheckItemCellDelegate.swift */; };
 		374215361D0FB28500018F1B /* Encash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374215351D0FB28500018F1B /* Encash.swift */; };
 		3742153A1D0FCF2200018F1B /* CashButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374215391D0FCF2200018F1B /* CashButton.swift */; };
@@ -74,6 +75,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		370906311D20625C006EB644 /* ColorsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsManager.swift; sourceTree = "<group>"; };
 		374215331D0F933100018F1B /* CheckItemCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckItemCellDelegate.swift; sourceTree = "<group>"; };
 		374215351D0FB28500018F1B /* Encash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encash.swift; sourceTree = "<group>"; };
 		374215391D0FCF2200018F1B /* CashButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashButton.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				37C58DDD1CFCFB9400049095 /* ServerError.swift */,
 				37C58DDB1CFCFB8C00049095 /* ServerResponse.swift */,
 				37C58DEC1CFE512E00049095 /* Routers */,
+				370906311D20625C006EB644 /* ColorsManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -558,6 +561,7 @@
 				37965AD01D11E95500F03701 /* KeyboardButton.swift in Sources */,
 				3752A12E1D01AE6E00194663 /* BaseViewController.swift in Sources */,
 				3779D48B1D0C62D700A3A57B /* CardPaymentViewController.swift in Sources */,
+				370906321D20625C006EB644 /* ColorsManager.swift in Sources */,
 				37C58DE21CFE315400049095 /* Settings.swift in Sources */,
 				37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */,
 				3779D4891D0C62CB00A3A57B /* CashPaymentViewController.swift in Sources */,

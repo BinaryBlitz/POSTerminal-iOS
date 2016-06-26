@@ -14,6 +14,16 @@ class CardPaymentViewController: UIViewController {
     payButton.layer.cornerRadius = 10
     payButton.backgroundColor = UIColor.elementsAndH1Color()
     payButton.tintColor = UIColor.whiteColor()
+    
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateColors), name: UpdateColorsNotification, object: nil)
+  }
+  
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  func updateColors() {
+    payButton.backgroundColor = UIColor.elementsAndH1Color()
   }
   
   //MARK: - Actions

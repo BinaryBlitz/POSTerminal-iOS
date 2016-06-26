@@ -28,6 +28,10 @@ class BaseViewController: UIViewController {
     
     paymentHeaderView.backgroundColor = UIColor.elementsAndH1Color()
     
+    backButton.setImage(UIImage(named: "Back")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+    backButton.setImage(UIImage(named: "Back")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Disabled)
+    backButton.tintColor = UIColor.h2Color()
+    
     backButton.enabled = false
     toolBarView.backgroundColor = UIColor.elementsAndH1Color()
     clearMenuPath()
@@ -37,10 +41,17 @@ class BaseViewController: UIViewController {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(startCheckout), name: startCheckoutNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(endCheckout), name: endCheckoutNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(presentNotification(_:)), name: presentViewControllerNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateColors), name: UpdateColorsNotification, object: nil)
   }
   
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  func updateColors() {
+    checkBackButtonState()
+    toolBarView.backgroundColor = UIColor.elementsAndH1Color()
+    homeButtonAction()
   }
   
   func presentNotification(notification: NSNotification? = nil) {
@@ -147,6 +158,13 @@ class BaseViewController: UIViewController {
   private func checkBackButtonState() {
     if let navigationController = menuNavigationController {
       backButton.enabled = navigationController.viewControllers.count > 1
+      if backButton.enabled {
+        backButton.setImage(UIImage(named: "Back")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        backButton.tintColor = UIColor.whiteColor()
+      } else {
+        backButton.setImage(UIImage(named: "Back")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Disabled)
+        backButton.tintColor = UIColor.h2Color()
+      }
     }
   }
   
@@ -171,8 +189,10 @@ class BaseViewController: UIViewController {
   }
   
   func createSeparatorImageView() -> UIImageView {
-    let image = UIImage(named: "PathSeparator")
-    return UIImageView(image: image)
+    let image = UIImage(named: "PathSeparator")?.imageWithRenderingMode(.AlwaysTemplate)
+    let imageView = UIImageView(image: image)
+    imageView.tintColor = UIColor.h2Color()
+    return imageView
   }
   
   func clearMenuPath() {

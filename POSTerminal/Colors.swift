@@ -1,7 +1,9 @@
+import BCColor
+
 extension UIColor {
   
   static func elementsAndH1Color() -> UIColor {
-    return UIColor(red:0.99, green:0.55, blue:0.22, alpha:1.0)
+    return ColorsManager.sharedManager.baseColor
   }
   
   static func lightOrangeColor() -> UIColor {
@@ -9,7 +11,7 @@ extension UIColor {
   }
   
   static func h2Color() -> UIColor {
-    return UIColor(red:0.75, green:0.42, blue:0.17, alpha:1.0)
+    return ColorsManager.sharedManager.baseColor.darkenByPercentage(0.25)
   }
   
   static func h3Color() -> UIColor {
