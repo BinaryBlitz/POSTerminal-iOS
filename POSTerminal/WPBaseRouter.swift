@@ -73,7 +73,7 @@ extension WPBaseRouter: ServerRouter {
     case .PrintZReport:
       return ["action": "PrintZReport", "terminalID": uuid]
     case let .Encash(amount, type):
-      return nil
+      return ["action": "Encash", "terminalID": uuid, "params": ["type": type.value, "amount": amount]]
     case .CheckConnection(let uuid):
       return ["terminalID": uuid]
     }
