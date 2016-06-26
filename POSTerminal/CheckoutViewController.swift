@@ -146,12 +146,13 @@ extension CheckoutViewController: PaymentControllerDelegate {
     
     ServerManager.sharedManager.create(check) { (response) in
       switch response.result {
-      case .Success(_):
+      case .Success(let docId):
         Settings.sharedInstance.ordersSum += manager.totalPrice
         Settings.saveToUserDefaults()
         do {
           let realm = try Realm()
           let journalItem = JournalItem(check: check)
+          journalItem.docId = docId
           try realm.write {
             realm.add(journalItem)
           }

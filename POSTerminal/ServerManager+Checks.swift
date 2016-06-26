@@ -3,8 +3,8 @@ import SwiftyJSON
 
 extension ServerManager {
   
-  func create(check: Check, completion: ((response: ServerResponse<Bool, ServerError>) -> Void)? = nil) -> Request? {
-    typealias Response = ServerResponse<Bool, ServerError>
+  func create(check: Check, completion: ((response: ServerResponse<String, ServerError>) -> Void)? = nil) -> Request? {
+    typealias Response = ServerResponse<String, ServerError>
     
     do {
       activityIndicatorVisible = true
@@ -15,8 +15,11 @@ extension ServerManager {
         switch response.result {
         case .Success(let resultValue):
           let json = JSON(resultValue)
-          print(json)
-          completion?(response: Response(value: true))
+          if let docId = json["docID"].string {
+            completion?(response: Response(value: docId))
+          } else {
+            completion?(response: Response(error: .InvalidData))
+          }
         case .Failure(let error):
           let serverError = ServerError(error: error)
           completion?(response: Response(error: serverError))

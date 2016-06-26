@@ -3,6 +3,7 @@ import RealmSwift
 
 class JournalItem: Object {
   dynamic var number: Int = 0
+  dynamic var docId: String = ""
   dynamic var clientCode: String = ""
   dynamic var createdAt: NSDate = NSDate()
   dynamic var amount: Double = 0
