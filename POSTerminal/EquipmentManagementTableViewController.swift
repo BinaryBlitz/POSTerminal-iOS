@@ -178,7 +178,7 @@ class EquipmentManagementTableViewController: UITableViewController {
         return
       }
       
-      self.encash(sum, type: .In)
+      self.encash(sum, type: .Out)
     }))
     
     alert.addAction(UIAlertAction(title: "Внесение", style: .Default, handler: { (action) in
