@@ -6,8 +6,9 @@ extension UIColor {
     return ColorsManager.sharedManager.baseColor
   }
   
+  //TODO: change name
   static func lightOrangeColor() -> UIColor {
-    return UIColor(red:1, green:0.67, blue:0, alpha:1)
+    return ColorsManager.sharedManager.baseColor.lightenByPercentage(0.45)
   }
   
   static func h2Color() -> UIColor {
