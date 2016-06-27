@@ -11,10 +11,8 @@
 #include <netdb.h>
 #include "CanonicalRequest.h"
 #include <zlib.h>
-//#include "ViewController.h"
 
 #define CONNECTION_BUFFLEN 0x10000
-
 
 // pertain to session (ie across multiple load requests
 static NSString *currentHost;
@@ -267,18 +265,18 @@ typedef struct redsocketConnectionContext
         
         currentHost = [NSString stringWithString:[_request URL].host];
         
-        NSString *argAuth;
-        if (username && password) {
-            
-            NSString *authChunk = [NSString stringWithFormat:@"%@:%@", username, password];
-            
-            NSData* temp = [authChunk dataUsingEncoding:NSUTF8StringEncoding];
-            
-            argAuth = [NSString stringWithFormat:@"Basic %@", [temp base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
-            
-            [_request setValue:argAuth forHTTPHeaderField:@"Authorization:"];
-        }
-        
+//        NSString *argAuth;
+//        if (username && password) {
+//            
+//            NSString *authChunk = [NSString stringWithFormat:@"%@:%@", username, password];
+//            
+//            NSData* temp = [authChunk dataUsingEncoding:NSUTF8StringEncoding];
+//            
+//            argAuth = [NSString stringWithFormat:@"Basic %@", [temp base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
+//            
+//            [_request setValue:argAuth forHTTPHeaderField:@"Authorization:"];
+//        }
+//        
         [_request setValue:@"close" forHTTPHeaderField:@"Connection:"];
         
         NSLog(@"StartLoading: \n%@", _request);
@@ -504,7 +502,7 @@ typedef struct redsocketConnectionContext
                 
             }
             
-//            // this counter is just for debugging so we can see how many bytes came back
+            // this counter is just for debugging so we can see how many bytes came back
 //            g_rxCounter += readOffset;
           
             // have a received a full response yet?

@@ -145,28 +145,30 @@ extension CheckoutViewController: PaymentControllerDelegate {
     let check = Check(client: client, items: manager.items, payemnts: manager.payments)
     
     ServerManager.sharedManager.create(check) { (response) in
-      switch response.result {
-      case .Success(let docId):
-        Settings.sharedInstance.ordersSum += manager.totalPrice
-        Settings.saveToUserDefaults()
-        do {
-          let realm = try Realm()
-          let journalItem = JournalItem(check: check)
-          journalItem.docId = docId
-          try realm.write {
-            realm.add(journalItem)
+      dispatch_async(dispatch_get_main_queue()) {
+        switch response.result {
+        case .Success(let docId):
+          Settings.sharedInstance.ordersSum += manager.totalPrice
+          Settings.saveToUserDefaults()
+          do {
+            let realm = try Realm()
+            let journalItem = JournalItem(check: check)
+            journalItem.docId = docId
+            try realm.write {
+              realm.add(journalItem)
+            }
+            self.printCheck(check)
+          } catch let error {
+            print(error)
           }
-          self.printCheck(check)
-        } catch let error {
+        case .Failure(let error):
+          if !OrderManager.currentOrder.payments.isEmpty {
+            OrderManager.currentOrder.payments.removeLast()
+          }
+          self.didUpdatePayments()
           print(error)
+          self.presentAlertWithMessage("Не удалось создать чек!")
         }
-      case .Failure(let error):
-        if !OrderManager.currentOrder.payments.isEmpty {
-          OrderManager.currentOrder.payments.removeLast()
-        }
-        self.didUpdatePayments()
-        print(error)
-        self.presentAlertWithMessage("Не удалось создать чек!")
       }
     }
   }
@@ -183,21 +185,22 @@ extension CheckoutViewController: PaymentControllerDelegate {
       let request = try ServerManager.sharedManager.createRequest(
         EquipServRouter.Update(client: client, balance: client.balance - manager.totalPrice)
       )
-      request.validate().responseJSON { (response) in
-        switch response.result {
-        case .Success(let resultValue):
-          let json = JSON(resultValue)
-          print(json["answer"].stringValue)
-          self.createCheck()
-        case .Failure(let error):
-          self.presentAlertWithMessage("Не удалось записать данные!")
-          if !OrderManager.currentOrder.payments.isEmpty {
-            OrderManager.currentOrder.payments.removeLast()
-          }
-          self.didUpdatePayments()
-          print(error)
-        }
-      }
+      //TODO: RFID request
+//      request.validate().responseJSON { (response) in
+//        switch response.result {
+//        case .Success(let resultValue):
+//          let json = JSON(resultValue)
+//          print(json["answer"].stringValue)
+//          self.createCheck()
+//        case .Failure(let error):
+//          self.presentAlertWithMessage("Не удалось записать данные!")
+//          if !OrderManager.currentOrder.payments.isEmpty {
+//            OrderManager.currentOrder.payments.removeLast()
+//          }
+//          self.didUpdatePayments()
+//          print(error)
+//        }
+//      }
       
     } catch let error {
       print(error)
@@ -209,22 +212,24 @@ extension CheckoutViewController: PaymentControllerDelegate {
   func printCheck(check: Check) {
     let manager = OrderManager.currentOrder
     ServerManager.sharedManager.printCheck(check) { response in
-      switch response.result {
-      case .Success(_):
-        Settings.sharedInstance.checksSum += manager.totalPrice
-        Settings.sharedInstance.cashBalance += manager.payments.reduce(0, combine: { (sum, payment) -> Double in
-          if payment.method == .Cash {
-            return payment.amount
-          }
-          
-          return 0
-        })
-        Settings.saveToUserDefaults()
-        OrderManager.currentOrder.clearOrder()
-        ClientManager.currentClient = nil
-        NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
-      case .Failure(let error):
-        print(error)
+      dispatch_async(dispatch_get_main_queue()) {
+        switch response.result {
+        case .Success(_):
+          Settings.sharedInstance.checksSum += manager.totalPrice
+          Settings.sharedInstance.cashBalance += manager.payments.reduce(0, combine: { (sum, payment) -> Double in
+            if payment.method == .Cash {
+              return payment.amount
+            }
+            
+            return 0
+          })
+          Settings.saveToUserDefaults()
+          OrderManager.currentOrder.clearOrder()
+          ClientManager.currentClient = nil
+          NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
+        case .Failure(let error):
+          print(error)
+        }
       }
     }
   }

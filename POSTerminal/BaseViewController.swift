@@ -97,17 +97,19 @@ class BaseViewController: UIViewController {
   
   func refresh() {
     ServerManager.sharedManager.getMenu { (response) in
-      switch response.result {
-      case .Success(let menu):
-        let realm = try! Realm()
-        try! realm.write {
-          realm.delete(realm.objects(Product))
-          realm.add(menu)
+      dispatch_async(dispatch_get_main_queue()) {
+        switch response.result {
+        case .Success(let menu):
+          let realm = try! Realm()
+          try! realm.write {
+            realm.delete(realm.objects(Product))
+            realm.add(menu)
+          }
+          
+          NSNotificationCenter.defaultCenter().postNotificationName(reloadMenuNotification, object: nil)
+        case .Failure(let error):
+          print("error: \(error)")
         }
-        
-        NSNotificationCenter.defaultCenter().postNotificationName(reloadMenuNotification, object: nil)
-      case .Failure(let error):
-        print("error: \(error)")
       }
     }
   }

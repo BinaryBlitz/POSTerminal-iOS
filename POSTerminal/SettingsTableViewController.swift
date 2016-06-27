@@ -84,28 +84,32 @@ class SettingsTableViewController: UITableViewController {
     var sentRequests = 0
     
     ServerManager.sharedManager.checkConnectionInEQ { (response) in
-      switch response.result {
-      case .Success(_):
-        sentRequests += 1
-        if sentRequests == 2 {
-          self.presentAlertWithMessage("Обе базы успешно подключены!")
+      dispatch_async(dispatch_get_main_queue()) {
+        switch response.result {
+        case .Success(_):
+          sentRequests += 1
+          if sentRequests == 2 {
+            self.presentAlertWithMessage("Обе базы успешно подключены!")
+          }
+        case .Failure(let error):
+          print(error)
+          self.presentAlertWithTitle("Ошибка", andMessage: "Не удалось подключиться к базе оборудования")
         }
-      case .Failure(let error):
-        print(error)
-        self.presentAlertWithTitle("Ошибка", andMessage: "Не удалось подключиться к базе оборудования")
       }
     }
     
     ServerManager.sharedManager.checkConnectionInWP { (response) in
-      switch response.result {
-      case .Success(_):
-        sentRequests += 1
-        if sentRequests == 2 {
-          self.presentAlertWithMessage("Обе базы успешно подключены!")
+      dispatch_async(dispatch_get_main_queue()) {
+        switch response.result {
+        case .Success(_):
+          sentRequests += 1
+          if sentRequests == 2 {
+            self.presentAlertWithMessage("Обе базы успешно подключены!")
+          }
+        case .Failure(let error):
+          print(error)
+          self.presentAlertWithTitle("Ошибка", andMessage: "Не удалось подключиться к базе рабочего места")
         }
-      case .Failure(let error):
-        print(error)
-        self.presentAlertWithTitle("Ошибка", andMessage: "Не удалось подключиться к базе рабочего места")
       }
     }
   }
@@ -116,12 +120,14 @@ class SettingsTableViewController: UITableViewController {
       let callbackURL = "\(server.serverURL.absoluteString)codes"
       print(callbackURL)
       ServerManager.sharedManager.registerDeviceWithCallbackURL(callbackURL) { (response) in
-        switch response.result {
-        case .Success(_):
-          self.presentAlertWithMessage("Мобильный терминал успешно зарегистрирован!")
-        case .Failure(let error):
-          print(error)
-          self.presentAlertWithMessage("Не удалось зарегистрировать мобильный терминал")
+        dispatch_async(dispatch_get_main_queue()) {
+          switch response.result {
+          case .Success(_):
+            self.presentAlertWithMessage("Мобильный терминал успешно зарегистрирован!")
+          case .Failure(let error):
+            print(error)
+            self.presentAlertWithMessage("Не удалось зарегистрировать мобильный терминал")
+          }
         }
       }
     } else {

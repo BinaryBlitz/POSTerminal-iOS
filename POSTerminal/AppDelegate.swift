@@ -17,11 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     Fabric.with([Crashlytics.self])
+    
+    NSURLProtocol.registerClass(RedSocketURLProtocol.self)
+    RedSocketManager.sharedInstance().configureNetworkInterface("0.0.0.0", gateway: "0.0.0.0", netmask: "0.0.0.0", dns: nil)
+    
     UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
     Settings.loadFormUserDefaults()
     Settings.sharedInstance.wpBase = Host(baseURL: "http://arma.ngslab.ru:28081/WPServ", login: "I.Novikov", password: "123456789")
     Settings.sharedInstance.equipServ = Host(baseURL: "http://arma.ngslab.ru:28081/EquipServ", login: "", password: "")
 //    ClientManager.currentClient = Client(id: "afcb9338-0892-11e6-93fd-525400643a93", code: "381", name: "Стол 3", balance: 32000)
+//    ClientManager.currentClient?.identity = ClientIdentity(code: "381", type: "TracksData", readerData: ["clientRef": "afcb9338-0892-11e6-93fd-525400643a93",
+//      "clientName": "Стол 3",
+//      "balance": 6000,
+//      "clientCode": "381"])
     
     if let colorString = Settings.sharedInstance.baseColorHex, color = UIColor.colorWithHex(colorString) {
       ColorsManager.sharedManager.baseColor = color
@@ -75,12 +83,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(jsonObject)
         
         ServerManager.sharedManager.getInfoFor(clientIdentity) { (response) in
-          switch response.result {
-          case .Success(let client):
-            ClientManager.currentClient = client
-            NSNotificationCenter.defaultCenter().postNotificationName(clientUpdatedNotification, object: nil)
-          case .Failure(let error):
-            print(error)
+          dispatch_async(dispatch_get_main_queue()) {
+            switch response.result {
+            case .Success(let client):
+              ClientManager.currentClient = client
+              NSNotificationCenter.defaultCenter().postNotificationName(clientUpdatedNotification, object: nil)
+            case .Failure(let error):
+              print(error)
+            }
           }
         }
         

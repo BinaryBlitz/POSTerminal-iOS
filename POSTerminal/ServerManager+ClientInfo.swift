@@ -3,16 +3,36 @@ import SwiftyJSON
 
 extension ServerManager {
   
-  func getInfoFor(identity: ClientIdentity, completion: ((response: ServerResponse<Client, ServerError>) -> Void)? = nil) -> Request? {
+  func getInfoFor(identity: ClientIdentity, completion: ((response: ServerResponse<Client, ServerError>) -> Void)? = nil) {
     typealias Response = ServerResponse<Client, ServerError>
     
     do {
       activityIndicatorVisible = true
-      let request = try createRequest(WPBaseRouter.GetInfo(identity: identity)).validate().responseJSON { response in
+      let request = try createRequest(WPBaseRouter.GetInfo(identity: identity))
+      NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue()) { (response, data, error) in
         self.activityIndicatorVisible = false
-        switch response.result {
-        case .Success(let resultValue):
-          let json = JSON(resultValue)
+        if let httpResponse = response as? NSHTTPURLResponse {
+          print("responseCode \(httpResponse.statusCode)")
+          if !(httpResponse.statusCode < 300 && httpResponse.statusCode > 199) {
+            completion?(response: Response(error: ServerError.UnspecifiedError))
+            return
+          }
+        }
+        
+        if let error = error {
+          print("\(error)")
+          completion?(response: Response(error: ServerError(error: error)))
+          return
+        }
+        
+        do {
+          guard let data = data else {
+            completion?(response: Response(error: .InvalidData))
+            return
+          }
+          
+          let jsonResult = (try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers))
+          let json = JSON(jsonResult)
           if let client = Client.createWith(json) {
             var identifiedClient = client
             identifiedClient.identity = identity
@@ -20,17 +40,15 @@ extension ServerManager {
           } else {
             completion?(response: Response(error: .InvalidData))
           }
-        case .Failure(let error):
-          let serverError = ServerError(error: error)
-          completion?(response: Response(error: serverError))
+          return
+        } catch {
+          completion?(response: Response(error: .InvalidData))
+          return
         }
       }
-      
-      return request
-    } catch {
+    } catch let error {
+      print(error)
       completion?(response: Response(error: .Unauthorized))
     }
-    
-    return nil
   }
 }

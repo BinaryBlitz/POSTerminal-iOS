@@ -75,11 +75,13 @@ class CheckViewController: UIViewController {
   func printClientBalance() {
     guard let client = ClientManager.currentClient else { return }
     ServerManager.sharedManager.printClientBalance(client) { (response) in
-      switch response.result {
-      case .Success(_):
-        self.presentAlertWithMessage("Печать баланса")
-      case .Failure(let error):
-        print(error)
+      dispatch_async(dispatch_get_main_queue()) {
+        switch response.result {
+        case .Success(_):
+          self.presentAlertWithMessage("Печать баланса")
+        case .Failure(let error):
+          print(error)
+        }
       }
     }
   }

@@ -86,32 +86,36 @@ class EquipmentManagementTableViewController: UITableViewController {
     
     showActivityIndicator()
     ServerManager.sharedManager.openDay { (response) in
-      switch response.result {
-      case .Success(_):
-        sendCommands += 1
-        if sendCommands == 2 {
-          self.presentAlertWithMessage("Кассовая смена открыта")
+      dispatch_async(dispatch_get_main_queue()) {
+        switch response.result {
+        case .Success(_):
+          sendCommands += 1
+          if sendCommands == 2 {
+            self.presentAlertWithMessage("Кассовая смена открыта")
+            self.hideActivityIndicator()
+          }
+        case .Failure(let error):
+          print(error)
+          self.presentAlertWithTitle("Ошибка", andMessage: "Не удалсь открыть смену в базе оборудования")
           self.hideActivityIndicator()
         }
-      case .Failure(let error):
-        print(error)
-        self.presentAlertWithTitle("Ошибка", andMessage: "Не удалсь открыть смену в базе оборудования")
-        self.hideActivityIndicator()
       }
     }
 
     ServerManager.sharedManager.openDayInWP { (response) in
-      switch response.result {
-      case .Success(_):
-        sendCommands += 1
-        if sendCommands == 2 {
-          self.presentAlertWithMessage("Кассовая смена открыта")
+      dispatch_async(dispatch_get_main_queue()) {
+        switch response.result {
+        case .Success(_):
+          sendCommands += 1
+          if sendCommands == 2 {
+            self.presentAlertWithMessage("Кассовая смена открыта")
+            self.hideActivityIndicator()
+          }
+        case .Failure(let error):
+          print(error)
+          self.presentAlertWithTitle("Ошибка", andMessage: "Не удалсь открыть смену в базе рабочего места")
           self.hideActivityIndicator()
         }
-      case .Failure(let error):
-        print(error)
-        self.presentAlertWithTitle("Ошибка", andMessage: "Не удалсь открыть смену в базе рабочего места")
-        self.hideActivityIndicator()
       }
     }
   }
@@ -120,32 +124,36 @@ class EquipmentManagementTableViewController: UITableViewController {
     var sendCommands = 0
     showActivityIndicator()
     ServerManager.sharedManager.printZReport { (response) in
-      switch response.result {
-      case .Success(_):
-        sendCommands += 1
-        if sendCommands == 2 {
-          self.presentAlertWithMessage("Кассовая смена закрыта!")
+      dispatch_async(dispatch_get_main_queue()) {
+        switch response.result {
+        case .Success(_):
+          sendCommands += 1
+          if sendCommands == 2 {
+            self.presentAlertWithMessage("Кассовая смена закрыта!")
+            self.hideActivityIndicator()
+          }
+        case .Failure(let error):
+          print(error)
+          self.presentAlertWithMessage("Не удалось закрыть смену в базе оборудования")
           self.hideActivityIndicator()
         }
-      case .Failure(let error):
-        print(error)
-        self.presentAlertWithMessage("Не удалось закрыть смену в базе оборудования")
-        self.hideActivityIndicator()
       }
     }
     
     ServerManager.sharedManager.printZReportInWP { (response) in
-      switch response.result {
-      case .Success(_):
-        sendCommands += 1
-        if sendCommands == 2 {
-          self.presentAlertWithMessage("Кассовая смена закрыта!")
+      dispatch_async(dispatch_get_main_queue()) {
+        switch response.result {
+        case .Success(_):
+          sendCommands += 1
+          if sendCommands == 2 {
+            self.presentAlertWithMessage("Кассовая смена закрыта!")
+            self.hideActivityIndicator()
+          }
+        case .Failure(let error):
+          print(error)
+          self.presentAlertWithMessage("Не удалось закрыть смену в базе рабочего места")
           self.hideActivityIndicator()
         }
-      case .Failure(let error):
-        print(error)
-        self.presentAlertWithMessage("Не удалось закрыть смену в базе рабочего места")
-        self.hideActivityIndicator()
       }
     }
   }
@@ -153,14 +161,16 @@ class EquipmentManagementTableViewController: UITableViewController {
   @IBAction func printXReport() {
     showActivityIndicator()
     ServerManager.sharedManager.printXReport { (response) in
-      switch response.result {
-      case .Success(_):
-        self.presentAlertWithMessage("Отчет отправлен на печать")
-        self.hideActivityIndicator()
-      case .Failure(let error):
-        print(error)
-        self.presentAlertWithMessage("Не удалось напечатать отчет")
-        self.hideActivityIndicator()
+      dispatch_async(dispatch_get_main_queue()) {
+        switch response.result {
+        case .Success(_):
+          self.presentAlertWithMessage("Отчет отправлен на печать")
+          self.hideActivityIndicator()
+        case .Failure(let error):
+          print(error)
+          self.presentAlertWithMessage("Не удалось напечатать отчет")
+          self.hideActivityIndicator()
+        }
       }
     }
   }
@@ -198,13 +208,15 @@ class EquipmentManagementTableViewController: UITableViewController {
   private func encash(sum: Double, type: EncashType) {
     showActivityIndicator()
     ServerManager.sharedManager.printXReport { (response) in
-      switch response.result {
-      case .Success(_):
-        self.sendEncashRequest(sum, type: type)
-      case .Failure(let error):
-        print(error)
-        self.presentAlertWithMessage("Не удалось напечатать отчет")
-        self.hideActivityIndicator()
+      dispatch_async(dispatch_get_main_queue()) {
+        switch response.result {
+        case .Success(_):
+          self.sendEncashRequest(sum, type: type)
+        case .Failure(let error):
+          print(error)
+          self.presentAlertWithMessage("Не удалось напечатать отчет")
+          self.hideActivityIndicator()
+        }
       }
     }
   }
@@ -212,36 +224,40 @@ class EquipmentManagementTableViewController: UITableViewController {
   private func sendEncashRequest(sum: Double, type: EncashType) {
     var sentCommands = 0
     ServerManager.sharedManager.encash(sum, type: type) { (response) in
-      switch response.result {
-      case .Success(_):
-        sentCommands += 1
-        if sentCommands == 2 {
+      dispatch_async(dispatch_get_main_queue()) {
+        switch response.result {
+        case .Success(_):
+          sentCommands += 1
+          if sentCommands == 2 {
+            self.hideActivityIndicator()
+            self.updateBalance(sum, forEncash: type)
+            self.balanceLabel.text = Settings.sharedInstance.cashBalance.format()
+            self.presentAlertWithMessage("Инкассация успешно проведена!")
+          }
+        case .Failure(let error):
+          print(error)
           self.hideActivityIndicator()
-          self.updateBalance(sum, forEncash: type)
-          self.balanceLabel.text = Settings.sharedInstance.cashBalance.format()
-          self.presentAlertWithMessage("Инкассация успешно проведена!")
+          self.presentAlertWithMessage("Ошибка при регистрации инкассации в базе оборудования")
         }
-      case .Failure(let error):
-        print(error)
-        self.hideActivityIndicator()
-        self.presentAlertWithMessage("Ошибка при регистрации инкассации в базе оборудования")
       }
     }
     
     ServerManager.sharedManager.encashInWP(sum, type: type) { (response) in
-      switch response.result {
-      case .Success(_):
-        sentCommands += 1
-        if sentCommands == 2 {
+      dispatch_async(dispatch_get_main_queue()) {
+        switch response.result {
+        case .Success(_):
+          sentCommands += 1
+          if sentCommands == 2 {
+            self.hideActivityIndicator()
+            self.updateBalance(sum, forEncash: type)
+            self.balanceLabel.text = Settings.sharedInstance.cashBalance.format()
+            self.presentAlertWithMessage("Инкассация успешно проведена!")
+          }
+        case .Failure(let error):
+          print(error)
           self.hideActivityIndicator()
-          self.updateBalance(sum, forEncash: type)
-          self.balanceLabel.text = Settings.sharedInstance.cashBalance.format()
-          self.presentAlertWithMessage("Инкассация успешно проведена!")
+          self.presentAlertWithMessage("Ошибка при регистрации инкассации в базе рабочего места")
         }
-      case .Failure(let error):
-        print(error)
-        self.hideActivityIndicator()
-        self.presentAlertWithMessage("Ошибка при регистрации инкассации в базе рабочего места")
       }
     }
   }

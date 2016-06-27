@@ -4,12 +4,8 @@ class ServerManager {
   
   static let sharedManager = ServerManager()
   
-  let manager: Manager
-  
   init() {
-    let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-//    configuration.protocolClasses!.insert(RedSocketURLProtocol.self, atIndex: 0)
-    self.manager = Alamofire.Manager(configuration: configuration)
+    NSURLProtocol.registerClass(RedSocketURLProtocol.self)
   }
   
   var activityIndicatorVisible: Bool {
@@ -21,16 +17,31 @@ class ServerManager {
     }
   }
   
-  func createRequest(router: ServerRouter) throws -> Request {
+  func createRequest(router: ServerRouter) throws -> NSURLRequest {
     guard let login = router.login, password = router.password else {
       throw ServerError.Unauthorized
     }
     
+    let url = NSURL(string: router.path)!
+    
+    let request = NSMutableURLRequest(URL: url)
+    request.HTTPMethod = router.method.rawValue
+    request.timeoutInterval = 60
+    request.addValue(base64CredentialsFor(login, and: password), forHTTPHeaderField: "Authorization")
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.addValue("application/json", forHTTPHeaderField: "Accept")
+    
+    if let parameters = router.parameters {
+      let bodyData = try! NSJSONSerialization.dataWithJSONObject(parameters, options: .PrettyPrinted)
+      request.HTTPBody = bodyData
+    }
+    
+    return request
+  }
+  
+  private func base64CredentialsFor(login: String, and password: String) -> String {
     let credentialData = "\(login):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
     let base64Credentials = credentialData.base64EncodedStringWithOptions([])
-    
-    let headers = ["Authorization": "Basic \(base64Credentials)"]
-    
-    return manager.request(router.method, router.path, parameters: router.parameters, encoding: router.encoding, headers: headers)
+    return "Basic \(base64Credentials)"
   }
 }
