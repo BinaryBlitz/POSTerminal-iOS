@@ -1,7 +1,6 @@
 import UIKit
 import Fabric
 import Crashlytics
-import GCDWebServer
 import SwiftyJSON
 import RealmSwift
 import BCColor
@@ -13,9 +12,6 @@ var uuid: String?
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-  
-  // Server for connections over wifi
-  var gcdWebServer: GCDWebServer?
   
   // Server for connections over cabel
   var swifterServer: HttpServer?
@@ -53,7 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     print(uuid!)
     
-    startGcdServer()
     startSwifterServer()
     
     configureRealm()
@@ -69,8 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     )
     Realm.Configuration.defaultConfiguration = realmDefaultConfig
   }
-  
-  //MARK: - Servers
   
   func startSwifterServer() {
     let server = HttpServer()
@@ -101,43 +94,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.swifterServer = server
     
     print(getWiFiAddress())
-  }
-  
-  func startGcdServer() {
-    gcdWebServer = GCDWebServer()
-    
-    if let server = gcdWebServer {
-      server.addHandlerForMethod("GET", path: "/", requestClass: GCDWebServerRequest.self) { (request) -> GCDWebServerResponse in
-        return GCDWebServerResponse(redirect: NSURL(string: "http://yesno.wtf"), permanent: false)
-      }
-      
-      server.addHandlerForMethod("POST", path: "/codes", requestClass: GCDWebServerDataRequest.self) { (request) -> GCDWebServerResponse! in
-        let req = request as! GCDWebServerDataRequest
-        let json = JSON(req.jsonObject)
-        guard let type = json["type"].string, code = json["code"].string, jsonObject = json.dictionaryObject,
-            clientIdentity = ClientIdentity(code: code, type: type, readerData: jsonObject) else {
-          return GCDWebServerResponse(statusCode: 400)
-        }
-        print(jsonObject)
-        
-        ServerManager.sharedManager.getInfoFor(clientIdentity) { (response) in
-          dispatch_async(dispatch_get_main_queue()) {
-            switch response.result {
-            case .Success(let client):
-              ClientManager.currentClient = client
-              NSNotificationCenter.defaultCenter().postNotificationName(clientUpdatedNotification, object: nil)
-            case .Failure(let error):
-              print(error)
-            }
-          }
-        }
-        
-        return GCDWebServerResponse(statusCode: 200)
-      }
-      
-      server.startWithPort(8080, bonjourName: nil)
-      print("Visit \(server.serverURL) in your web browser")
-    }
   }
 
   func applicationWillResignActive(application: UIApplication) {

@@ -10,8 +10,6 @@ target 'POSTerminal' do
   # Networking
   pod 'Alamofire'
   pod 'SwiftyJSON'
-  pod "GCDWebServer"
-  # pod 'Swifter'
 
   # DB
   pod 'RealmSwift'
