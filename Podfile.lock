@@ -13,6 +13,7 @@ PODS:
   - Realm/Headers (1.0.0)
   - RealmSwift (1.0.0):
     - Realm (= 1.0.0)
+  - Swifter (1.2.0)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - GCDWebServer
   - PureLayout
   - RealmSwift
+  - Swifter
   - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -34,8 +36,9 @@ SPEC CHECKSUMS:
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   Realm: e15cd8e7c11d3e576f628ba0b7cb855269b4991c
   RealmSwift: 3229306d020d96f83b335f87a0dcbf2cef0e6a2b
+  Swifter: 20493bf45b97e3296f910665a1211129cf282db3
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: d9e7e8a52424c61a5c2b411edb0eabbb68255346
+PODFILE CHECKSUM: c93f181a1f68fc91644507de2e0f8c16d169080e
 
 COCOAPODS: 1.0.1

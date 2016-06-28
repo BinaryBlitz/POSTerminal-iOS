@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		370906321D20625C006EB644 /* ColorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370906311D20625C006EB644 /* ColorsManager.swift */; };
 		373449D81D227580006C709B /* RedSocketURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 373449D71D227580006C709B /* RedSocketURLProtocol.m */; };
+		373449DA1D227DA4006C709B /* CollectionType+ToDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449D91D227DA4006C709B /* CollectionType+ToDictionary.swift */; };
+		373449DC1D227DF2006C709B /* WiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449DB1D227DF2006C709B /* WiFi.swift */; };
 		374215341D0F933100018F1B /* CheckItemCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374215331D0F933100018F1B /* CheckItemCellDelegate.swift */; };
 		374215361D0FB28500018F1B /* Encash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374215351D0FB28500018F1B /* Encash.swift */; };
 		3742153A1D0FCF2200018F1B /* CashButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374215391D0FCF2200018F1B /* CashButton.swift */; };
@@ -77,6 +79,8 @@
 /* Begin PBXFileReference section */
 		370906311D20625C006EB644 /* ColorsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsManager.swift; sourceTree = "<group>"; };
 		373449D71D227580006C709B /* RedSocketURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedSocketURLProtocol.m; sourceTree = "<group>"; };
+		373449D91D227DA4006C709B /* CollectionType+ToDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionType+ToDictionary.swift"; sourceTree = "<group>"; };
+		373449DB1D227DF2006C709B /* WiFi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFi.swift; sourceTree = "<group>"; };
 		374215331D0F933100018F1B /* CheckItemCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckItemCellDelegate.swift; sourceTree = "<group>"; };
 		374215351D0FB28500018F1B /* Encash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encash.swift; sourceTree = "<group>"; };
 		374215391D0FCF2200018F1B /* CashButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashButton.swift; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 		376D84391CF910F7008A868A /* App Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				373449DB1D227DF2006C709B /* WiFi.swift */,
 				376D84261CF878D3008A868A /* AppDelegate.swift */,
 				376D84321CF878D3008A868A /* Info.plist */,
 				37C58DCD1CFC6F1A00049095 /* POSTerminal-Bridging-Header.h */,
@@ -353,6 +358,7 @@
 				37C1EDA31D01CA670018B531 /* Colors.swift */,
 				37C1EDAA1D01ED0D0018B531 /* UIViewController+Alert.swift */,
 				3779D4811D096C7C00A3A57B /* Double+StringFormatter.swift */,
+				373449D91D227DA4006C709B /* CollectionType+ToDictionary.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -584,6 +590,7 @@
 				374215341D0F933100018F1B /* CheckItemCellDelegate.swift in Sources */,
 				3799B2861D122A3300B1D87C /* PaymentControllerDelegate.swift in Sources */,
 				376D84401CF91B08008A868A /* Client.swift in Sources */,
+				373449DA1D227DA4006C709B /* CollectionType+ToDictionary.swift in Sources */,
 				376D84271CF878D3008A868A /* AppDelegate.swift in Sources */,
 				375C84FD1D04E22900F9F469 /* ServerManager+Checks.swift in Sources */,
 				3779D48F1D0CC9C300A3A57B /* ClientManager.swift in Sources */,
@@ -597,6 +604,7 @@
 				37C54F8E1D1380A400822653 /* JournalItemTableViewCell.swift in Sources */,
 				3779D4851D0C502800A3A57B /* MenuNavigationProvider.swift in Sources */,
 				375C84FB1D04DF4600F9F469 /* ServerManager+Registrator.swift in Sources */,
+				373449DC1D227DF2006C709B /* WiFi.swift in Sources */,
 				37C58DE91CFE512300049095 /* WPBaseRouter.swift in Sources */,
 				375C85041D05014700F9F469 /* CardView.swift in Sources */,
 				37C58DD21CFC6F1B00049095 /* CanonicalRequest.m in Sources */,

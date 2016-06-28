@@ -5,6 +5,8 @@ import GCDWebServer
 import SwiftyJSON
 import RealmSwift
 import BCColor
+import Swifter
+
 
 var uuid: String?
 
@@ -13,7 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   
+  // Server for connections over wifi
   var gcdWebServer: GCDWebServer?
+  
+  // Server for connections over cabel
+  var swifterServer: HttpServer?
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     Fabric.with([Crashlytics.self])
@@ -48,7 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     print(uuid!)
     
-    startLocalServer()
+    startGcdServer()
+    startSwifterServer()
     
     configureRealm()
     
@@ -64,8 +71,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Realm.Configuration.defaultConfiguration = realmDefaultConfig
   }
   
+  //MARK: - Servers
   
-  func startLocalServer() {
+  func startSwifterServer() {
+    let server = HttpServer()
+    server["/codes"] = { (request: HttpRequest) -> HttpResponse in
+      let parameters = request.parseUrlencodedForm().toDictionary { ($0.0, $0.1) }
+      let json = JSON(parameters)
+      guard let type = json["type"].string, code = json["code"].string, jsonObject = json.dictionaryObject,
+          clientIdentity = ClientIdentity(code: code, type: type, readerData: jsonObject) else {
+        return HttpResponse.BadRequest(.Json(["message": "type or code are missing in parameters"]))
+      }
+      print(jsonObject)
+      
+      ServerManager.sharedManager.getInfoFor(clientIdentity) { (response) in
+        dispatch_async(dispatch_get_main_queue()) {
+          switch response.result {
+          case .Success(let client):
+            ClientManager.currentClient = client
+            NSNotificationCenter.defaultCenter().postNotificationName(clientUpdatedNotification, object: nil)
+          case .Failure(let error):
+            print(error)
+          }
+        }
+        }
+      return HttpResponse.OK(.Json(["message": "ok!"]))
+    }
+    
+    try! server.start(9080)
+    self.swifterServer = server
+    
+    print(getWiFiAddress())
+  }
+  
+  func startGcdServer() {
     gcdWebServer = GCDWebServer()
     
     if let server = gcdWebServer {
