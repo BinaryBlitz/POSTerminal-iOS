@@ -11,6 +11,7 @@ enum EquipServRouter {
   case CheckConnection(uuid: String)
   case PrintClientBalance(client: Client)
   case Update(client: Client, balance: Double)
+  case CheckProcessWith(jobId: String)
 }
 
 extension EquipServRouter: ServerRouter {
@@ -24,6 +25,8 @@ extension EquipServRouter: ServerRouter {
       return "\(baseURL)/hs/Base/Status"
     case .Update(_, _):
       return "\(baseURL)/hs/RFID/WriteData"
+    case .CheckProcessWith(let jobId):
+      return "\(baseURL)/hs/jobs/\(jobId)"
     default:
       return "\(baseURL)/hs/accessories/registers"
     }
@@ -38,7 +41,12 @@ extension EquipServRouter: ServerRouter {
   }
   
   var method: Alamofire.Method {
-    return .POST
+    switch self {
+    case .CheckProcessWith(_):
+      return .GET
+    default:
+      return .POST
+    }
   }
   
   var encoding: Alamofire.ParameterEncoding {
@@ -105,6 +113,8 @@ extension EquipServRouter: ServerRouter {
       var jsonObject = identity.readerData
       jsonObject["balance"] = balance
       return jsonObject
+    case .CheckProcessWith(_):
+      return nil
     }
     
     if let uuid = uuid {

@@ -181,30 +181,20 @@ extension CheckoutViewController: PaymentControllerDelegate {
       return
     }
     
-    do {
-      let request = try ServerManager.sharedManager.createRequest(
-        EquipServRouter.Update(client: client, balance: client.balance - manager.totalPrice)
-      )
-      //TODO: RFID request
-//      request.validate().responseJSON { (response) in
-//        switch response.result {
-//        case .Success(let resultValue):
-//          let json = JSON(resultValue)
-//          print(json["answer"].stringValue)
-//          self.createCheck()
-//        case .Failure(let error):
-//          self.presentAlertWithMessage("Не удалось записать данные!")
-//          if !OrderManager.currentOrder.payments.isEmpty {
-//            OrderManager.currentOrder.payments.removeLast()
-//          }
-//          self.didUpdatePayments()
-//          print(error)
-//        }
-//      }
-      
-    } catch let error {
-      print(error)
-      presentAlertWithMessage("Проверьте подключение к базе")
+    ServerManager.sharedManager.updateClientBalance(client, balance: client.balance - manager.totalPrice) { (response) in
+      dispatch_async(dispatch_get_main_queue()) {
+        switch response.result {
+        case .Success(_):
+          self.createCheck()
+        case .Failure(let error):
+          self.presentAlertWithMessage("Не удалось записать данные!")
+          if !OrderManager.currentOrder.payments.isEmpty {
+            OrderManager.currentOrder.payments.removeLast()
+          }
+          self.didUpdatePayments()
+          print(error)
+        }
+      }
     }
     
   }

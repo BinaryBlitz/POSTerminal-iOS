@@ -5,6 +5,130 @@ extension ServerManager {
   
   typealias RegistratorCompletion = (response: ServerResponse<Bool, ServerError>) -> Void
   
+  enum JobStatus: String {
+    case Pending = "pending"
+    case Completed = "completed"
+    case Failed = "failed"
+    case Canceled = "canceled"
+  }
+  
+  func updateClientBalance(client: Client, balance: Double, completion: (response: ServerResponse<Bool, ServerError>) -> Void) {
+    typealias Response = ServerResponse<Bool, ServerError>
+    
+    do {
+      activityIndicatorVisible = true
+      let request = try createRequest(EquipServRouter.Update(client: client, balance: balance))
+      NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue()) { (response, data, error) in
+        self.activityIndicatorVisible = false
+        if let httpResponse = response as? NSHTTPURLResponse {
+          print("responseCode \(httpResponse.statusCode)")
+          if !(httpResponse.statusCode < 300 && httpResponse.statusCode > 199) {
+            completion(response: Response(error: ServerError.UnspecifiedError))
+            return
+          }
+        }
+        
+        if let error = error {
+          print("\(error)")
+          completion(response: Response(error: ServerError(error: error)))
+          return
+        }
+        
+        do {
+          let jsonResult = (try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers))
+          let json = JSON(jsonResult)
+          guard let jobId = json["jobId"].string else {
+            completion(response: Response(error: .InvalidData))
+            return
+          }
+          
+          self.checkStatus(jobId, completion: completion)
+          
+          return
+        } catch {
+          completion(response: Response(error: .InvalidData))
+          return
+        }
+      }
+    } catch let error {
+      print(error)
+      completion(response: Response(error: .Unauthorized))
+    }
+  }
+  
+  private func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+      dispatch_time(
+        DISPATCH_TIME_NOW,
+        Int64(delay * Double(NSEC_PER_SEC))
+      ),
+      dispatch_get_main_queue(), closure)
+  }
+  
+  func checkStatus(jobId: String, completion: (response: ServerResponse<Bool, ServerError>) -> Void) {
+    checkJobWith(jobId, completion: { (response) in
+      switch response.result {
+      case .Success(let status):
+        print(status.rawValue)
+        switch status{
+        case .Pending:
+          self.delay(1) {
+            self.checkStatus(jobId, completion: completion)
+          }
+        case .Completed:
+          completion(response: ServerResponse<Bool, ServerError>(value: true))
+        default:
+          completion(response: ServerResponse<Bool, ServerError>(error: .UnspecifiedError))
+        }
+        
+      case .Failure(let error):
+        completion(response: ServerResponse<Bool, ServerError>(error: error))
+      }
+    })
+  }
+  
+  func checkJobWith(jobId: String, completion: (response: ServerResponse<JobStatus, ServerError>) -> Void) {
+    typealias Response = ServerResponse<JobStatus, ServerError>
+    
+    do {
+      let request = try createRequest(EquipServRouter.CheckProcessWith(jobId: jobId))
+      activityIndicatorVisible = true
+      NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue()) { (response, data, error) in
+        self.activityIndicatorVisible = false
+        if let httpResponse = response as? NSHTTPURLResponse {
+          print("responseCode \(httpResponse.statusCode)")
+          if !(httpResponse.statusCode < 300 && httpResponse.statusCode > 199) {
+            completion(response: Response(error: ServerError.UnspecifiedError))
+            return
+          }
+        }
+        
+        if let error = error {
+          print("\(error)")
+          completion(response: Response(error: ServerError(error: error)))
+          return
+        }
+        
+        do {
+          let jsonResult = (try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers))
+          let json = JSON(jsonResult)
+          guard let status = json["status"].string, jobStatus = JobStatus(rawValue: status) else {
+            completion(response: Response(error: .InvalidData))
+            return
+          }
+          completion(response: Response(value: jobStatus))
+          return
+        } catch {
+          completion(response: Response(error: .InvalidData))
+          return
+        }
+      }
+    } catch let error {
+      print(error)
+      completion(response: Response(error: .Unauthorized))
+    }
+  }
+  
   //MARK: - DRY stuff
   private func performRegistratorComandWith(router: ServerRouter, completion: (RegistratorCompletion)? = nil) -> Request? {
     typealias Response = ServerResponse<Bool, ServerError>
