@@ -5,7 +5,6 @@ import GCDWebServer
 import SwiftyJSON
 import RealmSwift
 import BCColor
-import Swifter
 
 
 var uuid: String?

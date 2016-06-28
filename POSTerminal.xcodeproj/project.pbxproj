@@ -11,6 +11,21 @@
 		373449D81D227580006C709B /* RedSocketURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 373449D71D227580006C709B /* RedSocketURLProtocol.m */; };
 		373449DA1D227DA4006C709B /* CollectionType+ToDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449D91D227DA4006C709B /* CollectionType+ToDictionary.swift */; };
 		373449DC1D227DF2006C709B /* WiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449DB1D227DF2006C709B /* WiFi.swift */; };
+		373449EF1D22850D006C709B /* DemoServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449E01D22850D006C709B /* DemoServer.swift */; };
+		373449F01D22850D006C709B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449E11D22850D006C709B /* File.swift */; };
+		373449F11D22850D006C709B /* HttpHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449E21D22850D006C709B /* HttpHandlers.swift */; };
+		373449F21D22850D006C709B /* HttpHandlers+Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449E31D22850D006C709B /* HttpHandlers+Files.swift */; };
+		373449F31D22850D006C709B /* HttpHandlers+WebSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449E41D22850D006C709B /* HttpHandlers+WebSockets.swift */; };
+		373449F41D22850D006C709B /* HttpParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449E51D22850D006C709B /* HttpParser.swift */; };
+		373449F51D22850D006C709B /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449E61D22850D006C709B /* HttpRequest.swift */; };
+		373449F61D22850D006C709B /* HttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449E71D22850D006C709B /* HttpResponse.swift */; };
+		373449F71D22850D006C709B /* HttpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449E81D22850D006C709B /* HttpRouter.swift */; };
+		373449F81D22850D006C709B /* HttpServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449E91D22850D006C709B /* HttpServer.swift */; };
+		373449F91D22850D006C709B /* HttpServerIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449EA1D22850D006C709B /* HttpServerIO.swift */; };
+		373449FA1D22850D006C709B /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449EB1D22850D006C709B /* Socket.swift */; };
+		373449FB1D22850D006C709B /* String+BASE64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449EC1D22850D006C709B /* String+BASE64.swift */; };
+		373449FC1D22850D006C709B /* String+Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449ED1D22850D006C709B /* String+Misc.swift */; };
+		373449FD1D22850D006C709B /* String+SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449EE1D22850D006C709B /* String+SHA1.swift */; };
 		374215341D0F933100018F1B /* CheckItemCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374215331D0F933100018F1B /* CheckItemCellDelegate.swift */; };
 		374215361D0FB28500018F1B /* Encash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374215351D0FB28500018F1B /* Encash.swift */; };
 		3742153A1D0FCF2200018F1B /* CashButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374215391D0FCF2200018F1B /* CashButton.swift */; };
@@ -81,6 +96,21 @@
 		373449D71D227580006C709B /* RedSocketURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedSocketURLProtocol.m; sourceTree = "<group>"; };
 		373449D91D227DA4006C709B /* CollectionType+ToDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionType+ToDictionary.swift"; sourceTree = "<group>"; };
 		373449DB1D227DF2006C709B /* WiFi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFi.swift; sourceTree = "<group>"; };
+		373449E01D22850D006C709B /* DemoServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoServer.swift; sourceTree = "<group>"; };
+		373449E11D22850D006C709B /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		373449E21D22850D006C709B /* HttpHandlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpHandlers.swift; sourceTree = "<group>"; };
+		373449E31D22850D006C709B /* HttpHandlers+Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HttpHandlers+Files.swift"; sourceTree = "<group>"; };
+		373449E41D22850D006C709B /* HttpHandlers+WebSockets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HttpHandlers+WebSockets.swift"; sourceTree = "<group>"; };
+		373449E51D22850D006C709B /* HttpParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpParser.swift; sourceTree = "<group>"; };
+		373449E61D22850D006C709B /* HttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
+		373449E71D22850D006C709B /* HttpResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpResponse.swift; sourceTree = "<group>"; };
+		373449E81D22850D006C709B /* HttpRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRouter.swift; sourceTree = "<group>"; };
+		373449E91D22850D006C709B /* HttpServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpServer.swift; sourceTree = "<group>"; };
+		373449EA1D22850D006C709B /* HttpServerIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpServerIO.swift; sourceTree = "<group>"; };
+		373449EB1D22850D006C709B /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
+		373449EC1D22850D006C709B /* String+BASE64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+BASE64.swift"; sourceTree = "<group>"; };
+		373449ED1D22850D006C709B /* String+Misc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Misc.swift"; sourceTree = "<group>"; };
+		373449EE1D22850D006C709B /* String+SHA1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SHA1.swift"; sourceTree = "<group>"; };
 		374215331D0F933100018F1B /* CheckItemCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckItemCellDelegate.swift; sourceTree = "<group>"; };
 		374215351D0FB28500018F1B /* Encash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encash.swift; sourceTree = "<group>"; };
 		374215391D0FCF2200018F1B /* CashButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashButton.swift; sourceTree = "<group>"; };
@@ -171,6 +201,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		373449DF1D2284FA006C709B /* Swifter */ = {
+			isa = PBXGroup;
+			children = (
+				373449E01D22850D006C709B /* DemoServer.swift */,
+				373449E11D22850D006C709B /* File.swift */,
+				373449E21D22850D006C709B /* HttpHandlers.swift */,
+				373449E31D22850D006C709B /* HttpHandlers+Files.swift */,
+				373449E41D22850D006C709B /* HttpHandlers+WebSockets.swift */,
+				373449E51D22850D006C709B /* HttpParser.swift */,
+				373449E61D22850D006C709B /* HttpRequest.swift */,
+				373449E71D22850D006C709B /* HttpResponse.swift */,
+				373449E81D22850D006C709B /* HttpRouter.swift */,
+				373449E91D22850D006C709B /* HttpServer.swift */,
+				373449EA1D22850D006C709B /* HttpServerIO.swift */,
+				373449EB1D22850D006C709B /* Socket.swift */,
+				373449EC1D22850D006C709B /* String+BASE64.swift */,
+				373449ED1D22850D006C709B /* String+Misc.swift */,
+				373449EE1D22850D006C709B /* String+SHA1.swift */,
+			);
+			name = Swifter;
+			sourceTree = "<group>";
+		};
 		375C84EC1D045A5000F9F469 /* ProductCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				3779D4831D096FEC00A3A57B /* POSTerminal.entitlements */,
+				373449DF1D2284FA006C709B /* Swifter */,
 				37C58DD41CFC6F2300049095 /* RedSocketSDK */,
 				376B5ABB1D02F97D0058E6A8 /* Views */,
 				376D843A1CF91122008A868A /* Controllers */,
@@ -556,7 +609,10 @@
 				374215361D0FB28500018F1B /* Encash.swift in Sources */,
 				3779D4871D0C523900A3A57B /* CheckoutViewController.swift in Sources */,
 				375C84FF1D04E39500F9F469 /* ServerManager+ClientInfo.swift in Sources */,
+				373449FA1D22850D006C709B /* Socket.swift in Sources */,
 				376D843E1CF9194C008A868A /* ServerManager.swift in Sources */,
+				373449F51D22850D006C709B /* HttpRequest.swift in Sources */,
+				373449F01D22850D006C709B /* File.swift in Sources */,
 				375C850C1D0507CB00F9F469 /* OrderManager.swift in Sources */,
 				376D844B1CF9207B008A868A /* Order.swift in Sources */,
 				3779D4821D096C7C00A3A57B /* Double+StringFormatter.swift in Sources */,
@@ -565,15 +621,21 @@
 				375C84EA1D045A4300F9F469 /* CategoryCollectionViewCell.swift in Sources */,
 				37965AD01D11E95500F03701 /* KeyboardButton.swift in Sources */,
 				3752A12E1D01AE6E00194663 /* BaseViewController.swift in Sources */,
+				373449EF1D22850D006C709B /* DemoServer.swift in Sources */,
+				373449F31D22850D006C709B /* HttpHandlers+WebSockets.swift in Sources */,
 				3779D48B1D0C62D700A3A57B /* CardPaymentViewController.swift in Sources */,
 				370906321D20625C006EB644 /* ColorsManager.swift in Sources */,
 				37C58DE21CFE315400049095 /* Settings.swift in Sources */,
+				373449F21D22850D006C709B /* HttpHandlers+Files.swift in Sources */,
 				37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */,
 				3779D4891D0C62CB00A3A57B /* CashPaymentViewController.swift in Sources */,
 				3779D4921D0CD52F00A3A57B /* ServerManager+MobileDevice.swift in Sources */,
 				37C58DE71CFE486800049095 /* ServerRouter.swift in Sources */,
+				373449F11D22850D006C709B /* HttpHandlers.swift in Sources */,
 				376D84471CF91D75008A868A /* Check.swift in Sources */,
+				373449F91D22850D006C709B /* HttpServerIO.swift in Sources */,
 				37C1EDAD1D01EEDD0018B531 /* SettingsTableViewController.swift in Sources */,
+				373449F61D22850D006C709B /* HttpResponse.swift in Sources */,
 				37C1EDA41D01CA670018B531 /* Colors.swift in Sources */,
 				3742153A1D0FCF2200018F1B /* CashButton.swift in Sources */,
 				375C84F21D04627300F9F469 /* ProductConfigurable.swift in Sources */,
@@ -582,23 +644,29 @@
 				37C1EDA71D01D20E0018B531 /* MenuCollectionViewController.swift in Sources */,
 				37C58DE41CFE3C0600049095 /* Host.swift in Sources */,
 				37C1EDAB1D01ED0D0018B531 /* UIViewController+Alert.swift in Sources */,
+				373449F71D22850D006C709B /* HttpRouter.swift in Sources */,
 				37C54F901D13822000822653 /* JournalTableViewController.swift in Sources */,
 				37862EB81D11A79F00BBFB42 /* SumInputViewController.swift in Sources */,
 				37C58DDE1CFCFB9400049095 /* ServerError.swift in Sources */,
+				373449FB1D22850D006C709B /* String+BASE64.swift in Sources */,
 				376D84421CF91CA2008A868A /* ServerObject.swift in Sources */,
 				375C84F81D04CFF800F9F469 /* EquipmentManagementTableViewController.swift in Sources */,
 				374215341D0F933100018F1B /* CheckItemCellDelegate.swift in Sources */,
 				3799B2861D122A3300B1D87C /* PaymentControllerDelegate.swift in Sources */,
+				373449FD1D22850D006C709B /* String+SHA1.swift in Sources */,
 				376D84401CF91B08008A868A /* Client.swift in Sources */,
 				373449DA1D227DA4006C709B /* CollectionType+ToDictionary.swift in Sources */,
+				373449F41D22850D006C709B /* HttpParser.swift in Sources */,
 				376D84271CF878D3008A868A /* AppDelegate.swift in Sources */,
 				375C84FD1D04E22900F9F469 /* ServerManager+Checks.swift in Sources */,
+				373449F81D22850D006C709B /* HttpServer.swift in Sources */,
 				3779D48F1D0CC9C300A3A57B /* ClientManager.swift in Sources */,
 				376D84491CF91DD0008A868A /* Product.swift in Sources */,
 				373449D81D227580006C709B /* RedSocketURLProtocol.m in Sources */,
 				37C54F8C1D137A6000822653 /* JournalItem.swift in Sources */,
 				3799B2841D1229E000B1D87C /* KeyboardDelegate.swift in Sources */,
 				375C850E1D050D8F00F9F469 /* OrderItem.swift in Sources */,
+				373449FC1D22850D006C709B /* String+Misc.swift in Sources */,
 				37C58DDC1CFCFB8C00049095 /* ServerResponse.swift in Sources */,
 				376B5ABE1D02FA270058E6A8 /* ProductCollectionViewCell.swift in Sources */,
 				37C54F8E1D1380A400822653 /* JournalItemTableViewCell.swift in Sources */,
