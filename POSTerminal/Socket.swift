@@ -4,12 +4,9 @@
 //
 //  Copyright (c) 2014-2016 Damian Kołakowski. All rights reserved.
 //
+//
 
-#if os(Linux)
-    import Glibc
-#else
-    import Foundation
-#endif
+import Foundation
 
 /* Low level routines for POSIX sockets */
 
@@ -30,71 +27,70 @@ public class Socket: Hashable, Equatable {
     
     public class func tcpSocketForListen(port: in_port_t, forceIPv4: Bool = false, maxPendingConnection: Int32 = SOMAXCONN) throws -> Socket {
         
-        #if os(Linux)
-            let socketFileDescriptor = socket(forceIPv4 ? AF_INET : AF_INET6, Int32(SOCK_STREAM.rawValue), 0)
-        #else
-            let socketFileDescriptor = socket(forceIPv4 ? AF_INET : AF_INET6, SOCK_STREAM, 0)
-        #endif
-        
+//        let socketFileDescriptor = socket(forceIPv4 ? AF_INET : AF_INET6, SOCK_STREAM, 0)
+      let socketFileDescriptor = RedSocketManager.sharedInstance().socket(forceIPv4 ? AF_INET : AF_INET6, type: SOCK_STREAM, protocol: IPPROTO_TCP)
+//        _sock = [[RedSocketManager sharedInstance] socket:AF_INET type:SOCK_STREAM protocol:IPPROTO_TCP];
+      
         if socketFileDescriptor == -1 {
             throw SocketError.SocketCreationFailed(Socket.descriptionOfLastError())
         }
         
         var value: Int32 = 1
-        if setsockopt(socketFileDescriptor, SOL_SOCKET, SO_REUSEADDR, &value, socklen_t(sizeof(Int32))) == -1 {
+//        if setsockopt(socketFileDescriptor, SOL_SOCKET, SO_REUSEADDR, &value, socklen_t(sizeof(Int32))) == -1 {
+//            let details = Socket.descriptionOfLastError()
+//            Socket.release(socketFileDescriptor)
+//            throw SocketError.SocketSettingReUseAddrFailed(details)
+//        }
+        if (RedSocketManager.sharedInstance().setsockopt(socketFileDescriptor, level: SOL_SOCKET, optname: SO_REUSEADDR, optval: &value, optlen: socklen_t(sizeof(Int32))) == -1) {
             let details = Socket.descriptionOfLastError()
             Socket.release(socketFileDescriptor)
             throw SocketError.SocketSettingReUseAddrFailed(details)
         }
+      
         Socket.setNoSigPipe(socketFileDescriptor)
-        
-        #if os(Linux)
-            var bindResult: Int32 = -1
-            if forceIPv4 {
-                var addr = sockaddr_in(sin_family: sa_family_t(AF_INET),
-                    sin_port: Socket.htonsPort(port),
-                    sin_addr: in_addr(s_addr: in_addr_t(0)),
-                    sin_zero:(0, 0, 0, 0, 0, 0, 0, 0))
-                
-                bindResult = withUnsafePointer(&addr) { bind(socketFileDescriptor, UnsafePointer<sockaddr>($0), socklen_t(sizeof(sockaddr_in))) }
-            } else {
-                var addr = sockaddr_in6(sin6_family: sa_family_t(AF_INET6),
-                    sin6_port: Socket.htonsPort(port),
-                    sin6_flowinfo: 0,
-                    sin6_addr: in6addr_any,
-                    sin6_scope_id: 0)
-                
-                bindResult = withUnsafePointer(&addr) { bind(socketFileDescriptor, UnsafePointer<sockaddr>($0), socklen_t(sizeof(sockaddr_in6))) }
-            }
-        #else
-            var bindResult: Int32 = -1
-            if forceIPv4 {
-                var addr = sockaddr_in(sin_len: UInt8(strideof(sockaddr_in)),
-                    sin_family: UInt8(AF_INET),
-                    sin_port: Socket.htonsPort(port),
-                    sin_addr: in_addr(s_addr: in_addr_t(0)),
-                    sin_zero:(0, 0, 0, 0, 0, 0, 0, 0))
-             
-                bindResult = withUnsafePointer(&addr) { bind(socketFileDescriptor, UnsafePointer<sockaddr>($0), socklen_t(sizeof(sockaddr_in))) }
-            } else {
-                var addr = sockaddr_in6(sin6_len: UInt8(strideof(sockaddr_in6)),
-                    sin6_family: UInt8(AF_INET6),
-                    sin6_port: Socket.htonsPort(port),
-                    sin6_flowinfo: 0,
-                    sin6_addr: in6addr_any,
-                    sin6_scope_id: 0)
-                
-                bindResult = withUnsafePointer(&addr) { bind(socketFileDescriptor, UnsafePointer<sockaddr>($0), socklen_t(sizeof(sockaddr_in6))) }
-            }
-        #endif
+      
+//        let sin = sockaddr_in()
+//        struct sockaddr_in sin;
+//        memset(&sin, 0, sizeof(sin));
+//        sin.sin_len = sizeof(sin);
+//        sin.sin_family = AF_INET; // or AF_INET6 (address family)
+//        sin.sin_port = htons(SERVER_LISTEN_PORT);
+//        sin.sin_addr.s_addr= htonl(INADDR_ANY);
+      
+        var bindResult: Int32 = -1
+        if forceIPv4 {
+            var addr = sockaddr_in(sin_len: UInt8(strideof(sockaddr_in)),
+                sin_family: UInt8(AF_INET),
+                sin_port: Socket.htonsPort(port),
+                sin_addr: in_addr(s_addr: UInt32(0x00000000)),
+                sin_zero:(0, 0, 0, 0, 0, 0, 0, 0))
+         
+//            bindResult = withUnsafePointer(&addr) { bind(socketFileDescriptor, UnsafePointer<sockaddr>($0), socklen_t(sizeof(sockaddr_in))) }
+            bindResult = withUnsafePointer(&addr) { RedSocketManager.sharedInstance().bind(socketFileDescriptor, name: UnsafePointer<sockaddr>($0), namelen: socklen_t(sizeof(sockaddr_in))) }
+          
+//        if ([[RedSocketManager sharedInstance] bind:listenSocket name:(struct sockaddr *)&sin namelen:sizeof(sin)] < 0)
+        } else {
+            var addr = sockaddr_in6(sin6_len: UInt8(strideof(sockaddr_in6)),
+                sin6_family: UInt8(AF_INET6),
+                sin6_port: Socket.htonsPort(port),
+                sin6_flowinfo: 0,
+                sin6_addr: in6addr_any,
+                sin6_scope_id: 0)
+            
+//            bindResult = withUnsafePointer(&addr) { bind(socketFileDescriptor, UnsafePointer<sockaddr>($0), socklen_t(sizeof(sockaddr_in6))) }
+            bindResult = withUnsafePointer(&addr) { RedSocketManager.sharedInstance().bind(socketFileDescriptor, name: UnsafePointer<sockaddr>($0), namelen: socklen_t(sizeof(sockaddr_in6))) }
+        }
 
         if bindResult == -1 {
             let details = Socket.descriptionOfLastError()
             Socket.release(socketFileDescriptor)
             throw SocketError.BindFailed(details)
         }
-        
-        if listen(socketFileDescriptor, maxPendingConnection ) == -1 {
+      
+      
+      
+//        if listen(socketFileDescriptor, maxPendingConnection ) == -1 {
+        if RedSocketManager.sharedInstance().listen(socketFileDescriptor, backlog: maxPendingConnection) == -1 {
             let details = Socket.descriptionOfLastError()
             Socket.release(socketFileDescriptor)
             throw SocketError.ListenFailed(details)
@@ -121,7 +117,9 @@ public class Socket: Hashable, Equatable {
     public func acceptClientSocket() throws -> Socket {
         var addr = sockaddr()        
         var len: socklen_t = 0
-        let clientSocket = accept(self.socketFileDescriptor, &addr, &len)
+//        let clientSocket = accept(self.socketFileDescriptor, &addr, &len)
+        let clientSocket = RedSocketManager.sharedInstance().accept(self.socketFileDescriptor, addr: &addr, addrlen: &len)
+//            int connectFD = [[RedSocketManager sharedInstance] accept:listenSocket addr:NULL addrlen:NULL];
         if clientSocket == -1 {
             throw SocketError.AcceptFailed(Socket.descriptionOfLastError())
         }
@@ -139,24 +137,24 @@ public class Socket: Hashable, Equatable {
     
     public func writeUInt8(data: ArraySlice<UInt8>) throws {
         try data.withUnsafeBufferPointer {
-            var sent = 0
+          var sent = 0
             while sent < data.count {
-                #if os(Linux)
-                    let s = send(self.socketFileDescriptor, $0.baseAddress + sent, Int(data.count - sent), Int32(MSG_NOSIGNAL))
-                #else
-                    let s = write(self.socketFileDescriptor, $0.baseAddress + sent, Int(data.count - sent))
-                #endif
+//                let s = write(self.socketFileDescriptor, $0.baseAddress + sent, Int(data.count - sent))
+                let s = RedSocketManager.sharedInstance().send(self.socketFileDescriptor, dataptr: $0.baseAddress + sent, size: Int(data.count - sent), flags: 0)
+//              [[RedSocketManager sharedInstance] send:_sock dataptr:[packetData bytes] size:[packetData length] flags:0];
                 if s <= 0 {
                     throw SocketError.WriteFailed(Socket.descriptionOfLastError())
                 }
-                sent += s
+                sent += Int(s) //????????????????????
             }
         }
     }
     
     public func read() throws -> UInt8 {
         var buffer = [UInt8](count: 1, repeatedValue: 0)
-        let next = recv(self.socketFileDescriptor as Int32, &buffer, Int(buffer.count), 0)
+//        let next = recv(self.socketFileDescriptor as Int32, &buffer, Int(buffer.count), 0)
+      
+        let next = RedSocketManager.sharedInstance().recv(self.socketFileDescriptor as Int32, mem: &buffer, len: Int(buffer.count), flags: 0)
         if next <= 0 {
             throw SocketError.RecvFailed(Socket.descriptionOfLastError())
         }
@@ -207,20 +205,24 @@ public class Socket: Hashable, Equatable {
     }
     
     private class func shutdwn(socket: Int32) {
-        #if os(Linux)
-            shutdown(socket, Int32(SHUT_RDWR))
-        #else
-            Darwin.shutdown(socket, SHUT_RDWR)
-        #endif
+//        #if os(Linux)
+//            shutdown(socket, Int32(SHUT_RDWR))
+//        #else
+//            Darwin.shutdown(socket, SHUT_RDWR)
+//        #endif
+//        [[RedSocketManager sharedInstance] close:_sock];
+      RedSocketManager.sharedInstance().shutdown(socket, how: SHUT_RDWR)
     }
     
     private class func release(socket: Int32) {
-        #if os(Linux)
-            shutdown(socket, Int32(SHUT_RDWR))
-        #else
-            Darwin.shutdown(socket, SHUT_RDWR)
-        #endif
-        close(socket)
+//        #if os(Linux)
+//            shutdown(socket, Int32(SHUT_RDWR))
+//        #else
+//            Darwin.shutdown(socket, SHUT_RDWR)
+//        #endif
+//        close(socket)
+      RedSocketManager.sharedInstance().shutdown(socket, how: SHUT_RDWR)
+      RedSocketManager.sharedInstance().close(socket)
     }
     
     private class func htonsPort(port: in_port_t) -> in_port_t {

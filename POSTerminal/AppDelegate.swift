@@ -24,9 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
     Settings.loadFormUserDefaults()
-    Settings.sharedInstance.wpBase = Host(baseURL: "http://arma.ngslab.ru:28081/WPServ", login: "I.Novikov", password: "123456789")
-    Settings.sharedInstance.equipServ = Host(baseURL: "http://arma.ngslab.ru:28081/EquipServ", login: "", password: "")
-//    ClientManager.currentClient = Client(id: "afcb9338-0892-11e6-93fd-525400643a93", code: "381", name: "Стол 3", balance: 32000)
+//    Settings.sharedInstance.wpBase = Host(baseURL: "http://arma.ngslab.ru:28081/WPServ", login: "I.Novikov", password: "123456789")
+//    Settings.sharedInstance.equipServ = Host(baseURL: "http://arma.ngslab.ru:28081/EquipServ", login: "", password: "")
+    ClientManager.currentClient = Client(id: "afcb9338-0892-11e6-93fd-525400643a93", code: "381", name: "Стол 3", balance: 32000)
 //    ClientManager.currentClient?.identity = ClientIdentity(code: "381", type: "TracksData", readerData: ["clientRef": "afcb9338-0892-11e6-93fd-525400643a93",
 //      "clientName": "Стол 3",
 //      "balance": 6000,
@@ -74,7 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           clientIdentity = ClientIdentity(code: code, type: type, readerData: jsonObject) else {
         return HttpResponse.BadRequest(.Json(["message": "type or code are missing in parameters"]))
       }
-      print(jsonObject)
       
       ServerManager.sharedManager.getInfoFor(clientIdentity) { (response) in
         dispatch_async(dispatch_get_main_queue()) {
@@ -83,6 +82,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ClientManager.currentClient = client
             NSNotificationCenter.defaultCenter().postNotificationName(clientUpdatedNotification, object: nil)
           case .Failure(let error):
+            let alert = UIAlertController(title: "kek", message: "\(error)", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .Default, handler: nil))
+            NSNotificationCenter.defaultCenter().postNotificationName(presentViewControllerNotification, object: nil, userInfo: ["viewController": alert])
             print(error)
           }
         }
@@ -90,10 +92,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       return HttpResponse.OK(.Json(["message": "ok!"]))
     }
     
-    try! server.start(9080)
+    try! server.start(9080, forceIPv4: true)
     self.swifterServer = server
     
     print(getWiFiAddress())
+    print(RedSocketManager.sharedInstance().ipAddress())
   }
 
   func applicationWillResignActive(application: UIApplication) {

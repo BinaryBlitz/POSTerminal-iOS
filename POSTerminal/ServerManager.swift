@@ -4,10 +4,6 @@ class ServerManager {
   
   static let sharedManager = ServerManager()
   
-  init() {
-    NSURLProtocol.registerClass(RedSocketURLProtocol.self)
-  }
-  
   var activityIndicatorVisible: Bool {
     get {
       return UIApplication.sharedApplication().networkActivityIndicatorVisible
