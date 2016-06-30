@@ -85,10 +85,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       return HttpResponse.OK(.Json(["message": "ok!"]))
     }
     
-    try! server.start(9080, forceIPv4: true)
+//    try! server.start(9080, forceIPv4: true)
+    try! server.start(9080)
     self.swifterServer = server
     
-    print(RedSocketManager.sharedInstance().ipAddress())
+    print(getWiFiAddress())
   }
 
   func applicationWillResignActive(application: UIApplication) {

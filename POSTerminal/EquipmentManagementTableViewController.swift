@@ -31,7 +31,7 @@ class EquipmentManagementTableViewController: UITableViewController {
       stackView.addArrangedSubview(uuidLabel)
     }
     
-    if let host = RedSocketManager.sharedInstance().ipAddress() {
+    if let host = getWiFiAddress() {
       let urlLabel = UILabel()
       urlLabel.text = "http://\(host):9080/codes"
       stackView.addArrangedSubview(urlLabel)
