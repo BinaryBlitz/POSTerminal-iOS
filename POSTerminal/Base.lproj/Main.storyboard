@@ -241,8 +241,8 @@
                                     <constraint firstAttribute="height" constant="75" id="qGd-Be-MOR"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QqW-eQ-BVP">
-                                <rect key="frame" x="108" y="118" width="142" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QqW-eQ-BVP">
+                                <rect key="frame" x="99" y="118" width="159" height="33"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="ОЧИСТИТЬ ЗАКАЗ"/>
                                 <connections>
@@ -250,11 +250,11 @@
                                 </connections>
                             </button>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8eW-WD-omp">
-                                <rect key="frame" x="0.0" y="166" width="356" height="402"/>
+                                <rect key="frame" x="0.0" y="169" width="356" height="395"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WAn-M7-lk6">
-                                <rect key="frame" x="58" y="198" width="240" height="223"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAn-M7-lk6">
+                                <rect key="frame" x="58" y="201" width="240" height="223"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyOrder" translatesAutoresizingMaskIntoConstraints="NO" id="bOg-9O-EWr">
                                         <rect key="frame" x="68" y="0.0" width="115" height="110"/>
@@ -315,6 +315,12 @@
                                     <constraint firstAttribute="height" constant="75" id="tC0-UY-U7x"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="скидочный баланс: 100500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFa-6A-vVA">
+                                <rect key="frame" x="15" y="566" width="242" height="23"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -325,12 +331,14 @@
                             <constraint firstItem="8eW-WD-omp" firstAttribute="top" secondItem="QqW-eQ-BVP" secondAttribute="bottom" constant="18" id="DLM-ua-gNo"/>
                             <constraint firstAttribute="trailing" secondItem="Fn3-Vp-Rx4" secondAttribute="trailing" constant="15" id="Hag-PF-WKj"/>
                             <constraint firstItem="Jpa-0A-rTr" firstAttribute="leading" secondItem="l6q-uu-DLK" secondAttribute="leading" constant="20" id="HeQ-Uj-0C6"/>
+                            <constraint firstItem="zzv-mK-w2o" firstAttribute="top" secondItem="vFa-6A-vVA" secondAttribute="bottom" constant="4" id="HoC-lB-qde"/>
                             <constraint firstItem="WAn-M7-lk6" firstAttribute="centerX" secondItem="l6q-uu-DLK" secondAttribute="centerX" id="LoB-7m-via"/>
+                            <constraint firstItem="vFa-6A-vVA" firstAttribute="leading" secondItem="zzv-mK-w2o" secondAttribute="leading" id="Qwk-pj-uaD"/>
                             <constraint firstItem="tTc-wx-zM7" firstAttribute="top" secondItem="Fn3-Vp-Rx4" secondAttribute="bottom" constant="15" id="RuL-pd-9kJ"/>
+                            <constraint firstItem="vFa-6A-vVA" firstAttribute="top" secondItem="8eW-WD-omp" secondAttribute="bottom" constant="4" id="RxK-oC-tw5"/>
                             <constraint firstAttribute="trailing" secondItem="8eW-WD-omp" secondAttribute="trailing" id="WzZ-8W-z4V"/>
                             <constraint firstAttribute="trailing" secondItem="Jpa-0A-rTr" secondAttribute="trailing" constant="20" id="drd-kt-fGj"/>
                             <constraint firstItem="QqW-eQ-BVP" firstAttribute="centerX" secondItem="uzA-jK-qKa" secondAttribute="centerX" id="eys-xH-Wcs"/>
-                            <constraint firstItem="Fn3-Vp-Rx4" firstAttribute="top" secondItem="8eW-WD-omp" secondAttribute="bottom" constant="25" id="lJD-CI-wBi"/>
                             <constraint firstItem="8eW-WD-omp" firstAttribute="leading" secondItem="l6q-uu-DLK" secondAttribute="leading" id="nDd-7E-mcf"/>
                         </constraints>
                     </view>
@@ -343,6 +351,7 @@
                         <outlet property="clientInfoCard" destination="Jpa-0A-rTr" id="sFr-UR-6OL"/>
                         <outlet property="clientNameLabel" destination="ZQu-m6-VgJ" id="lW7-Cn-SIA"/>
                         <outlet property="clientPhotoImageView" destination="SrG-4N-Pey" id="TuM-xT-iDY"/>
+                        <outlet property="discountBalanceLabel" destination="vFa-6A-vVA" id="UMG-Iw-aAi"/>
                         <outlet property="emptyStateLabel" destination="NF9-Tq-3kU" id="jFz-J5-QSi"/>
                         <outlet property="emptyStateView" destination="WAn-M7-lk6" id="zAd-OB-kiT"/>
                         <outlet property="tableView" destination="8eW-WD-omp" id="u8O-iQ-op2"/>
