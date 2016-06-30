@@ -10,7 +10,6 @@
 		370906321D20625C006EB644 /* ColorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370906311D20625C006EB644 /* ColorsManager.swift */; };
 		373449D81D227580006C709B /* RedSocketURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 373449D71D227580006C709B /* RedSocketURLProtocol.m */; };
 		373449DA1D227DA4006C709B /* CollectionType+ToDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449D91D227DA4006C709B /* CollectionType+ToDictionary.swift */; };
-		373449DC1D227DF2006C709B /* WiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449DB1D227DF2006C709B /* WiFi.swift */; };
 		373449EF1D22850D006C709B /* DemoServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449E01D22850D006C709B /* DemoServer.swift */; };
 		373449F01D22850D006C709B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449E11D22850D006C709B /* File.swift */; };
 		373449F11D22850D006C709B /* HttpHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373449E21D22850D006C709B /* HttpHandlers.swift */; };
@@ -95,7 +94,6 @@
 		370906311D20625C006EB644 /* ColorsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsManager.swift; sourceTree = "<group>"; };
 		373449D71D227580006C709B /* RedSocketURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedSocketURLProtocol.m; sourceTree = "<group>"; };
 		373449D91D227DA4006C709B /* CollectionType+ToDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionType+ToDictionary.swift"; sourceTree = "<group>"; };
-		373449DB1D227DF2006C709B /* WiFi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFi.swift; sourceTree = "<group>"; };
 		373449E01D22850D006C709B /* DemoServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoServer.swift; sourceTree = "<group>"; };
 		373449E11D22850D006C709B /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		373449E21D22850D006C709B /* HttpHandlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpHandlers.swift; sourceTree = "<group>"; };
@@ -324,7 +322,6 @@
 		376D84391CF910F7008A868A /* App Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				373449DB1D227DF2006C709B /* WiFi.swift */,
 				376D84261CF878D3008A868A /* AppDelegate.swift */,
 				376D84321CF878D3008A868A /* Info.plist */,
 				37C58DCD1CFC6F1A00049095 /* POSTerminal-Bridging-Header.h */,
@@ -672,7 +669,6 @@
 				37C54F8E1D1380A400822653 /* JournalItemTableViewCell.swift in Sources */,
 				3779D4851D0C502800A3A57B /* MenuNavigationProvider.swift in Sources */,
 				375C84FB1D04DF4600F9F469 /* ServerManager+Registrator.swift in Sources */,
-				373449DC1D227DF2006C709B /* WiFi.swift in Sources */,
 				37C58DE91CFE512300049095 /* WPBaseRouter.swift in Sources */,
 				375C85041D05014700F9F469 /* CardView.swift in Sources */,
 				37C58DD21CFC6F1B00049095 /* CanonicalRequest.m in Sources */,

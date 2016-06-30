@@ -95,7 +95,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     try! server.start(9080, forceIPv4: true)
     self.swifterServer = server
     
-    print(getWiFiAddress())
     print(RedSocketManager.sharedInstance().ipAddress())
   }
 
