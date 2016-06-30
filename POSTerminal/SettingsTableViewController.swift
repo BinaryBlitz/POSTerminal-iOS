@@ -19,7 +19,7 @@ class SettingsTableViewController: UITableViewController {
   @IBOutlet weak var ordersSumTextField: UITextField!
   
   // Discounts
-  @IBOutlet weak var discontsSumTextField: UITextField!
+  @IBOutlet weak var discountsSumTextField: UITextField!
   @IBOutlet weak var discountCategoryTextField: UITextField!
   
   override func viewDidLoad() {
@@ -41,6 +41,9 @@ class SettingsTableViewController: UITableViewController {
     
     checksSumTextField.text = settings.checksSum.format()
     ordersSumTextField.text = settings.ordersSum.format()
+    
+    discountCategoryTextField.text = settings.discountCategoryName
+    discountsSumTextField.text = settings.discountsBalance.format()
   }
   
   //MARK: - Actions
@@ -73,6 +76,14 @@ class SettingsTableViewController: UITableViewController {
     
     if let ordersSum = ordersSumTextField.text, sum = Double(ordersSum) {
       Settings.sharedInstance.ordersSum = sum
+    }
+    
+    if let balanceString = discountsSumTextField.text, balance = Double(balanceString) {
+      Settings.sharedInstance.discountsBalance = balance
+    }
+    
+    if let discountCategoryName = discountCategoryTextField.text {
+      Settings.sharedInstance.discountCategoryName = discountCategoryName
     }
     
     Settings.saveToUserDefaults()

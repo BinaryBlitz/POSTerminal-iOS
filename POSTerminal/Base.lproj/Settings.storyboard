@@ -367,8 +367,8 @@
                         <outlet property="cashBalanceTextField" destination="Z08-DV-oiD" id="mn4-rs-H5K"/>
                         <outlet property="checksSumTextField" destination="04A-nx-pTh" id="Dax-bl-wep"/>
                         <outlet property="colorTextField" destination="35G-zR-ng9" id="fag-4B-gaD"/>
-                        <outlet property="discontsSumTextField" destination="1YL-3a-iVo" id="Jtc-Yz-vqr"/>
                         <outlet property="discountCategoryTextField" destination="ObU-G9-Omq" id="r1h-Xc-FbS"/>
+                        <outlet property="discountsSumTextField" destination="1YL-3a-iVo" id="uFe-SB-5Kf"/>
                         <outlet property="eqPasswordTextField" destination="gQb-5o-TC5" id="JZN-el-TJY"/>
                         <outlet property="eqURLTextField" destination="eKB-Gp-eMB" id="rjl-or-bF9"/>
                         <outlet property="eqUsernameTextField" destination="x2T-dI-Wcv" id="mz8-d9-7CK"/>
