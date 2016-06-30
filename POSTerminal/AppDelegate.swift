@@ -26,18 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Settings.loadFormUserDefaults()
 //    Settings.sharedInstance.wpBase = Host(baseURL: "http://arma.ngslab.ru:28081/WPServ", login: "I.Novikov", password: "123456789")
 //    Settings.sharedInstance.equipServ = Host(baseURL: "http://arma.ngslab.ru:28081/EquipServ", login: "", password: "")
-//    ClientManager.currentClient = Client(id: "428d571c-3c48-11e6-80be-525400c6019b", code: "c4609741caaa4652bfbe8d61bf0c4232", name: "RFID 1 MICRON 1", balance: 51250)
-//    ClientManager.currentClient?.identity = ClientIdentity(
-//      code: "c4609741caaa4652bfbe8d61bf0c4232",
-//      type: "BalanceData",
-//      readerData: [
-//        "clientRef": "afcb9338-0892-11e6-93fd-525400643a93",
-//        "clientName": "Стол 3",
-//        "factoryCode": "34e1c541190366",
-//        "balance": 6000,
-//        "clientCode": "381"
-//      ]
-//    )
     
     if let colorString = Settings.sharedInstance.baseColorHex, color = UIColor.colorWithHex(colorString) {
       ColorsManager.sharedManager.baseColor = color
