@@ -18,6 +18,10 @@ class SettingsTableViewController: UITableViewController {
   @IBOutlet weak var checksSumTextField: UITextField!
   @IBOutlet weak var ordersSumTextField: UITextField!
   
+  // Discounts
+  @IBOutlet weak var discontsSumTextField: UITextField!
+  @IBOutlet weak var discountCategoryTextField: UITextField!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     

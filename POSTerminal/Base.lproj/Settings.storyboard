@@ -299,6 +299,52 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Скидки" id="Gbt-c6-738">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="eQv-AN-dl8">
+                                        <rect key="frame" x="0.0" y="1030" width="600" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eQv-AN-dl8" id="oxa-wm-YbD">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Баланс" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1YL-3a-iVo">
+                                                    <rect key="frame" x="15" y="8" width="570" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1YL-3a-iVo" firstAttribute="leading" secondItem="oxa-wm-YbD" secondAttribute="leading" constant="15" id="7A6-uH-pqj"/>
+                                                <constraint firstItem="1YL-3a-iVo" firstAttribute="top" secondItem="oxa-wm-YbD" secondAttribute="topMargin" id="KJ9-e6-UGc"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="1YL-3a-iVo" secondAttribute="bottom" id="Vfu-yb-6QC"/>
+                                                <constraint firstAttribute="trailing" secondItem="1YL-3a-iVo" secondAttribute="trailing" constant="15" id="s2Y-ak-Ysk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="gOC-Wb-vwh">
+                                        <rect key="frame" x="0.0" y="1080" width="600" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gOC-Wb-vwh" id="Zb5-0Z-5iB">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Название категории" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ObU-G9-Omq">
+                                                    <rect key="frame" x="15" y="8" width="570" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="ObU-G9-Omq" secondAttribute="trailing" constant="15" id="9R7-YF-Bax"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ObU-G9-Omq" secondAttribute="bottom" id="hrq-yg-rCu"/>
+                                                <constraint firstItem="ObU-G9-Omq" firstAttribute="leading" secondItem="Zb5-0Z-5iB" secondAttribute="leading" constant="15" id="mhK-3l-bd7"/>
+                                                <constraint firstItem="ObU-G9-Omq" firstAttribute="top" secondItem="Zb5-0Z-5iB" secondAttribute="topMargin" id="sec-iO-Pcv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="26V-iu-psD" id="C4F-MB-x6V"/>
@@ -321,6 +367,8 @@
                         <outlet property="cashBalanceTextField" destination="Z08-DV-oiD" id="mn4-rs-H5K"/>
                         <outlet property="checksSumTextField" destination="04A-nx-pTh" id="Dax-bl-wep"/>
                         <outlet property="colorTextField" destination="35G-zR-ng9" id="fag-4B-gaD"/>
+                        <outlet property="discontsSumTextField" destination="1YL-3a-iVo" id="Jtc-Yz-vqr"/>
+                        <outlet property="discountCategoryTextField" destination="ObU-G9-Omq" id="r1h-Xc-FbS"/>
                         <outlet property="eqPasswordTextField" destination="gQb-5o-TC5" id="JZN-el-TJY"/>
                         <outlet property="eqURLTextField" destination="eKB-Gp-eMB" id="rjl-or-bF9"/>
                         <outlet property="eqUsernameTextField" destination="x2T-dI-Wcv" id="mz8-d9-7CK"/>
