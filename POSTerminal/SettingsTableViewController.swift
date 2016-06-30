@@ -115,9 +115,8 @@ class SettingsTableViewController: UITableViewController {
   }
   
   @IBAction func registerDevice() {
-    if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate,
-        server = appDelegate.gcdWebServer where server.serverURL != nil {
-      let callbackURL = "\(server.serverURL.absoluteString)codes"
+    if let host = RedSocketManager.sharedInstance().ipAddress() {
+      let callbackURL = "http://\(host):9080/codes"
       print(callbackURL)
       ServerManager.sharedManager.registerDeviceWithCallbackURL(callbackURL) { (response) in
         dispatch_async(dispatch_get_main_queue()) {

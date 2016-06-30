@@ -31,10 +31,10 @@ class EquipmentManagementTableViewController: UITableViewController {
       stackView.addArrangedSubview(uuidLabel)
     }
     
-    if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate,
-        server = appDelegate.gcdWebServer where server.serverURL != nil {
+//    if let host = getWiFiAddress() {
+    if let host = RedSocketManager.sharedInstance().ipAddress() {
       let urlLabel = UILabel()
-      urlLabel.text = server.serverURL.absoluteString
+      urlLabel.text = "http://\(host):9080/codes"
       stackView.addArrangedSubview(urlLabel)
     }
     

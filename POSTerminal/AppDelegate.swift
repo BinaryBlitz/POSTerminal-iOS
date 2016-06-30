@@ -1,10 +1,10 @@
 import UIKit
 import Fabric
 import Crashlytics
-import GCDWebServer
 import SwiftyJSON
 import RealmSwift
 import BCColor
+
 
 var uuid: String?
 
@@ -13,7 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   
-  var gcdWebServer: GCDWebServer?
+  // Server for connections over cabel
+  var swifterServer: HttpServer?
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     Fabric.with([Crashlytics.self])
@@ -23,9 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
     Settings.loadFormUserDefaults()
-    Settings.sharedInstance.wpBase = Host(baseURL: "http://arma.ngslab.ru:28081/WPServ", login: "I.Novikov", password: "123456789")
-    Settings.sharedInstance.equipServ = Host(baseURL: "http://arma.ngslab.ru:28081/EquipServ", login: "", password: "")
-//    ClientManager.currentClient = Client(id: "afcb9338-0892-11e6-93fd-525400643a93", code: "381", name: "Стол 3", balance: 32000)
+//    Settings.sharedInstance.wpBase = Host(baseURL: "http://arma.ngslab.ru:28081/WPServ", login: "I.Novikov", password: "123456789")
+//    Settings.sharedInstance.equipServ = Host(baseURL: "http://arma.ngslab.ru:28081/EquipServ", login: "", password: "")
+    ClientManager.currentClient = Client(id: "afcb9338-0892-11e6-93fd-525400643a93", code: "381", name: "Стол 3", balance: 32000)
 //    ClientManager.currentClient?.identity = ClientIdentity(code: "381", type: "TracksData", readerData: ["clientRef": "afcb9338-0892-11e6-93fd-525400643a93",
 //      "clientName": "Стол 3",
 //      "balance": 6000,
@@ -48,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     print(uuid!)
     
-    startLocalServer()
+    startSwifterServer()
     
     configureRealm()
     
@@ -64,42 +65,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Realm.Configuration.defaultConfiguration = realmDefaultConfig
   }
   
-  
-  func startLocalServer() {
-    gcdWebServer = GCDWebServer()
-    
-    if let server = gcdWebServer {
-      server.addHandlerForMethod("GET", path: "/", requestClass: GCDWebServerRequest.self) { (request) -> GCDWebServerResponse in
-        return GCDWebServerResponse(redirect: NSURL(string: "http://yesno.wtf"), permanent: false)
+  func startSwifterServer() {
+    let server = HttpServer()
+    server["/codes"] = { (request: HttpRequest) -> HttpResponse in
+      let parameters = request.parseUrlencodedForm().toDictionary { ($0.0, $0.1) }
+      let json = JSON(parameters)
+      guard let type = json["type"].string, code = json["code"].string, jsonObject = json.dictionaryObject,
+          clientIdentity = ClientIdentity(code: code, type: type, readerData: jsonObject) else {
+        return HttpResponse.BadRequest(.Json(["message": "type or code are missing in parameters"]))
       }
       
-      server.addHandlerForMethod("POST", path: "/codes", requestClass: GCDWebServerDataRequest.self) { (request) -> GCDWebServerResponse! in
-        let req = request as! GCDWebServerDataRequest
-        let json = JSON(req.jsonObject)
-        guard let type = json["type"].string, code = json["code"].string, jsonObject = json.dictionaryObject,
-            clientIdentity = ClientIdentity(code: code, type: type, readerData: jsonObject) else {
-          return GCDWebServerResponse(statusCode: 400)
-        }
-        print(jsonObject)
-        
-        ServerManager.sharedManager.getInfoFor(clientIdentity) { (response) in
-          dispatch_async(dispatch_get_main_queue()) {
-            switch response.result {
-            case .Success(let client):
-              ClientManager.currentClient = client
-              NSNotificationCenter.defaultCenter().postNotificationName(clientUpdatedNotification, object: nil)
-            case .Failure(let error):
-              print(error)
-            }
+      ServerManager.sharedManager.getInfoFor(clientIdentity) { (response) in
+        dispatch_async(dispatch_get_main_queue()) {
+          switch response.result {
+          case .Success(let client):
+            ClientManager.currentClient = client
+            NSNotificationCenter.defaultCenter().postNotificationName(clientUpdatedNotification, object: nil)
+          case .Failure(let error):
+            let alert = UIAlertController(title: "kek", message: "\(error)", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .Default, handler: nil))
+            NSNotificationCenter.defaultCenter().postNotificationName(presentViewControllerNotification, object: nil, userInfo: ["viewController": alert])
+            print(error)
           }
         }
-        
-        return GCDWebServerResponse(statusCode: 200)
-      }
-      
-      server.startWithPort(8080, bonjourName: nil)
-      print("Visit \(server.serverURL) in your web browser")
+        }
+      return HttpResponse.OK(.Json(["message": "ok!"]))
     }
+    
+    try! server.start(9080, forceIPv4: true)
+    self.swifterServer = server
+    
+    print(getWiFiAddress())
+    print(RedSocketManager.sharedInstance().ipAddress())
   }
 
   func applicationWillResignActive(application: UIApplication) {
