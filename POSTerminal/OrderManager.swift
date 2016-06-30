@@ -31,6 +31,37 @@ class OrderManager {
     }
   }
   
+  enum PaymentType {
+    case Cash
+    case Balance
+    case Mixed
+  }
+  
+  var paymentType: PaymentType {
+    let cashCount = payments.reduce(0) { (sum, payment) -> Int in
+      if payment.method == .Cash {
+        return 1
+      }
+      
+      return 0
+    }
+    let balanceCount = payments.reduce(0) { (sum, payment) -> Int in
+      if payment.method == .Card {
+        return 1
+      }
+      
+      return 0
+    }
+    
+    if cashCount == payments.count {
+      return .Cash
+    } else if balanceCount == payments.count {
+      return .Balance
+    } else {
+      return .Mixed
+    }
+  }
+  
   var residual: Double {
     return totalPrice - payments.reduce(0) { (sum, payment) -> Double in
       return payment.amount + sum

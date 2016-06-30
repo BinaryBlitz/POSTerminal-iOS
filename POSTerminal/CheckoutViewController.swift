@@ -144,6 +144,34 @@ extension CheckoutViewController: PaymentControllerDelegate {
     }
   }
   
+  /// Updates client balance for RFID users and creates check after that
+  private func updateClientBalanceAndFinishOrder() {
+    let manager = OrderManager.currentOrder
+    guard let client = ClientManager.currentClient, identity = client.identity
+        where identity.type == .BalanceData && manager.paymentType == .Balance else  {
+      createCheck()
+      return
+    }
+    
+    ServerManager.sharedManager.updateClientBalance(client, balance: client.balance - manager.totalPrice) { (response) in
+      dispatch_async(dispatch_get_main_queue()) {
+        switch response.result {
+        case .Success(_):
+          self.createCheck()
+        case .Failure(let error):
+          self.presentAlertWithMessage("Не удалось записать данные!")
+          if !OrderManager.currentOrder.payments.isEmpty {
+            OrderManager.currentOrder.payments.removeLast()
+          }
+          self.didUpdatePayments()
+          print(error)
+        }
+      }
+    }
+    
+  }
+  
+  /// Creates check for current order and then prints it
   func createCheck() {
     let manager = OrderManager.currentOrder
     guard let client = ClientManager.currentClient else  { return }
@@ -178,32 +206,7 @@ extension CheckoutViewController: PaymentControllerDelegate {
     }
   }
   
-  private func updateClientBalanceAndFinishOrder() {
-    let manager = OrderManager.currentOrder
-    guard let client = ClientManager.currentClient, identity = client.identity
-        where identity.type == .BalanceData else  {
-      createCheck()
-      return
-    }
-    
-    ServerManager.sharedManager.updateClientBalance(client, balance: client.balance - manager.totalPrice) { (response) in
-      dispatch_async(dispatch_get_main_queue()) {
-        switch response.result {
-        case .Success(_):
-          self.createCheck()
-        case .Failure(let error):
-          self.presentAlertWithMessage("Не удалось записать данные!")
-          if !OrderManager.currentOrder.payments.isEmpty {
-            OrderManager.currentOrder.payments.removeLast()
-          }
-          self.didUpdatePayments()
-          print(error)
-        }
-      }
-    }
-    
-  }
-  
+  /// Prints check for current order
   func printCheck(check: Check) {
     let manager = OrderManager.currentOrder
     ServerManager.sharedManager.printCheck(check) { response in
