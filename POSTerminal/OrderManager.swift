@@ -16,9 +16,11 @@ struct Payment {
   }
 }
 
+
 class OrderManager {
   
   static var currentOrder = OrderManager()
+  
   
   var items = [OrderItem]()
   var payments = [Payment]()

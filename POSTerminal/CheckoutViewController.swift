@@ -37,7 +37,8 @@ class CheckoutViewController: UIViewController {
       changePaymentMethod(paymentTypeSwitch)
     }
     
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateColors), name: UpdateColorsNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateColors),
+                                                     name: UpdateColorsNotification, object: nil)
   }
   
   deinit {
@@ -102,6 +103,8 @@ class CheckoutViewController: UIViewController {
     }
   }
   
+  //MARK: - Navigation
+  
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "cardPayment" {
       let destination = segue.destinationViewController as! CardPaymentViewController
@@ -109,6 +112,8 @@ class CheckoutViewController: UIViewController {
     }
   }
 }
+
+//MARK: - PaymentControllerDelegate
 
 extension CheckoutViewController: PaymentControllerDelegate {
   
@@ -223,5 +228,4 @@ extension CheckoutViewController: PaymentControllerDelegate {
       }
     }
   }
-  
 }
