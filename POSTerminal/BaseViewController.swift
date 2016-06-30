@@ -300,7 +300,7 @@ class BaseViewController: UIViewController {
 
 extension BaseViewController: MenuCollectionDelegate {
   
-  func menuCollection(collection: MenuCollectionViewController, didSelectProdict product: Product) {
+  func menuCollection(collection: MenuCollectionViewController, didSelectProduct product: Product) {
     checkBackButtonState()
     
     if product.type == .Group {
@@ -310,6 +310,29 @@ extension BaseViewController: MenuCollectionDelegate {
       } else if menuPath.count == 0 {
         appendCategoryToPathStack(category)
       }
+    }
+  }
+  
+  func menuCollection(collection: MenuCollectionViewController, shouldSelectProduct product: Product) -> Bool {
+    guard let discountCategory = Settings.sharedInstance.discountCategoryName?.lowercaseString else { return true }
+    let productCategory = product.category?.lowercaseString
+    
+    let orderManager = OrderManager.currentOrder
+    
+    if orderManager.items.count == 0 {
+      return true
+    }
+   
+    let discountProductsCount = orderManager.items.reduce(0) { (sum, item) -> Int in
+      return sum + (item.product.category?.lowercaseString == discountCategory ? 1 : 0)
+    }
+    
+    if discountProductsCount == orderManager.items.count && productCategory != discountCategory {
+      return false
+    } else if discountProductsCount == 0 && productCategory == discountCategory {
+      return false
+    } else {
+      return true
     }
   }
   

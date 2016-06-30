@@ -89,10 +89,14 @@ class MenuCollectionViewController: UICollectionViewController {
       nextPage.menuLevelId = product.id
       navigationController?.pushViewController(nextPage, animated: false)
     case .Item:
-      OrderManager.currentOrder.append(product)
+      if delegate!.menuCollection(self, shouldSelectProduct: product) {
+        OrderManager.currentOrder.append(product)
+      } else {
+        presentAlertWithMessage("Нельзя добавлять товары из скидочной категории с обычными")
+      }
     }
     
-    delegate?.menuCollection(self, didSelectProdict: product)
+    delegate?.menuCollection(self, didSelectProduct: product)
   }
   
 }
