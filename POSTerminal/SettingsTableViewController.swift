@@ -88,7 +88,7 @@ class SettingsTableViewController: UITableViewController {
       Settings.sharedInstance.discountsBalance = balance
     }
     
-    if let discountCategoryName = discountCategoryTextField.text {
+    if let discountCategoryName = discountCategoryTextField.text where discountCategoryName != "" {
       Settings.sharedInstance.discountCategoryName = discountCategoryName
     }
     
