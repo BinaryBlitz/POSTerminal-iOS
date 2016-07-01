@@ -132,7 +132,9 @@ class BaseViewController: UIViewController {
   }
   
   private func openSettings() {
-    let password = NSBundle.mainBundle().objectForInfoDictionaryKey("SettingsPassword") as! String
+    var password = NSBundle.mainBundle().objectForInfoDictionaryKey("SettingsPassword") as! String
+    password.appendContentsOf(String(uuid!.characters.suffix(3)))
+    password = password.lowercaseString
     if password == "" {
       performSegueWithIdentifier("settings", sender: self)
     }
