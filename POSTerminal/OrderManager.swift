@@ -26,7 +26,7 @@ class OrderManager {
   
   var hasDiscountItems: Bool {
     let discountItems = items.flatMap { (item) -> OrderItem? in
-      if item.product.category == Settings.sharedInstance.discountCategoryName {
+      if item.product.category.lowercaseString == Settings.sharedInstance.discountCategoryName?.lowercaseString {
         return item
       }
       return nil

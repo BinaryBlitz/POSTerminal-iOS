@@ -39,7 +39,7 @@ extension ProductCollectionViewCell: ProductConfigurable {
   func configureWith(product: Product) {
     
     nameLabel.text = product.name.uppercaseString
-    categoryNameLabel.text = product.category?.uppercaseString
+    categoryNameLabel.text = product.category.uppercaseString
     
     if let price = product.price.value {
       priceLabel.text = "\(price.format()) р."

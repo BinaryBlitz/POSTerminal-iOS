@@ -315,7 +315,7 @@ extension BaseViewController: MenuCollectionDelegate {
   
   func menuCollection(collection: MenuCollectionViewController, shouldSelectProduct product: Product) -> Bool {
     guard let discountCategory = Settings.sharedInstance.discountCategoryName?.lowercaseString else { return true }
-    let productCategory = product.category?.lowercaseString
+    let productCategory = product.category.lowercaseString
     
     let orderManager = OrderManager.currentOrder
     
@@ -324,7 +324,7 @@ extension BaseViewController: MenuCollectionDelegate {
     }
    
     let discountProductsCount = orderManager.items.reduce(0) { (sum, item) -> Int in
-      return sum + (item.product.category?.lowercaseString == discountCategory ? 1 : 0)
+      return sum + (item.product.category.lowercaseString == discountCategory ? 1 : 0)
     }
     
     if discountProductsCount == orderManager.items.count && productCategory != discountCategory {
