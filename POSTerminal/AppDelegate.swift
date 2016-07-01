@@ -47,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       uuid = UUID
     }
     
+    print(uuid)
+    
     startSwifterServer()
     
     configureRealm()
