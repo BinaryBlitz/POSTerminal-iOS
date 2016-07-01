@@ -10,8 +10,9 @@ class CheckoutViewController: UIViewController {
   
   @IBOutlet weak var priceTitleLabel: UILabel!
   @IBOutlet weak var priceLabel: UILabel!
-  
-  @IBOutlet weak var paymentTypeSwitch: UISegmentedControl!
+//  
+//  @IBOutlet weak var paymentTypeSwitch: UISegmentedControl!
+  @IBOutlet weak var paymentTypeLabel: UILabel!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -23,19 +24,14 @@ class CheckoutViewController: UIViewController {
     priceLabel.font = UIFont.boldSystemFontOfSize(20)
     priceLabel.text = "\(OrderManager.currentOrder.residual.format()) р."
     
-    paymentTypeSwitch.tintColor = UIColor.elementsAndH1Color()
-    let font = UIFont.boldSystemFontOfSize(17)
-    let textAttributes = [NSFontAttributeName: font]
-    paymentTypeSwitch.setTitleTextAttributes(textAttributes, forState: .Normal)
+    paymentTypeLabel.tintColor = UIColor.elementsAndH1Color()
     
-    paymentTypeSwitch.addTarget(self, action: #selector(changePaymentMethod(_:)), forControlEvents: .ValueChanged)
-    
-    if let _ = ClientManager.currentClient {
-      paymentTypeSwitch.selectedSegmentIndex = 0
-    } else {
-      paymentTypeSwitch.selectedSegmentIndex = 1
-      changePaymentMethod(paymentTypeSwitch)
-    }
+//    if let _ = ClientManager.currentClient {
+//      paymentTypeSwitch.selectedSegmentIndex = 0
+//    } else {
+//      paymentTypeSwitch.selectedSegmentIndex = 1
+//      changePaymentMethod(paymentTypeSwitch)
+//    }
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateColors),
                                                      name: UpdateColorsNotification, object: nil)
@@ -46,7 +42,7 @@ class CheckoutViewController: UIViewController {
   }
   
   func updateColors() {
-    paymentTypeSwitch.tintColor = UIColor.elementsAndH1Color()
+    paymentTypeLabel.tintColor = UIColor.elementsAndH1Color()
   }
   
   //MARK: - Actions
