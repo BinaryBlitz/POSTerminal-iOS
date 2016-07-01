@@ -232,13 +232,16 @@ extension CheckoutViewController: PaymentControllerDelegate {
             print(error)
           }
         case .Failure(let error):
-          if !OrderManager.currentOrder.payments.isEmpty {
-            OrderManager.currentOrder.payments.removeLast()
-          }
-          self.didUpdatePayments()
-          print(error)
-          SwiftSpinner.hide {
-            self.presentAlertWithMessage("Не удалось создать чек!")
+          SwiftSpinner.show("Не удалось зарегистрировать чек", animated: false)
+          do {
+            let realm = try Realm()
+            let journalItem = JournalItem(check: check)
+            try realm.write {
+              realm.add(journalItem)
+            }
+            self.printCheck(check)
+          } catch let error {
+            print(error)
           }
         }
       }
