@@ -7,6 +7,7 @@ class JournalItem: Object {
   dynamic var clientCode: String = ""
   dynamic var createdAt: NSDate = NSDate()
   dynamic var amount: Double = 0
+  dynamic var cashOnly: Bool = false
   
   init(check: Check) {
     number = check.number

@@ -113,7 +113,11 @@ extension CheckoutViewController: PaymentControllerDelegate {
   func didUpdatePayments() {
     let residual = OrderManager.currentOrder.residual
     if residual == 0 {
-      updateClientBalanceAndFinishOrder()
+      if Settings.sharedInstance.isCashless {
+        updateClientBalanceAndFinishOrder()
+      } else {
+        finishOrderWithCash()
+      }
     } else if residual < 0 {
       let alert = UIAlertController(title: "Сдача: \((-residual).format()) рублей", message: nil, preferredStyle: .Alert)
       alert.addAction(UIAlertAction(title: "Завершить заказ", style: .Default, handler: { (action) in
@@ -122,7 +126,11 @@ extension CheckoutViewController: PaymentControllerDelegate {
           OrderManager.currentOrder.payments.append(Payment(amount: lastPayment.amount + residual, method: .Cash))
         }
         
-        self.updateClientBalanceAndFinishOrder()
+        if Settings.sharedInstance.isCashless {
+          self.updateClientBalanceAndFinishOrder()
+        } else {
+          self.finishOrderWithCash()
+        }
       }))
       alert.addAction(UIAlertAction(title: "Отмена", style: .Cancel, handler: { (action) in
         if !OrderManager.currentOrder.payments.isEmpty {
@@ -135,6 +143,22 @@ extension CheckoutViewController: PaymentControllerDelegate {
     } else {
       priceLabel.text = "\(OrderManager.currentOrder.residual.format()) р."
     }
+  }
+  
+  func finishOrderWithCash() {
+    let manager = OrderManager.currentOrder
+    let client = ClientManager.currentClient ?? Client(id: "0", code: "0", name: "Клиент", balance: 0)
+    let check = Check(client: client, items: manager.items, payemnts: manager.payments)
+    Settings.sharedInstance.ordersSum += manager.totalPrice
+    Settings.saveToUserDefaults()
+    let realm = try! Realm()
+    let journalItem = JournalItem(check: check)
+    journalItem.cashOnly = true
+    try! realm.write {
+      realm.add(journalItem)
+    }
+    ServerManager.sharedManager.create(check)
+    printCheck(check)
   }
   
   /// Updates client balance for RFID users and creates check after that

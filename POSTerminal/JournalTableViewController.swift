@@ -19,6 +19,12 @@ class JournalTableViewController: UITableViewController {
     let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) as! JournalItemTableViewCell
     let item = items[indexPath.row]
     cell.configureWith(item)
+    if item.cashOnly {
+      cell.backgroundColor = UIColor.elementsAndH1Color().colorWithAlphaComponent(0.1)
+    } else {
+      cell.backgroundColor = UIColor.whiteColor()
+    }
+    
     return cell
   }
   
