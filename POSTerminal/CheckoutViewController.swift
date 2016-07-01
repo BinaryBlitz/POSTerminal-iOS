@@ -221,6 +221,9 @@ extension CheckoutViewController: PaymentControllerDelegate {
             
             return 0
           })
+          if OrderManager.currentOrder.hasDiscountItems {
+            Settings.sharedInstance.discountsBalance -= OrderManager.currentOrder.totalPrice
+          }
           Settings.saveToUserDefaults()
           OrderManager.currentOrder.clearOrder()
           ClientManager.currentClient = nil

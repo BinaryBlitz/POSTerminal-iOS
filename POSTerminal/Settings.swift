@@ -15,6 +15,9 @@ class Settings: NSObject, NSCoding {
   var checksSum: Double = 0
   var ordersSum: Double = 0
   
+  var discountCategoryName: String? = nil
+  var discountsBalance: Double = 0
+  
   override init() { super.init() }
   
   required init?(coder aDecoder: NSCoder) {
@@ -25,6 +28,8 @@ class Settings: NSObject, NSCoding {
     checksSum = aDecoder.decodeDoubleForKey("checksSum")
     ordersSum = aDecoder.decodeDoubleForKey("ordersSum")
     currentCheckNumber = Int(aDecoder.decodeIntForKey("currentCheckNumber"))
+    discountCategoryName = aDecoder.decodeObjectForKey("discountCategoryName") as? String
+    discountsBalance = aDecoder.decodeDoubleForKey("discountsBalance")
     super.init()
   }
   
@@ -36,6 +41,8 @@ class Settings: NSObject, NSCoding {
     aCoder.encodeDouble(checksSum, forKey: "checksSum")
     aCoder.encodeDouble(ordersSum, forKey: "ordersSum")
     aCoder.encodeInt(Int32(currentCheckNumber), forKey: "currentCheckNumber")
+    aCoder.encodeObject(discountCategoryName, forKey: "discountCategoryName")
+    aCoder.encodeDouble(discountsBalance, forKey: "discountsBalance")
   }
   
   static func loadFormUserDefaults() {

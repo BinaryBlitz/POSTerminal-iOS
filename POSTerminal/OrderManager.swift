@@ -21,9 +21,18 @@ class OrderManager {
   
   static var currentOrder = OrderManager()
   
-  
   var items = [OrderItem]()
   var payments = [Payment]()
+  
+  var hasDiscountItems: Bool {
+    let discountItems = items.flatMap { (item) -> OrderItem? in
+      if item.product.category == Settings.sharedInstance.discountCategoryName {
+        return item
+      }
+      return nil
+    }
+    return discountItems.count != 0
+  }
   
   var totalPrice: Double {
     return items.reduce(0) { (sum, item) -> Double in
