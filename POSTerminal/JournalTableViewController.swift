@@ -31,5 +31,11 @@ class JournalTableViewController: UITableViewController {
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return items.count
   }
+  
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    let item = items[indexPath.row]
+    presentAlertWithMessage(item.checkInfo)
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  }
 
 }
