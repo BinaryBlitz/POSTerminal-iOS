@@ -6,6 +6,8 @@ class EquipmentManagementTableViewController: UITableViewController {
   
   @IBOutlet weak var balanceLabel: UILabel!
   
+  
+  @IBOutlet weak var rfidSumLabel: UILabel!
   @IBOutlet weak var checksSumLabel: UILabel!
   @IBOutlet weak var ordersSumLabel: UILabel!
   
@@ -19,6 +21,7 @@ class EquipmentManagementTableViewController: UITableViewController {
     balanceLabel.text = Settings.sharedInstance.cashBalance.format()
     checksSumLabel.text = Settings.sharedInstance.checksSum.format()
     ordersSumLabel.text = Settings.sharedInstance.ordersSum.format()
+    rfidSumLabel.text = Settings.sharedInstance.rfidSum.format()
     
     let stackView = UIStackView()
     stackView.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100)

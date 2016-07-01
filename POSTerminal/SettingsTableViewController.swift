@@ -16,6 +16,7 @@ class SettingsTableViewController: UITableViewController {
   
   @IBOutlet weak var cashBalanceTextField: UITextField!
   
+  @IBOutlet weak var rfidSumTextField: UITextField!
   @IBOutlet weak var checksSumTextField: UITextField!
   @IBOutlet weak var ordersSumTextField: UITextField!
   
@@ -44,6 +45,7 @@ class SettingsTableViewController: UITableViewController {
     
     checksSumTextField.text = settings.checksSum.format()
     ordersSumTextField.text = settings.ordersSum.format()
+    rfidSumTextField.text = settings.rfidSum.format()
     paymentMethodSwitch.on = !Settings.sharedInstance.isCashless
     
     discountCategoryTextField.text = settings.discountCategoryName
@@ -86,6 +88,10 @@ class SettingsTableViewController: UITableViewController {
     
     if let ordersSum = ordersSumTextField.text, sum = Double(ordersSum) {
       Settings.sharedInstance.ordersSum = sum
+    }
+    
+    if let rfidSum = rfidSumTextField.text, sum = Double(rfidSum) {
+      Settings.sharedInstance.rfidSum = sum
     }
     
     if let balanceString = discountsSumTextField.text, balance = Double(balanceString) {

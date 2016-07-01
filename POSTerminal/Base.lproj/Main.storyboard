@@ -413,7 +413,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qVm-kM-BY1">
                                 <rect key="frame" x="127" y="72" width="184" height="27"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="К ОПЛАТЕ:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tw1-3y-nrK">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="К ОПЛАТЕ:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tw1-3y-nrK">
                                         <rect key="frame" x="0.0" y="4" width="97" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

@@ -191,6 +191,8 @@ extension CheckoutViewController: PaymentControllerDelegate {
       dispatch_async(dispatch_get_main_queue()) {
         switch response.result {
         case .Success(_):
+          Settings.sharedInstance.rfidSum += manager.totalPrice
+          Settings.saveToUserDefaults()
           self.createCheck()
         case .Failure(let error):
           SwiftSpinner.hide {
