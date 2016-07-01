@@ -146,6 +146,7 @@ extension CheckoutViewController: PaymentControllerDelegate {
     }
   }
   
+  /// Process order with cash payment
   func finishOrderWithCash() {
     let manager = OrderManager.currentOrder
     let client = ClientManager.currentClient ?? Client(id: "0", code: "0", name: "Клиент", balance: 0)
@@ -159,7 +160,21 @@ extension CheckoutViewController: PaymentControllerDelegate {
       realm.add(journalItem)
     }
     ServerManager.sharedManager.create(check)
-    printCheck(check)
+    ServerManager.sharedManager.printCheck(check)
+    if OrderManager.currentOrder.hasDiscountItems {
+      Settings.sharedInstance.discountsBalance -= OrderManager.currentOrder.totalPrice
+    }
+    Settings.sharedInstance.cashBalance += manager.payments.reduce(0, combine: { (sum, payment) -> Double in
+      if payment.method == .Cash {
+        return payment.amount
+      }
+      
+      return 0
+    })
+    Settings.saveToUserDefaults()
+    OrderManager.currentOrder.clearOrder()
+    ClientManager.currentClient = nil
+    NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
   }
   
   /// Updates client balance for RFID users and creates check after that
