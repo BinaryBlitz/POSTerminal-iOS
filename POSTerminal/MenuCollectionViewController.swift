@@ -20,6 +20,7 @@ class MenuCollectionViewController: UICollectionViewController {
     self.menuPage = realm.objects(Product).filter("parentId = '\(self.menuLevelId)'")
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.reloadData), name: reloadMenuNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateColors), name: UpdateColorsNotification, object: nil)
     
     let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeBack(_:)))
     view.addGestureRecognizer(swipeGesture)
@@ -27,6 +28,10 @@ class MenuCollectionViewController: UICollectionViewController {
   
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  func updateColors() {
+    collectionView?.reloadData()
   }
   
   func swipeBack(gestureRecognizer: UISwipeGestureRecognizer) {

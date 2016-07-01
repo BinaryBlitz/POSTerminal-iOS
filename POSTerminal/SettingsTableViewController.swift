@@ -57,9 +57,13 @@ class SettingsTableViewController: UITableViewController {
   @IBAction func saveButtonAction() {
     view.endEditing(true)
     
+    let colorsManager = ColorsManager.sharedManager
     if let hexString = colorTextField.text, color = UIColor.colorWithHex(hexString) {
       Settings.sharedInstance.baseColorHex = hexString
-      ColorsManager.sharedManager.baseColor = color
+      colorsManager.baseColor = color
+    } else if colorTextField.text == nil || colorTextField.text == "" {
+      Settings.sharedInstance.baseColorHex = nil
+      colorsManager.baseColor = colorsManager.defaultColor
     }
     
     if let url = wpURLTextField.text, username = wpUsernameTextField.text,

@@ -9,13 +9,9 @@ class CategoryCollectionViewCell: UICollectionViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    backgroundContentView.layer.borderColor = UIColor.lightOrangeColor().CGColor
     backgroundContentView.layer.borderWidth = 1
     backgroundContentView.layer.cornerRadius = 4
     
-    nameLabel.textColor = UIColor.lightOrangeColor()
-    
-    backgroundColor = UIColor.whiteColor()
     layer.cornerRadius = 5
     
     nameLabel.lineBreakMode = .ByWordWrapping
@@ -37,6 +33,10 @@ class CategoryCollectionViewCell: UICollectionViewCell {
 
 extension CategoryCollectionViewCell: ProductConfigurable {
   func configureWith(product: Product) {
+    nameLabel.textColor = UIColor.lightOrangeColor()
+    backgroundColor = UIColor.whiteColor()
+    backgroundContentView.layer.borderColor = UIColor.lightOrangeColor().CGColor
+    
     nameLabel.text = product.name.uppercaseString
   }
 }
