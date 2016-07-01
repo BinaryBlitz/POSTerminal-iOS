@@ -1,5 +1,6 @@
 import UIKit
 import BCColor
+import SwiftSpinner
 
 class SettingsTableViewController: UITableViewController {
   
@@ -98,17 +99,22 @@ class SettingsTableViewController: UITableViewController {
   @IBAction func checkConnectionButtonAction() {
     var sentRequests = 0
     
+    SwiftSpinner.show("Проверка соединения")
     ServerManager.sharedManager.checkConnectionInEQ { (response) in
       dispatch_async(dispatch_get_main_queue()) {
         switch response.result {
         case .Success(_):
           sentRequests += 1
           if sentRequests == 2 {
-            self.presentAlertWithMessage("Обе базы успешно подключены!")
+            SwiftSpinner.show("Обе базы подключены", animated: false).addTapHandler({ 
+              SwiftSpinner.hide()
+              }, subtitle: "Нажмите, чтобы закрыть")
           }
         case .Failure(let error):
           print(error)
-          self.presentAlertWithTitle("Ошибка", andMessage: "Не удалось подключиться к базе оборудования")
+          SwiftSpinner.show("Не удалось подключиться к базе оборудования", animated: false).addTapHandler({
+            SwiftSpinner.hide()
+            }, subtitle: "Нажмите, чтобы закрыть")
         }
       }
     }
@@ -119,11 +125,15 @@ class SettingsTableViewController: UITableViewController {
         case .Success(_):
           sentRequests += 1
           if sentRequests == 2 {
-            self.presentAlertWithMessage("Обе базы успешно подключены!")
+            SwiftSpinner.show("Обе базы подключены", animated: false).addTapHandler({ 
+              SwiftSpinner.hide()
+              }, subtitle: "Нажмите, чтобы закрыть")
           }
         case .Failure(let error):
           print(error)
-          self.presentAlertWithTitle("Ошибка", andMessage: "Не удалось подключиться к базе рабочего места")
+          SwiftSpinner.show("Не удалось подключиться к базе рабочего места", animated: false).addTapHandler({
+            SwiftSpinner.hide()
+            }, subtitle: "Нажмите, чтобы закрыть")
         }
       }
     }
@@ -133,14 +143,19 @@ class SettingsTableViewController: UITableViewController {
     if let host = RedSocketManager.sharedInstance().ipAddress() {
       let callbackURL = "http://\(host):9080/codes"
       print(callbackURL)
+      SwiftSpinner.show("Регистрация терминала")
       ServerManager.sharedManager.registerDeviceWithCallbackURL(callbackURL) { (response) in
         dispatch_async(dispatch_get_main_queue()) {
           switch response.result {
           case .Success(_):
-            self.presentAlertWithMessage("Мобильный терминал успешно зарегистрирован!")
+            SwiftSpinner.show("Успешно!", animated: false).addTapHandler({
+              SwiftSpinner.hide()
+              }, subtitle: "Нажмите, чтобы закрыть")
           case .Failure(let error):
             print(error)
-            self.presentAlertWithMessage("Не удалось зарегистрировать мобильный терминал")
+            SwiftSpinner.show("Не удалось", animated: false).addTapHandler({
+              SwiftSpinner.hide()
+              }, subtitle: "Нажмите, чтобы закрыть")
           }
         }
       }

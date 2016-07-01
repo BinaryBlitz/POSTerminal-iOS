@@ -1,6 +1,7 @@
 import UIKit
 import RealmSwift
 import SwiftyJSON
+import SwiftSpinner
 
 class CheckoutViewController: UIViewController {
   
@@ -170,13 +171,16 @@ extension CheckoutViewController: PaymentControllerDelegate {
       return
     }
     
+    SwiftSpinner.show("Запись данных на RFID")
     ServerManager.sharedManager.updateClientBalance(client, balance: client.balance - manager.totalPrice) { (response) in
       dispatch_async(dispatch_get_main_queue()) {
         switch response.result {
         case .Success(_):
           self.createCheck()
         case .Failure(let error):
-          self.presentAlertWithMessage("Не удалось записать данные!")
+          SwiftSpinner.hide {
+            self.presentAlertWithMessage("Не удалось записать данные!")
+          }
           if !OrderManager.currentOrder.payments.isEmpty {
             OrderManager.currentOrder.payments.removeLast()
           }
@@ -194,6 +198,7 @@ extension CheckoutViewController: PaymentControllerDelegate {
     guard let client = ClientManager.currentClient else  { return }
     let check = Check(client: client, items: manager.items, payemnts: manager.payments)
     
+    SwiftSpinner.show("Регистрация покупки")
     ServerManager.sharedManager.create(check) { (response) in
       dispatch_async(dispatch_get_main_queue()) {
         switch response.result {
@@ -217,7 +222,9 @@ extension CheckoutViewController: PaymentControllerDelegate {
           }
           self.didUpdatePayments()
           print(error)
-          self.presentAlertWithMessage("Не удалось создать чек!")
+          SwiftSpinner.hide {
+            self.presentAlertWithMessage("Не удалось создать чек!")
+          }
         }
       }
     }
@@ -226,6 +233,8 @@ extension CheckoutViewController: PaymentControllerDelegate {
   /// Prints check for current order
   func printCheck(check: Check) {
     let manager = OrderManager.currentOrder
+    
+    SwiftSpinner.show("Печать чека")
     ServerManager.sharedManager.printCheck(check) { response in
       dispatch_async(dispatch_get_main_queue()) {
         switch response.result {
@@ -242,10 +251,12 @@ extension CheckoutViewController: PaymentControllerDelegate {
             Settings.sharedInstance.discountsBalance -= OrderManager.currentOrder.totalPrice
           }
           Settings.saveToUserDefaults()
+          SwiftSpinner.hide()
           OrderManager.currentOrder.clearOrder()
           ClientManager.currentClient = nil
           NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
         case .Failure(let error):
+          SwiftSpinner.show("Не удалось напечатать чек", animated: false)
           print(error)
         }
       }

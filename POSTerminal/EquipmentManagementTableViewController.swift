@@ -1,5 +1,6 @@
 import UIKit
 import PureLayout
+import SwiftSpinner
 
 class EquipmentManagementTableViewController: UITableViewController {
   
@@ -63,50 +64,45 @@ class EquipmentManagementTableViewController: UITableViewController {
   }
   
   func finishMenuUpdate() {
-    hideActivityIndicator()
-    presentAlertWithMessage("Меню обновлено!")
+    hideActivityIndicator("Меню обновлено!")
   }
   
   //MARK: - Indicator methods
   
-  func showActivityIndicator() {
-    tableView.addSubview(activityIndicator)
-    activityIndicator.autoCenterInSuperview()
-    activityIndicator.autoSetDimensionsToSize(CGSize(width: 70, height: 70))
-    activityIndicator.hidden = false
-    activityIndicator.startAnimating()
+  //TODO: rename me pls
+  func showActivityIndicator(message: String) {
+    SwiftSpinner.show(message)
   }
   
-  func hideActivityIndicator() {
-    activityIndicator.stopAnimating()
-    activityIndicator.removeFromSuperview()
-    activityIndicator.hidden = true
+  //TODO: and me
+  func hideActivityIndicator(message: String) {
+    SwiftSpinner.show(message, animated: false).addTapHandler({
+        SwiftSpinner.hide()
+      }, subtitle: "Нажмите, чтобы закрыть")
   }
   
   //MARK: - Actions
   
   @IBAction func updateMenu() {
     NSNotificationCenter.defaultCenter().postNotificationName(updateMenuNotification, object: nil)
-    showActivityIndicator()
+    showActivityIndicator("Обновление меню")
   }
   
   @IBAction func openDay() {
     var sendCommands = 0
     
-    showActivityIndicator()
+    showActivityIndicator("Открытие смены")
     ServerManager.sharedManager.openDay { (response) in
       dispatch_async(dispatch_get_main_queue()) {
         switch response.result {
         case .Success(_):
           sendCommands += 1
           if sendCommands == 2 {
-            self.presentAlertWithMessage("Кассовая смена открыта")
-            self.hideActivityIndicator()
+            self.hideActivityIndicator("Кассовая смена открыта")
           }
         case .Failure(let error):
           print(error)
-          self.presentAlertWithTitle("Ошибка", andMessage: "Не удалсь открыть смену в базе оборудования")
-          self.hideActivityIndicator()
+          self.hideActivityIndicator("Не удалсь открыть смену в базе оборудования")
         }
       }
     }
@@ -117,13 +113,11 @@ class EquipmentManagementTableViewController: UITableViewController {
         case .Success(_):
           sendCommands += 1
           if sendCommands == 2 {
-            self.presentAlertWithMessage("Кассовая смена открыта")
-            self.hideActivityIndicator()
+            self.hideActivityIndicator("Кассовая смена открыта")
           }
         case .Failure(let error):
           print(error)
-          self.presentAlertWithTitle("Ошибка", andMessage: "Не удалсь открыть смену в базе рабочего места")
-          self.hideActivityIndicator()
+          self.hideActivityIndicator("Не удалсь открыть смену в базе рабочего места")
         }
       }
     }
@@ -131,20 +125,18 @@ class EquipmentManagementTableViewController: UITableViewController {
   
   @IBAction func closeDay() {
     var sendCommands = 0
-    showActivityIndicator()
+    showActivityIndicator("Закрытие смены")
     ServerManager.sharedManager.printZReport { (response) in
       dispatch_async(dispatch_get_main_queue()) {
         switch response.result {
         case .Success(_):
           sendCommands += 1
           if sendCommands == 2 {
-            self.presentAlertWithMessage("Кассовая смена закрыта!")
-            self.hideActivityIndicator()
+            self.hideActivityIndicator("Кассовая смена закрыта!")
           }
         case .Failure(let error):
           print(error)
-          self.presentAlertWithMessage("Не удалось закрыть смену в базе оборудования")
-          self.hideActivityIndicator()
+          self.hideActivityIndicator("Не удалось закрыть смену в базе оборудования")
         }
       }
     }
@@ -155,30 +147,26 @@ class EquipmentManagementTableViewController: UITableViewController {
         case .Success(_):
           sendCommands += 1
           if sendCommands == 2 {
-            self.presentAlertWithMessage("Кассовая смена закрыта!")
-            self.hideActivityIndicator()
+            self.hideActivityIndicator("Кассовая смена закрыта!")
           }
         case .Failure(let error):
           print(error)
-          self.presentAlertWithMessage("Не удалось закрыть смену в базе рабочего места")
-          self.hideActivityIndicator()
+          self.hideActivityIndicator("Не удалось закрыть смену в базе рабочего места")
         }
       }
     }
   }
   
   @IBAction func printXReport() {
-    showActivityIndicator()
+    showActivityIndicator("Печать отчета")
     ServerManager.sharedManager.printXReport { (response) in
       dispatch_async(dispatch_get_main_queue()) {
         switch response.result {
         case .Success(_):
-          self.presentAlertWithMessage("Отчет отправлен на печать")
-          self.hideActivityIndicator()
+          self.hideActivityIndicator("Отчет отправлен на печать")
         case .Failure(let error):
           print(error)
-          self.presentAlertWithMessage("Не удалось напечатать отчет")
-          self.hideActivityIndicator()
+          self.hideActivityIndicator("Не удалось напечатать отчет")
         }
       }
     }
@@ -215,7 +203,7 @@ class EquipmentManagementTableViewController: UITableViewController {
   }
   
   private func encash(sum: Double, type: EncashType) {
-    showActivityIndicator()
+    showActivityIndicator("Инкасcация")
     ServerManager.sharedManager.printXReport { (response) in
       dispatch_async(dispatch_get_main_queue()) {
         switch response.result {
@@ -223,8 +211,7 @@ class EquipmentManagementTableViewController: UITableViewController {
           self.sendEncashRequest(sum, type: type)
         case .Failure(let error):
           print(error)
-          self.presentAlertWithMessage("Не удалось напечатать отчет")
-          self.hideActivityIndicator()
+          self.hideActivityIndicator("Не удалось напечатать отчет")
         }
       }
     }
@@ -238,15 +225,13 @@ class EquipmentManagementTableViewController: UITableViewController {
         case .Success(_):
           sentCommands += 1
           if sentCommands == 2 {
-            self.hideActivityIndicator()
             self.updateBalance(sum, forEncash: type)
             self.balanceLabel.text = Settings.sharedInstance.cashBalance.format()
-            self.presentAlertWithMessage("Инкассация успешно проведена!")
+            self.hideActivityIndicator("Инкассация успешно проведена!")
           }
         case .Failure(let error):
           print(error)
-          self.hideActivityIndicator()
-          self.presentAlertWithMessage("Ошибка при регистрации инкассации в базе оборудования")
+          self.hideActivityIndicator("Ошибка при регистрации инкассации в базе оборудования")
         }
       }
     }
@@ -257,15 +242,13 @@ class EquipmentManagementTableViewController: UITableViewController {
         case .Success(_):
           sentCommands += 1
           if sentCommands == 2 {
-            self.hideActivityIndicator()
             self.updateBalance(sum, forEncash: type)
             self.balanceLabel.text = Settings.sharedInstance.cashBalance.format()
-            self.presentAlertWithMessage("Инкассация успешно проведена!")
+            self.hideActivityIndicator("Инкассация успешно проведена!")
           }
         case .Failure(let error):
           print(error)
-          self.hideActivityIndicator()
-          self.presentAlertWithMessage("Ошибка при регистрации инкассации в базе рабочего места")
+          self.hideActivityIndicator("Ошибка при регистрации инкассации в базе рабочего места")
         }
       }
     }
