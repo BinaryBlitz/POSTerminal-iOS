@@ -99,6 +99,11 @@ class SettingsTableViewController: UITableViewController {
   
   func updatePayemntMethod() {
     Settings.sharedInstance.isCashless = !paymentMethodSwitch.on
+    Settings.saveToUserDefaults()
+    OrderManager.currentOrder.clearOrder()
+    ClientManager.currentClient = nil
+    NSNotificationCenter.defaultCenter().postNotificationName(newItemNotification, object: nil)
+    NSNotificationCenter.defaultCenter().postNotificationName(clientUpdatedNotification, object: nil)
   }
   
   @IBAction func closeButtonAction() {
