@@ -23,6 +23,8 @@ class SettingsTableViewController: UITableViewController {
   @IBOutlet weak var discountsSumTextField: UITextField!
   @IBOutlet weak var discountCategoryTextField: UITextField!
   
+  @IBOutlet weak var paymentMethodSwitch: UISwitch!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -42,9 +44,12 @@ class SettingsTableViewController: UITableViewController {
     
     checksSumTextField.text = settings.checksSum.format()
     ordersSumTextField.text = settings.ordersSum.format()
+    paymentMethodSwitch.on = !Settings.sharedInstance.isCashless
     
     discountCategoryTextField.text = settings.discountCategoryName
     discountsSumTextField.text = settings.discountsBalance.format()
+    
+    paymentMethodSwitch.addTarget(self, action: #selector(updatePayemntMethod), forControlEvents: .ValueChanged)
   }
   
   //MARK: - Actions
@@ -90,6 +95,10 @@ class SettingsTableViewController: UITableViewController {
     Settings.saveToUserDefaults()
     
     presentAlertWithMessage("Настройки сохранены!")
+  }
+  
+  func updatePayemntMethod() {
+    Settings.sharedInstance.isCashless = !paymentMethodSwitch.on
   }
   
   @IBAction func closeButtonAction() {
