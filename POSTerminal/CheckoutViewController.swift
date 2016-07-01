@@ -10,9 +10,10 @@ class CheckoutViewController: UIViewController {
   
   @IBOutlet weak var priceTitleLabel: UILabel!
   @IBOutlet weak var priceLabel: UILabel!
-//  
-//  @IBOutlet weak var paymentTypeSwitch: UISegmentedControl!
+  
   @IBOutlet weak var paymentTypeLabel: UILabel!
+  
+  var selectedPaymentType: Payment.Method = .Card
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,12 +27,13 @@ class CheckoutViewController: UIViewController {
     
     paymentTypeLabel.tintColor = UIColor.elementsAndH1Color()
     
-//    if let _ = ClientManager.currentClient {
-//      paymentTypeSwitch.selectedSegmentIndex = 0
-//    } else {
-//      paymentTypeSwitch.selectedSegmentIndex = 1
-//      changePaymentMethod(paymentTypeSwitch)
-//    }
+    if !Settings.sharedInstance.isCashless {
+      paymentTypeLabel.text = "Наличные"
+      selectedPaymentType = .Cash
+      changePaymentMethod()
+    } else {
+      paymentTypeLabel.text = "Со счета"
+    }
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateColors),
                                                      name: UpdateColorsNotification, object: nil)
@@ -47,14 +49,12 @@ class CheckoutViewController: UIViewController {
   
   //MARK: - Actions
   
-  func changePaymentMethod(segmentedControl: UISegmentedControl) {
-    segmentedControl.userInteractionEnabled = false
-    
+  func changePaymentMethod() {
     var currentController: UIViewController?
     var viewControllerToPresent: UIViewController?
     
-    switch segmentedControl.selectedSegmentIndex {
-    case 0:
+    switch selectedPaymentType {
+    case .Card:
       let cardPaymentController = storyboard?.instantiateViewControllerWithIdentifier("CardPayment") as! CardPaymentViewController
       cardPaymentController.delegate = self
       viewControllerToPresent = cardPaymentController
@@ -64,7 +64,7 @@ class CheckoutViewController: UIViewController {
           break
         }
       }
-    case 1:
+    case .Cash:
       let cashPayementController = storyboard?.instantiateViewControllerWithIdentifier("CashPayment") as! CashPaymentViewController
       cashPayementController.delegate = self
       viewControllerToPresent = cashPayementController
@@ -74,8 +74,6 @@ class CheckoutViewController: UIViewController {
           break
         }
       }
-    default:
-      return
     }
     
     guard let current = currentController, toPresent = viewControllerToPresent else { return }
@@ -94,7 +92,6 @@ class CheckoutViewController: UIViewController {
         if finished {
           current.removeFromParentViewController()
           toPresent.didMoveToParentViewController(self)
-          segmentedControl.userInteractionEnabled = true
         }
     }
   }

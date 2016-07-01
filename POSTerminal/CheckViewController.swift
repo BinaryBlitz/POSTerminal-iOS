@@ -126,6 +126,22 @@ class CheckViewController: UIViewController {
     
     //FIXME: just if-else mess.. so bad
     discountBalanceLabel.text = nil
+    
+    if !Settings.sharedInstance.isCashless {
+      if manager.hasDiscountItems {
+        discountBalanceLabel.text = "Скидочный баланс: \(Settings.sharedInstance.discountsBalance.format())"
+        if manager.totalPrice < Settings.sharedInstance.discountsBalance {
+          enableButton()
+        } else {
+          disableButton()
+        }
+      } else {
+        enableButton()
+      }
+      
+      return
+    }
+    
     if let client = ClientManager.currentClient where client.balance >= manager.totalPrice {
       if manager.hasDiscountItems {
         discountBalanceLabel.text = "Скидочный баланс: \(Settings.sharedInstance.discountsBalance.format())"

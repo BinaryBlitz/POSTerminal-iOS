@@ -18,6 +18,8 @@ class Settings: NSObject, NSCoding {
   var discountCategoryName: String? = nil
   var discountsBalance: Double = 0
   
+  var isCashless: Bool = true
+  
   override init() { super.init() }
   
   required init?(coder aDecoder: NSCoder) {
@@ -30,6 +32,7 @@ class Settings: NSObject, NSCoding {
     currentCheckNumber = Int(aDecoder.decodeIntForKey("currentCheckNumber"))
     discountCategoryName = aDecoder.decodeObjectForKey("discountCategoryName") as? String
     discountsBalance = aDecoder.decodeDoubleForKey("discountsBalance")
+    isCashless = aDecoder.decodeBoolForKey("isCashless")
     super.init()
   }
   
@@ -43,6 +46,7 @@ class Settings: NSObject, NSCoding {
     aCoder.encodeInt(Int32(currentCheckNumber), forKey: "currentCheckNumber")
     aCoder.encodeObject(discountCategoryName, forKey: "discountCategoryName")
     aCoder.encodeDouble(discountsBalance, forKey: "discountsBalance")
+    aCoder.encodeBool(isCashless, forKey: "isCashless")
   }
   
   static func loadFormUserDefaults() {

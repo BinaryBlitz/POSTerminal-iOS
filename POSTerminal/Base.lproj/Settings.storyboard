@@ -493,8 +493,33 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="59" id="oeR-oS-cyP">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="59" id="r64-Ss-axL">
                                         <rect key="frame" x="0.0" y="387" width="600" height="59"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r64-Ss-axL" id="3AZ-Vi-Y1S">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Оплата наличными" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7p-ef-rr1">
+                                                    <rect key="frame" x="16" y="19" width="154" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GrG-Go-Xeu">
+                                                    <rect key="frame" x="535" y="14" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="GrG-Go-Xeu" secondAttribute="trailing" constant="16" id="FIF-Fu-rhd"/>
+                                                <constraint firstItem="G7p-ef-rr1" firstAttribute="leading" secondItem="3AZ-Vi-Y1S" secondAttribute="leading" constant="16" id="Mxl-3y-dw7"/>
+                                                <constraint firstItem="G7p-ef-rr1" firstAttribute="centerY" secondItem="3AZ-Vi-Y1S" secondAttribute="centerY" id="fqx-M1-HNj"/>
+                                                <constraint firstItem="GrG-Go-Xeu" firstAttribute="centerY" secondItem="3AZ-Vi-Y1S" secondAttribute="centerY" id="rsq-Pi-rW4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="59" id="oeR-oS-cyP">
+                                        <rect key="frame" x="0.0" y="446" width="600" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oeR-oS-cyP" id="jlK-dB-abA">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -522,7 +547,7 @@
                             <tableViewSection headerTitle="Смены" id="NWm-zL-hd7">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="59" id="ReS-FF-zfI">
-                                        <rect key="frame" x="0.0" y="496" width="600" height="59"/>
+                                        <rect key="frame" x="0.0" y="555" width="600" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ReS-FF-zfI" id="yNu-AF-QfB">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -546,7 +571,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="59" id="gTD-sf-Lf4">
-                                        <rect key="frame" x="0.0" y="555" width="600" height="59"/>
+                                        <rect key="frame" x="0.0" y="614" width="600" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gTD-sf-Lf4" id="yhh-Xo-mAl">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -570,7 +595,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="59" id="ImZ-J9-evK">
-                                        <rect key="frame" x="0.0" y="614" width="600" height="59"/>
+                                        <rect key="frame" x="0.0" y="673" width="600" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ImZ-J9-evK" id="O5U-08-83M">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -594,7 +619,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="59" id="kaa-Jt-2ko">
-                                        <rect key="frame" x="0.0" y="673" width="600" height="59"/>
+                                        <rect key="frame" x="0.0" y="732" width="600" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kaa-Jt-2ko" id="V2N-Xg-GfW">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -638,6 +663,7 @@
                         <outlet property="balanceLabel" destination="vI4-A5-xHw" id="2Am-D3-rLr"/>
                         <outlet property="checksSumLabel" destination="mgL-UO-Yuy" id="y1F-ui-4iE"/>
                         <outlet property="ordersSumLabel" destination="Cs8-UT-ymX" id="hn1-W8-csh"/>
+                        <outlet property="paymentMethodSwitch" destination="GrG-Go-Xeu" id="xbt-E0-Zm1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDc-44-YBM" userLabel="First Responder" sceneMemberID="firstResponder"/>

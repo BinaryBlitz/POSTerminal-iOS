@@ -8,6 +8,8 @@ class EquipmentManagementTableViewController: UITableViewController {
   @IBOutlet weak var checksSumLabel: UILabel!
   @IBOutlet weak var ordersSumLabel: UILabel!
   
+  @IBOutlet weak var paymentMethodSwitch: UISwitch!
+  
   var activityIndicator: UIActivityIndicatorView!
 
   override func viewDidLoad() {
@@ -18,6 +20,7 @@ class EquipmentManagementTableViewController: UITableViewController {
     balanceLabel.text = Settings.sharedInstance.cashBalance.format()
     checksSumLabel.text = Settings.sharedInstance.checksSum.format()
     ordersSumLabel.text = Settings.sharedInstance.ordersSum.format()
+    paymentMethodSwitch.on = !Settings.sharedInstance.isCashless
     
     let stackView = UIStackView()
     stackView.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100)
@@ -37,6 +40,8 @@ class EquipmentManagementTableViewController: UITableViewController {
       stackView.addArrangedSubview(urlLabel)
     }
     
+    paymentMethodSwitch.addTarget(self, action: #selector(updatePayemntMethod), forControlEvents: .ValueChanged)
+    
     tableView.tableHeaderView = stackView
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(finishMenuUpdate), name: reloadMenuNotification, object: nil)
@@ -47,6 +52,11 @@ class EquipmentManagementTableViewController: UITableViewController {
   }
   
   //MARK: - Actions
+  
+  func updatePayemntMethod() {
+    Settings.sharedInstance.isCashless = !paymentMethodSwitch.on
+    Settings.saveToUserDefaults()
+  }
   
   @IBAction func closeButtonAction() {
     dismissViewControllerAnimated(true, completion: nil)
