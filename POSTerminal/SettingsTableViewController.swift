@@ -164,7 +164,7 @@ class SettingsTableViewController: UITableViewController {
   }
   
   @IBAction func registerDevice() {
-    if let host = RedSocketManager.sharedInstance().ipAddress() {
+    if let host = getWiFiAddress() {
       let callbackURL = "http://\(host):9080/codes"
       print(callbackURL)
       SwiftSpinner.show("Регистрация терминала")

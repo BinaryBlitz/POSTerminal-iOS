@@ -43,6 +43,7 @@
 		375C85081D05052700F9F469 /* CheckItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 375C85061D05052700F9F469 /* CheckItemTableViewCell.xib */; };
 		375C850C1D0507CB00F9F469 /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C850B1D0507CB00F9F469 /* OrderManager.swift */; };
 		375C850E1D050D8F00F9F469 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C850D1D050D8F00F9F469 /* OrderItem.swift */; };
+		3764C7901D25589300ACE31B /* WiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3764C78F1D25589300ACE31B /* WiFi.swift */; };
 		376B5ABE1D02FA270058E6A8 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B5ABC1D02FA270058E6A8 /* ProductCollectionViewCell.swift */; };
 		376B5ABF1D02FA270058E6A8 /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 376B5ABD1D02FA270058E6A8 /* ProductCollectionViewCell.xib */; };
 		376D84271CF878D3008A868A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D84261CF878D3008A868A /* AppDelegate.swift */; };
@@ -127,6 +128,7 @@
 		375C85061D05052700F9F469 /* CheckItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckItemTableViewCell.xib; sourceTree = "<group>"; };
 		375C850B1D0507CB00F9F469 /* OrderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderManager.swift; sourceTree = "<group>"; };
 		375C850D1D050D8F00F9F469 /* OrderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
+		3764C78F1D25589300ACE31B /* WiFi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFi.swift; sourceTree = "<group>"; };
 		376B5ABC1D02FA270058E6A8 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		376B5ABD1D02FA270058E6A8 /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
 		376D84231CF878D3008A868A /* POSTerminal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POSTerminal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -322,6 +324,7 @@
 		376D84391CF910F7008A868A /* App Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				3764C78F1D25589300ACE31B /* WiFi.swift */,
 				376D84261CF878D3008A868A /* AppDelegate.swift */,
 				376D84321CF878D3008A868A /* Info.plist */,
 				37C58DCD1CFC6F1A00049095 /* POSTerminal-Bridging-Header.h */,
@@ -624,6 +627,7 @@
 				370906321D20625C006EB644 /* ColorsManager.swift in Sources */,
 				37C58DE21CFE315400049095 /* Settings.swift in Sources */,
 				373449F21D22850D006C709B /* HttpHandlers+Files.swift in Sources */,
+				3764C7901D25589300ACE31B /* WiFi.swift in Sources */,
 				37892E0C1D00DF9500008BA4 /* ClientIdentity.swift in Sources */,
 				3779D4891D0C62CB00A3A57B /* CashPaymentViewController.swift in Sources */,
 				3779D4921D0CD52F00A3A57B /* ServerManager+MobileDevice.swift in Sources */,
