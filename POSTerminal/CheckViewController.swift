@@ -20,6 +20,8 @@ class CheckViewController: UIViewController {
   
   @IBOutlet weak var totalPriceLabel: UILabel!
   
+  @IBOutlet weak var discountBalanceLabel: UILabel!
+  
   var selectedCellIndexPath: NSIndexPath?
   
   var items = [OrderItem]()
@@ -54,6 +56,7 @@ class CheckViewController: UIViewController {
     checkoutButtonView.backgroundColor = UIColor.elementsAndH1Color()
     
     totalPriceLabel.text = "\(OrderManager.currentOrder.totalPrice.format()) р."
+    discountBalanceLabel.text = ""
     
     clientInfoCard.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(printClientBalance)))
     
@@ -109,12 +112,49 @@ class CheckViewController: UIViewController {
   
   func reloadCheckoutButton() {
     totalPriceLabel.text = "\(OrderManager.currentOrder.totalPrice.format()) р."
-    if let client = ClientManager.currentClient where client.balance >= OrderManager.currentOrder.totalPrice {
+    let manager = OrderManager.currentOrder
+    
+    func enableButton() {
       checkoutButton.enabled = true
       checkoutButtonView.backgroundColor = UIColor.elementsAndH1Color()
-    } else {
+    }
+    
+    func disableButton() {
       checkoutButton.enabled = false
       checkoutButtonView.backgroundColor = UIColor.h5Color()
+    }
+    
+    //FIXME: just if-else mess.. so bad
+    discountBalanceLabel.text = nil
+    
+    if !Settings.sharedInstance.isCashless {
+      if manager.hasDiscountItems {
+        discountBalanceLabel.text = "Скидочный баланс: \(Settings.sharedInstance.discountsBalance.format())"
+        if manager.totalPrice < Settings.sharedInstance.discountsBalance {
+          enableButton()
+        } else {
+          disableButton()
+        }
+      } else {
+        enableButton()
+      }
+      
+      return
+    }
+    
+    if let client = ClientManager.currentClient where client.balance >= manager.totalPrice {
+      if manager.hasDiscountItems {
+        discountBalanceLabel.text = "Скидочный баланс: \(Settings.sharedInstance.discountsBalance.format())"
+        if manager.totalPrice < Settings.sharedInstance.discountsBalance {
+          enableButton()
+        } else {
+          disableButton()
+        }
+      } else {
+        enableButton()
+      }
+    } else {
+      disableButton()
     }
   }
   
@@ -245,6 +285,7 @@ extension CheckViewController: UITableViewDelegate {
       OrderManager.currentOrder.items = self.items
       self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
       self.reloadData()
+      self.reloadCheckoutButton()
     }
     
     return [deleteAction]

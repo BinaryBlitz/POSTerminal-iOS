@@ -9,7 +9,7 @@ class JournalItemTableViewCell: UITableViewCell {
   @IBOutlet weak var amountLabel: UILabel!
   
   func configureWith(item: JournalItem) {
-    clientCodeLabel.text = "Клинет: \(item.clientCode)"
+    clientCodeLabel.text = "Клиент: \(item.clientCode)"
     checkNumberLabel.text = "#\(item.number)"
     dateLabel.text = format(item.createdAt)
     amountLabel.text = "\(item.amount.format()) р"

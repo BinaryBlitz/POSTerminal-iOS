@@ -1,5 +1,6 @@
 import UIKit
 import BCColor
+import SwiftSpinner
 
 class SettingsTableViewController: UITableViewController {
   
@@ -15,8 +16,15 @@ class SettingsTableViewController: UITableViewController {
   
   @IBOutlet weak var cashBalanceTextField: UITextField!
   
+  @IBOutlet weak var rfidSumTextField: UITextField!
   @IBOutlet weak var checksSumTextField: UITextField!
   @IBOutlet weak var ordersSumTextField: UITextField!
+  
+  // Discounts
+  @IBOutlet weak var discountsSumTextField: UITextField!
+  @IBOutlet weak var discountCategoryTextField: UITextField!
+  
+  @IBOutlet weak var paymentMethodSwitch: UISwitch!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -37,6 +45,13 @@ class SettingsTableViewController: UITableViewController {
     
     checksSumTextField.text = settings.checksSum.format()
     ordersSumTextField.text = settings.ordersSum.format()
+    rfidSumTextField.text = settings.rfidSum.format()
+    paymentMethodSwitch.on = !Settings.sharedInstance.isCashless
+    
+    discountCategoryTextField.text = settings.discountCategoryName
+    discountsSumTextField.text = settings.discountsBalance.format()
+    
+    paymentMethodSwitch.addTarget(self, action: #selector(updatePayemntMethod), forControlEvents: .ValueChanged)
   }
   
   //MARK: - Actions
@@ -44,9 +59,13 @@ class SettingsTableViewController: UITableViewController {
   @IBAction func saveButtonAction() {
     view.endEditing(true)
     
+    let colorsManager = ColorsManager.sharedManager
     if let hexString = colorTextField.text, color = UIColor.colorWithHex(hexString) {
       Settings.sharedInstance.baseColorHex = hexString
-      ColorsManager.sharedManager.baseColor = color
+      colorsManager.baseColor = color
+    } else if colorTextField.text == nil || colorTextField.text == "" {
+      Settings.sharedInstance.baseColorHex = nil
+      colorsManager.baseColor = colorsManager.defaultColor
     }
     
     if let url = wpURLTextField.text, username = wpUsernameTextField.text,
@@ -71,9 +90,30 @@ class SettingsTableViewController: UITableViewController {
       Settings.sharedInstance.ordersSum = sum
     }
     
+    if let rfidSum = rfidSumTextField.text, sum = Double(rfidSum) {
+      Settings.sharedInstance.rfidSum = sum
+    }
+    
+    if let balanceString = discountsSumTextField.text, balance = Double(balanceString) {
+      Settings.sharedInstance.discountsBalance = balance
+    }
+    
+    if let discountCategoryName = discountCategoryTextField.text where discountCategoryName != "" {
+      Settings.sharedInstance.discountCategoryName = discountCategoryName
+    }
+    
     Settings.saveToUserDefaults()
     
     presentAlertWithMessage("Настройки сохранены!")
+  }
+  
+  func updatePayemntMethod() {
+    Settings.sharedInstance.isCashless = !paymentMethodSwitch.on
+    Settings.saveToUserDefaults()
+    OrderManager.currentOrder.clearOrder()
+    ClientManager.currentClient = nil
+    NSNotificationCenter.defaultCenter().postNotificationName(newItemNotification, object: nil)
+    NSNotificationCenter.defaultCenter().postNotificationName(clientUpdatedNotification, object: nil)
   }
   
   @IBAction func closeButtonAction() {
@@ -83,17 +123,22 @@ class SettingsTableViewController: UITableViewController {
   @IBAction func checkConnectionButtonAction() {
     var sentRequests = 0
     
+    SwiftSpinner.show("Проверка соединения")
     ServerManager.sharedManager.checkConnectionInEQ { (response) in
       dispatch_async(dispatch_get_main_queue()) {
         switch response.result {
         case .Success(_):
           sentRequests += 1
           if sentRequests == 2 {
-            self.presentAlertWithMessage("Обе базы успешно подключены!")
+            SwiftSpinner.show("Обе базы подключены", animated: false).addTapHandler({ 
+              SwiftSpinner.hide()
+              }, subtitle: "Нажмите, чтобы закрыть")
           }
         case .Failure(let error):
           print(error)
-          self.presentAlertWithTitle("Ошибка", andMessage: "Не удалось подключиться к базе оборудования")
+          SwiftSpinner.show("Не удалось подключиться к базе оборудования", animated: false).addTapHandler({
+            SwiftSpinner.hide()
+            }, subtitle: "Нажмите, чтобы закрыть")
         }
       }
     }
@@ -104,11 +149,15 @@ class SettingsTableViewController: UITableViewController {
         case .Success(_):
           sentRequests += 1
           if sentRequests == 2 {
-            self.presentAlertWithMessage("Обе базы успешно подключены!")
+            SwiftSpinner.show("Обе базы подключены", animated: false).addTapHandler({ 
+              SwiftSpinner.hide()
+              }, subtitle: "Нажмите, чтобы закрыть")
           }
         case .Failure(let error):
           print(error)
-          self.presentAlertWithTitle("Ошибка", andMessage: "Не удалось подключиться к базе рабочего места")
+          SwiftSpinner.show("Не удалось подключиться к базе рабочего места", animated: false).addTapHandler({
+            SwiftSpinner.hide()
+            }, subtitle: "Нажмите, чтобы закрыть")
         }
       }
     }
@@ -118,14 +167,19 @@ class SettingsTableViewController: UITableViewController {
     if let host = getWiFiAddress() {
       let callbackURL = "http://\(host):9080/codes"
       print(callbackURL)
+      SwiftSpinner.show("Регистрация терминала")
       ServerManager.sharedManager.registerDeviceWithCallbackURL(callbackURL) { (response) in
         dispatch_async(dispatch_get_main_queue()) {
           switch response.result {
           case .Success(_):
-            self.presentAlertWithMessage("Мобильный терминал успешно зарегистрирован!")
+            SwiftSpinner.show("Успешно!", animated: false).addTapHandler({
+              SwiftSpinner.hide()
+              }, subtitle: "Нажмите, чтобы закрыть")
           case .Failure(let error):
             print(error)
-            self.presentAlertWithMessage("Не удалось зарегистрировать мобильный терминал")
+            SwiftSpinner.show("Не удалось", animated: false).addTapHandler({
+              SwiftSpinner.hide()
+              }, subtitle: "Нажмите, чтобы закрыть")
           }
         }
       }

@@ -17,5 +17,6 @@ target 'POSTerminal' do
   # Tools
   pod 'PureLayout'
   pod 'BCColor'
+  pod 'SwiftSpinner'
 
 end

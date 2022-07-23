@@ -26,6 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Settings.loadFormUserDefaults()
 //    Settings.sharedInstance.wpBase = Host(baseURL: "http://arma.ngslab.ru:28081/WPServ", login: "I.Novikov", password: "123456789")
 //    Settings.sharedInstance.equipServ = Host(baseURL: "http://arma.ngslab.ru:28081/EquipServ", login: "", password: "")
+//    ClientManager.currentClient = Client(id: "afcb9338-0892-11e6-93fd-525400643a93", code: "381", name: "Стол 3", balance: 32000)
+//    ClientManager.currentClient?.identity = ClientIdentity(code: "381", type: "TracksData", readerData: ["clientRef": "afcb9338-0892-11e6-93fd-525400643a93",
+//      "clientName": "Стол 3",
+//      "balance": 6000,
+//      "clientCode": "381"])
     
     if let colorString = Settings.sharedInstance.baseColorHex, color = UIColor.colorWithHex(colorString) {
       ColorsManager.sharedManager.baseColor = color
@@ -42,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       uuid = UUID
     }
     
+    print(uuid)
+    
     startSwifterServer()
     
     configureRealm()
@@ -51,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func configureRealm() {
     let realmDefaultConfig = Realm.Configuration(
-      schemaVersion: 5,
+      schemaVersion: 7,
       migrationBlock: { migration, oldSchemaVersion in
       }
     )
@@ -75,14 +82,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ClientManager.currentClient = client
             NSNotificationCenter.defaultCenter().postNotificationName(clientUpdatedNotification, object: nil)
           case .Failure(let error):
-            let alert = UIAlertController(title: "kek", message: "\(error)", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "ok", style: .Default, handler: nil))
+            let alert = UIAlertController(title: "Ошибка", message: "\(error)", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
             NSNotificationCenter.defaultCenter().postNotificationName(presentViewControllerNotification, object: nil, userInfo: ["viewController": alert])
             print(error)
           }
         }
         }
-      return HttpResponse.OK(.Json(["message": "ok!"]))
+      return HttpResponse.OK(.Json(["message": "OK!"]))
     }
     
 //    try! server.start(9080, forceIPv4: true)

@@ -1,6 +1,7 @@
 import UIKit
 import RealmSwift
 import SwiftyJSON
+import SwiftSpinner
 
 class CheckoutViewController: UIViewController {
   
@@ -11,7 +12,9 @@ class CheckoutViewController: UIViewController {
   @IBOutlet weak var priceTitleLabel: UILabel!
   @IBOutlet weak var priceLabel: UILabel!
   
-  @IBOutlet weak var paymentTypeSwitch: UISegmentedControl!
+  @IBOutlet weak var paymentTypeLabel: UILabel!
+  
+  var selectedPaymentType: Payment.Method = .Card
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -23,18 +26,14 @@ class CheckoutViewController: UIViewController {
     priceLabel.font = UIFont.boldSystemFontOfSize(20)
     priceLabel.text = "\(OrderManager.currentOrder.residual.format()) р."
     
-    paymentTypeSwitch.tintColor = UIColor.elementsAndH1Color()
-    let font = UIFont.boldSystemFontOfSize(17)
-    let textAttributes = [NSFontAttributeName: font]
-    paymentTypeSwitch.setTitleTextAttributes(textAttributes, forState: .Normal)
+    paymentTypeLabel.tintColor = UIColor.elementsAndH1Color()
     
-    paymentTypeSwitch.addTarget(self, action: #selector(changePaymentMethod(_:)), forControlEvents: .ValueChanged)
-    
-    if let _ = ClientManager.currentClient {
-      paymentTypeSwitch.selectedSegmentIndex = 0
+    if !Settings.sharedInstance.isCashless {
+      paymentTypeLabel.text = "Наличные"
+      selectedPaymentType = .Cash
+      changePaymentMethod()
     } else {
-      paymentTypeSwitch.selectedSegmentIndex = 1
-      changePaymentMethod(paymentTypeSwitch)
+      paymentTypeLabel.text = "Со счета"
     }
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateColors),
@@ -46,19 +45,17 @@ class CheckoutViewController: UIViewController {
   }
   
   func updateColors() {
-    paymentTypeSwitch.tintColor = UIColor.elementsAndH1Color()
+    paymentTypeLabel.tintColor = UIColor.elementsAndH1Color()
   }
   
   //MARK: - Actions
   
-  func changePaymentMethod(segmentedControl: UISegmentedControl) {
-    segmentedControl.userInteractionEnabled = false
-    
+  func changePaymentMethod() {
     var currentController: UIViewController?
     var viewControllerToPresent: UIViewController?
     
-    switch segmentedControl.selectedSegmentIndex {
-    case 0:
+    switch selectedPaymentType {
+    case .Card:
       let cardPaymentController = storyboard?.instantiateViewControllerWithIdentifier("CardPayment") as! CardPaymentViewController
       cardPaymentController.delegate = self
       viewControllerToPresent = cardPaymentController
@@ -68,7 +65,7 @@ class CheckoutViewController: UIViewController {
           break
         }
       }
-    case 1:
+    case .Cash:
       let cashPayementController = storyboard?.instantiateViewControllerWithIdentifier("CashPayment") as! CashPaymentViewController
       cashPayementController.delegate = self
       viewControllerToPresent = cashPayementController
@@ -78,8 +75,6 @@ class CheckoutViewController: UIViewController {
           break
         }
       }
-    default:
-      return
     }
     
     guard let current = currentController, toPresent = viewControllerToPresent else { return }
@@ -98,7 +93,6 @@ class CheckoutViewController: UIViewController {
         if finished {
           current.removeFromParentViewController()
           toPresent.didMoveToParentViewController(self)
-          segmentedControl.userInteractionEnabled = true
         }
     }
   }
@@ -120,7 +114,11 @@ extension CheckoutViewController: PaymentControllerDelegate {
   func didUpdatePayments() {
     let residual = OrderManager.currentOrder.residual
     if residual == 0 {
-      updateClientBalanceAndFinishOrder()
+      if Settings.sharedInstance.isCashless {
+        updateClientBalanceAndFinishOrder()
+      } else {
+        finishOrderWithCash()
+      }
     } else if residual < 0 {
       let alert = UIAlertController(title: "Сдача: \((-residual).format()) рублей", message: nil, preferredStyle: .Alert)
       alert.addAction(UIAlertAction(title: "Завершить заказ", style: .Default, handler: { (action) in
@@ -129,7 +127,11 @@ extension CheckoutViewController: PaymentControllerDelegate {
           OrderManager.currentOrder.payments.append(Payment(amount: lastPayment.amount + residual, method: .Cash))
         }
         
-        self.updateClientBalanceAndFinishOrder()
+        if Settings.sharedInstance.isCashless {
+          self.updateClientBalanceAndFinishOrder()
+        } else {
+          self.finishOrderWithCash()
+        }
       }))
       alert.addAction(UIAlertAction(title: "Отмена", style: .Cancel, handler: { (action) in
         if !OrderManager.currentOrder.payments.isEmpty {
@@ -144,6 +146,37 @@ extension CheckoutViewController: PaymentControllerDelegate {
     }
   }
   
+  /// Process order with cash payment
+  func finishOrderWithCash() {
+    let manager = OrderManager.currentOrder
+    let client = ClientManager.currentClient ?? Client(id: "0", code: "0", name: "Клиент", balance: 0)
+    let check = Check(client: client, items: manager.items, payemnts: manager.payments)
+    Settings.sharedInstance.ordersSum += manager.totalPrice
+    Settings.saveToUserDefaults()
+    let realm = try! Realm()
+    let journalItem = JournalItem(check: check)
+    journalItem.cashOnly = true
+    try! realm.write {
+      realm.add(journalItem)
+    }
+    ServerManager.sharedManager.create(check)
+    ServerManager.sharedManager.printCheck(check)
+    if OrderManager.currentOrder.hasDiscountItems {
+      Settings.sharedInstance.discountsBalance -= OrderManager.currentOrder.totalPrice
+    }
+    Settings.sharedInstance.cashBalance += manager.payments.reduce(0, combine: { (sum, payment) -> Double in
+      if payment.method == .Cash {
+        return payment.amount
+      }
+      
+      return 0
+    })
+    Settings.saveToUserDefaults()
+    OrderManager.currentOrder.clearOrder()
+    ClientManager.currentClient = nil
+    NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
+  }
+  
   /// Updates client balance for RFID users and creates check after that
   private func updateClientBalanceAndFinishOrder() {
     let manager = OrderManager.currentOrder
@@ -153,13 +186,18 @@ extension CheckoutViewController: PaymentControllerDelegate {
       return
     }
     
+    SwiftSpinner.show("Запись данных на RFID")
     ServerManager.sharedManager.updateClientBalance(client, balance: client.balance - manager.totalPrice) { (response) in
       dispatch_async(dispatch_get_main_queue()) {
         switch response.result {
         case .Success(_):
+          Settings.sharedInstance.rfidSum += manager.totalPrice
+          Settings.saveToUserDefaults()
           self.createCheck()
         case .Failure(let error):
-          self.presentAlertWithMessage("Не удалось записать данные!")
+          SwiftSpinner.hide {
+            self.presentAlertWithMessage("Не удалось записать данные!")
+          }
           if !OrderManager.currentOrder.payments.isEmpty {
             OrderManager.currentOrder.payments.removeLast()
           }
@@ -177,6 +215,7 @@ extension CheckoutViewController: PaymentControllerDelegate {
     guard let client = ClientManager.currentClient else  { return }
     let check = Check(client: client, items: manager.items, payemnts: manager.payments)
     
+    SwiftSpinner.show("Регистрация покупки")
     ServerManager.sharedManager.create(check) { (response) in
       dispatch_async(dispatch_get_main_queue()) {
         switch response.result {
@@ -195,12 +234,17 @@ extension CheckoutViewController: PaymentControllerDelegate {
             print(error)
           }
         case .Failure(let error):
-          if !OrderManager.currentOrder.payments.isEmpty {
-            OrderManager.currentOrder.payments.removeLast()
+          SwiftSpinner.show("Не удалось зарегистрировать чек", animated: false)
+          do {
+            let realm = try Realm()
+            let journalItem = JournalItem(check: check)
+            try realm.write {
+              realm.add(journalItem)
+            }
+            self.printCheck(check)
+          } catch let error {
+            print(error)
           }
-          self.didUpdatePayments()
-          print(error)
-          self.presentAlertWithMessage("Не удалось создать чек!")
         }
       }
     }
@@ -209,6 +253,8 @@ extension CheckoutViewController: PaymentControllerDelegate {
   /// Prints check for current order
   func printCheck(check: Check) {
     let manager = OrderManager.currentOrder
+    
+    SwiftSpinner.show("Печать чека")
     ServerManager.sharedManager.printCheck(check) { response in
       dispatch_async(dispatch_get_main_queue()) {
         switch response.result {
@@ -221,11 +267,16 @@ extension CheckoutViewController: PaymentControllerDelegate {
             
             return 0
           })
+          if OrderManager.currentOrder.hasDiscountItems {
+            Settings.sharedInstance.discountsBalance -= OrderManager.currentOrder.totalPrice
+          }
           Settings.saveToUserDefaults()
+          SwiftSpinner.hide()
           OrderManager.currentOrder.clearOrder()
           ClientManager.currentClient = nil
           NSNotificationCenter.defaultCenter().postNotificationName(endCheckoutNotification, object: nil)
         case .Failure(let error):
+          SwiftSpinner.show("Не удалось напечатать чек", animated: false)
           print(error)
         }
       }

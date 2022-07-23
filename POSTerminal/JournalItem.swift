@@ -1,5 +1,6 @@
 import Realm
 import RealmSwift
+import SwiftyJSON
 
 class JournalItem: Object {
   dynamic var number: Int = 0
@@ -7,6 +8,8 @@ class JournalItem: Object {
   dynamic var clientCode: String = ""
   dynamic var createdAt: NSDate = NSDate()
   dynamic var amount: Double = 0
+  dynamic var cashOnly: Bool = false
+  dynamic var checkInfo: String = ""
   
   init(check: Check) {
     number = check.number
@@ -15,6 +18,8 @@ class JournalItem: Object {
     amount = check.items.reduce(0, combine: { (sum, item) -> Double in
       return sum + item.totalPrice
     })
+    checkInfo = String(JSON(check.dict ?? [:]))
+    print(checkInfo)
     super.init()
   }
   

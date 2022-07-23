@@ -14,6 +14,12 @@ class Settings: NSObject, NSCoding {
   
   var checksSum: Double = 0
   var ordersSum: Double = 0
+  var rfidSum: Double = 0
+  
+  var discountCategoryName: String? = nil
+  var discountsBalance: Double = 0
+  
+  var isCashless: Bool = true
   
   override init() { super.init() }
   
@@ -24,7 +30,11 @@ class Settings: NSObject, NSCoding {
     cashBalance = aDecoder.decodeDoubleForKey("cashBalance")
     checksSum = aDecoder.decodeDoubleForKey("checksSum")
     ordersSum = aDecoder.decodeDoubleForKey("ordersSum")
+    rfidSum = aDecoder.decodeDoubleForKey("rfidSum")
     currentCheckNumber = Int(aDecoder.decodeIntForKey("currentCheckNumber"))
+    discountCategoryName = aDecoder.decodeObjectForKey("discountCategoryName") as? String
+    discountsBalance = aDecoder.decodeDoubleForKey("discountsBalance")
+    isCashless = aDecoder.decodeBoolForKey("isCashless")
     super.init()
   }
   
@@ -35,7 +45,11 @@ class Settings: NSObject, NSCoding {
     aCoder.encodeDouble(cashBalance, forKey: "cashBalance")
     aCoder.encodeDouble(checksSum, forKey: "checksSum")
     aCoder.encodeDouble(ordersSum, forKey: "ordersSum")
+    aCoder.encodeDouble(rfidSum, forKey: "rfidSum")
     aCoder.encodeInt(Int32(currentCheckNumber), forKey: "currentCheckNumber")
+    aCoder.encodeObject(discountCategoryName, forKey: "discountCategoryName")
+    aCoder.encodeDouble(discountsBalance, forKey: "discountsBalance")
+    aCoder.encodeBool(isCashless, forKey: "isCashless")
   }
   
   static func loadFormUserDefaults() {

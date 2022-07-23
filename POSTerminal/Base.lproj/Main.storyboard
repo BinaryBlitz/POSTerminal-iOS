@@ -241,8 +241,8 @@
                                     <constraint firstAttribute="height" constant="75" id="qGd-Be-MOR"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QqW-eQ-BVP">
-                                <rect key="frame" x="108" y="118" width="142" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QqW-eQ-BVP">
+                                <rect key="frame" x="99" y="118" width="159" height="33"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="ОЧИСТИТЬ ЗАКАЗ"/>
                                 <connections>
@@ -250,11 +250,11 @@
                                 </connections>
                             </button>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8eW-WD-omp">
-                                <rect key="frame" x="0.0" y="166" width="356" height="402"/>
+                                <rect key="frame" x="0.0" y="169" width="356" height="395"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WAn-M7-lk6">
-                                <rect key="frame" x="58" y="198" width="240" height="223"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAn-M7-lk6">
+                                <rect key="frame" x="58" y="201" width="240" height="223"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyOrder" translatesAutoresizingMaskIntoConstraints="NO" id="bOg-9O-EWr">
                                         <rect key="frame" x="68" y="0.0" width="115" height="110"/>
@@ -315,6 +315,12 @@
                                     <constraint firstAttribute="height" constant="75" id="tC0-UY-U7x"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="скидочный баланс: 100500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFa-6A-vVA">
+                                <rect key="frame" x="15" y="566" width="242" height="23"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -325,12 +331,14 @@
                             <constraint firstItem="8eW-WD-omp" firstAttribute="top" secondItem="QqW-eQ-BVP" secondAttribute="bottom" constant="18" id="DLM-ua-gNo"/>
                             <constraint firstAttribute="trailing" secondItem="Fn3-Vp-Rx4" secondAttribute="trailing" constant="15" id="Hag-PF-WKj"/>
                             <constraint firstItem="Jpa-0A-rTr" firstAttribute="leading" secondItem="l6q-uu-DLK" secondAttribute="leading" constant="20" id="HeQ-Uj-0C6"/>
+                            <constraint firstItem="zzv-mK-w2o" firstAttribute="top" secondItem="vFa-6A-vVA" secondAttribute="bottom" constant="4" id="HoC-lB-qde"/>
                             <constraint firstItem="WAn-M7-lk6" firstAttribute="centerX" secondItem="l6q-uu-DLK" secondAttribute="centerX" id="LoB-7m-via"/>
+                            <constraint firstItem="vFa-6A-vVA" firstAttribute="leading" secondItem="zzv-mK-w2o" secondAttribute="leading" id="Qwk-pj-uaD"/>
                             <constraint firstItem="tTc-wx-zM7" firstAttribute="top" secondItem="Fn3-Vp-Rx4" secondAttribute="bottom" constant="15" id="RuL-pd-9kJ"/>
+                            <constraint firstItem="vFa-6A-vVA" firstAttribute="top" secondItem="8eW-WD-omp" secondAttribute="bottom" constant="4" id="RxK-oC-tw5"/>
                             <constraint firstAttribute="trailing" secondItem="8eW-WD-omp" secondAttribute="trailing" id="WzZ-8W-z4V"/>
                             <constraint firstAttribute="trailing" secondItem="Jpa-0A-rTr" secondAttribute="trailing" constant="20" id="drd-kt-fGj"/>
                             <constraint firstItem="QqW-eQ-BVP" firstAttribute="centerX" secondItem="uzA-jK-qKa" secondAttribute="centerX" id="eys-xH-Wcs"/>
-                            <constraint firstItem="Fn3-Vp-Rx4" firstAttribute="top" secondItem="8eW-WD-omp" secondAttribute="bottom" constant="25" id="lJD-CI-wBi"/>
                             <constraint firstItem="8eW-WD-omp" firstAttribute="leading" secondItem="l6q-uu-DLK" secondAttribute="leading" id="nDd-7E-mcf"/>
                         </constraints>
                     </view>
@@ -343,6 +351,7 @@
                         <outlet property="clientInfoCard" destination="Jpa-0A-rTr" id="sFr-UR-6OL"/>
                         <outlet property="clientNameLabel" destination="ZQu-m6-VgJ" id="lW7-Cn-SIA"/>
                         <outlet property="clientPhotoImageView" destination="SrG-4N-Pey" id="TuM-xT-iDY"/>
+                        <outlet property="discountBalanceLabel" destination="vFa-6A-vVA" id="UMG-Iw-aAi"/>
                         <outlet property="emptyStateLabel" destination="NF9-Tq-3kU" id="jFz-J5-QSi"/>
                         <outlet property="emptyStateView" destination="WAn-M7-lk6" id="zAd-OB-kiT"/>
                         <outlet property="tableView" destination="8eW-WD-omp" id="u8O-iQ-op2"/>
@@ -402,17 +411,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qVm-kM-BY1">
-                                <rect key="frame" x="127" y="72" width="168" height="27"/>
+                                <rect key="frame" x="127" y="72" width="184" height="27"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="К ОПЛАТЕ:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tw1-3y-nrK">
-                                        <rect key="frame" x="0.0" y="7" width="88" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="К ОПЛАТЕ:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tw1-3y-nrK">
+                                        <rect key="frame" x="0.0" y="4" width="97" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1500 р." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrU-dI-oqZ">
-                                        <rect key="frame" x="93" y="1" width="75" height="27"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <rect key="frame" x="102" y="0.0" width="82" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -421,19 +430,14 @@
                                     <constraint firstAttribute="height" constant="27" id="6rz-vt-L5U"/>
                                 </constraints>
                             </stackView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="v6y-WL-FEf">
-                                <rect key="frame" x="125" y="141" width="350" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="gNd-ia-Lc0"/>
-                                    <constraint firstAttribute="width" constant="350" id="sq0-kd-i7q"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="Со счета"/>
-                                    <segment title="Наличные"/>
-                                </segments>
-                            </segmentedControl>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghR-5j-mcW">
-                                <rect key="frame" x="20" y="252" width="560" height="298"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Со счета" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mma-3B-kM5">
+                                <rect key="frame" x="250" y="124" width="100" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ghR-5j-mcW">
+                                <rect key="frame" x="20" y="170" width="560" height="380"/>
                                 <connections>
                                     <segue destination="kLB-np-sqw" kind="embed" identifier="cardPayment" id="DET-UP-p8w"/>
                                 </connections>
@@ -442,17 +446,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qVm-kM-BY1" firstAttribute="centerX" secondItem="3A8-ub-bZb" secondAttribute="centerX" id="0wc-fQ-fsh"/>
-                            <constraint firstItem="v6y-WL-FEf" firstAttribute="centerX" secondItem="3A8-ub-bZb" secondAttribute="centerX" id="Aqt-ec-ay9"/>
+                            <constraint firstItem="ghR-5j-mcW" firstAttribute="top" secondItem="Mma-3B-kM5" secondAttribute="bottom" constant="25" id="PCn-3U-1Bq"/>
                             <constraint firstItem="ghR-5j-mcW" firstAttribute="leading" secondItem="3A8-ub-bZb" secondAttribute="leading" constant="20" id="QEA-aU-Jdf"/>
-                            <constraint firstItem="v6y-WL-FEf" firstAttribute="top" secondItem="qVm-kM-BY1" secondAttribute="bottom" constant="42" id="SAq-Hb-pAx"/>
+                            <constraint firstItem="Mma-3B-kM5" firstAttribute="centerX" secondItem="qVm-kM-BY1" secondAttribute="centerX" id="RHw-Sb-lYX"/>
                             <constraint firstItem="drR-eg-z1g" firstAttribute="top" secondItem="ghR-5j-mcW" secondAttribute="bottom" constant="50" id="XWG-2g-Zne"/>
-                            <constraint firstItem="ghR-5j-mcW" firstAttribute="top" secondItem="v6y-WL-FEf" secondAttribute="bottom" constant="64" id="aj8-3Z-oGL"/>
                             <constraint firstAttribute="trailing" secondItem="ghR-5j-mcW" secondAttribute="trailing" constant="20" id="rRI-1j-h9U"/>
                             <constraint firstItem="qVm-kM-BY1" firstAttribute="top" secondItem="Qjm-8N-djf" secondAttribute="bottom" constant="52" id="t13-xq-bJC"/>
+                            <constraint firstItem="Mma-3B-kM5" firstAttribute="top" secondItem="qVm-kM-BY1" secondAttribute="bottom" constant="25" id="zXF-ZX-J7u"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="paymentTypeSwitch" destination="v6y-WL-FEf" id="8r6-kM-WIU"/>
+                        <outlet property="paymentTypeLabel" destination="Mma-3B-kM5" id="MMt-EW-Q9Z"/>
                         <outlet property="priceLabel" destination="TrU-dI-oqZ" id="ywL-4x-Yej"/>
                         <outlet property="priceTitleLabel" destination="tw1-3y-nrK" id="jo3-qp-OsP"/>
                     </connections>
@@ -504,11 +508,11 @@
                         <viewControllerLayoutGuide type="bottom" id="tWU-jB-PRd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kgp-Qa-Wjs">
-                        <rect key="frame" x="0.0" y="0.0" width="560" height="298"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="380"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ki7-SG-xWj">
-                                <rect key="frame" x="177" y="52" width="205" height="75"/>
+                                <rect key="frame" x="177" y="92" width="205" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="205" id="7Dw-02-99F"/>
                                     <constraint firstAttribute="height" constant="75" id="KLi-pn-gy1"/>

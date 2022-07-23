@@ -12,12 +12,6 @@ class ProductCollectionViewCell: UICollectionViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    categorySetaratorView.backgroundColor = UIColor.lightOrangeColor()
-    priceLabel.textColor = UIColor.h4Color()
-    categoryNameLabel.textColor = UIColor.h4Color()
-    nameLabel.textColor = UIColor.lightOrangeColor()
-    
-    backgroundColor = UIColor.whiteColor()
     layer.cornerRadius = 5
     categoryBackgroundView.layer.cornerRadius = 5
   }
@@ -38,8 +32,15 @@ class ProductCollectionViewCell: UICollectionViewCell {
 extension ProductCollectionViewCell: ProductConfigurable {
   func configureWith(product: Product) {
     
+    categorySetaratorView.backgroundColor = UIColor.lightOrangeColor()
+    priceLabel.textColor = UIColor.h4Color()
+    categoryNameLabel.textColor = UIColor.h4Color()
+    nameLabel.textColor = UIColor.lightOrangeColor()
+    
+    backgroundColor = UIColor.whiteColor()
+    
     nameLabel.text = product.name.uppercaseString
-    categoryNameLabel.text = product.category?.uppercaseString
+    categoryNameLabel.text = product.category.uppercaseString
     
     if let price = product.price.value {
       priceLabel.text = "\(price.format()) р."

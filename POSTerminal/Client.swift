@@ -20,8 +20,17 @@ struct Client {
 extension Client: ServerObject {
   
   static func createWith(json: JSON) -> Client? {
-    guard let id = json["clientRef"].string, name = json["clientName"].string,
-        balance = json["balance"].double, code = json["clientCode"].string else {
+    guard let id = json["clientRef"].string, name = json["clientName"].string, code = json["clientCode"].string else {
+      return nil
+    }
+    
+    let balance: Double
+    
+    if let doubleBalance = json["balance"].double {
+      balance = doubleBalance
+    } else if let stringBalance = json["balance"].string, doubleBalance = Double(stringBalance) {
+      balance = doubleBalance
+    } else {
       return nil
     }
     
